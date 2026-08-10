@@ -1,0 +1,97 @@
+# Computer Architecture — durable course metadata
+#
+# This is the tracked source of truth for COMSC-3013's Fall 2026 offering.
+# Nothing here is inferred or fabricated -- every field traces to either the
+# official catalog/section record Jeremy supplied, or is explicitly marked
+# as Jeremy's own planning/working decision, not an official Banner fact.
+# Generators (e.g. course_foundry's Course Information page push) read this
+# file; it is never hand-edited from a Canvas/Savnac copy. See
+# course_foundry/reports/2026-08-09_computer_architecture_fall_2026_onboarding.md
+# for the onboarding decisions this file encodes.
+
+course:
+  code: "COMSC-3013"
+  name: "Computer Architecture"
+  credits: 3
+  term: "Fall 2026"
+  section_number: "COMSC-3013-1438"
+  start_date: "2026-08-17"
+  end_date: "2026-12-11"
+  instructor: "Dr. Jeremy P. Evert"
+  requisites: "None"
+  catalog_offering_note: "Offered Spring Only"
+
+# Official Banner/catalog facts, preserved verbatim. Do not "correct" the
+# apparent Spring-Only vs. real-Fall-2026-section contradiction -- both are
+# true simultaneously and both are recorded, per Jeremy's explicit
+# instruction (prompts/044_add_comp_arch.md).
+official:
+  modality: "Online"
+  location: "Weatherford Campus (Main), Online W 1 / Online"
+  meeting_pattern: "Asynchronous / online (no scheduled Banner meeting time)"
+  catalog_description: >-
+    Study of a modern computer system as a layered structure. Digital
+    logic, microprogramming, Von Neumann machines, operating systems,
+    assembly and high-level virtual machines, emphasizing fundamental
+    concepts of each layer in the hierarchy and relationships between
+    the layers.
+
+# Jeremy's own planning/instructional cadence -- NOT a Banner meeting time.
+# Exists so Course Foundry can give this online course the same weekly
+# rhythm and planning discipline as the face-to-face courses (CS1/CS2/DSCT).
+# Never overwrites the `official` block above; any generator surfacing this
+# to students must label it as the working rhythm, not an official meeting
+# time.
+instructional_working_cadence:
+  days: "Monday / Wednesday / Friday"
+  time: "2:00 PM"
+  label: "Working instructional cadence (Jeremy's planning rhythm) -- not a Banner-listed meeting time"
+
+textbook:
+  title: "Computer Organization and Design (6e) — Interactive Version (MIPS)"
+  authors:
+    - "David A. Patterson"
+    - "John L. Hennessy"
+  zybook_identifier: "EvertCOD(MIPS)Jul2021"
+  zybook_url: "https://learn.zybooks.com/zybook/EvertCOD(MIPS)Jul2021"
+  main_chapters:
+    - number: 1
+      title: "Computer Abstractions and Technology"
+    - number: 2
+      title: "Instructions: Language of the Computer"
+    - number: 3
+      title: "Arithmetic for Computers"
+    - number: 4
+      title: "The Processor"
+    - number: 5
+      title: "Large and Fast: Exploiting Memory Hierarchy"
+    - number: 6
+      title: "Parallel Processors from Client to Cloud"
+  appendices:
+    - number: "A"
+      note: "Appendix A"
+    - number: "B"
+      note: "Appendix B"
+    - number: "C"
+      note: "Appendix C"
+    - number: "D"
+      note: "Appendix D"
+    - number: "E"
+      note: "Appendix E"
+  note: >-
+    All six main chapters have been made interactive in the supplied
+    zyBook. Detailed subsection names are not recorded here -- they were
+    not legitimately readable from the session's available sources
+    (prompts/044_add_comp_arch.md's "no scraping around authentication
+    barriers" instruction) and must not be fabricated.
+
+provenance:
+  - source: "Jeremy's directly supplied Fall 2026 catalog/section record and zyBook chapter list (prompts/044_add_comp_arch.md, 2026-08-09)"
+    covers: "course/official/textbook blocks"
+  - source: "jeremy_task_tracking/prompts/044_add_comp_arch.md"
+    covers: "instructional_working_cadence block, MWF 2:00 PM planning decision"
+  - note: >-
+      The catalog page displaying "Offered: Spring Only" alongside a real
+      Fall 2026 section (COMSC-3013-1438) is a known, preserved
+      contradiction in the source record itself -- not a data-entry error
+      this file corrects. See `official.catalog_offering_note`.
