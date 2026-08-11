@@ -88,6 +88,14 @@ textbook:
 provenance:
   - source: "Jeremy's directly supplied Fall 2026 catalog/section record and zyBook chapter list (prompts/044_add_comp_arch.md, 2026-08-09)"
     covers: "course/official/textbook blocks"
+  - source: "Jeremy, directly, 2026-08-11 conversation"
+    covers: >-
+      Confirms this zyBook (`EvertCOD(MIPS)Jul2021`) has a real, current
+      adoption on the ZyBooks server -- resolves the "is it still active"
+      unknown flagged in jeremy_task_tracking/reports/
+      048_four_course_zybooks_semester_readiness_inventory.md. Still
+      Jeremy-stated, not independently re-verified via a live ZyBooks
+      read-back or a Canvas LTI tool listing.
   - source: "jeremy_task_tracking/prompts/044_add_comp_arch.md"
     covers: "instructional_working_cadence block, MWF 2:00 PM planning decision"
   - note: >-
