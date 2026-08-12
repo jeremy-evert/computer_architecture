@@ -52,8 +52,10 @@ textbook:
   authors:
     - "David A. Patterson"
     - "John L. Hennessy"
-  zybook_identifier: "EvertCOD(MIPS)Jul2021"
-  zybook_url: "https://learn.zybooks.com/zybook/EvertCOD(MIPS)Jul2021"
+  zybook_identifier: "SWOSUCOMSC3013EvertFall2026"
+  zybook_url: "https://learn.zybooks.com/zybook/SWOSUCOMSC3013EvertFall2026"
+  historical_zybook_identifiers:
+    - "EvertCOD(MIPS)Jul2021"
   main_chapters:
     - number: 1
       title: "Computer Abstractions and Technology"
@@ -79,11 +81,11 @@ textbook:
     - number: "E"
       note: "Appendix E"
   note: >-
-    All six main chapters have been made interactive in the supplied
-    zyBook. Detailed subsection names are not recorded here -- they were
-    not legitimately readable from the session's available sources
-    (prompts/044_add_comp_arch.md's "no scraping around authentication
-    barriers" instruction) and must not be fabricated.
+    `SWOSUCOMSC3013EvertFall2026` is the operational Fall 2026 course URL.
+    `EvertCOD(MIPS)Jul2021` remains product-history provenance, not the
+    current course link. Detailed subsection names, release, assignment,
+    roster, due-date, and LTI configuration are not established by the URL
+    and require authorized current-page/UI verification.
 
 provenance:
   - source: "Jeremy's directly supplied Fall 2026 catalog/section record and zyBook chapter list (prompts/044_add_comp_arch.md, 2026-08-09)"
@@ -96,6 +98,8 @@ provenance:
       048_four_course_zybooks_semester_readiness_inventory.md. Still
       Jeremy-stated, not independently re-verified via a live ZyBooks
       read-back or a Canvas LTI tool listing.
+  - source: "Jeremy, directly, 2026-08-11 (Fall 2026 zyBooks URL)"
+    covers: "textbook.zybook_identifier/textbook.zybook_url; historical identifier preserved"
   - source: "jeremy_task_tracking/prompts/044_add_comp_arch.md"
     covers: "instructional_working_cadence block, MWF 2:00 PM planning decision"
   - note: >-
