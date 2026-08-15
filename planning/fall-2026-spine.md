@@ -59,6 +59,24 @@ tolerates a lighter week better than core datapath design would.
 | 16 | Nov 30–Dec 4 | Ch. 6 continued — multicore, GPUs, clusters/warehouse-scale computers | placeholder | Daily content TBD. |
 | 17 | Dec 7–11 | Review, integration, and finals | planned | Finals week; assignments/projects/labs structure not yet built — see gaps below. |
 
+## Reasoning Odyssey continuity (doctrine note, not authored content)
+
+Per `jeremy_task_tracking/prompts/126_cross_course_reasoning_odyssey_fabric.md`,
+the Reasoning Odyssey is fabric, not a bolt-on: when weekly assignments/labs
+are later authored for this course, they should give students the option to
+carry a chosen persistent World Bible (a system, machine, project, or problem
+space) through architecture work where it is pedagogically natural — e.g.
+tracing instructions, datapath decisions, or memory-hierarchy tradeoffs for a
+machine/system the student is already building continuity around — rather
+than being decorative or forced every week. This does not create a second
+assignment track or grade category; it shapes how the real disciplinary work
+(ISA analysis, datapath/pipeline design, cache/memory reasoning, parallelism)
+gets framed. No grading weight is implied here — the grading model is not yet
+built (see below) — and no Week 1-17 assignment content is authored by this
+note. This is a placeholder for whoever later authors this course's weekly
+activities/rubrics, so continuity isn't retrofitted after the fact the way it
+had to be for DSCT.
+
 ## Explicitly not yet decided (flag, don't fabricate)
 
 - **Assignments/labs/projects:** no assignment, lab, or project structure
