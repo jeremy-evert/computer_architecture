@@ -1,106 +1,80 @@
-# Question 003 — What is the Fall 2026 assessment and grading contract?
+# Question 003 - What is the Fall 2026 assessment and grading contract?
 
-**Status:** OPEN  
+**Status:** STRUCTURE RESOLVED 2026-08-16; operational due/late/drop mechanics remain open for Canvas implementation.  
 **Owner:** Jeremy  
-**Blocks:** final grading-model document, Canvas assignment-group weights/points, final rubric calibration, and due/late mechanics  
-**Does not block:** authoring learning objectives, labs, references, Week 1–16 learning experiences, or unweighted draft rubrics/check criteria
+**Durable source:** `docs/grading-model.md`
 
-## Already decided and not open
+## Jeremy decision
 
-The grading model must respect these pinned affordability/equity decisions:
+Computer Architecture should **inherit the grading family from CS1** rather than inventing an unrelated assessment system.
 
-- no required commercial textbook or zyBooks purchase;
-- no required paid AI subscription;
-- no required Codex, Claude Code, or other premium AI CLI agent;
-- no required specialized GPU hardware;
-- a student using the free/accessible required path must be able to earn the same grade as a student using premium tools.
+Because Architecture is online/asynchronous, it does not fabricate live pair-programming, show-and-tell, peer-feedback, or attendance categories. That weight is redirected toward the work this course actually asks students to do: investigate, measure, reproduce, visualize, explain, and defend.
 
-Premium resources may improve convenience or expose advanced workflows, but ownership of them must never become a grading advantage by design.
+## Resolved grading weights
 
-## Why this still needs an explicit decision
+See `docs/grading-model.md` for the full contract.
 
-The course now has a clear learning arc, but it still has no durable grading contract. If workers invent weights while authoring weekly content, the repository will quietly accumulate policy that Jeremy never chose.
+Pinned high-level structure:
 
-The assessment system should reward the behavior the course is designed to teach: **inspect, measure, explain, verify, reproduce, and defend.**
+- Semester kickoff: 5%
+- AI Fluency: 5%
+- Professional Minds Wednesday: 5%
+- Professional Minds Friday: 5%
+- Weekly Architecture/investigation work: 30%
+- Weekly Explain/Defend evidence receipt: 10%
+- Machine Dossier checkpoints: 20%
+- Final reflection: 8%
+- Professional pathway Week 14: 5%
+- Professional pathway Week 15: 5%
+- Course evaluation: 2%
 
-## Course evidence that will exist regardless of weights
+Total: 100%.
 
-The current design naturally produces several kinds of student evidence:
+## Resolved checkpoint cadence
 
-1. **Week 1 human-orientation artifacts** shared with the broader course ecosystem.
-2. **AI investigation notebook evidence** beginning Week 2.
-3. **Reproducibility/container evidence** beginning Week 3.
-4. **Weekly architecture labs/traces/experiments** in Weeks 5–14.
-5. **Short explanation/defense artifacts** that show students can connect observations to architecture concepts.
-6. **Open/reference practice and optional enrichment** where useful.
-7. **Week 16 Farkle + ML architecture capstone.**
-8. **Week 17 reflection + demonstration of understanding.**
+- Week 6 - Checkpoint 1, light first synthesis;
+- Week 9 - Checkpoint 2, source-to-CPU integration;
+- Week 14 - Checkpoint 3, final Machine Dossier + evidence-backed redesign;
+- **no Week 16 Architecture checkpoint**.
 
-## Decisions Jeremy still needs to make
+Week 14 is the technical finale. Week 15 winds down asynchronously. Week 16 is shared Farkle + ML application/fun. Week 17 is reflection.
 
-### A. What is the basic grading philosophy?
+## Resolved assessment philosophy
 
-Choose the dominant shape, for example:
+The course rewards:
 
-- evidence/lab portfolio with mastery-style checkpoints;
-- conventional points across weekly work + capstone;
-- hybrid model;
-- another explicit contract.
+- inspect;
+- measure;
+- reproduce;
+- visualize;
+- explain;
+- verify;
+- revise;
+- defend.
 
-### B. How important is the Week 16 capstone?
+Raw tool output is not sufficient evidence of understanding.
 
-Decide whether it is:
+Premium tools/hardware may never increase the attainable grading ceiling.
 
-- the major culminating assessment;
-- one substantial weekly experience among several;
-- pass/fail mastery gate;
-- another explicit form.
+## Resolved Week 17 role
 
-### C. What must Week 17 prove?
+Week 17 is an evidence-backed final reflection using prior work, especially the frozen Machine Dossier.
 
-Jeremy has already pinned the intent: students reflect on what mattered/challenged/rewarded them **and show they understand something about computer architecture**.
+No new Architecture technical content is introduced.
 
-The remaining question is the assessment form, such as:
+## Still operationally open
 
-- written evidence-backed explanation;
-- short recorded demonstration;
-- viva/conversation where feasible;
-- portfolio defense;
-- a bounded combination.
+The following mechanics remain to be finalized before Canvas publication:
 
-The format should be accessible to an online/asynchronous student and should not require specialized hardware or paid software/services.
+- exact due-day/time cadence;
+- late-work handling;
+- exact drop-lowest implementation;
+- revision/resubmission windows;
+- Canvas assignment-group implementation details;
+- institutional calendar/dead-days verification for Week 16.
 
-### D. Due-date / late-work mechanics
+Workers may use the durable grading categories and checkpoint roles now. They must not invent the remaining operational mechanics.
 
-Decide the course-wide policy before workers manufacture per-assignment rules.
+## Done condition
 
-## Recommended design test
-
-Whatever model Jeremy chooses should make this sentence true:
-
-> A student who can repeatedly inspect a machine, gather valid evidence, explain the architecture mechanism, correct a bad claim, and synthesize that understanding in the capstone should earn a strong grade regardless of whether they used free tools or premium tools to get there.
-
-## Work allowed before resolution
-
-Foreman and workers may author:
-
-- unweighted rubrics/checklists tied to learning outcomes;
-- labs and evidence requirements;
-- self-check/revision opportunities;
-- capstone prototype and acceptance criteria;
-- Week 17 candidate assessment designs.
-
-They must not silently choose weights, percentages, point totals, late penalties, or drop rules.
-
-## Done when
-
-Create/promote a durable `docs/grading-model.md` (or repository-standard equivalent) that records:
-
-- categories/assessment types;
-- weights or point logic;
-- capstone role;
-- Week 17 assessment form;
-- revision/resubmission policy if any;
-- due/late policy;
-- how the model appears in Canvas;
-- confirmation that paid resources do not affect the attainable grading ceiling.
+This question is structurally resolved. A later deployment/assessment implementation pass closes the remaining Canvas mechanics and validates the live gradebook behavior.

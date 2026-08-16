@@ -1,298 +1,255 @@
-# Computer Architecture — Deployment Planning Board
+# Computer Architecture - Deployment Planning Board
 
 **Course:** COMSC-3013 Computer Architecture, Fall 2026  
 **Repository:** `jeremy-evert/computer_architecture`  
 **Status:** active deployment planning  
 **Source of truth:** Git. Savnac is the inspection/dogfood surface; production Canvas is a later deployment target.
 
-This file is the project-local workbench for getting the course from planning to a high-quality, inspectable, deployable Fall 2026 course. Durable course decisions belong outside `sidecar/`; agent work orders, unresolved questions, and execution reports belong inside it.
-
 ## Mission
 
-Build a Computer Architecture course that helps students understand a computer as a connected stack rather than as a vocabulary list:
+Build an online Computer Architecture course that helps students understand a computer as a connected, measurable system rather than a vocabulary list.
 
-**human intent → programs → compiler/toolchain → ISA → datapath/control → memory → operating-system support → parallel hardware → modern accelerators and systems.**
+The course movement is:
 
-Students should leave able to inspect a real machine, explain what they observe, test a claim with evidence, and defend at least one meaningful architecture tradeoff.
-
-The course should aggressively mine the best open/freely accessible Computer Architecture teaching in the world and then synthesize it into one coherent SWOSU experience.
+**build the investigator -> build the machine -> open the machine -> stress the machine -> make the architecture decision -> wind down and reflect**
 
 ## Pinned Fall 2026 decisions
 
-These are planning constraints, not suggestions.
+1. Official modality is online/asynchronous.
+2. Jeremy's M/W/F 2 PM rhythm is production/release cadence, not attendance.
+3. **Monday:** AI Fluency + lecture/digest/deck + instructor recording.
+4. **Wednesday:** Professional Minds + investigation/sensory lab.
+5. **Friday:** Professional Minds + Explain/Defend evidence + optional instructor Stack Showcase.
+6. Jeremy may visibly use his full real stack in recordings. Student reproduction of that paid/frontier/local stack is not required.
+7. Week 1 = universal Success Foundations; no Architecture gate.
+8. Week 2 = AI Lab Training.
+9. Week 3 = Containers & Repeatability.
+10. Week 4 = Linux as a Machine Telescope.
+11. **Weeks 5-14 are the entire Architecture technical runway.**
+12. Machine Dossier begins Week 5 and freezes Week 14.
+13. Sensory-lab doctrine: **predict -> perturb -> run -> measure -> visualize -> explain -> revise.**
+14. Python/matplotlib is the planned visualization instrument.
+15. LaTeX/PDF is the planned dossier publishing instrument, scaffolded rather than taught as a side course.
+16. Checkpoints = Weeks 6, 9, 14.
+17. Week 14 is the technical finale and final Machine Dossier defense.
+18. Week 15 = Thanksgiving asynchronous wind-down; no new Architecture theory/dossier layer.
+19. Week 16 = shared Farkle + ML application/fun; not Checkpoint 4 or a hidden Architecture capstone.
+20. Week 17 = reflection; no new technical material.
+21. No required commercial textbook/zyBooks.
+22. No required paid AI.
+23. No required premium AI CLI/agent.
+24. No specialized GPU requirement; CPU-only path.
+25. RISC-V is planning-leading.
+26. Grading structure is accepted in `docs/grading-model.md`; due/late/drop mechanics still need operational closure.
 
-1. **Official modality remains online/asynchronous.** Jeremy's M/W/F 2:00 PM rhythm is a planning cadence, not a Banner meeting time.
-2. **Week 1 is universal human orientation**, matching CS1/CS2/DSCT:
-   - Monday: **Survive the semester**.
-   - Wednesday: **Thrive in the degree**.
-   - Friday: **Enjoy the career**.
-   - No Computer Architecture technical content is required in Week 1.
-3. **Week 2 is AI Lab Training.** Students learn how to use AI as a systems-investigation partner without treating generated claims as evidence.
-4. **Week 3 is Containers & Repeatability.** The course establishes a reproducible lab capsule/environment that can travel across machines.
-5. **Week 4 is Linux Command Line Introduction.** Students learn the shell as an instrument for observing the machine, not as a detached sysadmin unit.
-6. **Weeks 5–14 are the Computer Architecture core.** They are built from strong open courses, primary references, open tools, course-created materials, and real-machine experiments.
-7. **Week 15 is Thanksgiving/travel and intentionally asynchronous/lightweight.**
-8. **Week 16 is Machine Learning + Farkle with a Computer Architecture capstone feel.**
-9. **Week 17 is reflection and demonstration.** Students explain what they learned and show genuine Computer Architecture understanding.
-10. **No commercial textbook or zyBooks purchase is required.** Books and zyBooks may guide course authors and remain optional student references.
-11. **No paid AI subscription is required.**
-12. **No premium AI command-line agent is required.** Codex, Claude Code, and similar tools may be demonstrated and supported as optional advanced workflows only.
-13. **The free/accessible required path has the same grading ceiling as any premium-tool path.**
-14. **No specialized GPU hardware is required.** CPU-only completion is mandatory; GPU/accelerator access is optional enrichment.
-15. **RISC-V is the planning-leading teaching ISA**, based on pedagogical fit, open specifications, and tooling rather than commercial-textbook availability.
+## Durable planning sources
 
-## Required-materials doctrine
+Read these before authoring:
 
-The ideal required student-material cost for this course is **$0** beyond normal computer/university access.
+- `README.md`
+- `planning/fall-2026-course-design.md`
+- `planning/architecture-arc-map.md`
+- `planning/block-map.md`
+- `planning/machine-dossier.md`
+- `planning/fall-2026-spine.md`
+- `planning/week-NN.md`
+- `docs/grading-model.md`
 
-The course should be complete using:
-
-- openly accessible readings and primary references;
-- course-created explanation and scaffolding;
-- open-source/free compilers, debuggers, simulators/emulators, and system tools;
-- the reproducible lab capsule;
-- a no-cost or otherwise course-accessible AI path where AI is expected.
-
-A commercial resource is allowed to improve the instructor's understanding. It is not allowed to become a hidden student dependency.
-
-A premium AI tool is allowed to make a workflow slicker. It is not allowed to become a prerequisite or an assessment advantage.
+The week files are thin planning shells. Do not confuse named intentions with authored/validated lessons.
 
 ## Accepted 17-week curriculum
 
-| Week | Theme | Student-facing central question |
+| Week | Theme | Central question / role |
 |---|---|---|
-| 1 | **Success Foundations** | How do I survive this semester, thrive in this degree, and enjoy the career I am building toward? |
-| 2 | **AI Lab Training** | How can AI help me investigate a machine without becoming my source of truth? |
-| 3 | **Containers & Repeatability** | How do I make a systems experiment run the same way twice and on another computer? |
-| 4 | **Linux Command Line as a Machine Telescope** | How do I ask the operating system what this computer is and what it is doing? |
-| 5 | **Bits Become Meaning: Representation, Logic, Arithmetic** | How can the same bits become numbers, instructions, and decisions? |
-| 6 | **The Hardware/Software Contract: ISA + RISC-V** | What must software and hardware agree on for a program to run? |
-| 7 | **Build a CPU: Datapath + Control** | What physical path does one instruction take through a processor? |
-| 8 | **Pipelining, Hazards, and Performance** | Why is doing several things at once faster and harder? |
-| 9 | **Integration Checkpoint: From Source to CPU** | Can I follow one small program through the stack without hand-waving? |
-| 10 | **Memory Hierarchy + Caches** | Why can memory be both huge and fast only by using layers? |
-| 11 | **Virtual Memory, Protection, I/O, and OS Support** | What hardware does an operating system need to create the world my process sees? |
-| 12 | **Multicore, Coherence, Synchronization** | What breaks when several cores can touch the same world at once? |
-| 13 | **Vectors, GPUs, and ML Accelerators** | Why do some workloads want a different kind of machine? |
-| 14 | **Architectures in the Wild: Tradeoffs + Capstone Launch** | If every design is a compromise, how do I defend one architecture choice with evidence? |
-| 15 | **Asynchronous Capstone Preflight / Thanksgiving** | What evidence do I have, and what do I still need before I make a claim? |
-| 16 | **Farkle + Machine Learning Architecture Capstone** | What does a real workload reveal about the machine underneath it? |
-| 17 | **Reflection + Show Me You Understand a Machine** | What do I understand now that I could not explain in August? |
+| 1 | Success Foundations | How do I survive, thrive, and enjoy the path? No Architecture gate. |
+| 2 | AI Lab Training | How can AI help investigate without becoming evidence? |
+| 3 | Containers & Repeatability | How can another machine/person reproduce the experiment? |
+| 4 | Linux as a Machine Telescope | How do I ask the machine what it is doing? |
+| 5 | Build the Machine | What should I build for this workload and why? Machine Dossier v0. |
+| 6 | Bits Become Instructions | What must software/hardware agree on? Checkpoint 1. |
+| 7 | Crack Open the CPU | What has to happen for one instruction to execute? |
+| 8 | Make It Fast Without Breaking It | Why do overlap/dependencies change latency/throughput? |
+| 9 | Follow the Program Down | Can I connect the layers without hand-waving? Checkpoint 2. |
+| 10 | Make the Memory Hierarchy Hurt | What do latency, bandwidth, locality, and cache cliffs feel like? |
+| 11 | The Useful Lie of Memory | What hardware mechanisms create software-visible memory/process abstractions? |
+| 12 | More Cores, More Problems | When does cooperation/communication destroy scaling? |
+| 13 | Different Machines for Different Work | When does workload shape justify specialization? |
+| 14 | Sit in the Architect's Chair | What would I build now, and what evidence changed my mind? Checkpoint 3; freeze dossier. |
+| 15 | Thanksgiving Wind-Down | Curate/catch up only. |
+| 16 | Farkle + ML | Shared applied fun; Architecture echo only. |
+| 17 | Reflection | What can I explain now that I could not explain in August? |
 
-## Weekly chassis after Week 1
+## Machine Dossier doctrine
 
-- **Monday — Frame:** machine question, concise course-created framing, open/reference menu, prediction/hypothesis.
-- **Wednesday — Inspect / Build / Measure:** lab, trace, simulator, shell experiment, or bounded build.
-- **Friday — Explain / Defend:** evidence-backed explanation, correction, show-and-tell, or synthesis checkpoint.
+See `planning/machine-dossier.md`.
 
-The M/W/F pattern is a planning/release rhythm for an asynchronous course, not an attendance rule.
+The dossier has:
 
-## Research-informed architecture backbone
+- **Machine Map:** parts, capabilities, interfaces, cost, hierarchy, workload.
+- **Sensitivity Profile:** measured response to changed latency, bandwidth, working set, synchronization, worker count, data movement, and specialization.
 
-The starting research set includes:
+It is active only during Weeks 5-14.
 
-- UC Berkeley CS61C;
-- Cornell CS3410;
-- MIT 6.004 Computation Structures;
-- Nand2Tetris;
-- University of Cambridge Computer Architecture materials;
-- RISC-V International specifications;
-- official compiler/binutils/debugger documentation;
-- official simulator/emulator and OS documentation where useful.
+## Instructor recording doctrine
 
-Foreman Prompt 002 owns the broader search and should build a **week-by-week open-source canon**, not merely reuse this initial shortlist.
+Architecture's online modality creates room for a deliberate three-video/artifact rhythm instead of fake live-class substitutions.
 
-Commercial books such as Patterson/Hennessy may still be consulted by instructors. They are reference material, not curriculum infrastructure.
+### Monday lecture package
 
-## Semester laboratory doctrine
+Target artifacts:
 
-### AI Investigation Notebook
+- concise digest/source;
+- deck;
+- lecture plan;
+- recorded walkthrough;
+- AI Fluency integration.
 
-From Week 2 forward, students repeatedly record:
+Jeremy can have real AI tools visible while reasoning. Model disagreement and verification can become part of the lesson.
 
-1. question/hypothesis;
-2. context supplied to AI/tool;
-3. command/code/model/tool used;
-4. observation/measurement;
-5. evidence artifact;
-6. conclusion;
-7. what changed after verification.
+### Wednesday lab package
 
-AI can suggest commands, explanations, hypotheses, and debugging paths. It cannot serve as the evidence that its own claim is correct.
+Target artifacts:
 
-The notebook is provider-neutral. No paid plan or CLI agent is required.
+- lab handout/source;
+- canonical instructor run;
+- data receipt;
+- plotting scaffold;
+- troubleshooting/fallback.
 
-### Reproducible Lab Capsule
+### Friday Stack Showcase
 
-Week 3 establishes a versioned environment reused later. Candidate capabilities include:
+Target artifacts:
 
-- compiler/binutils;
-- debugger;
-- binary inspection;
-- profiling/timing;
-- RISC-V compiler/assembler;
-- emulator/simulator;
-- lightweight course scripts/data.
+- short instructor showcase plan;
+- authentic machine/tool/workflow;
+- explicit connection back to the week's concept;
+- student Explain/Defend receipt.
 
-The environment must support a CPU-only path.
-
-### Linux as evidence, not trivia
-
-Week 4 teaches the shell through architecture questions. Exact commands must be validated on the selected lab environment before publication.
-
-## Open-source course-authoring strategy
-
-For every required concept, decide deliberately which of three shapes is best:
-
-### GREEN — Link directly
-
-An excellent, stable, accessible open source already teaches the concept well enough for our students.
-
-### YELLOW — Link + course scaffold
-
-The open material is technically strong but fragmented, dense, or assumes background our students may not have. Create a short course-owned bridge, guide, example, or diagram around it.
-
-### RED — Author it ourselves
-
-The available material does not fit. Build the explanation/lab/trace ourselves, backed by primary references and expert sources.
-
-A RED is productive information. It tells us where the course itself needs to become the textbook.
+The showcase should be fun and real. It should not become required access to Jeremy's environment.
 
 ## Workstreams
 
-### A. Reconcile durable course source
+### A. Reconcile durable source
 
-- [ ] Establish week-file chassis.
-- [ ] Make the zero-cost/open-source doctrine visible everywhere source consumers need it.
-- [ ] Preserve historical commercial-resource provenance without presenting it as required.
+- [x] CS-family planning chassis established.
+- [x] Machine Dossier/sensory-lab doctrine captured.
+- [x] M/W/F online recording model captured.
+- [x] Week 14 technical ending / Week 15-17 wind-down captured.
+- [x] grading structure captured.
+- [ ] Foreman reconciliation/validation pass.
 
-### B. Build the open-source Architecture canon
+### B. Build open-source Architecture canon
 
-- [ ] Research every week/topic broadly.
-- [ ] Check accessibility and licensing/reuse status.
-- [ ] Build GREEN/YELLOW/RED map.
-- [ ] Identify course-created explanations/diagrams/labs needed.
-- [ ] Hand clean source recommendations to week authors.
+- [ ] Research every week/topic.
+- [ ] Check accessibility/licensing.
+- [ ] GREEN/YELLOW/RED map.
+- [ ] Identify course-created bridges needed.
+- [ ] Include sources useful for the sensory labs and PC/component economics.
 
-### C. Build the student lab platform
+### C. Build student laboratory
 
-- [ ] Inventory candidate RISC-V and machine-inspection tools.
-- [ ] Build/prototype the containerized lab capsule.
-- [ ] Verify Windows + WSL2, Linux, macOS, and fallback paths where feasible.
-- [ ] Produce a small smoke test that proves compile/run/disassemble/debug/measure.
-- [ ] Make setup failure visible and diagnosable before Week 5.
+- [ ] Reproducible container/runtime.
+- [ ] compiler/binutils/debugger/RISC-V path.
+- [ ] `archprobe` or equivalent structured machine snapshot.
+- [ ] common experiment runner/data format.
+- [ ] Python/matplotlib plot helpers.
+- [ ] LaTeX/PDF dossier build.
+- [ ] memory sensory experiment capability.
+- [ ] multicore/communication-latency experiment capability.
+- [ ] Windows/WSL2/Linux/macOS/fallback validation as feasible.
+- [ ] health/smoke test.
 
-### D. Author Weeks 1–4
+### D. Author Weeks 1-4
 
-- [ ] Source Week 1 from shared universal kickoff materials.
-- [ ] Author provider-neutral AI Lab Training.
-- [ ] Author Containers & Repeatability as a learning experience.
-- [ ] Author Linux CLI around evidence-gathering tasks.
+- [ ] shared Week 1;
+- [ ] AI Lab;
+- [ ] repeatability lab;
+- [ ] Linux observation lab;
+- [ ] keep Architecture content out of Week 1.
 
-### E. Author Weeks 5–14
+### E. Author Weeks 5-14
 
 For each week:
 
-- [ ] central question;
-- [ ] learning objectives;
-- [ ] course-created framing sufficient without a textbook;
-- [ ] open/reference readings;
-- [ ] runnable/buildable inspect activity;
-- [ ] evidence artifact;
-- [ ] accessibility/fallback path;
+- [ ] AI Fluency integration;
+- [ ] lecture digest;
+- [ ] deck;
+- [ ] recording plan;
+- [ ] Professional Minds integration;
+- [ ] open/reference map;
+- [ ] runnable sensory/inspect/build/measure lab;
+- [ ] data/plot scaffold where useful;
+- [ ] Machine Dossier handoff;
+- [ ] Explain/Defend receipt;
+- [ ] Stack Showcase plan;
 - [ ] rubric/check criteria;
+- [ ] fallback/accessibility;
 - [ ] execution validation.
 
-### F. Build Week 16 capstone + Week 17 reflection
+### F. Build Week 16 + Week 17
 
-- [ ] Define the Farkle/ML workload.
-- [ ] Guarantee CPU-only completion.
-- [ ] Make GPU comparison optional.
-- [ ] Make premium AI/CLI use optional.
-- [ ] Require reproducibility through the Week 3 lab capsule.
-- [ ] Require multi-layer architecture reasoning.
-- [ ] Build Week 17 demonstration/reflection.
+- [ ] reuse shared Farkle + ML assets;
+- [ ] CPU-only humane Week 16;
+- [ ] Architecture echo only, no Checkpoint 4;
+- [ ] Week 17 evidence-backed reflection using frozen dossier;
+- [ ] no new technical theory after Week 14.
 
-### G. Build assessment/grading contract
+### G. Operationalize grading
 
-- [ ] Decide weekly evidence/lab grading shape.
-- [ ] Decide capstone weight/role.
-- [ ] Decide Week 17 assessment form.
-- [ ] Decide due/late policy.
-- [ ] Confirm free-tool students can attain the same grading ceiling.
+- [x] weights/categories/checkpoint cadence accepted.
+- [ ] due/late policy.
+- [ ] drop-lowest mechanics.
+- [ ] revision/resubmission mechanics.
+- [ ] Canvas assignment groups/object mapping.
+- [ ] institutional dead-days/calendar check.
 
 ### H. Savnac / deployment
 
-- [ ] Reuse Course Foundry / Imprint.
-- [ ] Compile current Git source into desired course state.
-- [ ] Imprint into existing Architecture Savnac course after identity verification.
-- [ ] Read rendered course back and test professor/student navigation.
-- [ ] Check immediate re-run/idempotence behavior.
-- [ ] Keep production SWOSU Canvas writes out of scope until explicitly authorized.
+- [ ] reuse Course Foundry / Imprint;
+- [ ] compile current Git source;
+- [ ] imprint only source-ready objects;
+- [ ] read back professor/student navigation;
+- [ ] verify grading groups when implemented;
+- [ ] verify idempotence;
+- [ ] production Canvas remains out of scope until explicitly authorized.
 
 ## Foreman queue
 
-Project-local work orders live under `sidecar/prompts/` and return reports under `sidecar/reports/`.
+1. **Prompt 001 - Reconcile/validate current chassis**
+2. **Prompt 002 - Build open-source Architecture canon**
+3. **Prompt 003 - Build reproducible Architecture laboratory**
+4. **Prompt 004 - Author Weeks 5-14 technical core**
+5. **Prompt 005 - Build shared Farkle + ML Week 16 experience**
+6. **Prompt 006 - Imprint/read back in Savnac**
 
-Recommended sequence:
-
-1. **Prompt 001 — Source chassis reconciliation**
-2. **Prompt 002 — Build open-source Architecture canon**
-3. **Prompt 003 — Build reproducible lab platform**
-4. **Prompt 004 — Author Weeks 5–14 Architecture core**
-5. **Prompt 005 — Build Farkle/ML capstone**
-6. **Prompt 006 — Imprint/read back in Savnac**
-
-Prompts 002 and 003 can proceed in parallel after the chassis is understood. Prompt 004 should consume their accepted outputs.
+Prompts 002 and 003 can proceed in parallel after Prompt 001 confirms the chassis. Prompt 004 consumes both.
 
 ## Deployment gates
 
-### Gate 0 — Truth
+### Gate 0 - Truth
 
-- official course facts accurate;
-- pinned week structure represented in Git;
-- zero-cost required-materials policy represented explicitly;
-- unresolved policy recorded rather than guessed.
+One current story in Git; no stale Week 16 capstone or paid-resource doctrine.
 
-### Gate 1 — Open content sufficiency
+### Gate 1 - Open content sufficiency
 
-Every required week has a credible no-paywall learning path. Missing content is explicitly queued for course authoring.
+Every required week has a credible no-paywall learning path.
 
-### Gate 2 — Lab works
+### Gate 2 - Lab works
 
-A clean supported machine can execute the lab smoke test without secrets, paid CLI tooling, or specialized student hardware.
+Fresh supported machine can inspect, measure, emit data, plot, and build a minimal dossier PDF.
 
-### Gate 3 — Weeks are real
+### Gate 3 - Weeks are real
 
-A week is green only when framing, open references, activity, evidence instructions, criteria, and validation exist.
+Week is green only when lecture/deck, lab, evidence, references, fallback, and validation exist.
 
-### Gate 4 — Savnac dogfood
+### Gate 4 - Savnac dogfood
 
-- course compiles from Git;
-- Savnac renders it coherently;
-- professor/student path works;
-- no duplicate/stale objects appear on immediate re-run.
+Rendered course matches Git and is navigable without duplicate/stale objects.
 
-### Gate 5 — Production readiness
+### Gate 5 - Production readiness
 
-Only after Jeremy has dogfooded the course in Savnac should the project prepare a bounded production Canvas deployment plan.
-
-## Open questions
-
-The remaining genuine Jeremy question is primarily the assessment/grading contract in `sidecar/questions/003_assessment_and_grading_contract.md`.
-
-Do **not** reopen:
-
-- textbook purchase requirement;
-- zyBooks requirement;
-- paid AI requirement;
-- paid AI CLI requirement;
-- specialized GPU requirement.
-
-Those have been decided: **none are required.**
+Only after Jeremy dogfoods Savnac and grading mechanics are fully operationalized.
 
 ## Planning principle
 
-**Build the laboratory, build the open canon, teach students to see through both, then peel the machine apart one layer at a time.**
-
-By Week 5, students should be able to ask a machine a question and gather evidence. From there the course keeps returning to the same satisfying move: peel back one more layer, measure what is really there, and explain why it was designed that way.
+**Build the scientist. Build the machine. Make the machine argue with the model. Plot the argument. Explain the smoke. Then make the architecture decision.**
