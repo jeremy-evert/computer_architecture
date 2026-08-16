@@ -1,2 +1,5 @@
 # Local Python environments are machine-specific and reproducible from project dependencies.
 .venv/
+
+# Week deck/PDF build products are reproducible from canonical source.
+weeks/**/build/

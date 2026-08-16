@@ -1,0 +1,41 @@
+% COMSC-3013 Computer Architecture shared Beamer preamble.
+% Week decks live one directory below weeks/ and input this file as:
+%   \input{../_shared/beamer-preamble.tex}
+% Keep the course self-contained. Change visual/build conventions here,
+% not by forking one-off week themes.
+
+\usetheme{Boadilla}
+\usecolortheme{seahorse}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{footline}[frame number]
+
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{pgfpages}
+
+\lstset{
+  basicstyle=\ttfamily\small,
+  columns=fullflexible,
+  keepspaces=true,
+  showstringspaces=false,
+  breaklines=true
+}
+
+% Speaker notes remain hidden in the ordinary student build. Build an
+% instructor copy by passing pgfpages option `show`; see weeks/README.md.
+% \setbeameroption{show notes on second screen=right}
+
+\newcommand{\ArchTitleSlide}[4]{%
+  % #1 week label, #2 title, #3 central question, #4 Wednesday prediction
+  \begin{frame}
+    \titlepage
+  \end{frame}
+  \begin{frame}{The machine question}
+    \Large #3
+
+    \vspace{1.2em}
+    \normalsize\textbf{Prediction to carry into Wednesday:} #4
+  \end{frame}
+}
