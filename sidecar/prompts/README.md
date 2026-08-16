@@ -25,7 +25,8 @@ Project-local work orders for getting COMSC-3013 ready for Fall 2026 deployment.
 4. **ACTIVE CAMPAIGN** - `004_author_weeks_05_14_architecture_core.md`
    - parent remains the doctrine/acceptance constitution
    - `004_a` shared workbench is complete
-   - `004_b` Week 5 authoring is the next ready work order
+   - `004_b` Week 5 is complete with named platform/showcase YELLOWs
+   - `004_c` Week 6 + Checkpoint 1 is the next ready work order
 5. **LATER** - `005_build_farkle_ml_architecture_capstone.md`
    - historical filename retained; current mission is the shared Week 16 Farkle + ML experience, **not** an Architecture capstone
 6. **LATER** - `006_imprint_architecture_to_savnac_and_read_back.md`
@@ -37,8 +38,8 @@ The technical authoring campaign is deliberately split so each piece can be disc
 | Prompt | Mission | Dependency posture |
 |---|---|---|
 | `004_a_build_shared_authoring_kit.md` | common week/deck/lab/receipt/dossier/showcase/validation grammar | **COMPLETE** - receipt `../reports/004_a_build_shared_authoring_kit.md` |
-| `004_b_author_week_05_build_the_machine.md` | Week 5: machine/workload/dossier v0 | **READY - NEXT** |
-| `004_c_author_week_06_bits_become_instructions.md` | Week 6 + Checkpoint 1 | after 004_b |
+| `004_b_author_week_05_build_the_machine.md` | Week 5: machine/workload/dossier v0 | **COMPLETE WITH NAMED YELLOWS** - implementation `../../weeks/week-05/`; receipt `../reports/004_b_author_week_05_build_the_machine.md` |
+| `004_c_author_week_06_bits_become_instructions.md` | Week 6 + Checkpoint 1 | **READY - NEXT** |
 | `004_d_author_week_07_crack_open_the_cpu.md` | Week 7 datapath/control | after 004_c |
 | `004_e_author_week_08_make_it_fast_without_breaking_it.md` | Week 8 performance/dependency | after 004_d |
 | `004_f_author_week_09_follow_the_program_down.md` | Week 9 integration + Checkpoint 2 | after 004_b-e |
