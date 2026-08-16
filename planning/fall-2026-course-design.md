@@ -10,13 +10,28 @@ The course treats a computer as a connected stack rather than a museum of isolat
 
 The official Fall 2026 section is online/asynchronous. Jeremy's Monday / Wednesday / Friday 2:00 PM cadence is an instructor planning and content-release rhythm, not an official meeting requirement.
 
+## Required-materials promise
+
+**Students do not need to buy a textbook, zyBook, paid AI subscription, or premium AI command-line tool to complete this course successfully.**
+
+The required course path should be complete using:
+
+- open and freely accessible readings/references;
+- course-created explanations, examples, labs, and scaffolding;
+- open-source or freely available compilers, debuggers, simulators/emulators, container/runtime tools, and system-inspection utilities;
+- a no-cost or otherwise course-accessible AI path for activities where AI use is expected.
+
+Commercial books and zyBooks remain valuable instructor references and optional student resources. Premium AI services such as paid ChatGPT/Claude plans, Codex, Claude Code, or other command-line agents may be demonstrated and supported as optional accelerators. They are **not required materials**, and required work must never depend on a student buying them.
+
+This course should make the $80 textbook decision easy: **the class itself is the textbook.**
+
 ## Design goals
 
 By the end of the course, a successful student should be able to:
 
 1. **Explain the abstraction stack** from a high-level program through machine instructions and the processor/memory system that executes them.
 2. **Represent and reason about data quantitatively**, including binary/hex, signed integers, floating point, performance measurements, and basic logic/arithmetic structures.
-3. **Read and trace a modern ISA**, with RISC-V as the planning-leading teaching ISA unless the final zyBooks adoption decision selects another supported path.
+3. **Read and trace a modern ISA**, with RISC-V as the planning-leading teaching ISA.
 4. **Trace an instruction through a processor**, explaining datapath, control, pipelining, hazards, and basic performance consequences.
 5. **Explain the memory hierarchy**, caches, virtual memory, protection, and the hardware mechanisms that support operating-system abstractions.
 6. **Reason about parallel hardware**, including multicore/coherence/synchronization and why vector/GPU/accelerator architectures fit some workloads better than others.
@@ -29,10 +44,8 @@ By the end of the course, a successful student should be able to:
 
 ### Part I — Become capable of investigating a machine (Weeks 1–4)
 
-The first month is deliberately not a miniature architecture textbook sprint.
-
 - **Week 1 — Success Foundations:** survive the semester, thrive in the degree, enjoy the career. Universal human orientation; no architecture technical gate.
-- **Week 2 — AI Lab Training:** learn the investigation/verification workflow used throughout the semester. AI can propose; evidence decides.
+- **Week 2 — AI Lab Training:** learn the investigation/verification workflow used throughout the semester. AI can propose; evidence decides. Students may use an AI provider/interface available to them; premium CLI agents are optional enrichment only.
 - **Week 3 — Containers & Repeatability:** establish a reproducible lab capsule/environment before later experiments depend on it.
 - **Week 4 — Linux Command Line:** learn to ask the operating system and toolchain what the machine actually is and what it is doing.
 
@@ -72,7 +85,7 @@ After the universal Week 1, the asynchronous course can use a stable M/W/F plann
 
 - one central machine question;
 - concise instructor framing;
-- selected reference/reading menu;
+- selected open/reference reading menu;
 - prediction or hypothesis before the student sees the answer.
 
 ### Wednesday — Inspect / Build / Measure
@@ -102,7 +115,7 @@ Beginning in Week 2, students should repeatedly record:
 6. conclusion;
 7. revision after verification.
 
-This gives the course a durable anti-hand-waving habit: explanations become stronger when students can point to what they actually observed.
+No specific commercial AI provider is required. If a premium CLI agent is used, it is simply another tool in the notebook, not a privileged course path.
 
 ### Reproducible lab capsule
 
@@ -112,7 +125,7 @@ Week 3 establishes the environment later labs reuse. The final implementation sh
 - debugger;
 - binary inspection/disassembly;
 - timing/profiling;
-- RISC-V compiler/assembler and simulator/emulator if the RISC-V plan is finalized;
+- RISC-V compiler/assembler and simulator/emulator;
 - small course-owned scripts/data/examples.
 
 The online course must provide a **CPU-only completion path**. GPUs and specialized hardware can be meaningful extensions, especially in Weeks 13 and 16, but successful course completion cannot depend on owning them.
@@ -123,28 +136,32 @@ The command line recurs because it exposes evidence about files, binaries, proce
 
 ## Content-source doctrine
 
-### Curriculum first; zyBooks supports it
+### The course stands on its own
 
-The operational Fall 2026 MIPS 6e zyBook remains truthfully recorded in `course_metadata.yaml` until a different product is actually adopted.
+No required textbook or commercial content platform owns this curriculum.
 
-Jeremy's later planning direction is to **stay with zyBooks but not preserve MIPS merely for historical continuity**. RISC-V is currently the strongest pedagogical candidate because it has a modern open ISA specification and aligns with several current architecture courses.
+Course authors should build the required content from a deliberately curated combination of:
 
-The final zyBook product/edition and whether zyBooks activities are required/graded remain explicit questions. Once resolved, map the chosen sections onto the accepted week spine rather than rebuilding the spine around chapter order.
+- primary specifications and official documentation;
+- openly published university course materials where licensing permits use/linking/adaptation;
+- open textbooks and openly licensed educational resources;
+- open-source tools and their documentation;
+- course-created explanations, diagrams, examples, labs, datasets, traces, and assessments.
+
+Patterson/Hennessy and other commercial books may guide instructor thinking and serve as optional references. Historical zyBooks content may help identify topics or common misconceptions. **Neither may become a hidden dependency.** If a student cannot access a commercial source, they must still have everything needed for the required learning experience.
 
 ### Open-course benchmark set
 
-Course authoring should actively mine strong sources for explanations, exercises, labs, diagrams and sequencing ideas, then rewrite/adapt legally and pedagogically for this course rather than copying blindly.
+Primary benchmark set for course construction:
 
-Primary benchmark set:
-
-- UC Berkeley CS61C, 2026 — representation, RISC-V, translation, digital systems, CPU, pipelines, caches, performance, parallelism, virtual memory.
-- Cornell CS3410, 2026 — C/RISC-V, CPU simulation, caches/processes/system calls, parallelism, Docker infrastructure.
+- UC Berkeley CS61C — representation, RISC-V, translation, digital systems, CPU, pipelines, caches, performance, parallelism, virtual memory.
+- Cornell CS3410 — C/RISC-V, CPU simulation, caches/processes/system calls, parallelism, reproducible Docker infrastructure.
 - MIT 6.004 Computation Structures — logic/state through CPU, caches, VM/OS mechanisms, interrupts, pipelines and parallel systems.
 - Nand2Tetris — modular build-the-machine experiences from logic/ALU through CPU/computer and software hierarchy.
 - Cambridge Introduction to Computer Architecture — RISC-V, processor design, pipelines, caches, OS support, SoCs/DRAM, multicore/coherence, GPUs.
-- RISC-V International specifications — primary reference for the ISA if adopted.
+- RISC-V International specifications — primary ISA reference.
 
-The benchmark is deliberately broader than Patterson/Hennessy. The textbook is important; it is not the whole course.
+Foreman should expand this into a week-by-week **open-source Architecture canon**, checking licensing and long-term accessibility rather than merely collecting links.
 
 ## Week 5–14 architecture map
 
@@ -175,23 +192,21 @@ A strong version lets students:
 - make one architecture/performance claim;
 - defend that claim with evidence rather than merely narrating output.
 
-The capstone should be bounded enough to finish in Week 16 and flexible enough to succeed without specialized local hardware.
+The capstone should be bounded enough to finish in Week 16 and flexible enough to succeed without specialized local hardware, a commercial textbook, or a paid AI account.
 
 ## Assessment philosophy pending a grading decision
 
-The course should prefer **evidence of understanding** over invisible completion. That can be implemented through weekly evidence labs, explanations, zyBooks practice, a capstone and the Week 17 demonstration, but weights/points/due-date mechanics are not invented here.
+The course should prefer **evidence of understanding** over invisible completion. That can be implemented through weekly evidence labs, explanations, open practice, a capstone and the Week 17 demonstration, but weights/points/due-date mechanics are not invented here.
 
-The grading contract must be settled in `sidecar/questions/` and then promoted into durable course documentation before production deployment.
+Paid-resource ownership must never be an assessment proxy. A student using free tools should be able to earn the same grade as a student using premium AI/CLI tooling.
 
 ## Deployment readiness rule
-
-A week is not ready because its title exists in a map.
 
 A technical week is ready when it has:
 
 - a clear central question and objectives;
-- student-facing framing;
-- selected references/readings;
+- student-facing framing sufficient to learn without a commercial textbook;
+- selected open/freely accessible references;
 - a tested activity in the supported environment;
 - an explicit evidence artifact/submission;
 - fallback/accessibility instructions;
@@ -205,8 +220,13 @@ Git remains the authoritative course source. Savnac is the dogfood and inspectio
 
 Do not let these block unrelated authoring, but do not guess them:
 
-- exact zyBooks ISA/product/edition;
-- zyBooks required/graded role;
 - grading weights and due/late mechanics;
 - final supported simulator/emulator/toolchain after prototype testing;
 - exact Week 17 assessment format.
+
+The following are **not open**:
+
+- no required textbook/zyBooks purchase;
+- no required paid AI subscription;
+- no required paid AI command-line agent;
+- CPU-only required completion path.
