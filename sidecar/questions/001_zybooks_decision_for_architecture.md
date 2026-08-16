@@ -1,44 +1,43 @@
-# Question 001 — Does Computer Architecture keep zyBooks?
+# Question 001 — Does Computer Architecture require zyBooks?
 
 **Status:** RESOLVED  
-**Resolved answer:** **Yes — Computer Architecture stays with zyBooks.**  
-**Resolved from:** Jeremy's prior Computer Architecture course-development conversation (2026-08-10): "MIPS is not important; 7e might be," followed by an explicit preference to **stay with zyBooks** while looking beyond the old MIPS product.
+**Resolved answer:** **No. Computer Architecture will be complete without zyBooks or any required commercial textbook.**  
+**Resolved from:** Jeremy, directly, 2026-08-16.
 
-## What this resolves
+## Decision
 
-Computer Architecture is intentionally different from CS1, CS2, and DSCT on this point. Those courses later moved away from required zyBooks use, but Architecture retains zyBooks as part of its course-resource strategy.
+The Fall 2026 course should be authored so every required topic, lab, explanation, practice path, and assessment can be completed without purchasing zyBooks or another commercial textbook.
 
-The old question should therefore no longer block course design on a binary "keep or drop zyBooks" decision.
+Jeremy's current preference is to build the strongest course possible from:
 
-## What this does **not** resolve
+- open and freely accessible educational resources;
+- primary specifications and official documentation;
+- openly published university course materials where usable;
+- open-source tools;
+- course-created explanations, examples, labs, traces, diagrams, and assessments.
 
-Keeping zyBooks does not mean the currently recorded MIPS 6e product is automatically the final pedagogical choice.
+Commercial resources may still help guide the instructors/course authors. Patterson/Hennessy, historical zyBooks content, and other strong textbooks remain valuable references. They are not student dependencies.
 
-Jeremy's subsequent Architecture planning established two important constraints:
+## Related affordability decision
 
-- **MIPS itself is not important.** Do not preserve it merely because the existing operational Fall 2026 course points to a MIPS 6e zyBook.
-- Jeremy wants to **stay with zyBooks** and explored newer ARM and RISC-V options, with a RISC-V-oriented Patterson/Hennessy path emerging as the leading direction.
+Jeremy also explicitly does **not** want to require students to purchase premium AI or command-line agent access at this time.
 
-Two narrower decisions remain and are tracked separately:
+Therefore:
 
-1. **Which zyBooks ISA/product/edition should Fall 2026 use?** See `002_zybooks_isa_product_and_course_role.md`.
-2. **How should zyBooks count in the grading contract?** Required reading/practice, graded participation, bonus/support layer, etc. This belongs with the broader assessment decision rather than reopening the keep/drop question.
+- no paid AI subscription is required;
+- no Codex/Claude Code/premium CLI subscription is required;
+- students may use a provider/interface of choice where AI is permitted;
+- required AI-supported activities must have a no-cost or otherwise course-accessible path;
+- premium AI/CLI tooling may be optional enrichment and may be demonstrated without affecting the required path or grading ceiling.
 
-## Repository rule until the product changes
+## Repository consequence
 
-`course_metadata.yaml` currently records the operational Fall 2026 MIPS 6e zyBook and URL. That remains factual metadata until an actual replacement course is adopted/configured.
+`course_metadata.yaml` now records the historical Fall 2026 zyBooks adoption as **reference/provenance**, not required course material.
 
-Planning documents may correctly state that the curriculum is moving toward a modern ISA/RISC-V direction, but no agent should silently rewrite the operational zyBook identifier or vendor configuration without evidence that the replacement exists and has been adopted.
+Course authors must not introduce a commercial-paywall dependency indirectly by writing student instructions such as "read section X in zyBooks" without an equivalent complete open/course-created path.
 
 ## Consequence for Foreman
 
-Work may proceed on:
+Foreman should spend research effort assembling and validating the **open-source Computer Architecture canon**, not shopping for a new zyBooks edition.
 
-- the 17-week curriculum spine;
-- Weeks 1–4;
-- the reproducible lab platform;
-- architecture labs and activities that are not tightly coupled to a specific zyBook deep link;
-- RISC-V toolchain/simulator prototyping;
-- grading-model options that leave the exact zyBooks weighting parameterized.
-
-Do not let this old binary question stall curriculum construction again.
+The old vendor-product-selection question is superseded. See Question 002 and Sidecar Prompt 002 for the replacement open-source curriculum work.
