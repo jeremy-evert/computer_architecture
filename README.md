@@ -79,6 +79,19 @@ The recurring experimental move is:
 
 Python/matplotlib is the standard visualization instrument. LaTeX is the report/publishing instrument. Linux, compilers, debuggers, disassemblers, profilers, simulators/emulators, and course scripts are observation instruments.
 
+### Common laboratory substrate
+
+The accepted substrate now lives in [`lab/`](lab/README.md).
+
+It deliberately separates:
+
+- **The Observatory:** inspect the machine/environment actually visible and label evidence scope honestly.
+- **The Experimental Chamber:** use one reproducible command/receipt/plot/report contract for controlled experiments.
+
+Stable interfaces are recorded in [`lab/CONTRACT.md`](lab/CONTRACT.md). The substrate currently includes bounded RISC-V execution, dependency/performance, memory, OpenMP scaling, controlled communication-delay, CPU vectorization/specialization specimens, matplotlib plotting, a LaTeX/PDF dossier scaffold, fallback evidence datasets, and an end-to-end health/smoke path.
+
+The executed Linux substrate passed end to end. WSL2, container-image, and optional macOS support remain explicit YELLOWs until they are actually run. See [`sidecar/reports/003_build_reproducible_architecture_lab.md`](sidecar/reports/003_build_reproducible_architecture_lab.md).
+
 ## Planning grammar shared with CS1/CS2/DSCT
 
 Computer Architecture intentionally preserves the recognizable family pattern without pretending an asynchronous course has live pair programming or show-and-tell:
@@ -87,6 +100,7 @@ Computer Architecture intentionally preserves the recognizable family pattern wi
 - [`planning/architecture-arc-map.md`](planning/architecture-arc-map.md) - why neighboring weeks belong together and where checkpoints close.
 - [`planning/block-map.md`](planning/block-map.md) - full 17-week M/W/F production target map, including AI Fluency and Professional Minds.
 - [`planning/machine-dossier.md`](planning/machine-dossier.md) - persistent artifact, sensory-lab, plotting, and reporting contract.
+- [`planning/open-source-resource-canon.md`](planning/open-source-resource-canon.md) - accepted truth/teaching/reference source strategy.
 - `planning/week-01.md` through `planning/week-17-finals.md` - thin per-week planning shells that future passes can deepen honestly.
 - [`docs/grading-model.md`](docs/grading-model.md) - Architecture adaptation of the CS1 grading family.
 
@@ -112,7 +126,7 @@ No commercial textbook or zyBook is required for Fall 2026. Patterson/Hennessy a
 
 ## Current readiness
 
-The semester structure is now intentionally frozen enough for bounded building:
+The semester structure is now intentionally frozen enough for focused week authoring:
 
 - the M/W/F online recording/delivery model is defined;
 - AI Fluency and Professional Minds are mapped across the semester;
@@ -120,7 +134,11 @@ The semester structure is now intentionally frozen enough for bounded building:
 - Weeks 5-14 are the complete technical Architecture runway;
 - Week 14, not Week 16, is the technical finale;
 - the Architecture grading structure is established, with due/late operational mechanics still to finalize;
+- the open-source/free canon and licensing/source-use doctrine are established;
+- the common Architecture laboratory substrate exists and has passed its executed Linux end-to-end smoke path;
 - week files remain planning shells rather than fake-complete lessons;
-- the open-source canon, reproducible lab platform, lecture packages, validated sensory labs, plotting/report pipeline, and Savnac rendering still need to be built and tested.
+- WSL2/container/macOS deployment validation, full Week 5-14 lecture/deck/lab authoring, grading operations, and Savnac rendering still need to be completed.
+
+**Prompt 004 is now unblocked:** Weeks 5-14 can be authored against a real source canon and a real common laboratory contract instead of imagined infrastructure.
 
 Active work is organized in [`sidecar/PLANNING.md`](sidecar/PLANNING.md) and [`sidecar/prompts/`](sidecar/prompts/).
