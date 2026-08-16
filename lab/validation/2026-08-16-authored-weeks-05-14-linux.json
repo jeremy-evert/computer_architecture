@@ -1,0 +1,62 @@
+{
+  "date": "2026-08-16",
+  "schema": "swosu.archlab.authored-core-linux-validation/v1",
+  "status": "PASS_WITH_PHYSICAL_PLATFORM_YELLOWS",
+  "execution_surface": "Linux-6.18.35-x86_64-with-glibc2.41",
+  "doctor_status": "PASS",
+  "probe_scope": {
+    "notes": ["Running inside a container; CPU/memory/storage visibility may differ from the physical host."],
+    "scope": "container-visible"
+  },
+  "week06_riscv": {"status": "PASS", "a0": 18, "a1": 18},
+  "week08_dependency": [
+    {"mode":"dependent","updates":"12000000","seconds":"0.014199318","ns_per_update":"1.183277","checksum":"1690489101660590849"},
+    {"mode":"independent4","updates":"12000000","seconds":"0.003673080","ns_per_update":"0.306090","checksum":"10596687561418671108"}
+  ],
+  "week10_memory": [
+    {"kind":"pointer_chase","size_bytes":"4096","value":"1.555180","unit":"ns_per_access"},
+    {"kind":"stream_read","size_bytes":"4096","value":"31.011948","unit":"GB_per_s"},
+    {"kind":"pointer_chase","size_bytes":"32768","value":"1.476655","unit":"ns_per_access"},
+    {"kind":"stream_read","size_bytes":"32768","value":"31.371479","unit":"GB_per_s"},
+    {"kind":"pointer_chase","size_bytes":"262144","value":"3.637391","unit":"ns_per_access"},
+    {"kind":"stream_read","size_bytes":"262144","value":"30.976677","unit":"GB_per_s"},
+    {"kind":"pointer_chase","size_bytes":"2097152","value":"14.906891","unit":"ns_per_access"},
+    {"kind":"stream_read","size_bytes":"2097152","value":"30.219472","unit":"GB_per_s"},
+    {"kind":"pointer_chase","size_bytes":"8388608","value":"78.587777","unit":"ns_per_access"},
+    {"kind":"stream_read","size_bytes":"8388608","value":"17.078993","unit":"GB_per_s"},
+    {"kind":"pointer_chase","size_bytes":"33554432","value":"108.246505","unit":"ns_per_access"},
+    {"kind":"stream_read","size_bytes":"33554432","value":"13.042275","unit":"GB_per_s"}
+  ],
+  "week11": {"page_size_bytes":4096,"proc_maps_excerpt_lines":8},
+  "week12_scaling": [
+    {"threads":"1","seconds":"0.009218817","speedup":"1.000000","checksum":"17481999651703460819"},
+    {"threads":"2","seconds":"0.003464420","speedup":"2.660999","checksum":"17481999651703460819"},
+    {"threads":"4","seconds":"0.001676769","speedup":"5.497965","checksum":"17481999651703460819"}
+  ],
+  "week12_communication_20ms": [
+    {"mode":"chatterbox","delay_ms_per_reply":"20.0","messages":"64","total_payload_bytes":"131072","seconds":"1.301967767"},
+    {"mode":"freight_train","delay_ms_per_reply":"20.0","messages":"1","total_payload_bytes":"131072","seconds":"0.020426749"}
+  ],
+  "week13_vector": [
+    {"mode":"scalar_no_vectorize","items":"4000000","seconds":"0.041715271","checksum":"1326.458328"},
+    {"mode":"compiler_native","items":"4000000","seconds":"0.037907043","checksum":"1326.458329"}
+  ],
+  "week13_vectorization_report_first_lines": [
+    "vector.c: optimized: loop vectorized using 32 byte vectors",
+    "vector.c: optimized: loop vectorized using 16 byte vectors"
+  ],
+  "week14_dossier": {
+    "status":"PASS",
+    "engine":"latexmk+pdflatex",
+    "pdf_bytes":268106,
+    "pdf_sha256":"1e8fa0f445ae1e6601171e397a2606bd63111a50072438e73a9851c378413696",
+    "figures":["dependency.png","memory.png","scaling.png","communication.png","vector.png"]
+  },
+  "fallback_plot_validation":["dependency","memory","memory-bandwidth","scaling","communication","vector"],
+  "yellow":[
+    "real Windows/WSL2 execution not performed in this assistant environment",
+    "real macOS execution not performed in this assistant environment",
+    "Containerfile image build unavailable because no Docker/Podman runtime is installed on this execution surface",
+    "final instructor Stack Showcase recordings require physical instructor machines"
+  ]
+}
