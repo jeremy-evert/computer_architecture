@@ -1,294 +1,293 @@
-# Sidecar Prompt 004 — Author Weeks 5–14 of the Computer Architecture core
+# Sidecar Prompt 004 - Author Weeks 5-14 of the Computer Architecture core
 
 **Status:** OPEN  
 **Owner:** Foreman  
-**Mode:** research → dispatch bounded week work → author → execute labs → review → report
+**Mode:** research -> dispatch bounded week work -> author -> execute labs -> review -> report
 
 ## Mission
 
-Build the heart of COMSC-3013: ten coherent, evidence-driven weeks of Computer Architecture informed by excellent open courses, primary references, open-source tools, and the best technical material available, shaped into one SWOSU course rather than a pile of borrowed topics.
+Build the **entire technical Architecture runway: Weeks 5-14**.
 
-**The required student path must be complete without a commercial textbook, zyBooks, a paid AI subscription, a premium AI CLI agent, or specialized GPU hardware.**
+These ten weeks must feel like one planned investigation, not ten textbook chapters.
 
-This prompt owns **Weeks 5–14 only**. Do not hand the entire ten-week task to one worker. Foreman should dispatch bounded work, preferably one week per worker or another comparably small scope, then integrate and independently verify each result.
+Students enter Week 5 already able to use AI skeptically, reproduce an experiment, and interrogate Linux. They then build a Machine Dossier, stress one machine/workload story from multiple angles, and finish Week 14 able to defend a design decision from evidence.
+
+**Week 14 is the technical finale.** Do not launch a hidden Week 16 Architecture capstone.
 
 ## Preconditions
 
-Read before authoring:
+Read:
 
 - `AGENTS.md`
-- `planning/fall-2026-spine.md`
+- `README.md`
 - `planning/fall-2026-course-design.md`
+- `planning/architecture-arc-map.md`
+- `planning/block-map.md`
+- `planning/machine-dossier.md`
+- `planning/fall-2026-spine.md`
+- `planning/week-05.md` through `planning/week-14.md`
+- `docs/grading-model.md`
 - `sidecar/PLANNING.md`
-- `sidecar/questions/*.md`
-- `sidecar/reports/001_reconcile_course_source_chassis.md` when available
-- `sidecar/reports/002_build_open_source_architecture_canon.md` when available
-- `sidecar/reports/003_build_reproducible_architecture_lab.md` when available
-- the current week-file schema established by Prompt 001
+- Prompt 002 canon report when available
+- Prompt 003 laboratory report when available
 
-Prompt 002's canon and Prompt 003's lab platform are shared contracts. If either is not yet complete, research/prose planning may proceed, but do not claim a source path or executable lab is ready until it has actually been checked.
+Prompt 002's canon and Prompt 003's lab are shared contracts. Do not claim sources/labs are ready until they are actually validated.
 
-## Source doctrine
+## Common weekly production contract
 
-Use high-quality **open/freely accessible sources and primary references** as the student-facing research spine.
+Each Week 5-14 should eventually contain:
 
-At minimum consider the relevant portions of:
+### Monday - Think / Frame / Lecture
 
-- UC Berkeley CS61C;
-- Cornell CS3410;
-- MIT 6.004 Computation Structures;
-- Nand2Tetris;
-- University of Cambridge Computer Architecture materials;
-- RISC-V International ratified ISA specifications;
-- official compiler/binutils/GDB documentation;
-- official simulator/emulator documentation;
-- primary OS/kernel/system documentation when pedagogically appropriate.
+- shared AI Fluency lens;
+- central architecture question;
+- concise course-owned digest;
+- LaTeX/Markdown source;
+- Beamer/slide deck;
+- instructor recording plan;
+- prediction/hypothesis.
 
-Prompt 002 should expand this set substantially.
+The recording may visibly use Jeremy's real AI/tool stack. Students are not required to reproduce it.
 
-Commercial books such as Patterson/Hennessy may be consulted by course authors for coverage checks, instructor understanding, or optional reference suggestions. Do **not** copy proprietary prose, exercises, diagrams, answer material, or create a student dependency on them.
+### Wednesday - Investigate / Break / Measure
 
-When open material is too fragmented or dense, author the missing explanation/scaffold in this repository. The course itself should become the coherent learning surface.
+- shared Professional Minds topic;
+- hands-on sensory lab / trace / bounded build;
+- supported environment instructions;
+- machine-readable evidence where possible;
+- standard experiment grammar: predict -> perturb -> run -> measure -> visualize -> explain -> revise.
 
-## Accepted Week 5–14 spine
+### Friday - Explain / Defend / Stack Showcase
 
-### Week 5 — Bits Become Meaning: Representation, Logic, Arithmetic
+- shared Professional Minds topic;
+- bounded individual evidence receipt;
+- figure/table/trace when useful;
+- one authentic professor Stack Showcase plan demonstrating where the idea leads.
 
-**Central question:** How can the same bits become numbers, instructions, and decisions?
+## Accepted Week 5-14 spine
 
-Coverage should include the most useful subset of:
+### Week 5 - Build the Machine
 
-- binary and hexadecimal;
-- unsigned/signed integers and two's complement;
+**Question:** What should I build for this workload, what does each part buy me, and how should I compare choices?
+
+Required DNA:
+
+- PCPartPicker-style compatibility build;
+- workload/fun build;
+- Dollars-Per comparisons;
+- storage/memory hierarchy from cache outward;
+- student-designed machine + observable machine;
+- `archprobe` snapshot when available;
+- Machine Dossier v0.
+
+Do not reduce this to component identification.
+
+### Week 6 - Bits Become Instructions
+
+**Question:** What must software and hardware agree on for a program to run?
+
+Coverage:
+
+- binary/hex;
+- signed/two's-complement;
 - overflow;
-- floating-point representation and approximation;
-- Boolean logic;
-- combinational structures / ALU-level reasoning.
+- floating-point approximation at appropriate depth;
+- bytes/endianness where useful;
+- RISC-V registers/instructions/encodings;
+- source -> assembly -> machine-visible state;
+- ABI/calling convention only to useful depth.
 
-The student should manipulate and observe real representations, not only solve conversion worksheets.
+Use the same small program/values from Week 5 where practical.
 
-### Week 6 — The Hardware/Software Contract: ISA + RISC-V
+**Checkpoint 1:** light evidence chain across several layers.
 
-**Central question:** What must software and hardware agree on for a program to run?
+### Week 7 - Crack Open the CPU
 
-Target concepts:
+**Question:** What has to exist inside the CPU for one instruction to execute correctly?
 
-- registers and memory;
-- instruction formats/encodings;
-- arithmetic/data movement/control flow;
-- procedures and calling convention;
-- source → assembly → machine-code relationship;
-- assembler/linker/loader/compiler boundaries where useful.
+Coverage:
 
-Author against the RISC-V teaching path unless later technical evidence demonstrates a better open path. Vendor-specific textbook mapping is not part of this course contract.
+- stored-program idea;
+- PC/register file/ALU/memory;
+- muxes/control;
+- bounded single-cycle datapath/control;
+- trace/build one instruction.
 
-### Week 7 — Build a CPU: Datapath + Control
+### Week 8 - Make It Fast Without Breaking It
 
-**Central question:** What path does one instruction take through a processor?
+**Question:** Why does overlap improve performance, and why does it create new problems?
 
-Target concepts:
-
-- stored-program model;
-- PC, register file, ALU, memory;
-- muxes/control signals;
-- instruction decode;
-- single-cycle datapath/control;
-- trace or bounded build of a small CPU.
-
-Use the spirit of Nand2Tetris/MIT/Berkeley/Cornell where helpful, but create a scope appropriate for one week.
-
-### Week 8 — Pipelining, Hazards, and Performance
-
-**Central question:** Why is doing several things at once faster and harder?
-
-Target concepts:
+Coverage:
 
 - latency vs throughput;
-- CPI and basic performance equations;
+- CPU-time/CPI basics;
 - pipeline stages;
-- structural/data/control hazards;
-- forwarding, stalls, flushing;
+- data/control/structural hazards;
+- forwarding/stalls/flushes;
 - branch effects;
-- branch prediction/superscalar concepts only when they sharpen rather than crowd the week.
+- sensory performance experiment;
+- first matplotlib sensitivity plot.
 
-Students should trace timing and connect the trace to a performance claim.
+### Week 9 - Follow the Program Down
 
-### Week 9 — Integration Checkpoint: From Source to CPU
+**Question:** Can I follow one small program through the stack without hand-waving?
 
-**Central question:** Can I follow one small program through the stack without hand-waving?
+Short Fall Break integration week.
 
-This is a short Fall Break week. Introduce little or no major new theory.
+Reuse Weeks 5-8 artifacts rather than adding major new theory.
 
-Students should take a bounded course-owned program and connect:
+**Checkpoint 2:** source -> representation -> ISA -> processor/performance evidence.
 
-source → compiler/toolchain artifact → assembly/instruction → machine representation → datapath/pipeline execution.
+### Week 10 - Make the Memory Hierarchy Hurt
 
-The purpose is diagnosis and revision of shaky mental models.
+**Question:** Why do we need layers of memory, and what does crossing a layer feel like?
 
-### Week 10 — Memory Hierarchy + Caches
-
-**Central question:** Why can memory be both huge and fast only by using layers?
-
-Target concepts:
+Coverage/experience:
 
 - temporal/spatial locality;
-- cache blocks/lines;
-- mapping/associativity/replacement at an appropriate level;
-- hits/misses;
-- basic AMAT/performance reasoning;
-- measured locality/cache behavior where practical.
+- cache lines/blocks;
+- mapping/associativity/replacement at useful depth;
+- hits/misses/AMAT;
+- pointer chase vs streaming or equivalent;
+- varying working-set size;
+- latency vs bandwidth;
+- measured cache/locality cliffs;
+- plot(s) added to Sensitivity Profile;
+- revisit Dollars-Per and Time-Per.
 
-### Week 11 — Virtual Memory, Protection, I/O, and OS Support
+### Week 11 - The Useful Lie of Memory
 
-**Central question:** What hardware does an operating system need to create the world a process sees?
+**Question:** What hardware mechanisms create the memory/process world software thinks it sees?
 
-Target concepts:
+Coverage:
 
 - virtual vs physical addresses;
-- page tables/TLB at an introductory level;
+- page tables/TLB;
 - protection/privilege;
+- page faults;
 - traps/exceptions/syscalls;
 - interrupts;
-- basic memory-mapped or device I/O ideas;
-- how these mechanisms support process abstractions.
+- I/O/device path at introductory depth;
+- sequential/random or storage/I/O observation where practical.
 
-Avoid turning the week into a full operating-systems course.
+Do not turn this into a full OS course.
 
-### Week 12 — Multicore, Coherence, Synchronization
+### Week 12 - More Cores, More Problems
 
-**Central question:** What breaks when several cores can touch the same world at once?
+**Question:** When does adding workers help, and when does cooperation cost more than it buys?
 
-Target concepts:
+Coverage/experience:
 
+- Amdahl;
 - thread/data parallelism;
-- speedup and Amdahl's Law;
 - shared memory;
+- synchronization;
 - cache coherence;
 - false sharing;
-- synchronization;
-- introductory memory-order/consistency ideas only as needed to explain observed behavior.
+- communication-to-computation ratio;
+- workload with substantial local work versus deliberately chatty/dependent work;
+- controlled added communication/synchronization delay where possible;
+- scaling plot.
 
-Include a small repeatable parallel experiment if the lab environment supports it.
+MPI may be used when Prompt 003 proves a humane path. MPI itself is not the learning objective.
 
-### Week 13 — Vectors, GPUs, and ML Accelerators
+### Week 13 - Different Machines for Different Work
 
-**Central question:** Why do some workloads want a different kind of machine?
+**Question:** When does the workload justify a different kind of machine?
 
-Target concepts:
+Coverage:
 
-- SIMD/vector processing;
-- throughput vs latency orientation;
-- GPU/SIMT concepts;
-- memory/bandwidth considerations;
-- accelerator specialization;
-- matrix/tensor/ML workload shape;
-- tradeoffs versus general-purpose CPU execution.
+- SIMD/vector;
+- GPU/SIMT;
+- throughput orientation;
+- data movement/bandwidth;
+- accelerators/tensor/ML shapes;
+- setup/transfer cost;
+- CPU-only required comparison path;
+- optional GPU/accelerator path.
 
-**CPU-only completion path is mandatory.** GPU access may produce an extension/comparison, not a gate.
+### Week 14 - Sit in the Architect's Chair
 
-### Week 14 — Architectures in the Wild: Tradeoffs + Capstone Launch
+**Question:** Given a workload and budget, what should I build now, and what evidence changed my mind?
 
-**Central question:** If every design is a compromise, how do I defend one architecture choice with evidence?
+Students return to the Week 5 design and defend changed or retained choices.
 
-Use real contemporary architectures/SoCs/CPUs/GPUs/accelerators as evidence cases.
-
-Students should reason across:
+Use:
 
 - performance;
-- power/energy;
-- cost;
+- latency/throughput;
 - memory/bandwidth;
+- cost;
+- power/energy where responsibly supported;
 - programmability;
 - specialization;
 - security/reliability where appropriate;
 - workload fit.
 
-Launch Week 16's capstone here with a bounded question, hypothesis, and measurement plan.
+**Checkpoint 3:** final Machine Dossier redesign/defense.
 
-## Required week artifact contract
+**Freeze the dossier here. Architecture instruction ends here.**
 
-Each authored technical week must contain enough source for a student-facing course, not merely professor notes.
+## Machine Dossier rule
 
-At minimum produce or update:
+Do not create ten disconnected assignments.
 
-1. **week plan**
-   - dates/status;
-   - central question;
-   - learning objectives;
-   - M/W/F asynchronous rhythm;
-   - dependencies.
-2. **course-owned framing**
-   - concise explanation of why the week matters;
-   - enough mental model/vocabulary that a commercial textbook is not required.
-3. **open/reference map**
-   - sources actually used;
-   - links/citations;
-   - access/license notes where relevant;
-   - clear distinction between student-facing source and instructor-only background reference.
-4. **inspect/build/measure experience**
-   - runnable trace/lab/build/simulator task;
-   - exact supported-environment instructions;
-   - expected evidence artifact;
-   - failure/fallback guidance.
-5. **explanation/defense checkpoint**
-   - bounded student artifact forcing interpretation of evidence rather than pasted output.
-6. **assessment criteria**
-   - unweighted rubric/check criteria tied to objectives;
-   - no invented course points/weights.
-7. **validation evidence**
-   - run executable labs;
-   - record commands/results or receipt;
-   - check links;
-   - review accessibility/fallback path.
+Every week should ask whether the dossier should:
 
-## Authoring principles
+- add evidence;
+- revise a claim;
+- add a plot/trace;
+- correct a naive metric;
+- preserve a design choice with stronger evidence;
+- or simply provide persistent context.
 
-### Teach one connected machine
+Do not force a dossier connection when it would be artificial.
 
-Reuse small programs, traces, diagrams, and the same lab environment so students keep peeling back layers of one machine story.
+## Sensory-lab rule
 
-### Evidence before eloquence
+If students are expected to use an important word such as latency, bandwidth, locality, throughput, scalable, bottlenecked, or communication-heavy, try to attach it to a controlled experience.
 
-Whenever possible, students should point to a trace, binary, timing, simulator state, `/proc` observation, disassembly, or measured workload behavior.
+The student should make a prediction before seeing the result.
 
-### AI is allowed to help, not to self-validate
+## Source doctrine
 
-Carry forward Week 2 doctrine. AI can help generate hypotheses and explanations, but a model's answer is not evidence for itself.
+Required path uses open/freely accessible sources and course-created material.
 
-No particular AI provider is required. No premium subscription or command-line agent is required. A worker authoring a lab must ensure the required path works without paid AI features.
+Use primary/official sources for technical claims where appropriate.
 
-### Bounded builds beat giant projects
+Commercial books may guide instructors but may not become a hidden dependency or copied source.
 
-Use the build-the-machine spirit without compressing an entire hardware-design degree into COMSC-3013. A small ALU/datapath/CPU experience students truly understand is worth more than a half-finished grand machine.
+## Assessment contract
 
-### Keep the online course humane
+Use `docs/grading-model.md`.
 
-- no required commercial content;
-- no required paid AI/CLI;
-- no required specialized hardware;
-- CPU-only route;
-- clear setup checks;
-- alternate observation data/traces when local hardware prevents a measurement;
-- reasonable workload for a 3-credit course.
+Workers may author points/rubric criteria **within the accepted category structure only where the grading source explicitly allows it**, but must not invent due/late/drop mechanics.
+
+Checkpoint cadence is frozen: Weeks 6, 9, 14.
 
 ## Dispatch guidance
 
-Foreman should create bounded worker tickets or branches. Recommended granularity:
+Prefer one worker per week or one tightly coupled sister pair.
 
-- one worker/week for Weeks 5–14, or
-- at most one tightly coupled pair when shared implementation makes that objectively safer.
+Do not let workers invent incompatible:
 
-Do not let ten workers invent ten incompatible lab formats. Prompt 001's week schema, Prompt 002's open canon, and Prompt 003's lab capsule are shared contracts.
+- lab runners;
+- data formats;
+- plotting conventions;
+- dossier locations;
+- lecture/deck formats;
+- evidence receipts.
+
+Prompt 003's lab and the planning contracts are shared infrastructure.
 
 ## Explicit non-goals
 
 - no production Canvas writes;
-- no zyBooks/vendor mutation;
-- no grading weights/point totals/late policy;
-- no requirement that students own GPUs/FPGAs/Raspberry Pis;
-- no requirement that students buy AI/CLI access;
-- no wholesale copying of another university's assignments;
-- no giant custom CPU simulator unless existing open tools demonstrably cannot meet the course need.
+- no commercial vendor dependency;
+- no required paid AI/CLI;
+- no required GPU/FPGA/Raspberry Pi;
+- no Week 16 Architecture capstone;
+- no giant custom CPU simulator without a demonstrated need.
 
 ## Required report
 
@@ -296,34 +295,36 @@ Write:
 
 `sidecar/reports/004_author_weeks_05_14_architecture_core.md`
 
-Include a readiness matrix for Weeks 5–14 showing:
+Include a readiness matrix for Weeks 5-14:
 
-- worker/commit;
-- open/student-facing references used;
-- course-created content added;
-- lab/activity created;
+- lecture digest/deck/recording plan;
+- AI Fluency integration;
+- Professional Minds integration;
+- student-facing open references;
+- sensory lab/activity;
 - actual execution validation;
-- evidence/checkpoint present;
-- accessibility/fallback state;
-- remaining YELLOWs/REDs from the open canon;
-- confirmation no paid-resource dependency was introduced.
-
-Also list reusable material that should be promoted to `swosu_cs_curriculum` or another shared repository.
+- plot/visualization where relevant;
+- Machine Dossier handoff;
+- Friday Stack Showcase plan;
+- evidence/rubric;
+- fallback/accessibility;
+- worker/commit;
+- remaining YELLOWs.
 
 ## Foreman acceptance
 
-Foreman independently samples and executes the work. A week is accepted only if:
+A week is accepted only if:
 
-1. the technical explanation is accurate;
-2. a student can learn the required content without a commercial textbook;
-3. the activity materially demonstrates the week's architecture idea;
-4. instructions work in the supported lab environment;
-5. the student interprets evidence rather than merely submitting output;
-6. the week fits the course arc;
-7. sources are attributable and legally used;
-8. no paid AI/CLI or specialized hardware dependency exists;
-9. unresolved grading decisions were not fabricated.
+1. technical explanation is accurate;
+2. required learning path has no paywall;
+3. the experiment materially exposes the week's architecture idea;
+4. instructions run in the supported lab;
+5. evidence requires interpretation;
+6. the week connects to the persistent machine story;
+7. lecture/lab/showcase roles are obvious;
+8. premium tooling is optional;
+9. Week 14 ends the technical arc.
 
 ## Done when
 
-Weeks 5–14 are coherent, research-backed, runnable, evidence-driven learning experiences that stand on an open/zero-cost required path and pass Foreman review.
+Weeks 5-14 form one coherent, runnable, evidence-driven Architecture investigation culminating in the frozen Week 14 Machine Dossier.

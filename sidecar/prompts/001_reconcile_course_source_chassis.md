@@ -1,140 +1,124 @@
-# Sidecar Prompt 001 — Reconcile and validate the Computer Architecture course source chassis
+# Sidecar Prompt 001 - Reconcile and validate the Computer Architecture course source chassis
 
-**Status:** OPEN — review/validation pass  
+**Status:** OPEN - review/validation pass  
 **Owner:** Foreman  
-**Mode:** inspect → compare → reconcile only where needed → validate → report
+**Mode:** inspect -> compare -> reconcile only where needed -> validate -> report
 
 ## Mission
 
-Review the course-source chassis that now exists and make sure it is coherent, internally consistent, and recognizably aligned with the planning grammar used in CS1.
+Review the course-source chassis that now exists and make sure it is coherent, internally consistent, and recognizably aligned with the planning grammar used across CS1/CS2/DSCT.
 
-**Do not recreate the chassis.** ChatGPT and Jeremy have already established the current Architecture structure:
+**Do not recreate the chassis.** Jeremy and ChatGPT have already established:
 
 - `planning/fall-2026-course-design.md`
 - `planning/fall-2026-spine.md`
 - `planning/architecture-arc-map.md`
 - `planning/block-map.md`
+- `planning/machine-dossier.md`
 - `planning/week-01.md` through `planning/week-16.md`
 - `planning/week-17-finals.md`
+- `docs/grading-model.md`
 
-The job now is to catch drift, broken links, duplicated truth, stale doctrine, or structural inconsistencies before the open-canon/lab/week-authoring work deepens the tree.
+The job now is to catch drift, broken links, duplicated truth, stale doctrine, or structural inconsistencies before the canon/lab/week-authoring work deepens the tree.
 
 ## Read first
-
-### This repository
 
 - `AGENTS.md`
 - `README.md`
 - `course_metadata.yaml`
 - all files under `planning/`
+- `docs/grading-model.md`
 - `sidecar/PLANNING.md`
 - all `sidecar/questions/*.md`
 - `sidecar/README.md`
 
-### CS1 family pattern
-
-Inspect current `jeremy-evert/computer_science_1`, especially:
-
-- `planning/fall-2026-course-design.md`
-- `planning/coding-odyssey-arc-map.md`
-- `planning/block-map.md`
-- representative `planning/week-NN.md` files
-
-The goal is **family resemblance, not cloning**.
-
-Architecture should preserve the same useful zoom levels:
-
-1. compact course design;
-2. arc/relationship map;
-3. production/block map;
-4. predictable per-week files.
-
-Architecture's asynchronous weekly grammar is intentionally:
-
-**Status → Weekly Focus → Monday Frame → Wednesday Inspect / Build / Measure → Friday Explain / Defend → Evidence this week → Open authoring notes.**
-
-Do not replace that with CS1's classroom-specific Monday Moments / Wacky Wednesday / Fun Friday strands.
+Inspect current CS1/CS2/DSCT planning where useful. The goal is **family resemblance, not cloning**.
 
 ## Pinned truths to preserve
 
 - official section = online/asynchronous;
-- M/W/F 2 PM = Jeremy's planning rhythm only;
-- Week 1 = survive semester / thrive degree / enjoy career, no Architecture technical gate;
+- M/W/F 2 PM = Jeremy's production/release rhythm only;
+- Monday = AI Fluency + lecture/deck/recording;
+- Wednesday = Professional Minds + hands-on investigation/lab;
+- Friday = Professional Minds + Explain/Defend + optional instructor Stack Showcase;
+- instructor stack visibility is pedagogy, not a student requirement;
+- Week 1 = universal survive/thrive/enjoy opening; no Architecture gate;
 - Week 2 = provider-neutral AI Lab Training;
 - Week 3 = Containers & Repeatability;
-- Week 4 = Linux Command Line as Machine Telescope;
-- Weeks 5+6 = sister pair: representation/meaning ↔ ISA/hardware-software contract;
-- Weeks 7+8 = sister pair: single-instruction datapath/control ↔ pipeline/performance;
-- Week 9 = source-to-CPU integration checkpoint, not filler;
-- Weeks 10+11 = sister pair: memory hierarchy reality ↔ VM/OS-facing abstraction;
-- Weeks 12+13 = sister pair: general multicore parallelism ↔ specialized vector/GPU/accelerator parallelism;
-- Week 14 = architecture tradeoff synthesis + capstone launch;
-- Week 15 = Thanksgiving/travel asynchronous lightweight preflight;
-- Week 16 = Farkle + ML Architecture capstone;
-- Week 17 = reflection + evidence-backed demonstration of understanding;
-- no required commercial textbook or zyBooks purchase;
-- no required paid AI subscription;
-- no required paid AI CLI tool such as Codex or Claude Code;
-- premium AI/CLI tools may be optional enrichment only;
-- no specialized GPU hardware requirement;
-- CPU-only required completion path;
-- RISC-V is the planning-leading ISA independent of commercial-resource availability.
+- Week 4 = Linux as a Machine Telescope;
+- **Weeks 5-14 are the entire Architecture technical runway**;
+- Machine Dossier begins Week 5 and freezes Week 14;
+- sensory-lab doctrine = predict -> perturb -> run -> measure -> visualize -> explain -> revise;
+- Python/matplotlib is the planned visualization instrument;
+- LaTeX is the planned dossier publishing instrument, both scaffolded;
+- Week 6 = Checkpoint 1;
+- Week 9 = Checkpoint 2;
+- Week 14 = Checkpoint 3 and technical finale;
+- Week 15 = Thanksgiving asynchronous wind-down, no new Architecture layer;
+- Week 16 = shared Farkle + ML application/fun, **not** an Architecture capstone or Checkpoint 4;
+- Week 17 = reflection, no new technical content;
+- grading structure is now recorded in `docs/grading-model.md`;
+- due/late/drop operational mechanics remain open;
+- no required commercial textbook/zyBooks;
+- no required paid AI;
+- no required premium CLI agent;
+- no specialized GPU requirement;
+- CPU-only completion path;
+- RISC-V is planning-leading independent of commercial resources.
 
 ## Required work
 
-### 1. Compare the four planning zoom levels
+### 1. Compare durable planning zoom levels
 
-Verify that course design, arc map, block map, spine, and week files tell the same story without unnecessary duplication or contradiction.
+Verify README, course design, arc map, block map, Machine Dossier contract, spine, week files, grading model, sidecar planning, and prompts tell the same story.
 
-In particular check:
+Pay special attention to stale phrases such as:
 
-- dates and holiday adjustments;
-- week titles and central ideas;
-- sister-week relationships;
-- Week 9 integration role;
-- Week 14→15→16 capstone progression;
-- Week 17 no-new-technical-material ending.
+- "Week 14 capstone launch";
+- "Week 15 capstone preflight";
+- "Week 16 Architecture capstone";
+- "Checkpoint 4";
+- "grading still fully open."
 
-### 2. Check CS1 family resemblance
+Those are superseded.
 
-Confirm that a contributor moving between CS1 and Architecture can recognize:
+### 2. Check CS-family resemblance
 
-- the compact semester summary;
-- an arc map explaining relationships/checkpoints;
-- a production target map;
-- predictable week files.
+Confirm a contributor can recognize:
 
-Do not force Architecture to inherit CS1 structures that only exist because CS1 is face-to-face.
+- universal Week 1;
+- shared AI Fluency progression;
+- shared Professional Minds progression;
+- persistent authentic course artifact;
+- checkpoint/synthesis rhythm;
+- deliberate Week 15-17 wind-down.
 
-### 3. Preserve honest readiness states
+Do not force live classroom structures into an asynchronous course.
 
-The Architecture week files are **planning shells**, not finished lessons.
+### 3. Preserve honest readiness
 
-Do not promote placeholders into fake-green student material. Make sure wording does not imply that open references, labs, rubrics, or validation exist when they have not actually landed.
+The week files and master plan are planning source, not proof that decks/labs/plots/scripts have been authored or executed.
 
-### 4. Check shared-source opportunities
+Do not promote placeholders into fake-green content.
 
-Week 1 should reuse/reference the universal shared kickoff source where possible rather than becoming a divergent copy.
+### 4. Validate structure
 
-Inspect whether any genuinely shared AI-lab, reproducibility, Linux, or Farkle assets belong in a shared curriculum repository. Report candidates; do not perform a giant cross-repository refactor in this prompt.
+Run repository-native checks and `git diff --check`.
 
-### 5. Validate structure
+Check internal links/paths/names and stale doctrine.
 
-Run repository-native validation if it exists and `git diff --check`.
-
-Check internal links/paths and naming consistency, including `week-17-finals.md`.
-
-Do not mutate Savnac or production Canvas in this prompt.
+Do not mutate Savnac or production Canvas.
 
 ## Explicit non-goals
 
-- no new grading weights/points/late policy;
-- no commercial textbook/vendor selection;
-- no paid AI/CLI requirement design;
-- no full student-facing Weeks 5–14 authoring;
+- no new curriculum redesign;
+- no changing grading weights without Jeremy;
+- no inventing due/late/drop mechanics;
+- no paid tool requirements;
+- no commercial-textbook requirement;
 - no container implementation;
-- no Savnac/production Canvas writes;
-- no giant sibling-repository refactor.
+- no full Weeks 5-14 authoring;
+- no Savnac/production Canvas writes.
 
 ## Required report
 
@@ -145,28 +129,16 @@ Write:
 Include:
 
 - source commits inspected;
-- CS1 planning structures compared;
-- any files corrected and why;
-- confirmation of the Architecture weekly schema;
-- confirmation that sister-week relationships are consistent across maps;
-- shared-source opportunities identified;
-- stale/duplicate doctrine removed, if any;
+- sibling patterns compared;
+- stale doctrine corrected;
+- confirmation of M/W/F online production grammar;
+- confirmation of Machine Dossier lifecycle;
+- confirmation of Week 14 technical finale and Week 15-17 wind-down;
+- grading-model consistency;
 - remaining YELLOWs;
 - validation results;
 - worker commit SHA(s).
 
-## Foreman acceptance
-
-Foreman independently verifies that:
-
-1. the accepted semester shape is discoverable and internally consistent;
-2. the Architecture planning tree has recognizable CS1-family structure without inappropriate cloning;
-3. all 17 weeks have honest planning shells;
-4. Week 1 contains no Architecture-specific technical gate;
-5. no commercial/premium resource is accidentally required;
-6. unresolved grading mechanics were not invented;
-7. later Prompt 002/003/004 workers can use the chassis without guessing where their work belongs.
-
 ## Done when
 
-The current chassis has been reviewed rather than reinvented, structural drift has been corrected, validation is clean, and Prompt 002/003/004 can build content against one obvious planning pattern.
+The repo tells one obvious, current story and Prompt 002/003/004 workers can build against it without guessing.

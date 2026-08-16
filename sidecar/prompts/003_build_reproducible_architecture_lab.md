@@ -1,130 +1,211 @@
-# Sidecar Prompt 003 — Build the reproducible Computer Architecture lab platform
+# Sidecar Prompt 003 - Build the reproducible Computer Architecture laboratory
 
 **Status:** OPEN  
 **Owner:** Foreman  
-**Mode:** inspect → prototype → smoke-test → document → recommend
+**Mode:** inspect -> prototype -> smoke-test -> document -> recommend
 
 ## Mission
 
-Build and validate the semester's reproducible lab capsule so Computer Architecture labs are runnable rather than aspirational.
+Build and validate the semester's reproducible **Architecture laboratory**, including the smallest coherent tooling needed for:
 
-Week 3 teaches Containers & Repeatability. This prompt must give that week a real environment and give Weeks 4–16 a stable technical foundation.
+- Weeks 3-4 investigation/repeatability/observation;
+- Weeks 5-14 sensory labs;
+- the Machine Dossier;
+- Python/matplotlib visualization;
+- a scaffolded LaTeX/PDF publishing path;
+- machine snapshots and repeatable measurement receipts.
 
-The environment should make a clean machine capable of compiling, running, inspecting, debugging, disassembling, timing, and eventually executing the chosen ISA experiments with minimal setup drift.
+This prompt turns the accepted laboratory doctrine into runnable infrastructure.
 
 ## Read first
 
 - `AGENTS.md`
-- `sidecar/PLANNING.md`
+- `README.md`
 - `planning/fall-2026-course-design.md`
-- `planning/fall-2026-spine.md`
-- current Week 2–4 planning after Prompt 001 lands
-- `sidecar/questions/002_zybooks_isa_product_and_course_role.md`
+- `planning/block-map.md`
+- `planning/machine-dossier.md`
+- `sidecar/PLANNING.md`
+- `docs/grading-model.md`
+- current Week 2-14 planning
+- `sidecar/reports/002_build_open_source_architecture_canon.md` when available
 
-Inspect sibling/shared infrastructure before inventing a new pattern. Jeremy has previously discussed WSL2, remote Podman + SSH/VPN, Raspberry Pis, older desktops/laptops, and containerized course tooling. Reuse any proven shared container/runtime conventions where they fit.
+Inspect sibling/shared infrastructure before inventing a new pattern.
 
-Also use current external evidence where useful: Cornell CS3410 Spring 2026 runs its coursework through a Docker container, demonstrating that a containerized architecture lab can be a first-class course infrastructure rather than an incidental setup trick.
-
-## Design constraints
+## Core constraints
 
 1. **CPU-only completion path is mandatory.**
-2. GPU support is an optional extension, not a prerequisite.
-3. The canonical environment should be describable with a portable `Containerfile`/Dockerfile-compatible build where feasible and should be tested with the runtime(s) Jeremy actually supports.
-4. Prefer open-source tools students can legally install/use.
-5. Do not require students to understand the full Linux CLI before Week 4. Week 3 can use guided commands while teaching the repeatability concept.
-6. Do not bake credentials, private network assumptions, or professor-only secrets into the image.
-7. A remote fallback may be recommended, but it must not silently become a single point of failure for the course.
+2. GPU support is optional enrichment.
+3. No paid AI/CLI requirement.
+4. No student dependency on Jeremy's private network or machines.
+5. Required experiments should not require administrator/root privileges.
+6. Prefer open-source/free tools.
+7. Containerized/reproducible path should be portable enough for WSL2/Linux and as feasible macOS/Docker/Podman.
+8. Tools exist to expose Architecture, not to create a giant DevOps course.
 
-## Tool capability targets
+## Capability targets
 
-Research and choose the smallest coherent set that supports the accepted spine. Candidate capabilities:
+### Baseline systems/toolchain
 
-### Baseline systems tools
+Select the smallest coherent set supporting:
 
-- GCC/Clang or another suitable C compiler;
-- `make` or similarly simple build tooling;
-- GNU/binutils or equivalent (`objdump`, `readelf`, `nm`, etc.);
-- `gdb` or equivalent debugger;
-- `file`, `xxd`/`od`, `/proc` inspection tools;
-- `time`/profiling and basic system-inspection tools;
-- Git where needed.
+- C compiler;
+- make/just or similarly simple runner;
+- binutils (`objdump`, `readelf`, `nm`, etc.);
+- GDB or equivalent;
+- `file`, `xxd`/`od`, `/proc`/system inspection;
+- timing/profiling;
+- Git;
+- RISC-V cross-compiler/assembler plus one practical simulator/emulator path.
 
-### ISA path
+Do not install five redundant simulators.
 
-If RISC-V remains the planning-leading choice, prototype a practical student path using a suitable combination of:
+### Machine probe
 
-- RISC-V GNU toolchain/cross-compiler;
-- QEMU user/system emulation where pedagogically useful;
-- Spike, Venus, RARS, Cornell's interpreter, or another well-supported simulator/emulator;
-- primary RISC-V documentation/reference card.
+Build a small course-owned machine probe with structured output.
 
-Do not install five redundant simulators simply because they exist. Choose by pedagogical need and maintenance cost.
+Target facts:
 
-### Optional modern-workload path
+- OS/kernel/container;
+- CPU architecture/ISA;
+- cores/threads;
+- cache hierarchy where exposed;
+- RAM;
+- storage;
+- GPU/accelerator presence where safely detectable;
+- relevant tool versions.
 
-Identify how Week 13/16 can run a small parallel/ML workload on CPU everywhere, with optional GPU acceleration where supported. Avoid huge model downloads or hardware-specific assumptions.
+Prefer a command shape such as:
 
-## Required prototype
+```bash
+archprobe snapshot
+```
 
-Create a small course-owned smoke test that proves the environment can do the things later labs require.
+with JSON plus a human-readable summary. Exact naming may change if a better interface emerges.
 
-A good smoke test should demonstrate, at minimum:
+### Sensory experiment harness
 
-1. report host/container architecture and tool versions;
-2. compile a tiny program;
-3. run it;
-4. inspect the produced binary;
-5. disassemble relevant code;
-6. debug or inspect state at a breakpoint/step;
-7. record a simple timing/measurement;
-8. if RISC-V tooling is selected, compile/run/step or otherwise execute a small RISC-V example;
-9. emit a machine-readable or clearly reviewable PASS/FAIL receipt.
+Provide a shared runner/data convention for controlled experiments.
 
-Keep it tiny. This is a health check, not a lab assignment.
+Target Week 5-14 needs include:
+
+- timing repeated work;
+- varying working-set size;
+- pointer-chase/dependent-access style test;
+- streaming/bulk-access style test;
+- basic storage access comparison where portable;
+- pipeline/performance traces through simulator/tooling;
+- multicore/shared-memory scaling;
+- a safe communication-latency/synchronization experiment;
+- CPU versus vectorized/specialized workload shape where possible.
+
+Do not promise privileged counters that are unreliable across student systems.
+
+### Network/communication latency path
+
+Week 12 needs a way to make communication cost **felt**.
+
+Required path should work without root.
+
+Evaluate options such as:
+
+- user-space delay/rate-limiting proxy/harness;
+- container-local message simulator;
+- small socket/MPI-like course harness.
+
+Optional Linux `netem` may be enrichment where privileges exist, never the required path.
+
+If Open MPI adds manageable value/size, prototype a small MPI path. If it creates disproportionate friction, preserve the principle through a simpler controlled communication harness.
+
+### Python/matplotlib visualization
+
+Include a small Python environment and course helpers that can turn CSV/JSON measurements into useful plots.
+
+The student should not have to become a matplotlib expert.
+
+Target interface examples:
+
+```bash
+archplot memory data/week10-memory.csv
+archplot scaling data/week12-scaling.csv
+```
+
+Exact naming is open to implementation evidence.
+
+### LaTeX/PDF dossier build
+
+Evaluate the smallest reliable open publishing path for a technical dossier containing equations, tables, figures, and cross-references.
+
+Candidates may include:
+
+- constrained TeX Live + `latexmk`;
+- Tectonic or another maintainable open path.
+
+Target student experience:
+
+```bash
+make dossier
+```
+
+The build should consume generated plots/data without requiring a LaTeX side course.
+
+## Standard experiment receipt
+
+Build conventions around:
+
+**predict -> perturb -> run -> measure -> visualize -> explain -> revise**
+
+Prefer machine-readable data outputs so students and plots use the same source.
+
+## Required smoke tests
+
+At minimum prove a fresh supported environment can:
+
+1. report architecture/tool versions;
+2. run `archprobe` or equivalent;
+3. compile and run a tiny native program;
+4. inspect/disassemble it;
+5. debug/inspect state;
+6. compile/run/inspect a small RISC-V example through the chosen path;
+7. execute a timing experiment that emits CSV/JSON;
+8. generate a matplotlib figure from the receipt;
+9. build a minimal dossier PDF containing that figure;
+10. run one bounded multicore/communication experiment;
+11. emit a machine-readable PASS/FAIL health receipt.
+
+Keep each smoke test small.
 
 ## Cross-platform validation
 
-Test as much as the available machines allow, prioritizing the environments students are likely to have:
+Prioritize:
 
 - Windows + WSL2;
 - native Linux;
-- macOS where feasible;
-- container runtime compatibility (Podman/Docker as appropriate).
+- Docker/Podman path;
+- macOS where feasible.
 
-If a platform cannot be tested, say so explicitly.
+If a platform is untested, say so.
 
-Use Jeremy's available hardware for validation where appropriate, but do not turn his specific machines into student requirements.
+## Student-facing implications
 
-## Remote fallback research
+Return enough validated information for authors to build:
 
-Evaluate whether a managed remote Linux/container fallback would materially reduce student failure. Jeremy has previously discussed shared Podman + SSH/VPN infrastructure.
-
-Return a recommendation, not an uncontrolled deployment, unless a clearly existing course-safe infrastructure path already owns this capability.
-
-The report should distinguish:
-
-- canonical local path;
-- optional remote fallback;
-- professor/development-only infrastructure.
-
-## Student-facing Week 3/4 implications
-
-Return enough validated information for Prompt 001/004 to author:
-
-- Week 3 container setup/reproducibility exercise;
-- Week 4 Linux commands that definitely exist in the supported environment;
-- troubleshooting/error signatures;
-- a one-command or very small smoke-test path students can use to verify their lab is healthy.
+- Week 3 repeatability lesson;
+- Week 4 Linux observation lesson;
+- Week 5 machine snapshot/dossier start;
+- Week 8 performance plots;
+- Week 10 memory sensory lab;
+- Week 12 scaling/communication sensory lab;
+- Week 14 final dossier build.
 
 ## Explicit non-goals
 
 - no production Canvas writes;
 - no mandatory GPU stack;
-- no giant devcontainer platform;
-- no cloud vendor dependency without a strong reason;
-- no course grading decisions;
-- no zyBooks adoption change;
-- no requirement that students use Jeremy's private network.
+- no giant cloud dependency;
+- no privileged/root requirement;
+- no paid AI tooling;
+- no assumption of Jeremy's private network;
+- no attempt to fully author all labs in this infrastructure prompt.
 
 ## Required report
 
@@ -135,27 +216,32 @@ Write:
 Include:
 
 - alternatives considered;
-- selected tool/runtime stack and why;
-- files created/modified;
-- image/container size if relevant;
+- selected runtime/tool stack and why;
+- image/container size;
+- machine-probe interface/results;
+- plotting environment and example;
+- LaTeX/PDF path and example;
+- sensory harness design;
+- network/communication-latency approach;
 - smoke-test commands/results;
-- platforms actually tested;
+- platforms tested;
 - known failure modes;
-- remote fallback recommendation;
-- Week 3/4 authoring implications;
-- unresolved YELLOWs;
+- student fallback strategy;
 - worker commit SHA(s).
 
 ## Foreman acceptance
 
-Foreman independently runs the smoke test from the documented path and verifies:
+Foreman independently verifies that the lab:
 
-1. the lab environment builds/starts reproducibly;
-2. the smoke test is meaningful and small;
-3. CPU-only completion is real;
-4. no secrets/private assumptions are embedded;
-5. later week authors can depend on the environment without each inventing their own toolchain.
+1. builds/starts reproducibly;
+2. supports CPU-only completion;
+3. exposes real architecture evidence;
+4. produces structured measurement data;
+5. can plot and compile a dossier PDF;
+6. supports at least one controlled latency/scaling experiment;
+7. embeds no secrets/private assumptions;
+8. gives later Week 5-14 authors one common laboratory contract.
 
 ## Done when
 
-The repository contains a tested, reproducible architecture lab foundation and evidence showing that a fresh supported environment can perform the core inspect/build/measure operations needed by the semester.
+A fresh supported environment can inspect a machine, run/measure a controlled experiment, visualize the result, and compile a minimal Machine Dossier receipt through one documented open/free path.
