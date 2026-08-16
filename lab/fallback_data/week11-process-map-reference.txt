@@ -1,0 +1,11 @@
+Week 11 curated teaching trace - NOT a live machine receipt
+page_size_bytes=4096
+
+00400000-00401000 r--p 00000000 00:00 0 /course/example
+00401000-00402000 r-xp 00001000 00:00 0 /course/example
+00600000-00602000 rw-p 00000000 00:00 0 [heap]
+7f1000000000-7f1000020000 r--p 00000000 00:00 0 /course/libexample.so
+7f1000020000-7f1000040000 r-xp 00020000 00:00 0 /course/libexample.so
+7fff00000000-7fff00021000 rw-p 00000000 00:00 0 [stack]
+
+Use this only when the live Linux/WSL `/proc/self/maps` path is unavailable. Treat the ranges, permissions, and file-backed labels as course-provided observations for the reasoning exercise. Do not claim these addresses came from the student's machine or reveal physical frame numbers.

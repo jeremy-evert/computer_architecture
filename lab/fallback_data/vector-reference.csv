@@ -1,0 +1,3 @@
+mode,items,seconds
+scalar_no_vectorize,4000000,0.245715001
+compiler_native,4000000,0.610617747

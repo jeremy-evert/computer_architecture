@@ -1,0 +1,8 @@
+Week 13 curated compiler-evidence fallback
+Source: lab/validation/2026-08-16-native-linux-smoke.json
+Validation surface: native/container-visible Linux execution harness
+Problem size: 4,000,000 items
+
+The validation run recorded that the compiler reported vectorization, while the compiler_native/vectorized runtime was slower than the scalar_no_vectorize runtime on that run.
+
+This file intentionally does not reconstruct a compiler remark line that was not preserved in the durable smoke receipt. It supports the same Week 13 reasoning task: distinguish evidence that vectorization occurred from evidence about whether the transformation improved runtime.

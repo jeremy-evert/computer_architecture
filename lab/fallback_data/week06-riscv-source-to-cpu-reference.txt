@@ -1,0 +1,42 @@
+Week 6/9 curated RISC-V evidence fallback
+Target: riscv32-unknown-elf
+ISA: RV32I / ilp32
+Source specimen: lab/riscv/specimen.c
+Entry: lab/riscv/start.S sets a0=4, calls transform, copies result to a1, then ebreaks.
+Validated final architectural state from the course-owned Prompt 003 path: x10/a0=18 and x11/a1=18.
+
+Disassembly reproduced from the committed source with:
+clang --target=riscv32-unknown-elf -march=rv32i -mabi=ilp32 -O0 -ffreestanding -fno-stack-protector -nostdlib -Wl,-Ttext=0x0 start.S specimen.c -o source-to-cpu.elf
+llvm-objdump -d source-to-cpu.elf
+
+00000000 <_start>:
+       0: 00400513      li a0, 0x4
+       4: 00c000ef      jal 0x10 <transform>
+       8: 00050593      mv a1, a0
+       c: 00100073      ebreak
+
+00000010 <transform>:
+      10: ff010113      addi sp, sp, -0x10
+      14: 00112623      sw ra, 0xc(sp)
+      18: 00812423      sw s0, 0x8(sp)
+      1c: 01010413      addi s0, sp, 0x10
+      20: fea42a23      sw a0, -0xc(s0)
+      24: ff442503      lw a0, -0xc(s0)
+      28: 00250513      addi a0, a0, 0x2
+      2c: fea42823      sw a0, -0x10(s0)
+      30: ff042503      lw a0, -0x10(s0)
+      34: 00600593      li a1, 0x6
+      38: 00b54e63      blt a0, a1, 0x54 <transform+0x44>
+      3c: 0040006f      j 0x40 <transform+0x30>
+      40: ff042583      lw a1, -0x10(s0)
+      44: 00159513      slli a0, a1, 0x1
+      48: 00b50533      add a0, a0, a1
+      4c: fea42823      sw a0, -0x10(s0)
+      50: 0040006f      j 0x54 <transform+0x44>
+      54: ff042503      lw a0, -0x10(s0)
+      58: 00c12083      lw ra, 0xc(sp)
+      5c: 00812403      lw s0, 0x8(sp)
+      60: 01010113      addi sp, sp, 0x10
+      64: 00008067      ret
+
+Scope: this packet supports architectural-state/disassembly reasoning. It does not establish physical pipeline timing or microarchitecture.
