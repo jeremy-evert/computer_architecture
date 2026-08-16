@@ -1,60 +1,72 @@
 # Report 011 — Reasoning Odyssey fabric doctrine note (Prompt 126 Computer Architecture slice)
 
-## Why this is a doctrine note, not a reconciliation
+> **HISTORICAL / SUPERSEDED as of 2026-08-16.** This report accurately records
+> an earlier moment when Computer Architecture had only a placeholder spine.
+> Statements below saying the course has no chassis, no grading model, or an
+> open zyBooks decision are no longer current.
+>
+> Current durable source is `README.md`, `planning/fall-2026-course-design.md`,
+> `planning/architecture-arc-map.md`, `planning/block-map.md`,
+> `planning/machine-dossier.md`, `planning/fall-2026-spine.md`, the 17 week
+> shells, and `docs/grading-model.md`.
+>
+> The persistent Architecture artifact is now the **Machine Dossier** for
+> Weeks 5-14. The course requires no zyBooks/commercial textbook, the grading
+> structure is resolved, Week 14 is the technical finale, Week 16 is shared
+> Farkle + ML application/fun, and there is no Checkpoint 4.
 
-CS1 (via `course_foundry` Prompt 015), CS2 (Prompt 005/008), and DSCT
-(Prompt 013) each had an existing weekly-architecture chassis or live
-content to reconcile the Reasoning Odyssey doctrine into. Computer
-Architecture does not: `planning/fall-2026-spine.md` is explicitly a
-placeholder spine ("Daily content TBD" on nearly every week), assignments/
-labs/projects are explicitly not yet authored, and the grading model is
-explicitly not built. There is no chassis document and no content to touch
-without violating this repo's own "flag, don't fabricate" rule
-(`planning/fall-2026-course-design.md`'s "Explicitly not yet decided"
-section, `reports/010_fall_2026_course_design.md`'s "Unresolved" list).
+## Why this was a doctrine note, not a reconciliation
 
-## What changed
+At the time of Prompt 126, CS1 (via `course_foundry` Prompt 015), CS2
+(Prompt 005/008), and DSCT (Prompt 013) each had an existing weekly-architecture
+chassis or live content to reconcile the Reasoning Odyssey doctrine into.
+Computer Architecture did not. Its then-current `planning/fall-2026-spine.md`
+was explicitly a placeholder spine, assignments/labs/projects were not yet
+authored, and the grading model was not built.
 
-Added a short "Reasoning Odyssey continuity (doctrine note, not authored
-content)" section to `planning/fall-2026-spine.md`, immediately before the
-existing "Explicitly not yet decided" section. It:
+That historical condition justified a doctrine-only note rather than inventing
+course content prematurely.
 
-- points at `jeremy_task_tracking/prompts/126_...md` as the source doctrine;
-- states the World-Bible continuity pattern in architecture-specific terms
-  (a system/machine/project a student traces ISA, datapath, memory, or
-  parallelism decisions through);
-- explicitly disclaims a second assignment track or grade category;
-- explicitly disclaims any grading-weight implication, since the grading
-  model does not exist yet;
-- explicitly disclaims authoring any Week 1-17 content.
+## What changed in that pass
 
-Nothing else in the repository was touched. No assignment, lab, project,
-grading weight, or daily content was invented.
+The pass added a short Reasoning Odyssey continuity doctrine note to the then
+current spine. It:
 
-## Why now instead of waiting
+- pointed at the shared Reasoning Odyssey doctrine;
+- described a system/machine/project continuity pattern in Architecture terms;
+- disclaimed a second assignment track;
+- disclaimed grading-weight implications because weights were not yet known;
+- disclaimed authoring Week 1-17 content.
 
-Prompt 126 asks for all four Fall 2026 launch courses to carry this doctrine
-into their authoritative planning source. Architecture is materially behind
-CS1/CS2/DSCT, but the spine document already exists and already accepts
-doctrine-level notes (see its own "Six-chapter backbone" and "First-pass
-semester distribution" framing). Leaving the doctrine unstated here risked
-the same problem DSCT had before Prompt 013: continuity being retrofitted
-after content exists instead of shaping it from the start. A one-paragraph
-doctrine pointer costs nothing and removes that risk; it authors no content.
+Nothing else in the repository was touched in that historical pass.
 
-## Explicitly not done
+## What current planning retained from the idea
 
-- No weekly-architecture chassis was invented (none exists; inventing one
-  would be authoring course structure beyond this prompt's scope).
-- No assignment/lab/project/grading content was authored.
-- No ZyBooks/textbook decision was touched — Architecture's ZyBooks status
-  remains Jeremy's separate open decision, untouched by this note.
-- No other repository was modified.
+The useful idea survived, but in a more concrete Architecture-native form:
 
-## Verification
+- the **Machine Dossier** is the persistent authentic artifact;
+- Week 5 creates a student-designed + observable machine;
+- later weeks add evidence, plots, corrections, and tradeoff decisions when
+  the connection is instructionally natural;
+- Week 14 returns to the Week 5 design and freezes the dossier;
+- the dossier is not a second parallel homework track.
 
-- Re-read `planning/fall-2026-spine.md` in full after editing to confirm the
-  new section reads coherently and does not contradict the "Explicitly not
-  yet decided" section immediately following it.
-- Confirmed via `git diff` that only this one section was added; no other
-  line in the file changed.
+That is now durable doctrine in `planning/machine-dossier.md` and related
+planning files.
+
+## Historical statements explicitly retired
+
+The following claims from the original report must not be treated as current:
+
+- that no weekly Architecture chassis exists;
+- that the grading model does not exist;
+- that zyBooks/textbook adoption remains open;
+- that Week 1-17 structure has not been authored;
+- that continuity exists only as an abstract doctrine note.
+
+## Verification provenance
+
+The original pass re-read the then-current spine and confirmed only the
+intended doctrine section changed. This historical verification remains part of
+the record; current validation is documented in
+`sidecar/reports/001_reconcile_course_source_chassis.md`.
