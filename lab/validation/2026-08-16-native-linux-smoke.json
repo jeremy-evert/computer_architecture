@@ -1,0 +1,82 @@
+{
+  "date": "2026-08-16",
+  "doctor": {
+    "optional_present": {
+      "container_runtime": false,
+      "gdb": false,
+      "lldb": true,
+      "mpi": false,
+      "qemu_riscv": false,
+      "tectonic": false
+    },
+    "platform": "Linux-6.18.35-x86_64-with-glibc2.41",
+    "python": "3.13.5",
+    "required_checks": {
+      "binary_inspection": true,
+      "debugger_state_inspection": true,
+      "native_c_compiler": true,
+      "openmp": true,
+      "pdf_build": true,
+      "plotting": true,
+      "python_3_10_plus": true,
+      "riscv_cross_compile": true
+    },
+    "status": "PASS",
+    "versions": {
+      "clang": "clang version 17.0.0 (https://github.com/swiftlang/llvm-project.git 10999b6d034fe318f3d56c83bddb6572593a8bb0)",
+      "gcc": "gcc (Debian 14.2.0-19) 14.2.0",
+      "matplotlib": "3.10.8"
+    }
+  },
+  "end_to_end": {
+    "communication": "PASS",
+    "dependency": "PASS",
+    "dossier_pdf": "PASS",
+    "matplotlib": "PASS",
+    "memory": "PASS",
+    "observatory_probe": "PASS",
+    "riscv_two_cases": "PASS",
+    "scaling": "PASS",
+    "vector": "PASS"
+  },
+  "make_validate": "PASS",
+  "observed_shapes_not_benchmarks": {
+    "communication_seconds_at_20ms": {
+      "chatterbox": 1.304383928,
+      "freight_train": 0.020352586
+    },
+    "dependency_ns_per_update": {
+      "dependent": 1.100131,
+      "independent4": 0.272895
+    },
+    "memory_pointer_chase_ns_per_access": {
+      "2097152": 16.170584,
+      "262144": 6.099311,
+      "32768": 1.91684,
+      "33554432": 126.353502,
+      "4096": 2.96545,
+      "8388608": 21.286267
+    },
+    "scaling_speedup": {
+      "1": 1.0,
+      "2": 1.89088,
+      "4": 3.396734
+    },
+    "vector_seconds": {
+      "compiler_native": 0.610617747,
+      "scalar_no_vectorize": 0.245715001
+    },
+    "vectorization_report": "compiler reported vectorization, but native-vectorized runtime was slower on this run; this is intentionally preserved as evidence that specialization must be measured, not assumed."
+  },
+  "pdf_bytes": 318161,
+  "schema": "swosu.archlab.validation/v1",
+  "status": "PASS_WITH_PLATFORM_YELLOWS",
+  "validation_surface": "native/container-visible Linux execution harness; not a Docker/Podman image build",
+  "yellow": [
+    "Docker/Podman runtime was unavailable in the execution harness, so Containerfile image build and final image size are not validated.",
+    "WSL2 was not executed in this pass; it remains the planned Windows required-path target.",
+    "macOS was not executed in this pass.",
+    "MPI was not installed or required; controlled communication delay is provided by the course-owned user-space socket experiment.",
+    "Tectonic was not installed; latexmk+pdflatex passed and is the validated PDF engine in this pass."
+  ]
+}

@@ -1,0 +1,19 @@
+FROM debian:trixie-slim
+
+ENV DEBIAN_FRONTEND=noninteractive \
+    PIP_DISABLE_PIP_VERSION_CHECK=1 \
+    MPLBACKEND=Agg
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    python3 python3-matplotlib \
+    gcc make binutils gdb file vim-common procps util-linux \
+    clang llvm lld \
+    texlive-latex-base texlive-latex-recommended latexmk \
+    && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /opt/archlab
+COPY . /opt/archlab
+ENV PYTHONPATH=/opt/archlab \
+    PATH=/opt/archlab/bin:$PATH
+
+CMD ["archlab", "doctor"]

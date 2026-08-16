@@ -1,0 +1,10 @@
+runs/
+__pycache__/
+*.pyc
+*.o
+*.bin
+*.aux
+*.fdb_latexmk
+*.fls
+*.log
+*.pdf

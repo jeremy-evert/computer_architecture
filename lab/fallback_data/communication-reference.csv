@@ -1,0 +1,9 @@
+mode,delay_ms_per_reply,messages,total_payload_bytes,seconds
+chatterbox,0.0,64,131072,0.001649227
+freight_train,0.0,1,131072,0.000228840
+chatterbox,1.0,64,131072,0.074323189
+freight_train,1.0,1,131072,0.001285948
+chatterbox,5.0,64,131072,0.349211506
+freight_train,5.0,1,131072,0.005285924
+chatterbox,20.0,64,131072,1.313987078
+freight_train,20.0,1,131072,0.020409140
