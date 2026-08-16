@@ -2,7 +2,7 @@
 
 **Course:** COMSC-3013 Computer Architecture, Fall 2026  
 **Repository:** `jeremy-evert/computer_architecture`  
-**Status:** active build; Prompt 001 reconciliation complete  
+**Status:** active build; Prompts 001-002 complete; Prompt 003 not started  
 **Source of truth:** Git. Savnac is the inspection/dogfood surface; production Canvas is a later deployment target.
 
 ## Mission
@@ -52,9 +52,12 @@ Read these before authoring:
 - `planning/block-map.md`
 - `planning/machine-dossier.md`
 - `planning/fall-2026-spine.md`
+- `planning/open-source-resource-canon.md`
+- `planning/open-source-resource-map.csv`
 - `planning/week-NN.md`
 - `docs/grading-model.md`
 - `sidecar/reports/001_reconcile_course_source_chassis.md`
+- `sidecar/reports/002_build_open_source_architecture_canon.md`
 
 The week files are thin planning shells. Do not confuse named intentions with authored/validated lessons.
 
@@ -130,7 +133,7 @@ The showcase should be fun and real. It should not become required access to Jer
 
 ## Workstreams
 
-### A. Reconcile durable source
+### A. Reconcile durable source - **COMPLETE**
 
 - [x] CS-family planning chassis established.
 - [x] Machine Dossier/sensory-lab doctrine captured.
@@ -139,16 +142,17 @@ The showcase should be fun and real. It should not become required access to Jer
 - [x] grading structure captured.
 - [x] Prompt 001 reconciliation/validation pass completed; report in `sidecar/reports/001_reconcile_course_source_chassis.md`.
 
-### B. Build open-source Architecture canon - **ACTIVE**
+### B. Build open-source Architecture canon - **COMPLETE**
 
-- [ ] Research every week/topic.
-- [ ] Check accessibility/licensing.
-- [ ] GREEN/YELLOW/RED map.
-- [ ] Identify course-created bridges needed.
-- [ ] Include conceptual + measurement sources for sensory labs.
-- [ ] Establish a dated source strategy for Week 5/14 current PC/component pricing/spec evidence.
+- [x] Research every week/topic.
+- [x] Check accessibility/licensing and distinguish public access from reuse permission.
+- [x] Build GREEN/YELLOW/RED map.
+- [x] Identify course-created bridges needed.
+- [x] Pair conceptual + measurement sources for sensory labs.
+- [x] Establish dated Week 5/14 current PC/component pricing/spec evidence strategy.
+- [x] Record source burden, strengths, limitations, permanence risk, and lab support in `planning/open-source-resource-map.csv`.
 
-### C. Build student laboratory - **UNBLOCKED / may proceed in parallel**
+### C. Build student laboratory - **READY / NOT STARTED**
 
 - [ ] Reproducible container/runtime.
 - [ ] compiler/binutils/debugger/RISC-V path.
@@ -160,6 +164,8 @@ The showcase should be fun and real. It should not become required access to Jer
 - [ ] multicore/communication-latency experiment capability.
 - [ ] Windows/WSL2/Linux/macOS/fallback validation as feasible.
 - [ ] health/smoke test.
+
+Prompt 003 is intentionally **not started** merely because Prompt 002 is complete.
 
 ### D. Author Weeks 1-4
 
@@ -215,12 +221,12 @@ For each week:
 - [ ] verify idempotence;
 - [ ] production Canvas remains out of scope until explicitly authorized.
 
-## Active queue
+## Queue
 
 1. **COMPLETE - Prompt 001: reconcile/validate current chassis**
-2. **ACTIVE - Prompt 002: build open-source Architecture canon**
-3. **UNBLOCKED/PARALLEL - Prompt 003: build reproducible Architecture laboratory**
-4. **WAITING ON 002 + 003 - Prompt 004: author Weeks 5-14 technical core**
+2. **COMPLETE - Prompt 002: build open-source Architecture canon**
+3. **READY / NOT STARTED - Prompt 003: build reproducible Architecture laboratory**
+4. **WAITING ON 003 - Prompt 004: author Weeks 5-14 technical core**
 5. **LATER - Prompt 005: shared Farkle + ML Week 16 experience**
 6. **LATER - Prompt 006: imprint/read back in Savnac**
 
@@ -230,11 +236,11 @@ For each week:
 
 One current story in Git; legacy reports marked historical; no stale Week 16 capstone or paid-resource doctrine in current source.
 
-### Gate 1 - Open content sufficiency - **ACTIVE**
+### Gate 1 - Open content sufficiency - **PASS AT AUTHORING-CANON LEVEL**
 
-Every required week needs a credible no-paywall learning path and identified course-owned bridges.
+Every required week has a credible no-paywall source strategy, explicit course-owned bridges, and honest access/reuse classification. Individual links still require week-level validation at publication time.
 
-### Gate 2 - Lab works
+### Gate 2 - Lab works - **NOT STARTED**
 
 Fresh supported machine can inspect, measure, emit data, plot, and build a minimal dossier PDF.
 
