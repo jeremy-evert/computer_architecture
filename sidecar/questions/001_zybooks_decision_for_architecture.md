@@ -1,58 +1,44 @@
-# Question 001 — Does Computer Architecture keep its zyBook?
+# Question 001 — Does Computer Architecture keep zyBooks?
 
-**Status:** OPEN
-**Blocks:** weekly chassis finalization (Monday technical content format),
-grading-model authoring, and Week 2+ content authoring.
+**Status:** RESOLVED  
+**Resolved answer:** **Yes — Computer Architecture stays with zyBooks.**  
+**Resolved from:** Jeremy's prior Computer Architecture course-development conversation (2026-08-10): "MIPS is not important; 7e might be," followed by an explicit preference to **stay with zyBooks** while looking beyond the old MIPS product.
 
-## Context
+## What this resolves
 
-CS1, CS2, and DSCT each received an explicit "drop ZyBooks, no required
-textbook" pass this cycle (`computer_science_1` prompt, `computer_science_2`
-sidecar Prompt 006, `discrete_structures_and_critical_thinking` prompt 012).
-Each reframed its zyBook identifier/URL as historical/optional provenance
-rather than a live requirement, and none currently treats zyBook content as
-required student work.
+Computer Architecture is intentionally different from CS1, CS2, and DSCT on this point. Those courses later moved away from required zyBooks use, but Architecture retains zyBooks as part of its course-resource strategy.
 
-Computer Architecture was explicitly excluded from that pass. Jeremy's own
-words (live chat, this session, 2026-08-15): "we are not going to use
-zybooks for cs 1, cs 2, or dcst" — Architecture named as the one exception,
-"still his open decision."
+The old question should therefore no longer block course design on a binary "keep or drop zyBooks" decision.
 
-`course_metadata.yaml`'s `textbook` block currently lists the MIPS
-interactive zyBook (`SWOSUCOMSC3013EvertFall2026`) as the live, current
-identifier — not historical — the only one of the four Fall 2026 courses
-still in this state.
+## What this does **not** resolve
 
-## Why this matters for sequencing
+Keeping zyBooks does not mean the currently recorded MIPS 6e product is automatically the final pedagogical choice.
 
-Architecture's weekly chassis, Monday technical-content shape, and grading
-model cannot be finalized honestly without knowing:
+Jeremy's subsequent Architecture planning established two important constraints:
 
-- whether zyBook readings/interactive activities are required, graded
-  student work (and therefore need a weekly-cadence slot and a grading
-  category), or
-- whether Architecture follows the other three courses and drops the
-  requirement, with technical content authored directly the way CS1/CS2/
-  DSCT's weekly material is (open-source-backed, source-controlled in this
-  repo).
+- **MIPS itself is not important.** Do not preserve it merely because the existing operational Fall 2026 course points to a MIPS 6e zyBook.
+- Jeremy wants to **stay with zyBooks** and explored newer ARM and RISC-V options, with a RISC-V-oriented Patterson/Hennessy path emerging as the leading direction.
 
-This is plausibly different from the other three courses on its merits —
-a hardware-architecture course's interactive MIPS simulators/exercises may
-carry real pedagogical value the other three courses' zyBooks didn't — so
-this should not be defaulted to "drop it" merely for four-course
-consistency. It is a genuine open decision, not a mechanical parity gap.
+Two narrower decisions remain and are tracked separately:
 
-## What Foreman needs to proceed
+1. **Which zyBooks ISA/product/edition should Fall 2026 use?** See `002_zybooks_isa_product_and_course_role.md`.
+2. **How should zyBooks count in the grading contract?** Required reading/practice, graded participation, bonus/support layer, etc. This belongs with the broader assessment decision rather than reopening the keep/drop question.
 
-A yes/no (plus, if yes, how required/graded) on: does COMSC-3013 keep its
-zyBook as required course material for Fall 2026?
+## Repository rule until the product changes
 
-Work that does NOT depend on this answer (already queued, in progress,
-or safe to start now): the weekly chassis/spine's non-content-source
-structure (day pattern, Reasoning Odyssey continuity framing, the added
-"Linux command line for profiling" early week Jeremy specified this
-session), Savnac course-identity/deployment plumbing groundwork.
+`course_metadata.yaml` currently records the operational Fall 2026 MIPS 6e zyBook and URL. That remains factual metadata until an actual replacement course is adopted/configured.
 
-Work that DOES depend on this answer: Monday technical-content authoring
-format, the grading-model's category list (a zyBook-graded category may or
-may not exist), and `course_metadata.yaml`'s textbook block's final framing.
+Planning documents may correctly state that the curriculum is moving toward a modern ISA/RISC-V direction, but no agent should silently rewrite the operational zyBook identifier or vendor configuration without evidence that the replacement exists and has been adopted.
+
+## Consequence for Foreman
+
+Work may proceed on:
+
+- the 17-week curriculum spine;
+- Weeks 1–4;
+- the reproducible lab platform;
+- architecture labs and activities that are not tightly coupled to a specific zyBook deep link;
+- RISC-V toolchain/simulator prototyping;
+- grading-model options that leave the exact zyBooks weighting parameterized.
+
+Do not let this old binary question stall curriculum construction again.
