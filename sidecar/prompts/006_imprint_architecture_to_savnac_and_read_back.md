@@ -10,7 +10,7 @@ Make the current Git-backed Computer Architecture course visible and inspectable
 
 This is a deployment-and-dogfood job, not a second curriculum-authoring system.
 
-The acceptance condition is not "an API returned 200." It is:
+The acceptance condition is:
 
 > Jeremy can open the intended Computer Architecture course in Savnac, navigate a recognizable current course, and see what the repository actually became.
 
@@ -35,24 +35,35 @@ Git remains authoritative. Savnac is the human inspection surface. Production SW
 
 Inspect Course Foundry / Imprint and the most recently accepted Savnac deployment paths for sibling courses, especially CS1/CS2.
 
-Do not assume old file names are still current. Locate the actual desired-course compiler, dry-run/diff path, imprint/write path, identity mapping, and read-back/acceptance tooling that now own this responsibility.
+Locate the actual desired-course compiler, dry-run/diff path, imprint/write path, identity mapping, and read-back/acceptance tooling that currently own this responsibility.
 
-Reuse and generalize the existing machinery only where a real Architecture gap proves generalization necessary.
+Reuse/generalize existing machinery only where a real Architecture gap proves generalization necessary.
+
+## Pinned rendered-course doctrine
+
+The Savnac course must not imply that students are required to purchase or possess:
+
+- zyBooks or another commercial textbook;
+- paid ChatGPT/Claude or another paid AI subscription;
+- Codex, Claude Code, or another premium AI CLI agent;
+- specialized GPU hardware.
+
+If optional premium resources are mentioned, they must be clearly labeled optional and the no-cost required path must remain visible.
 
 ## Sequencing
 
-This prompt may be opened early for reconnaissance, but **do not publish fake green weeks merely because the semester map names them**.
+This prompt may open early for reconnaissance, but do not publish fake green weeks merely because the semester map names them.
 
-A useful first imprint may include only the source-backed near-term slice, such as:
+A useful first imprint may include only the source-backed near-term slice:
 
 - Course Information / landing context;
 - Week 1;
 - Week 2;
 - Week 3;
 - Week 4;
-- any later weeks that are genuinely authored and validated.
+- any later weeks genuinely authored and validated.
 
-As more weeks become source-ready, the same deployment path should be able to extend the rendered course without creating duplicate objects.
+As more weeks become source-ready, the same deployment path should extend the rendered course without duplicate objects.
 
 ## Required work
 
@@ -61,23 +72,21 @@ As more weeks become source-ready, the same deployment path should be able to ex
 Before writing anything, inspect Savnac and determine:
 
 - whether the Computer Architecture test/dogfood course already exists;
-- its course ID and course code/name;
+- its course ID/code/name;
 - instructor enrollment;
 - publication/state as relevant;
 - current modules/pages/assignments/rubrics;
 - whether stale/partial content is already present.
 
-Do not trust a historical course ID without reading the current target back.
-
-Do not create a duplicate course merely because discovery is inconvenient.
+Do not create a duplicate course because discovery is inconvenient.
 
 ### 2. Reconcile current Git source against the compiler
 
 Run the existing Architecture desired-state/dry-run path if one exists.
 
-If no Architecture compiler exists but the shared compiler can be parameterized cleanly, generalize the shared path rather than cloning a course-specific deployment stack.
+If no Architecture compiler exists but shared machinery can be parameterized cleanly, generalize the shared path rather than cloning a course-specific stack.
 
-Represent unresolved course mechanics honestly.
+Represent unresolved mechanics honestly.
 
 Do not invent:
 
@@ -86,10 +95,11 @@ Do not invent:
 - due dates;
 - late rules;
 - submission mechanisms;
-- final zyBooks product/deep links;
+- commercial-resource requirements;
+- paid AI/CLI requirements;
 - production configuration.
 
-If an unresolved value is required by the current compiler, fix the compiler/schema to support an honest missing/YELLOW state where appropriate rather than fabricating policy.
+If an unresolved value is required by the compiler, fix the schema/path to represent honest missing/YELLOW state where appropriate rather than fabricating policy.
 
 ### 3. Imprint only source-backed objects
 
@@ -100,56 +110,57 @@ Prioritize a coherent student journey over object count.
 At minimum, once source exists, the rendered course should expose:
 
 - course identity/information;
+- zero-cost required-materials doctrine where students need it;
 - semester/weekly navigation;
 - Week at a Glance or equivalent weekly landing;
-- student-facing pages/reference links;
+- student-facing open/course-created reference material;
 - actual labs/assignments/rubrics that are source-ready;
 - a coherent Week 1 → Week 2 → Week 3 → Week 4 path.
 
-Later authored weeks should use the same object model and navigation pattern.
-
 ### 4. Read Savnac back after writing
 
-Verify from the rendered target, not merely from the outbound payload:
+Verify from the rendered target, not merely the outbound payload:
 
 - intended course identity;
 - instructor enrollment;
 - module order;
 - page/assignment/rubric existence;
-- object links and navigation;
+- object links/navigation;
 - student-visible status where appropriate;
-- current Week 1 doctrine has no Architecture technical gate;
-- Weeks 2–4 match current source;
-- no stale six-chapter textbook-driven week titles overwrite the new curriculum-first spine;
-- current operational zyBooks facts are not silently replaced by an unadopted product;
+- Week 1 has no Architecture technical gate;
+- Week 2 does not imply a paid AI/provider/CLI requirement;
+- Weeks 3–4 match current source;
+- no stale textbook-driven week titles overwrite the curriculum-first spine;
+- no zyBooks/commercial textbook appears as required material;
+- no specialized GPU or premium AI/CLI appears as required;
 - no obvious duplicate modules/pages/assignments were created.
 
 ### 5. Perform a bounded professor/student walk
 
-Where the existing acceptance tooling permits, walk the rendered course as a professor and/or synthetic student.
+Where existing acceptance tooling permits, walk the rendered course as a professor and/or synthetic student.
 
-The walk should answer practical questions:
+Ask:
 
 - Can a student tell what this week is about?
 - Can they find the material/activity/submission?
+- Can they complete the required path without hitting a paywall?
+- Is a premium-tool mention clearly optional?
 - Can they move forward/back without getting trapped?
-- Are unpublished or missing objects creating dead ends?
-- Does the rendered language match source?
-
-This is not a request for a giant new synthetic-student research battery.
+- Are unpublished/missing objects creating dead ends?
+- Does rendered language match source?
 
 ### 6. Prove immediate re-run behavior
 
-Run the supported dry-run/diff/no-op path again after imprint.
+Run supported dry-run/diff/no-op again after imprint.
 
-The desired state is:
+Desired state:
 
 - no duplicate objects proposed;
 - no unexplained source-owned drift;
-- intentional YELLOWs are explicit;
-- a second imprint is understood and safe.
+- intentional YELLOWs explicit;
+- second imprint understood and safe.
 
-If idempotence is incomplete for an object type, document it with evidence and do not claim a clean no-op.
+If idempotence is incomplete, document it honestly.
 
 ## Production boundary
 
@@ -163,8 +174,6 @@ It does not authorize:
 - LTI production configuration;
 - credential disclosure.
 
-If a shared tool points at production by default, stop and correct the target before proceeding.
-
 ## Required report
 
 Write:
@@ -174,17 +183,18 @@ Write:
 Include:
 
 - source commits inspected;
-- Course Foundry / Imprint paths reused or generalized;
+- Course Foundry / Imprint paths reused/generalized;
 - resolved Savnac course identity;
 - pre-write reconnaissance;
 - compiler/dry-run result;
 - objects created/updated/left untouched;
 - rendered read-back verification;
 - professor/student walk evidence;
+- no-paywall/optional-premium verification;
 - immediate re-run/drift behavior;
 - unresolved source/YELLOW items;
-- confirmation that production Canvas and zyBooks were not mutated;
-- worker commit SHA(s) and relevant execution receipts.
+- confirmation production Canvas/zyBooks were not mutated;
+- worker commit SHA(s) and relevant receipts.
 
 ## Foreman acceptance
 
@@ -192,13 +202,14 @@ Foreman independently verifies that:
 
 1. the intended Architecture course, not a duplicate, was used;
 2. rendered content comes from current Git source;
-3. the course is useful for Jeremy to inspect in Savnac;
-4. unsupported grading/vendor facts were not fabricated;
-5. Week 1–4 navigation reflects the accepted semester design;
-6. immediate re-run behavior is safe/understood;
-7. no production Canvas or zyBooks write occurred;
-8. the work reused the established deployment stack rather than creating another one.
+3. the course is useful for Jeremy to inspect;
+4. unsupported grading facts were not fabricated;
+5. the required student path contains no commercial-textbook, paid-AI/CLI, or specialized-GPU dependency;
+6. Week 1–4 navigation reflects accepted design;
+7. immediate re-run behavior is safe/understood;
+8. no production Canvas or zyBooks write occurred;
+9. work reused the established deployment stack.
 
 ## Done when
 
-Computer Architecture can be compiled from current repository truth, imprinted into the intended Savnac course through the shared deployment path, read back, navigated, and re-run without silent duplication or fabricated policy.
+Computer Architecture can be compiled from current repository truth, imprinted into the intended Savnac course, read back, navigated, and re-run without silent duplication, fabricated policy, or a hidden paid-resource requirement.
