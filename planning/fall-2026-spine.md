@@ -15,22 +15,24 @@ Fall 2026 runs Aug 17–Dec 11.
 - Thanksgiving begins Tuesday Nov 24 at 10 PM — Week 15 is intentionally lightweight/asynchronous.
 - Finals: Dec 7–11 — Week 17.
 
-## Design rule
+## Design rules
 
 The semester is **curriculum-first, not textbook-chapter-first**.
 
-The current operational zyBook remains recorded in `course_metadata.yaml` until an actual adoption change is made, but the week order below is driven by the learning experience we want. After the final zyBooks ISA/product decision, relevant sections can be mapped onto these weeks.
+No commercial textbook or zyBooks purchase is required. The required content path must be complete using open/freely accessible references and course-created materials. Commercial texts may guide instructors or serve as optional references.
+
+Likewise, no paid AI subscription or premium command-line agent is required. Students may use their AI provider/interface of choice where AI is permitted. Required AI-supported activities must have a no-cost or otherwise course-accessible path; Codex, Claude Code, and similar premium CLI tools are optional enrichment.
 
 ## Fall 2026 spine
 
 | Week | Dates | Theme | Central question | Status / intent |
 |---|---|---|---|---|
 | 1 | Aug 17–21 | **Success Foundations** | How do I survive this semester, thrive in this degree, and enjoy the career I am building toward? | **Pinned.** Universal Week 1 shared with CS1/CS2/DSCT. Monday = semester/class success; Wednesday = degree success; Friday = career success. No Computer Architecture technical content required. |
-| 2 | Aug 24–28 | **AI Lab Training** | How can AI help me investigate a machine without becoming my source of truth? | **Pinned.** Build the habits used all semester: gather context, ask useful questions, label AI/tool use, verify generated claims against commands/documentation/measurements, and keep an evidence notebook. Carry forward the shared Professional Minds Week 2 touchpoints (*Make It Stick* and *Mindset*) without displacing the AI-lab focus. |
+| 2 | Aug 24–28 | **AI Lab Training** | How can AI help me investigate a machine without becoming my source of truth? | **Pinned.** Build the habits used all semester: gather context, ask useful questions, label AI/tool use, verify generated claims against commands/documentation/measurements, and keep an evidence notebook. No paid provider or CLI agent is required. |
 | 3 | Aug 31–Sep 4 | **Containers & Repeatability** | How do I make a systems experiment run the same way twice and on another computer? | **Pinned.** Establish the semester's reproducible lab capsule. Students should run/reproduce a small experiment and understand why environment capture matters. |
 | 4 | Sep 8–11 | **Linux Command Line as a Machine Telescope** | How do I ask the operating system what this computer is and what it is doing? | **Pinned.** Short Labor Day week. Shell/files/process/system/hardware/binary inspection as evidence gathering, not disconnected command memorization. |
 | 5 | Sep 14–18 | **Bits Become Meaning: Representation, Logic, Arithmetic** | How can the same bits become numbers, instructions, and decisions? | Core. Binary/hex, signed representation, floating point, Boolean logic, combinational building blocks, ALU-level reasoning. Prefer a bounded build/trace experiment over worksheet-only coverage. |
-| 6 | Sep 21–25 | **The Hardware/Software Contract: ISA + RISC-V** | What must software and hardware agree on for a program to run? | Core. Registers, memory, instructions, encodings, control flow, procedures/calling convention, source→assembly→machine translation. RISC-V is the planning-leading ISA; exact zyBook product remains a separate adoption decision. |
+| 6 | Sep 21–25 | **The Hardware/Software Contract: ISA + RISC-V** | What must software and hardware agree on for a program to run? | Core. Registers, memory, instructions, encodings, control flow, procedures/calling convention, source→assembly→machine translation. RISC-V is the planning-leading ISA because of its open specification and strong teaching/tool ecosystem, not because of a textbook dependency. |
 | 7 | Sep 28–Oct 2 | **Build a CPU: Datapath + Control** | What path does one instruction take through a processor? | Core. Datapath, ALU/register file/memory/control, single-cycle implementation, stored-program/Von Neumann connection. Trace or build a small CPU rather than merely label a diagram. |
 | 8 | Oct 5–9 | **Pipelining, Hazards, and Performance** | Why is doing several things at once faster and harder? | Core. Latency/throughput/CPI, pipeline stages, structural/data/control hazards, forwarding/stalls; branch prediction/superscalar ideas may be enrichment. |
 | 9 | Oct 12–14 | **Integration Checkpoint: Source to CPU** | Can I follow one small program through the stack without hand-waving? | **Short Fall Break week.** No major new conceptual load. Student traces a bounded program from source/assembly through instructions and processor execution, revising weak explanations with evidence. |
@@ -47,7 +49,7 @@ The current operational zyBook remains recorded in `course_metadata.yaml` until 
 
 Because the course is asynchronous, the M/W/F rhythm is a release/design pattern rather than an attendance rule:
 
-- **Monday — Frame:** central machine question, concise instructor framing, reference/reading menu, prediction or hypothesis.
+- **Monday — Frame:** central machine question, concise instructor framing, open/reference reading menu, prediction or hypothesis.
 - **Wednesday — Inspect / Build / Measure:** lab, trace, simulator, shell experiment, or design exercise.
 - **Friday — Explain / Defend:** evidence-backed explanation, correction, show-and-tell, or synthesis checkpoint.
 
@@ -67,6 +69,8 @@ Students should repeatedly record:
 6. conclusion;
 7. correction/revision after verification.
 
+The notebook format is provider-neutral. Premium AI or command-line agents may be used optionally, but the course must not create a paid-tool advantage in required assessment.
+
 ### Week 3 onward — reproducible lab capsule
 
 Later course tooling should run inside or cleanly alongside a versioned reproducible environment. Candidate capabilities include compiler/binutils, debugger, binary inspection, timing/profiling, and the final RISC-V simulator/toolchain path. Exact tools are validated before publication rather than guessed here.
@@ -75,26 +79,30 @@ Later course tooling should run inside or cleanly alongside a versioned reproduc
 
 The shell recurs because it exposes machine state: files, binaries, processes, CPU/memory information, `/proc`, timing, disassembly and other evidence. Students should use it to answer architecture questions rather than memorize command trivia.
 
-## External curriculum evidence behind Weeks 5–14
+## Open curriculum evidence behind Weeks 5–14
 
-The topic sequence is deliberately informed by strong open/current architecture curricula rather than invented in isolation:
+The topic sequence is deliberately informed by strong open/current architecture curricula and primary references rather than invented in isolation:
 
-- UC Berkeley CS61C (2026): representation, C/memory, RISC-V, toolchain translation, digital systems, single-cycle CPU, pipelining, caches, performance, parallelism, virtual memory.
-- Cornell CS3410 (2026): C, 64-bit RISC-V, CPU simulation, caches, processes/system calls, parallelism, reproducible Docker infrastructure.
+- UC Berkeley CS61C: representation, C/memory, RISC-V, toolchain translation, digital systems, single-cycle CPU, pipelining, caches, performance, parallelism, virtual memory.
+- Cornell CS3410: C, 64-bit RISC-V, CPU simulation, caches, processes/system calls, parallelism, reproducible Docker infrastructure.
 - MIT 6.004 Computation Structures: logic/state, ISA, processor construction, memory hierarchy, VM/OS mechanisms, interrupts, pipelines and parallel systems.
 - Nand2Tetris: bounded build-the-machine projects from logic/ALU through CPU/computer and the software hierarchy.
 - Cambridge Introduction to Computer Architecture: RISC-V, processor design, pipelines, caches, OS support, SoCs/DRAM, multicore/coherence and GPUs.
-- RISC-V International specifications: primary-source ISA reference if the RISC-V direction is finalized.
+- RISC-V International specifications: primary ISA reference.
 
-Detailed research/workbench links and execution work live in `sidecar/PLANNING.md` rather than in this durable semester map.
+Foreman should expand this into a week-by-week open-source/reference canon with licensing and accessibility checked. Commercial books may be consulted by course authors but are not required student sources.
 
 ## Explicitly still open
 
 Do not fabricate these while authoring content:
 
-- exact zyBooks ISA/product/edition and whether zyBooks work is required/graded;
 - grading weights/point model and late/due-date mechanics;
 - final supported simulator/emulator/toolchain after lab-platform testing;
 - exact Week 17 assessment format.
 
-These decisions should be recorded in `sidecar/questions/` and then promoted into durable course source when resolved.
+These are no longer open:
+
+- required commercial textbook/zyBooks: **none**;
+- required paid AI subscription: **none**;
+- required paid AI CLI agent: **none**;
+- required specialized GPU hardware: **none**.
