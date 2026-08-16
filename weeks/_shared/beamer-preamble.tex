@@ -23,9 +23,11 @@
   breaklines=true
 }
 
-% Speaker notes remain hidden in the ordinary student build. Build an
-% instructor copy by passing pgfpages option `show`; see weeks/README.md.
-% \setbeameroption{show notes on second screen=right}
+% Speaker notes remain hidden in the ordinary student build. Define \shownotes
+% before inputting the deck to create an instructor copy; see weeks/README.md.
+\ifdefined\shownotes
+  \setbeameroption{show notes on second screen=right}
+\fi
 
 \newcommand{\ArchTitleSlide}[4]{%
   % #1 week label, #2 title, #3 central question, #4 Wednesday prediction

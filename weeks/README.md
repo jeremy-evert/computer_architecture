@@ -154,8 +154,8 @@ Instructor notes copy:
 
 ```bash
 pdflatex -interaction=nonstopmode -halt-on-error \
-  -output-directory=build \
-  "\\PassOptionsToPackage{show}{pgfpages}\\input{monday.tex}"
+  -jobname=monday-notes -output-directory=build \
+  "\\def\\shownotes{1}\\input{monday.tex}"
 ```
 
 Generated deck files live in `build/` and are not canonical source during authoring. The source plus `_validation.md` is canonical. A later deployment pass may choose to publish/retain rendered PDFs when LMS ingestion requires them.
