@@ -2,7 +2,7 @@
 
 **Course:** COMSC-3013 Computer Architecture, Fall 2026  
 **Repository:** `jeremy-evert/computer_architecture`  
-**Status:** active deployment planning  
+**Status:** active build; Prompt 001 reconciliation complete  
 **Source of truth:** Git. Savnac is the inspection/dogfood surface; production Canvas is a later deployment target.
 
 ## Mission
@@ -54,6 +54,7 @@ Read these before authoring:
 - `planning/fall-2026-spine.md`
 - `planning/week-NN.md`
 - `docs/grading-model.md`
+- `sidecar/reports/001_reconcile_course_source_chassis.md`
 
 The week files are thin planning shells. Do not confuse named intentions with authored/validated lessons.
 
@@ -92,7 +93,7 @@ It is active only during Weeks 5-14.
 
 ## Instructor recording doctrine
 
-Architecture's online modality creates room for a deliberate three-video/artifact rhythm instead of fake live-class substitutions.
+Architecture's online modality creates room for a deliberate three-artifact rhythm instead of fake live-class substitutions.
 
 ### Monday lecture package
 
@@ -136,17 +137,18 @@ The showcase should be fun and real. It should not become required access to Jer
 - [x] M/W/F online recording model captured.
 - [x] Week 14 technical ending / Week 15-17 wind-down captured.
 - [x] grading structure captured.
-- [ ] Foreman reconciliation/validation pass.
+- [x] Prompt 001 reconciliation/validation pass completed; report in `sidecar/reports/001_reconcile_course_source_chassis.md`.
 
-### B. Build open-source Architecture canon
+### B. Build open-source Architecture canon - **ACTIVE**
 
 - [ ] Research every week/topic.
 - [ ] Check accessibility/licensing.
 - [ ] GREEN/YELLOW/RED map.
 - [ ] Identify course-created bridges needed.
-- [ ] Include sources useful for the sensory labs and PC/component economics.
+- [ ] Include conceptual + measurement sources for sensory labs.
+- [ ] Establish a dated source strategy for Week 5/14 current PC/component pricing/spec evidence.
 
-### C. Build student laboratory
+### C. Build student laboratory - **UNBLOCKED / may proceed in parallel**
 
 - [ ] Reproducible container/runtime.
 - [ ] compiler/binutils/debugger/RISC-V path.
@@ -213,26 +215,24 @@ For each week:
 - [ ] verify idempotence;
 - [ ] production Canvas remains out of scope until explicitly authorized.
 
-## Foreman queue
+## Active queue
 
-1. **Prompt 001 - Reconcile/validate current chassis**
-2. **Prompt 002 - Build open-source Architecture canon**
-3. **Prompt 003 - Build reproducible Architecture laboratory**
-4. **Prompt 004 - Author Weeks 5-14 technical core**
-5. **Prompt 005 - Build shared Farkle + ML Week 16 experience**
-6. **Prompt 006 - Imprint/read back in Savnac**
-
-Prompts 002 and 003 can proceed in parallel after Prompt 001 confirms the chassis. Prompt 004 consumes both.
+1. **COMPLETE - Prompt 001: reconcile/validate current chassis**
+2. **ACTIVE - Prompt 002: build open-source Architecture canon**
+3. **UNBLOCKED/PARALLEL - Prompt 003: build reproducible Architecture laboratory**
+4. **WAITING ON 002 + 003 - Prompt 004: author Weeks 5-14 technical core**
+5. **LATER - Prompt 005: shared Farkle + ML Week 16 experience**
+6. **LATER - Prompt 006: imprint/read back in Savnac**
 
 ## Deployment gates
 
-### Gate 0 - Truth
+### Gate 0 - Truth - **PASS**
 
-One current story in Git; no stale Week 16 capstone or paid-resource doctrine.
+One current story in Git; legacy reports marked historical; no stale Week 16 capstone or paid-resource doctrine in current source.
 
-### Gate 1 - Open content sufficiency
+### Gate 1 - Open content sufficiency - **ACTIVE**
 
-Every required week has a credible no-paywall learning path.
+Every required week needs a credible no-paywall learning path and identified course-owned bridges.
 
 ### Gate 2 - Lab works
 
