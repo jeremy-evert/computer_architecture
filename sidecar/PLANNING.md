@@ -2,7 +2,7 @@
 
 **Course:** COMSC-3013 Computer Architecture, Fall 2026  
 **Repository:** `jeremy-evert/computer_architecture`  
-**Status:** active build; Prompts 001-002 complete; Prompt 003 not started  
+**Status:** active build; Prompts 001-003 complete; Prompt 004 unblocked  
 **Source of truth:** Git. Savnac is the inspection/dogfood surface; production Canvas is a later deployment target.
 
 ## Mission
@@ -28,8 +28,8 @@ The course movement is:
 11. **Weeks 5-14 are the entire Architecture technical runway.**
 12. Machine Dossier begins Week 5 and freezes Week 14.
 13. Sensory-lab doctrine: **predict -> perturb -> run -> measure -> visualize -> explain -> revise.**
-14. Python/matplotlib is the planned visualization instrument.
-15. LaTeX/PDF is the planned dossier publishing instrument, scaffolded rather than taught as a side course.
+14. Python/matplotlib is the visualization instrument, scaffolded through the common lab.
+15. LaTeX/PDF is the dossier publishing instrument, scaffolded through the common lab.
 16. Checkpoints = Weeks 6, 9, 14.
 17. Week 14 is the technical finale and final Machine Dossier defense.
 18. Week 15 = Thanksgiving asynchronous wind-down; no new Architecture theory/dossier layer.
@@ -41,8 +41,9 @@ The course movement is:
 24. No specialized GPU requirement; CPU-only path.
 25. RISC-V is planning-leading.
 26. Grading structure is accepted in `docs/grading-model.md`; due/late/drop mechanics still need operational closure.
+27. The common laboratory uses an **Observatory + Experimental Chamber** split: host/environment evidence keeps its scope, while reproducible experiments use one common chamber and receipt contract.
 
-## Durable planning sources
+## Durable planning and build sources
 
 Read these before authoring:
 
@@ -56,8 +57,12 @@ Read these before authoring:
 - `planning/open-source-resource-map.csv`
 - `planning/week-NN.md`
 - `docs/grading-model.md`
+- `lab/README.md`
+- `lab/CONTRACT.md`
+- `lab/MEASUREMENT.md`
 - `sidecar/reports/001_reconcile_course_source_chassis.md`
 - `sidecar/reports/002_build_open_source_architecture_canon.md`
+- `sidecar/reports/003_build_reproducible_architecture_lab.md`
 
 The week files are thin planning shells. Do not confuse named intentions with authored/validated lessons.
 
@@ -120,6 +125,8 @@ Target artifacts:
 - plotting scaffold;
 - troubleshooting/fallback.
 
+The common `lab/` substrate is the default experiment/receipt/plot/report contract. Week authors should not casually invent a different runner or evidence format.
+
 ### Friday Stack Showcase
 
 Target artifacts:
@@ -152,20 +159,29 @@ The showcase should be fun and real. It should not become required access to Jer
 - [x] Establish dated Week 5/14 current PC/component pricing/spec evidence strategy.
 - [x] Record source burden, strengths, limitations, permanence risk, and lab support in `planning/open-source-resource-map.csv`.
 
-### C. Build student laboratory - **READY / NOT STARTED**
+### C. Build student laboratory - **COMPLETE AT SUBSTRATE LEVEL / CROSS-PLATFORM YELLOWS REMAIN**
 
-- [ ] Reproducible container/runtime.
-- [ ] compiler/binutils/debugger/RISC-V path.
-- [ ] `archprobe` or equivalent structured machine snapshot.
-- [ ] common experiment runner/data format.
-- [ ] Python/matplotlib plot helpers.
-- [ ] LaTeX/PDF dossier build.
-- [ ] memory sensory experiment capability.
-- [ ] multicore/communication-latency experiment capability.
-- [ ] Windows/WSL2/Linux/macOS/fallback validation as feasible.
-- [ ] health/smoke test.
+- [x] Common laboratory contract and CLI.
+- [x] Observatory `archprobe` with explicit scope and privacy behavior.
+- [x] Native C compiler/binary/debugging health checks.
+- [x] Bounded RV32I compile/disassemble/architectural-state execution path.
+- [x] Common JSON/CSV experiment receipts.
+- [x] Python/matplotlib plot helpers.
+- [x] Scaffolded LaTeX/PDF Machine Dossier build.
+- [x] Week 8 dependency/overlap sensory substrate.
+- [x] Week 10 pointer-chase vs streaming memory substrate.
+- [x] Week 12 OpenMP scaling substrate.
+- [x] Week 12 no-root chatterbox vs freight-train communication-delay substrate.
+- [x] Week 13 CPU-only vectorization/specialization comparison substrate.
+- [x] Fallback evidence datasets with equal grading ceiling doctrine.
+- [x] End-to-end `make validate` / `archlab smoke` PASS on executed Linux surface.
+- [ ] WSL2 execution validation.
+- [ ] Containerfile build/image-size validation under an intended runtime.
+- [ ] macOS validation if macOS will be advertised as supported.
 
-Prompt 003 is intentionally **not started** merely because Prompt 002 is complete.
+Prompt 003 report: `sidecar/reports/003_build_reproducible_architecture_lab.md`.
+
+The remaining platform YELLOWs do **not** block Prompt 004 authoring because the stable interfaces and CPU-only sensory capabilities are real. They **do** block advertising those unexecuted platforms as classroom-ready.
 
 ### D. Author Weeks 1-4
 
@@ -175,7 +191,7 @@ Prompt 003 is intentionally **not started** merely because Prompt 002 is complet
 - [ ] Linux observation lab;
 - [ ] keep Architecture content out of Week 1.
 
-### E. Author Weeks 5-14
+### E. Author Weeks 5-14 - **UNBLOCKED**
 
 For each week:
 
@@ -185,7 +201,7 @@ For each week:
 - [ ] recording plan;
 - [ ] Professional Minds integration;
 - [ ] open/reference map;
-- [ ] runnable sensory/inspect/build/measure lab;
+- [ ] runnable sensory/inspect/build/measure lab using the common lab contract where relevant;
 - [ ] data/plot scaffold where useful;
 - [ ] Machine Dossier handoff;
 - [ ] Explain/Defend receipt;
@@ -225,8 +241,8 @@ For each week:
 
 1. **COMPLETE - Prompt 001: reconcile/validate current chassis**
 2. **COMPLETE - Prompt 002: build open-source Architecture canon**
-3. **READY / NOT STARTED - Prompt 003: build reproducible Architecture laboratory**
-4. **WAITING ON 003 - Prompt 004: author Weeks 5-14 technical core**
+3. **COMPLETE WITH PLATFORM YELLOWS - Prompt 003: build reproducible Architecture laboratory**
+4. **UNBLOCKED - Prompt 004: author Weeks 5-14 technical core**
 5. **LATER - Prompt 005: shared Farkle + ML Week 16 experience**
 6. **LATER - Prompt 006: imprint/read back in Savnac**
 
@@ -240,13 +256,17 @@ One current story in Git; legacy reports marked historical; no stale Week 16 cap
 
 Every required week has a credible no-paywall source strategy, explicit course-owned bridges, and honest access/reuse classification. Individual links still require week-level validation at publication time.
 
-### Gate 2 - Lab works - **NOT STARTED**
+### Gate 2 - Lab works - **PASS FOR EXECUTED LINUX SUBSTRATE / PLATFORM YELLOWS TRACKED**
 
-Fresh supported machine can inspect, measure, emit data, plot, and build a minimal dossier PDF.
+The executed substrate can inspect scoped machine evidence, compile/run/inspect bounded RISC-V, run controlled sensory experiments, emit structured data, plot it, and compile a Machine Dossier PDF.
 
-### Gate 3 - Weeks are real
+The committed validation receipt is `lab/validation/2026-08-16-native-linux-smoke.json`.
 
-Week is green only when lecture/deck, lab, evidence, references, fallback, and validation exist.
+WSL2, container-image, and optional macOS support remain YELLOW until executed. Documentation alone does not promote them to GREEN.
+
+### Gate 3 - Weeks are real - **NEXT BUILD GATE**
+
+A week is green only when lecture/deck, lab, evidence, references, fallback, and validation exist.
 
 ### Gate 4 - Savnac dogfood
 
