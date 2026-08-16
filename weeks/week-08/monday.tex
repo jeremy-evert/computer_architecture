@@ -1,0 +1,17 @@
+\documentclass{beamer}
+\input{../_shared/beamer-preamble.tex}
+\title{Week 8 Monday}\subtitle{Make It Fast Without Breaking It}\author{COMSC-3013}\date{}
+\begin{document}
+\begin{frame}\titlepage\end{frame}
+\ArchQuestionSlide{Why does overlap improve throughput, and why does it create new problems?}{With the same total updates, which should have lower time per update: one dependent chain or four more-independent chains?}
+\begin{frame}{Correct is not fast}\begin{itemize}\item Week 7 explains correctness.\item Week 8 asks how much work finishes per time.\item Correct overlap creates performance opportunities and hazards.\end{itemize}\end{frame}
+\begin{frame}{Latency versus throughput}\begin{itemize}\item Latency follows one dependency path.\item Throughput counts completed independent work per time.\item They are related but not interchangeable.\end{itemize}\end{frame}
+\begin{frame}{A CPU-time model}\begin{itemize}\item CPU time roughly follows instruction count, CPI, and cycle time.\item Each term depends on workload and implementation.\item Bigger headline numbers are not automatic performance.\end{itemize}\end{frame}
+\begin{frame}{A teaching pipeline}\begin{itemize}\item IF, ID, EX, MEM, WB visualize overlap.\item It is a model, not a claim about every real CPU.\item Overlap improves throughput when dependencies/resources allow it.\end{itemize}\end{frame}
+\begin{frame}{Data hazards}\begin{itemize}\item Consumers can need results before producers finish.\item Forwarding can shorten some waits.\item Stalls preserve correctness when a value is not ready.\end{itemize}\end{frame}
+\begin{frame}{Control and structural conflicts}\begin{itemize}\item Branches create uncertainty about future work.\item Shared resources can conflict.\item Performance mechanisms exist because correctness still has to survive overlap.\end{itemize}\end{frame}
+\begin{frame}{The sensory experiment}\begin{itemize}\item Same total update count.\item Dependent chain versus four more-independent chains.\item Measure ns/update and plot the difference.\end{itemize}\end{frame}
+\begin{frame}{Evidence boundary}\begin{itemize}\item The benchmark measures this code on this visible machine.\item Dependency is a plausible architecture mechanism.\item Physical pipeline depth remains unmeasured.\end{itemize}\end{frame}
+\begin{frame}{Wednesday}\begin{itemize}\item Predict first.\item Run 12 million updates.\item Plot ns/update.\item Explain shape and limitation.\end{itemize}\end{frame}
+\begin{frame}{Closing rule}\centering\Large Dependency changes available overlap; overlap changes throughput.\end{frame}
+\end{document}

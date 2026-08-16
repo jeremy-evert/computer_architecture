@@ -1,0 +1,20 @@
+\documentclass{beamer}
+\input{../_shared/beamer-preamble.tex}
+\title{Week 6 Monday}
+\subtitle{Bits Become Instructions}
+\author{COMSC-3013}
+\date{}
+\begin{document}
+\begin{frame}\titlepage\note{Open with the machine question, not number-system drill.}\end{frame}
+\ArchQuestionSlide{What must software and hardware agree on for a program to run?}{For transform(4), predict the return value and one place where width, signedness, encoding, or register convention matters.}
+\begin{frame}{Meaning needs representation}\begin{itemize}\item Humans reason about values and operations.\item Hardware stores fixed-width bit patterns.\item Interpretation gives the bits meaning.\end{itemize}\note{Use one bounded signed/unsigned example.}\end{frame}
+\begin{frame}{Fixed width changes the question}\begin{itemize}\item Width limits representable values.\item The same bits can have signed or unsigned interpretations.\item Overflow is a property of the representation/operation contract.\end{itemize}\note{Keep conversions subordinate to evidence.}\end{frame}
+\begin{frame}{Hex is a viewing tool}\begin{itemize}\item One hex digit represents four bits.\item Hex makes instruction words and addresses easier to inspect.\item Fluency is useful; worksheet volume is not.\end{itemize}\note{Show one compact example.}\end{frame}
+\begin{frame}{The persistent specimen}\begin{itemize}\item The same transform() function survives Weeks 6--9.\item Input 4 should return 18.\item The lab expects x10/a0 = 18 and x11/a1 = 18.\end{itemize}\note{Do not reveal the full trace before prediction.}\end{frame}
+\begin{frame}{Instructions are encoded agreements}\begin{itemize}\item Operation and operand fields are represented in a 32-bit instruction.\item Disassembly is evidence about generated instructions.\item Inspect one or two encodings, not an opcode census.\end{itemize}\note{Use the current RISC-V specification as normative truth.}\end{frame}
+\begin{frame}{ABI only where useful}\begin{itemize}\item a0/x10 carries the return value in the specimen.\item Register convention connects separately compiled code.\item Deeper ABI details wait until integration needs them.\end{itemize}\note{The convention matters because it is observable.}\end{frame}
+\begin{frame}{Floating point: one important warning}\begin{itemize}\item Many decimal fractions have no exact finite binary floating representation.\item Representation choices trade range, precision, storage, and arithmetic behavior.\item This week needs the idea, not manual format archaeology.\end{itemize}\note{Keep this brief.}\end{frame}
+\begin{frame}{What the RV32I chamber proves}\begin{itemize}\item It executes a bounded RV32I architectural-state model.\item It verifies instruction semantics and register/memory state.\item It is not cycle accurate and does not reveal a physical pipeline.\end{itemize}\note{Scope is part of the lesson.}\end{frame}
+\begin{frame}{Wednesday: make the machine argue}\begin{itemize}\item Predict first.\item Run the specimen.\item Inspect disassembly and final state.\item Revise the explanation and state the limitation.\end{itemize}\note{Evidence gets the final vote.}\end{frame}
+\begin{frame}{Closing rule}\centering\Large Meaning survives only because software and hardware agree on representation, instruction semantics, and state conventions.\note{Bridge to Week 7: what structures inside a CPU make that promise possible?}\end{frame}
+\end{document}

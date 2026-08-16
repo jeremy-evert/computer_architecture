@@ -1,0 +1,17 @@
+\documentclass{beamer}
+\input{../_shared/beamer-preamble.tex}
+\title{Week 9 Monday}\subtitle{Follow the Program Down}\author{COMSC-3013}\date{}
+\begin{document}
+\begin{frame}\titlepage\end{frame}
+\ArchQuestionSlide{Can I follow one small program through the stack without losing the evidence chain?}{Name the handoff where you are least confident before rebuilding the chain.}
+\begin{frame}{Integration is an evidence problem}\begin{itemize}\item Different artifacts answer different questions.\item Integration links claims without erasing scope.\item Every handoff needs an evidence pointer.\end{itemize}\end{frame}
+\begin{frame}{The persistent specimen}\begin{itemize}\item transform() survives Weeks 6--9.\item Familiarity frees attention for integration.\item No new toy program is introduced.\end{itemize}\end{frame}
+\begin{frame}{Layer map I}\begin{itemize}\item source meaning\item fixed-width representation\item compiler / RV32I instruction\item architectural state\end{itemize}\end{frame}
+\begin{frame}{Layer map II}\begin{itemize}\item bounded datapath/control meaning\item dependency/performance implication\item resulting behavior\end{itemize}\end{frame}
+\begin{frame}{Evidence at every arrow}\begin{itemize}\item source excerpt\item disassembly / receipt\item datapath trace\item dependency plot\end{itemize}\end{frame}
+\begin{frame}{Compiler boundary}\begin{itemize}\item Generated instructions are observable evidence.\item Compiler internals are not this course's learning target.\item Do not invent invisible optimization stories.\end{itemize}\end{frame}
+\begin{frame}{Datapath and timing boundaries}\begin{itemize}\item Week 7 explains a bounded correct path.\item Week 8 measures native dependency behavior.\item Do not fuse them into an unsupported exact cycle model.\end{itemize}\end{frame}
+\begin{frame}{AI generation is a candidate}\begin{itemize}\item Generate a trace or explanation.\item Mark unsupported handoffs.\item Repair with course evidence.\end{itemize}\end{frame}
+\begin{frame}{Checkpoint 2}\begin{itemize}\item Reuse existing evidence.\item Repair gaps.\item Make the chain reproducible.\item No new theory and no Friday burden.\end{itemize}\end{frame}
+\begin{frame}{Closing rule}\centering\Large Connected evidence beats a pile of correct fragments.\end{frame}
+\end{document}

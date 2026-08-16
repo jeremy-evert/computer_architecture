@@ -1,0 +1,17 @@
+\documentclass{beamer}
+\input{../_shared/beamer-preamble.tex}
+\title{Week 7 Monday}\subtitle{Crack Open the CPU}\author{COMSC-3013}\date{}
+\begin{document}
+\begin{frame}\titlepage\note{Start from an instruction promise, not a finished spaghetti diagram.}\end{frame}
+\ArchQuestionSlide{What has to exist inside the CPU for one instruction to execute correctly?}{Choose one Week 6 instruction and predict its inputs, major path, operation, control choices, and changed state.}
+\begin{frame}{Start from the promise}\begin{itemize}\item The ISA defines a state change.\item The datapath exists to realize that change.\item Add structures only when the familiar instruction needs them.\end{itemize}\end{frame}
+\begin{frame}{The bounded path}\begin{itemize}\item PC and instruction fetch/decode\item register file / immediate\item ALU / optional data memory\item write-back and next PC\end{itemize}\end{frame}
+\begin{frame}{Why the register file matters}\begin{itemize}\item Named architectural registers hold persistent state.\item Read ports supply operands.\item Write-back changes destination state.\end{itemize}\end{frame}
+\begin{frame}{Why the ALU matters}\begin{itemize}\item Arithmetic and comparisons need functional hardware.\item Address calculation reuses arithmetic.\item Control selects the required operation.\end{itemize}\end{frame}
+\begin{frame}{Muxes and control}\begin{itemize}\item One machine must support multiple instruction families.\item Muxes choose sources and result paths.\item Control makes those choices instruction-dependent.\end{itemize}\end{frame}
+\begin{frame}{State versus plumbing}\begin{itemize}\item Registers, memory, PC behavior are ISA-visible.\item Muxes/control/ports are implementation details of the teaching model.\item Different implementations can keep the same ISA promise.\end{itemize}\end{frame}
+\begin{frame}{A second instruction class}\begin{itemize}\item Load/store adds data-memory behavior.\item Branches change the next-PC choice.\item Trace only enough contrast to make control necessary.\end{itemize}\end{frame}
+\begin{frame}{Reality is richer}\begin{itemize}\item Modern CPUs may speculate and execute out of order.\item Our model is intentionally bounded.\item Necessity and evidence matter more than diagram completeness.\end{itemize}\end{frame}
+\begin{frame}{Wednesday}\begin{itemize}\item Reuse Week 6 disassembly.\item Trace one known instruction.\item Repair one wrong trace.\item Separate ISA-visible state from implementation detail.\end{itemize}\end{frame}
+\begin{frame}{Closing question}\centering\Large Why is each major structure necessary for the promised state change?\end{frame}
+\end{document}
