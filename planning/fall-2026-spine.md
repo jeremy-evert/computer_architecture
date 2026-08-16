@@ -1,94 +1,100 @@
 # Computer Architecture — Fall 2026 17-Week Planning Spine
 
-**Status: planning spine, not finished curriculum.** This document exists so
-`course_foundry` prompt 045 (the shared landing-page/Week-at-a-Glance
-system) has real semester structure to build against. Where daily content
-has not been authored yet, that is marked `TBD` honestly — nothing below is
-a stand-in for real lecture/lab/assignment content.
+**Status: accepted semester spine; weekly content is still being authored.**
 
-Calendar convention matches the one already used by CS1/CS2/DSCT
-(`computer_science_1/planning/block-map.md`): real Fall 2026 dates,
-Aug 17 – Dec 11, with the same holiday facts baked in — **Labor Day Mon
-Sep 7** (no Monday, week 4), **Fall Break begins Wed Oct 14, 10 PM** (no
-Friday, week 9), **Thanksgiving begins Tue Nov 24, 10 PM** (Monday only,
-week 15), **Finals Dec 7–11** (week 17).
+This document is the durable semester map for COMSC-3013 Fall 2026. It records what each week is for without pretending that every lesson, lab, rubric, due date, or Canvas object already exists.
 
-Working cadence for this course is Jeremy's planning MWF 2:00 PM rhythm
-(`course_metadata.yaml`'s `instructional_working_cadence`) — the official
-Banner record is online/asynchronous with no meeting time; see that file's
-`official` block. Week dates below are Monday-of-week dates, matching the
-CS1/CS2/DSCT convention, not literal MWF meeting instances.
+The official course is online/asynchronous. Jeremy uses a Monday / Wednesday / Friday 2:00 PM rhythm for planning and content cadence only; it is not an official Banner meeting time. See `course_metadata.yaml`.
 
-Six-chapter backbone (`course_metadata.yaml`'s `textbook.main_chapters`),
-Patterson/Hennessy *Computer Organization and Design (6e)*, MIPS interactive
-zyBook (`EvertCOD(MIPS)Jul2021`):
+## Calendar
 
-1. Computer Abstractions and Technology
-2. Instructions: Language of the Computer
-3. Arithmetic for Computers
-4. The Processor
-5. Large and Fast: Exploiting Memory Hierarchy
-6. Parallel Processors from Client to Cloud
+Fall 2026 runs Aug 17–Dec 11.
 
-## First-pass semester distribution
+- Labor Day: Monday Sep 7 — no Monday work in Week 4.
+- Fall Break begins Wednesday Oct 14 at 10 PM — no Friday work in Week 9.
+- Thanksgiving begins Tuesday Nov 24 at 10 PM — Week 15 is intentionally lightweight/asynchronous.
+- Finals: Dec 7–11 — Week 17.
 
-Chosen to give conceptual breathing room rather than race through six dense
-chapters in six weeks — Ch. 2 (the ISA) and Ch. 4 (datapath/pipelining) are
-each given three weeks as the heaviest material; a mid-semester review week
-absorbs Fall Break's short Friday; Ch. 6 runs into Thanksgiving's short
-week, which fits since parallelism/modern-architecture survey content
-tolerates a lighter week better than core datapath design would.
+## Design rule
 
-| Week | Dates (Mon–Fri) | Theme / chapter | Status | Notes |
+The semester is **curriculum-first, not textbook-chapter-first**.
+
+The current operational zyBook remains recorded in `course_metadata.yaml` until an actual adoption change is made, but the week order below is driven by the learning experience we want. After the final zyBooks ISA/product decision, relevant sections can be mapped onto these weeks.
+
+## Fall 2026 spine
+
+| Week | Dates | Theme | Central question | Status / intent |
 |---|---|---|---|---|
-| 1 | Aug 17–21 | Orientation & kickoff — course rhythm, tools, hardware/software interface framing, zyBook setup | planned | Universal Week 1 pattern shared with CS1/CS2/DSCT (course logistics + "getting the most out of this class"); no chapter content yet. |
-| 2 | Aug 24–28 | Ch. 1: Computer Abstractions and Technology (layers of abstraction, performance, energy efficiency) | placeholder | Daily content TBD. |
-| 3 | Aug 31–Sep 4 | Ch. 1 continued (performance measurement, technology trends, the power wall) | placeholder | Daily content TBD. |
-| 4 | Sep 8–11 (no Mon — Labor Day Sep 7) | Ch. 2: Instructions — introduction, MIPS operands, arithmetic operations | placeholder | Short week; content TBD. |
-| 5 | Sep 14–18 | Ch. 2 continued — instruction representation, logical/branching operations | placeholder | Daily content TBD. |
-| 6 | Sep 21–25 | Ch. 2 continued — procedures, addressing, MIPS instruction summary | placeholder | Daily content TBD. |
-| 7 | Sep 28–Oct 2 | Ch. 3: Arithmetic for Computers — integer addition/subtraction/multiplication/division | placeholder | Daily content TBD. |
-| 8 | Oct 5–9 | Ch. 3 continued — floating point, subword parallelism, arithmetic performance | placeholder | Daily content TBD. |
-| 9 | Oct 12–14 (no Fri — Fall Break begins Wed 10 PM) | Review & integration: Ch. 1–3 checkpoint, hardware/software-interface through-line | placeholder | Short week; review/integration content TBD. |
-| 10 | Oct 19–23 | Ch. 4: The Processor — datapath basics, single-cycle implementation | placeholder | Daily content TBD. |
-| 11 | Oct 26–30 | Ch. 4 continued — control implementation, pipelining introduction | placeholder | Daily content TBD. |
-| 12 | Nov 2–6 | Ch. 4 continued — pipelined datapath/control, hazards | placeholder | Daily content TBD. |
-| 13 | Nov 9–13 | Ch. 5: Memory Hierarchy — memory technologies, cache basics | placeholder | Daily content TBD. |
-| 14 | Nov 16–20 | Ch. 5 continued — cache performance, virtual memory | placeholder | Daily content TBD. |
-| 15 | Nov 23 only (Thanksgiving begins Tue 10 PM) | Ch. 6: Parallel Processors — introduction, hardware multithreading | placeholder | Very short week (Monday only); light-touch survey content fits here. TBD. |
-| 16 | Nov 30–Dec 4 | Ch. 6 continued — multicore, GPUs, clusters/warehouse-scale computers | placeholder | Daily content TBD. |
-| 17 | Dec 7–11 | Review, integration, and finals | planned | Finals week; assignments/projects/labs structure not yet built — see gaps below. |
+| 1 | Aug 17–21 | **Success Foundations** | How do I survive this semester, thrive in this degree, and enjoy the career I am building toward? | **Pinned.** Universal Week 1 shared with CS1/CS2/DSCT. Monday = semester/class success; Wednesday = degree success; Friday = career success. No Computer Architecture technical content required. |
+| 2 | Aug 24–28 | **AI Lab Training** | How can AI help me investigate a machine without becoming my source of truth? | **Pinned.** Build the habits used all semester: gather context, ask useful questions, label AI/tool use, verify generated claims against commands/documentation/measurements, and keep an evidence notebook. Carry forward the shared Professional Minds Week 2 touchpoints (*Make It Stick* and *Mindset*) without displacing the AI-lab focus. |
+| 3 | Aug 31–Sep 4 | **Containers & Repeatability** | How do I make a systems experiment run the same way twice and on another computer? | **Pinned.** Establish the semester's reproducible lab capsule. Students should run/reproduce a small experiment and understand why environment capture matters. |
+| 4 | Sep 8–11 | **Linux Command Line as a Machine Telescope** | How do I ask the operating system what this computer is and what it is doing? | **Pinned.** Short Labor Day week. Shell/files/process/system/hardware/binary inspection as evidence gathering, not disconnected command memorization. |
+| 5 | Sep 14–18 | **Bits Become Meaning: Representation, Logic, Arithmetic** | How can the same bits become numbers, instructions, and decisions? | Core. Binary/hex, signed representation, floating point, Boolean logic, combinational building blocks, ALU-level reasoning. Prefer a bounded build/trace experiment over worksheet-only coverage. |
+| 6 | Sep 21–25 | **The Hardware/Software Contract: ISA + RISC-V** | What must software and hardware agree on for a program to run? | Core. Registers, memory, instructions, encodings, control flow, procedures/calling convention, source→assembly→machine translation. RISC-V is the planning-leading ISA; exact zyBook product remains a separate adoption decision. |
+| 7 | Sep 28–Oct 2 | **Build a CPU: Datapath + Control** | What path does one instruction take through a processor? | Core. Datapath, ALU/register file/memory/control, single-cycle implementation, stored-program/Von Neumann connection. Trace or build a small CPU rather than merely label a diagram. |
+| 8 | Oct 5–9 | **Pipelining, Hazards, and Performance** | Why is doing several things at once faster and harder? | Core. Latency/throughput/CPI, pipeline stages, structural/data/control hazards, forwarding/stalls; branch prediction/superscalar ideas may be enrichment. |
+| 9 | Oct 12–14 | **Integration Checkpoint: Source to CPU** | Can I follow one small program through the stack without hand-waving? | **Short Fall Break week.** No major new conceptual load. Student traces a bounded program from source/assembly through instructions and processor execution, revising weak explanations with evidence. |
+| 10 | Oct 19–23 | **Memory Hierarchy + Caches** | Why can memory be both huge and fast only by using layers? | Core. Locality, cache mapping/associativity, hits/misses, AMAT/performance tradeoffs, measured locality experiment where practical. |
+| 11 | Oct 26–30 | **Virtual Memory, Protection, I/O, and OS Support** | What hardware does an operating system need to create the world a process sees? | Core. Address translation, protection, exceptions/traps/syscalls, interrupts and basic I/O; connect process abstractions to hardware mechanisms. |
+| 12 | Nov 2–6 | **Multicore, Coherence, Synchronization** | What breaks when several cores can touch the same world at once? | Core. Thread/data parallelism, Amdahl's Law, coherence, false sharing, synchronization and introductory memory-consistency reasoning. |
+| 13 | Nov 9–13 | **Vectors, GPUs, and ML Accelerators** | Why do some workloads want a different kind of machine? | Core/modern systems. SIMD/vector ideas, GPU execution, throughput architecture, accelerator tradeoffs, relationship between ML workload shape and hardware. CPU-only completion path is required; GPU is enrichment, not a prerequisite. |
+| 14 | Nov 16–20 | **Architectures in the Wild: Tradeoffs + Capstone Launch** | If every design is a compromise, how do I defend one architecture choice with evidence? | Synthesis. Compare real CPUs/SoCs/GPUs/accelerators using performance, power/energy, cost, programmability, security and workload fit. Launch Week 16 capstone with a measurement plan. |
+| 15 | Nov 23–27 | **Asynchronous Capstone Preflight / Thanksgiving** | What evidence do I already have, and what do I still need before I make a claim? | **Pinned travel/Thanksgiving week.** Lightweight and self-contained. No major new theory, fragile live event, or instructor-dependent workflow. Work should prepare, not punish, the Week 16 capstone. |
+| 16 | Nov 30–Dec 4 | **Farkle + Machine Learning Architecture Capstone** | What does a real workload reveal about the machine underneath it? | **Pinned.** Use a reproducible Farkle/ML workload to profile/measure/inspect and connect observations to multiple course layers: representation/ISA/CPU/memory/parallelism/accelerators. Students defend a design/performance claim with evidence. CPU-only completion path required; GPU comparison optional. |
+| 17 | Dec 7–11 | **Reflection + Show Me You Understand a Machine** | What do I understand now that I could not explain in August? | **Pinned finals experience.** Reflection on learning/challenge/reward plus evidence-backed demonstration or explanation proving genuine understanding of at least one architecture concept/tradeoff. Exact assessment form remains a grading-design decision. |
 
-## Reasoning Odyssey continuity (doctrine note, not authored content)
+## Recurring weekly rhythm after Week 1
 
-Per `jeremy_task_tracking/prompts/126_cross_course_reasoning_odyssey_fabric.md`,
-the Reasoning Odyssey is fabric, not a bolt-on: when weekly assignments/labs
-are later authored for this course, they should give students the option to
-carry a chosen persistent World Bible (a system, machine, project, or problem
-space) through architecture work where it is pedagogically natural — e.g.
-tracing instructions, datapath decisions, or memory-hierarchy tradeoffs for a
-machine/system the student is already building continuity around — rather
-than being decorative or forced every week. This does not create a second
-assignment track or grade category; it shapes how the real disciplinary work
-(ISA analysis, datapath/pipeline design, cache/memory reasoning, parallelism)
-gets framed. No grading weight is implied here — the grading model is not yet
-built (see below) — and no Week 1-17 assignment content is authored by this
-note. This is a placeholder for whoever later authors this course's weekly
-activities/rubrics, so continuity isn't retrofitted after the fact the way it
-had to be for DSCT.
+Because the course is asynchronous, the M/W/F rhythm is a release/design pattern rather than an attendance rule:
 
-## Explicitly not yet decided (flag, don't fabricate)
+- **Monday — Frame:** central machine question, concise instructor framing, reference/reading menu, prediction or hypothesis.
+- **Wednesday — Inspect / Build / Measure:** lab, trace, simulator, shell experiment, or design exercise.
+- **Friday — Explain / Defend:** evidence-backed explanation, correction, show-and-tell, or synthesis checkpoint.
 
-- **Assignments/labs/projects:** no assignment, lab, or project structure
-  has been authored for this course yet. `docs/` and `assignments/`
-  directories are intentionally not created in this pass — Prompt 045 and
-  later content-authoring prompts own that, per prompts/044's own scope
-  boundary ("do not manufacture completed lectures/assignments simply to
-  make the map green").
-- **zyBook subsection granularity:** only the six top-level chapter titles
-  from the supplied zyBook table of contents are used above. No subsection
-  names are inferred — prompts/044 explicitly forbids guessing them without
-  a legitimately readable source.
-- **Grading model:** not built. CS1's `docs/grading-model.md` is the sibling
-  pattern to follow later; nothing here should be read as implying weights
-  or point values.
+Every technical week should give students something observable. An AI answer, textbook paragraph, or lecture statement is not evidence by itself.
+
+## Laboratory through-line
+
+### Week 2 onward — AI investigation notebook
+
+Students should repeatedly record:
+
+1. question/hypothesis;
+2. context and AI/tool use;
+3. command/code/tool/model;
+4. observation/measurement;
+5. evidence artifact;
+6. conclusion;
+7. correction/revision after verification.
+
+### Week 3 onward — reproducible lab capsule
+
+Later course tooling should run inside or cleanly alongside a versioned reproducible environment. Candidate capabilities include compiler/binutils, debugger, binary inspection, timing/profiling, and the final RISC-V simulator/toolchain path. Exact tools are validated before publication rather than guessed here.
+
+### Week 4 onward — Linux as an observation layer
+
+The shell recurs because it exposes machine state: files, binaries, processes, CPU/memory information, `/proc`, timing, disassembly and other evidence. Students should use it to answer architecture questions rather than memorize command trivia.
+
+## External curriculum evidence behind Weeks 5–14
+
+The topic sequence is deliberately informed by strong open/current architecture curricula rather than invented in isolation:
+
+- UC Berkeley CS61C (2026): representation, C/memory, RISC-V, toolchain translation, digital systems, single-cycle CPU, pipelining, caches, performance, parallelism, virtual memory.
+- Cornell CS3410 (2026): C, 64-bit RISC-V, CPU simulation, caches, processes/system calls, parallelism, reproducible Docker infrastructure.
+- MIT 6.004 Computation Structures: logic/state, ISA, processor construction, memory hierarchy, VM/OS mechanisms, interrupts, pipelines and parallel systems.
+- Nand2Tetris: bounded build-the-machine projects from logic/ALU through CPU/computer and the software hierarchy.
+- Cambridge Introduction to Computer Architecture: RISC-V, processor design, pipelines, caches, OS support, SoCs/DRAM, multicore/coherence and GPUs.
+- RISC-V International specifications: primary-source ISA reference if the RISC-V direction is finalized.
+
+Detailed research/workbench links and execution work live in `sidecar/PLANNING.md` rather than in this durable semester map.
+
+## Explicitly still open
+
+Do not fabricate these while authoring content:
+
+- exact zyBooks ISA/product/edition and whether zyBooks work is required/graded;
+- grading weights/point model and late/due-date mechanics;
+- final supported simulator/emulator/toolchain after lab-platform testing;
+- exact Week 17 assessment format.
+
+These decisions should be recorded in `sidecar/questions/` and then promoted into durable course source when resolved.
