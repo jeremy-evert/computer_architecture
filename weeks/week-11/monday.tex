@@ -1,0 +1,17 @@
+\documentclass{beamer}
+\input{../_shared/beamer-preamble.tex}
+\title{Week 11 Monday}\subtitle{The Useful Lie of Memory}\author{COMSC-3013}\date{}
+\begin{document}
+\begin{frame}\titlepage\end{frame}
+\ArchQuestionSlide{What hardware mechanisms create the memory/process world software thinks it sees?}{If two processes show similar virtual address ranges, do they necessarily refer to the same physical memory?}
+\begin{frame}{An address is an abstraction}\begin{itemize}\item Programs normally use virtual addresses.\item Translation creates a process-visible view.\item Similar virtual addresses need not name the same physical state.\end{itemize}\end{frame}
+\begin{frame}{Pages and page tables}\begin{itemize}\item Virtual memory is organized into pages.\item Translation maps virtual pages toward physical frames/state.\item Page offset survives the translation.\end{itemize}\end{frame}
+\begin{frame}{The TLB}\begin{itemize}\item Page-table lookup is itself work.\item TLBs cache recent translations.\item Translation therefore has locality behavior too.\end{itemize}\end{frame}
+\begin{frame}{Protection and privilege}\begin{itemize}\item Mappings carry access permissions.\item Hardware privilege makes protection enforceable.\item Illegal accesses can trigger controlled transitions.\end{itemize}\end{frame}
+\begin{frame}{Page faults}\begin{itemize}\item A fault means the current access cannot complete normally.\item The OS may allocate, load, remap, or reject.\item Fault is a transition, not just 'slow RAM.'\end{itemize}\end{frame}
+\begin{frame}{Traps, syscalls, interrupts}\begin{itemize}\item Syscalls request privileged service.\item Exceptions/traps are synchronous with execution state.\item Interrupts are asynchronous events.\end{itemize}\end{frame}
+\begin{frame}{Observable process evidence}\begin{itemize}\item /proc/<pid>/maps shows virtual ranges and permissions.\item File-backed mappings may show paths.\item It is not a simple physical-memory decoder.\end{itemize}\end{frame}
+\begin{frame}{Storage and I/O boundary}\begin{itemize}\item File-backed mappings connect memory to persistent storage.\item Devices require privileged/OS mediation.\item Keep the week focused on architecture cooperation.\end{itemize}\end{frame}
+\begin{frame}{Wednesday}\begin{itemize}\item Observe page size and process mappings.\item Separate direct observation from mechanism.\item Verify one AI claim with primary evidence.\end{itemize}\end{frame}
+\begin{frame}{Closing rule}\centering\Large Software's clean memory world is constructed by translation, protection, privilege, and OS/hardware cooperation.\end{frame}
+\end{document}

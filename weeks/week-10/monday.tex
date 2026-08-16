@@ -1,0 +1,17 @@
+\documentclass{beamer}
+\input{../_shared/beamer-preamble.tex}
+\title{Week 10 Monday}\subtitle{Make the Memory Hierarchy Hurt}\author{COMSC-3013}\date{}
+\begin{document}
+\begin{frame}\titlepage\end{frame}
+\ArchQuestionSlide{Why do we need layers of memory, and what does crossing a layer feel like?}{Predict how dependent-access time changes as working set grows and whether streaming bandwidth follows the same shape.}
+\begin{frame}{Attack the Week 5 ledger}\begin{itemize}\item Capacity and price were easy to inventory.\item Performance depends on access pattern and working set.\item The hierarchy is experienced by workloads, not spec sheets.\end{itemize}\end{frame}
+\begin{frame}{Locality}\begin{itemize}\item Temporal locality reuses recent data.\item Spatial locality uses nearby data.\item Cache lines exploit spatial structure.\end{itemize}\end{frame}
+\begin{frame}{Latency versus bandwidth}\begin{itemize}\item Pointer chasing exposes dependent-access latency.\item Streaming exposes bulk throughput/bandwidth.\item One number cannot answer both questions.\end{itemize}\end{frame}
+\begin{frame}{Working set}\begin{itemize}\item Active data can fit or exceed hierarchy levels.\item Behavior can change as the working set grows.\item Real transitions are noisy.\end{itemize}\end{frame}
+\begin{frame}{Bounded cache mechanics}\begin{itemize}\item Lines/blocks\item hits and misses\item sets/associativity/replacement\end{itemize}\end{frame}
+\begin{frame}{AMAT as a model}\begin{itemize}\item Hit time plus miss-rate-weighted penalty organizes thinking.\item Simplified assumptions matter.\item Do not force the native curve to equal the model.\end{itemize}\end{frame}
+\begin{frame}{The sensory experiment}\begin{itemize}\item Sweep working-set size.\item Compare pointer chase and streaming.\item Look for regions and shape.\end{itemize}\end{frame}
+\begin{frame}{Causal restraint}\begin{itemize}\item A cliff means behavior changed.\item It does not automatically name L1/L2/L3.\item Corroborating hardware evidence is needed for stronger claims.\end{itemize}\end{frame}
+\begin{frame}{Wednesday}\begin{itemize}\item Predict.\item Run.\item Plot.\item Mark regions.\item Revise the Week 5 memory story.\end{itemize}\end{frame}
+\begin{frame}{Closing rule}\centering\Large Access pattern and working set decide which part of the hierarchy hurts.\end{frame}
+\end{document}
