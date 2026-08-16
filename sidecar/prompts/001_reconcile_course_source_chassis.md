@@ -6,7 +6,7 @@
 
 ## Mission
 
-Turn the accepted Fall 2026 planning decisions into a clean durable source chassis without inventing unresolved grading, zyBooks, or production-Canvas policy.
+Turn the accepted Fall 2026 planning decisions into a clean durable source chassis without inventing unresolved grading or production-Canvas policy.
 
 This is not a mandate to author the whole semester. It is the structural pass that makes later week-sized authoring safe and consistent.
 
@@ -34,31 +34,30 @@ Inspect reusable shared-course infrastructure before duplicating it. If `semeste
 - official section = online/asynchronous;
 - M/W/F 2 PM = Jeremy's planning rhythm only;
 - Week 1 = survive semester / thrive degree / enjoy career, no Architecture technical gate;
-- Week 2 = AI Lab Training;
+- Week 2 = provider-neutral AI Lab Training;
 - Week 3 = Containers & Repeatability;
 - Week 4 = Linux Command Line Introduction;
 - Weeks 5–14 = architecture core from the accepted spine;
 - Week 15 = Thanksgiving/travel asynchronous lightweight preflight;
 - Week 16 = Farkle + ML architecture capstone;
 - Week 17 = reflection + evidence-backed demonstration of understanding;
-- Architecture stays with zyBooks, but exact product/ISA and grade role remain open;
-- do not silently replace the operational MIPS zyBook metadata until a real adoption change exists.
+- no required commercial textbook or zyBooks purchase;
+- no required paid AI subscription;
+- no required paid AI CLI tool such as Codex or Claude Code;
+- premium AI/CLI tools may be optional enrichment only;
+- no specialized GPU hardware requirement;
+- CPU-only required completion path;
+- RISC-V is the planning-leading ISA independent of commercial-resource availability.
 
 ## Required work
 
 ### 1. Reconcile top-level documentation
 
-Inspect `README.md` for stale claims after the new planning pass.
+Inspect the repository for stale claims that Architecture requires or plans to require zyBooks, a commercial textbook, paid AI, paid CLI tooling, or specialized student hardware.
 
-Update it only where needed so a new contributor can tell:
+Update only where needed so a new contributor understands the current doctrine.
 
-- what the course is;
-- where the accepted 17-week spine lives;
-- where active deployment planning lives;
-- that the currently recorded MIPS zyBook is operational truth but not necessarily the final pedagogical ISA/product;
-- which decisions are still open.
-
-Do not turn the README into the sidecar work log.
+Preserve useful historical resource provenance without presenting it as required student material.
 
 ### 2. Establish week-file chassis
 
@@ -74,26 +73,24 @@ At minimum create source-backed planning files for:
 - Week 16;
 - Week 17.
 
-These are the weeks Jeremy has explicitly shaped and can therefore be represented now.
-
-For Weeks 5–14, do **not** manufacture full lessons in this prompt. If useful, create only thin stubs generated directly from the accepted spine, clearly marked for Prompt 004 ownership.
+For Weeks 5–14, do not manufacture full lessons here. If useful, create only thin stubs generated from the accepted spine, clearly marked for Prompt 004 ownership.
 
 ### 3. Give every week the same planning schema
 
-A week file should make it easy for later authoring and Course Foundry to find, where applicable:
+A week file should expose, where applicable:
 
 - dates/status;
 - weekly focus / central question;
 - Monday/Wednesday/Friday planning rhythm;
 - learning objectives;
-- references/content layer;
+- open/reference content layer;
 - inspect/build/measure activity placeholder or accepted activity;
 - evidence/submission intent;
 - dependencies/tooling;
 - readiness state;
 - explicit unresolved items.
 
-Do not invent due dates, point totals, grading weights, late policy, or zyBooks section numbers.
+Do not invent due dates, point totals, grading weights, or late policy.
 
 ### 4. Preserve Week 1 universality
 
@@ -105,7 +102,7 @@ No technical architecture quiz/lab/setup gate should be smuggled into Week 1.
 
 The source should show the intended progression:
 
-- Week 2 teaches AI-assisted investigation + verification notebook;
+- Week 2 teaches AI-assisted investigation + verification notebook using a provider-neutral/no-paid-requirement path;
 - Week 3 establishes reproducible containers/environment;
 - Week 4 teaches Linux commands by using them to observe the machine;
 - Week 5 can therefore begin architecture content with students already able to run, inspect, measure, record, and verify.
@@ -121,8 +118,8 @@ Do not mutate Savnac or production Canvas in this prompt.
 ## Explicit non-goals
 
 - no grading weights;
-- no final zyBooks product selection;
-- no vendor configuration;
+- no commercial textbook/vendor selection;
+- no paid AI/CLI requirement design;
 - no full Weeks 5–14 authoring;
 - no container implementation beyond placeholders/interfaces needed by source;
 - no production Canvas writes;
@@ -140,6 +137,7 @@ Include:
 - files created/updated;
 - how Week 1 universality was preserved;
 - week-file schema chosen;
+- how zero-cost/open-source doctrine is represented;
 - any shared artifacts reused instead of copied;
 - remaining YELLOWs;
 - validation results;
@@ -152,9 +150,10 @@ Foreman independently verifies that:
 1. the accepted semester shape is discoverable and internally consistent;
 2. explicitly shaped weeks have durable week planning files;
 3. Week 1 contains no Architecture-specific technical gate;
-4. unresolved grading/zyBooks mechanics were not invented;
-5. the repo is cleaner for later bounded week authoring, not merely larger.
+4. no commercial/premium resource is accidentally required;
+5. unresolved grading mechanics were not invented;
+6. the repo is cleaner for later bounded week authoring, not merely larger.
 
 ## Done when
 
-The repository has a coherent course-source chassis that faithfully represents Jeremy's accepted week structure and is ready for the lab-platform and week-authoring prompts to build on.
+The repository has a coherent course-source chassis that faithfully represents Jeremy's accepted week structure and zero-cost required path and is ready for the lab-platform/open-canon/week-authoring prompts to build on.
