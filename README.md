@@ -21,27 +21,44 @@ The accepted semester design is curriculum-first rather than textbook-chapter-fi
 
 See [`planning/fall-2026-spine.md`](planning/fall-2026-spine.md) for the durable semester map and [`planning/fall-2026-course-design.md`](planning/fall-2026-course-design.md) for the design rationale and learning outcomes.
 
+## Required-materials doctrine
+
+**The required course path should cost students $0 beyond ordinary access to a computer and university/course infrastructure.**
+
+Computer Architecture will be built so students can complete every required learning activity using:
+
+- openly available course readings and references;
+- open-source or freely available development/simulation tools;
+- the course's reproducible lab environment;
+- a no-cost/accessible AI path for any activity where AI use is expected.
+
+Commercial textbooks, zyBooks, paid AI subscriptions, Codex, Claude Code, and other premium tools may be excellent **optional accelerators or references**, but they are not prerequisites for completing the course or earning a strong grade.
+
+Students may use the AI provider and interface they prefer. Premium command-line agents can be demonstrated and supported as an advanced workflow, but no required assignment may depend on a student purchasing them.
+
 ## Repository map
 
 | Path | Purpose |
 | --- | --- |
-| [`course_metadata.yaml`](course_metadata.yaml) | Durable source of truth for official catalog/section facts, the official-vs-working-cadence distinction, and the currently operational zyBooks adoption. |
+| [`course_metadata.yaml`](course_metadata.yaml) | Durable source of truth for official catalog/section facts, the official-vs-working-cadence distinction, and historical/reference resource provenance. |
 | [`planning/fall-2026-spine.md`](planning/fall-2026-spine.md) | Accepted 17-week semester map. |
 | [`planning/fall-2026-course-design.md`](planning/fall-2026-course-design.md) | Course promise, learning outcomes, weekly learning chassis, laboratory doctrine, and curriculum-source strategy. |
 | [`sidecar/PLANNING.md`](sidecar/PLANNING.md) | Active deployment workbench and readiness plan for Jeremy, ChatGPT, Foreman, and workers. |
 | [`sidecar/questions/`](sidecar/questions/) | Genuine unresolved decisions that need Jeremy rather than agent invention. |
-| [`sidecar/prompts/`](sidecar/prompts/) | Bounded Foreman work orders for source reconciliation, vendor reconnaissance, lab infrastructure, curriculum authoring, capstone construction, and Savnac imprint/read-back. |
+| [`sidecar/prompts/`](sidecar/prompts/) | Bounded Foreman work orders for source reconciliation, open-source curriculum research, lab infrastructure, curriculum authoring, capstone construction, and Savnac imprint/read-back. |
 | `sidecar/reports/` | Execution evidence and accepted results from sidecar work orders as they land. |
 | `docs/` | Durable student/course policy documentation once authored. |
 | `prompts/` / `reports/` | Older course-local prompt/report locations that predate the sidecar convention. New deployment orchestration belongs in `sidecar/`. |
 
-## zyBooks and the teaching ISA
+## Textbooks, zyBooks, and the teaching ISA
 
-Computer Architecture **keeps zyBooks** as part of its course-resource strategy.
+**No commercial textbook or zyBook is required for Fall 2026.**
 
-`course_metadata.yaml` currently records the real Fall 2026 operational course as Patterson & Hennessy, *Computer Organization and Design (6e) — Interactive Version (MIPS)*, zyBook `SWOSUCOMSC3013EvertFall2026`. That remains factual operational metadata until an actual replacement is adopted.
+Patterson/Hennessy, historical zyBooks material, and other excellent texts can still guide course design and may be recommended as optional references. The repository preserves that provenance because good books remain useful research material, not because students must purchase them.
 
-The accepted planning direction does **not** treat MIPS as pedagogically sacred. A modern ISA/product comparison remains open, with **RISC-V currently the leading curriculum direction** because it fits the accepted course spine and modern architecture teaching well. The exact zyBooks product/edition and its grading role must be resolved with current vendor evidence before operational metadata changes. See [`sidecar/questions/002_zybooks_isa_product_and_course_role.md`](sidecar/questions/002_zybooks_isa_product_and_course_role.md).
+The course itself must contain or link to sufficient openly accessible material to teach the required curriculum without a paywall.
+
+**RISC-V remains the planning-leading teaching ISA** because it fits the accepted course spine, has an open specification, and is widely used in strong contemporary architecture courses. That choice should stand on pedagogical and tooling merit rather than on whichever commercial textbook happens to be available.
 
 ## Laboratory philosophy
 
@@ -58,13 +75,15 @@ Technical weeks then follow a recurring move:
 
 The online course must always have a **CPU-only completion path**. GPU or accelerator access may enrich later work, especially Weeks 13 and 16, but specialized hardware is not a course prerequisite.
 
+Likewise, premium AI or agentic CLI tools may enrich the experience but are never required for the core path.
+
 ## Current readiness
 
 The semester spine and course-design doctrine are now established, but the course is **not yet deployment-complete**. In particular:
 
 - weekly student-facing labs/materials for the Architecture core still need bounded authoring and validation;
 - the reproducible lab capsule/toolchain must be built and smoke-tested;
-- the exact zyBooks product/ISA and course role remain open;
+- the open-source/reference canon for each week must be assembled and validated;
 - the grading/assessment contract remains open;
 - the Week 16 capstone must be implemented and tested;
 - Savnac should be used as the inspection/dogfood surface before any production Canvas deployment.
