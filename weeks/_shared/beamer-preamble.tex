@@ -29,15 +29,12 @@
   \setbeameroption{show notes on second screen=right}
 \fi
 
-\newcommand{\ArchTitleSlide}[4]{%
-  % #1 week label, #2 title, #3 central question, #4 Wednesday prediction
-  \begin{frame}
-    \titlepage
-  \end{frame}
+\newcommand{\ArchQuestionSlide}[2]{%
+  % #1 central question, #2 Wednesday prediction
   \begin{frame}{The machine question}
-    \Large #3
+    \Large #1
 
     \vspace{1.2em}
-    \normalsize\textbf{Prediction to carry into Wednesday:} #4
+    \normalsize\textbf{Prediction to carry into Wednesday:} #2
   \end{frame}
 }

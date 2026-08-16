@@ -9,6 +9,7 @@
 
 ## Authoring checks
 
+- [ ] No unresolved `REPLACE`, `Week NN`, or `WEEK TITLE` placeholders remain in authored files.
 - [ ] `README.md` central question matches Monday/Wednesday/Friday.
 - [ ] Monday digest and deck share the same prior belief, model, worked example, prediction, and scope.
 - [ ] AI Fluency integration matches the accepted weekly lens.
@@ -16,6 +17,7 @@
 - [ ] Reference map follows Prompt 002 licensing/source doctrine.
 - [ ] Machine Dossier action is explicit and justified.
 - [ ] Friday receipt cannot be completed by pasting raw output.
+- [ ] Investigation / Explain-Defend / checkpoint work stays inside the accepted grading categories; no due/late/drop mechanics were invented.
 
 ## Execution checks
 

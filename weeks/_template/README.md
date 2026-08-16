@@ -8,6 +8,10 @@
 
 **Prediction before measurement:** REPLACE WITH A CLAIM THE WEEK CAN ACTUALLY TEST.
 
+**AI Fluency lens:** REPLACE WITH ACCEPTED WEEKLY LENS.
+
+**Professional Minds:** Wednesday - REPLACE; Friday - REPLACE (or accepted calendar exception).
+
 | Day | Mode | What happens | Evidence |
 |---|---|---|---|
 | Monday | Think / Frame | REPLACE | prediction / model |

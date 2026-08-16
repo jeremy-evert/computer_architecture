@@ -12,6 +12,8 @@ Every technical week follows one recognizable argument:
 
 The week is not three unrelated assignments. Monday should make Wednesday interpretable; Wednesday should generate the evidence Friday requires.
 
+AI Fluency and Professional Minds ride inside that rhythm. They should be visible in the Week at a Glance and integrated without creating duplicate Architecture assignments.
+
 ## Directory contract
 
 Copy `weeks/_template/` to `weeks/week-NN/`, then replace placeholders rather than inventing a new layout.
