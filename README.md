@@ -19,7 +19,19 @@ The accepted semester design is curriculum-first rather than textbook-chapter-fi
 7. **Week 16 — Farkle + Machine Learning Architecture capstone.**
 8. **Week 17 — reflection plus an evidence-backed demonstration of Computer Architecture understanding.**
 
-See [`planning/fall-2026-spine.md`](planning/fall-2026-spine.md) for the durable semester map and [`planning/fall-2026-course-design.md`](planning/fall-2026-course-design.md) for the design rationale and learning outcomes.
+The core intentionally uses **sister weeks** that revisit one machine story from another side: Weeks 5+6 (meaning + ISA contract), 7+8 (correct execution + fast execution), 10+11 (memory reality + software-visible illusion), and 12+13 (general + specialized parallelism). Week 9 is a deliberate integration checkpoint, and Week 14 moves students into architecture tradeoff judgment.
+
+## Planning grammar shared with CS1
+
+Computer Architecture intentionally uses the same recognizable planning zoom levels as CS1 without copying CS1's classroom-specific strands:
+
+- [`planning/fall-2026-course-design.md`](planning/fall-2026-course-design.md) — compact course purpose, outcomes, doctrine, and semester summary.
+- [`planning/architecture-arc-map.md`](planning/architecture-arc-map.md) — why neighboring weeks belong together and where arcs/checkpoints close; analogous to CS1's Coding Odyssey arc map.
+- [`planning/block-map.md`](planning/block-map.md) — master production target list. Because Architecture is asynchronous, its blocks are **Frame → Inspect / Build / Measure → Explain / Defend**, not scheduled 10–15 minute classroom blocks.
+- [`planning/week-01.md`](planning/week-01.md) through [`planning/week-17-finals.md`](planning/week-17-finals.md) — predictable per-week planning files using **Status → Weekly Focus → Monday → Wednesday → Friday → Evidence this week → Open authoring notes**.
+- [`planning/fall-2026-spine.md`](planning/fall-2026-spine.md) — durable semester map and central questions.
+
+The point is family resemblance: opening CS1 and Computer Architecture side by side should make the operating pattern obvious while preserving the different pedagogy of each course.
 
 ## Required-materials doctrine
 
@@ -41,8 +53,11 @@ Students may use the AI provider and interface they prefer. Premium command-line
 | Path | Purpose |
 | --- | --- |
 | [`course_metadata.yaml`](course_metadata.yaml) | Durable source of truth for official catalog/section facts, the official-vs-working-cadence distinction, and historical/reference resource provenance. |
-| [`planning/fall-2026-spine.md`](planning/fall-2026-spine.md) | Accepted 17-week semester map. |
 | [`planning/fall-2026-course-design.md`](planning/fall-2026-course-design.md) | Course promise, learning outcomes, weekly learning chassis, laboratory doctrine, and curriculum-source strategy. |
+| [`planning/architecture-arc-map.md`](planning/architecture-arc-map.md) | Arc boundaries, sister-week relationships, integration points, and course movement. |
+| [`planning/block-map.md`](planning/block-map.md) | Master asynchronous Frame → Investigate → Defend production map for all 17 weeks. |
+| [`planning/fall-2026-spine.md`](planning/fall-2026-spine.md) | Accepted 17-week semester map and central questions. |
+| `planning/week-01.md` … `planning/week-17-finals.md` | Per-week source shells, intentionally patterned after CS1's predictable week planning files. |
 | [`sidecar/PLANNING.md`](sidecar/PLANNING.md) | Active deployment workbench and readiness plan for Jeremy, ChatGPT, Foreman, and workers. |
 | [`sidecar/questions/`](sidecar/questions/) | Genuine unresolved decisions that need Jeremy rather than agent invention. |
 | [`sidecar/prompts/`](sidecar/prompts/) | Bounded Foreman work orders for source reconciliation, open-source curriculum research, lab infrastructure, curriculum authoring, capstone construction, and Savnac imprint/read-back. |
@@ -79,11 +94,12 @@ Likewise, premium AI or agentic CLI tools may enrich the experience but are neve
 
 ## Current readiness
 
-The semester spine and course-design doctrine are now established, but the course is **not yet deployment-complete**. In particular:
+The semester spine and CS1-family planning chassis are now established, but the course is **not yet deployment-complete**. In particular:
 
-- weekly student-facing labs/materials for the Architecture core still need bounded authoring and validation;
+- the week files currently record the agreed spine and intended evidence shape, not finished student-facing lessons;
+- weekly open references and course-created learning material still need research/authoring;
 - the reproducible lab capsule/toolchain must be built and smoke-tested;
-- the open-source/reference canon for each week must be assembled and validated;
+- executable labs must be validated in that environment;
 - the grading/assessment contract remains open;
 - the Week 16 capstone must be implemented and tested;
 - Savnac should be used as the inspection/dogfood surface before any production Canvas deployment.
