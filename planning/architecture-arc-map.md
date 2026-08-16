@@ -1,123 +1,143 @@
-# Computer Architecture — arc and sister-week map
+# Computer Architecture - arc and sister-week map
 
-This file plays the same role for Computer Architecture that `planning/coding-odyssey-arc-map.md` plays in CS1: it explains the **shape underneath the week list**.
+This file explains the **shape underneath the week list**. It plays the same role that the Coding Odyssey arc map plays in CS1 while preserving Architecture's asynchronous laboratory identity.
 
-It does not replace `planning/fall-2026-spine.md`. The spine says what happens each week. This map explains why neighboring weeks belong together, where students should integrate ideas, and where the course deliberately changes perspective.
+The official course remains online/asynchronous. Monday/Wednesday/Friday are production and release anchors, not attendance periods.
 
 ## Course movement
 
-The course repeatedly crosses the bridge in both directions:
+The course crosses the software/hardware bridge in both directions:
 
-**software intent → representations → ISA → processor → memory/system mechanisms → software-visible abstractions**
+**human intent -> program -> representation -> ISA -> processor -> memory/system mechanisms -> software-visible abstractions**
 
 and then back upward:
 
-**architecture constraints/opportunities → system design → software choices → workload behavior**
+**architecture constraints/opportunities -> workload behavior -> system design -> purchasing/design judgment**
 
-Computer Architecture should therefore not feel like "the hardware vocabulary class." Students should see hardware and software as a continuing negotiation.
+Computer Architecture should not feel like a museum of hardware nouns. Students should repeatedly make a machine behave differently, measure what changes, and explain why.
 
 ## Arc structure
 
 | Arc | Weeks | Movement | Closes at |
 |---|---:|---|---|
-| **1 — Learn to investigate a machine** | 1–4 | human success → AI-assisted investigation → repeatable environments → Linux observation | Students can ask, run, inspect, record, and verify before core Architecture begins. |
-| **2 — Follow software down into a processor** | 5–9 | representation → ISA → datapath/control → pipeline/performance → full-stack trace | **Week 9 integration checkpoint:** follow one small program through the stack without hand-waving. |
-| **3 — Follow architecture back up into useful systems** | 10–14 | cache/memory reality → VM/OS illusion → multicore → vectors/GPU/accelerators → design tradeoffs | **Week 14 synthesis:** defend an architecture choice and launch the capstone question. |
-| **4 — Investigate a real workload** | 15–16 | lightweight preflight → Farkle/ML architecture investigation | **Week 16 capstone:** make and defend one bounded architecture claim with evidence. |
-| **5 — Explain what now makes sense** | 17 | reflection + demonstration | Student shows genuine architecture understanding rather than merely recalling terms. |
+| **1 - Build the investigator** | 1-4 | success habits -> AI verification -> reproducible environment -> Linux observation | Students can ask, run, inspect, record, reproduce, and verify before Architecture begins. |
+| **2 - Build and open the machine** | 5-9 | machine design/economics -> representation + ISA -> datapath/control -> pipeline/performance -> full-stack trace | **Week 9 Checkpoint 2:** follow one small program through the stack without hand-waving. |
+| **3 - Stress the machine** | 10-13 | cache/memory behavior -> VM/OS abstraction -> multicore/communication -> vector/GPU/accelerator specialization | Students have a measured sensitivity profile rather than vocabulary-only knowledge. |
+| **4 - Become the architect** | 14 | compare tradeoffs, revisit the Week 5 design, defend changed or retained choices | **Week 14 Checkpoint 3:** final Machine Dossier and evidence-backed redesign. Architecture instruction ends. |
+| **5 - Wind down and reflect** | 15-17 | curate -> Farkle/ML shared application -> reflection | No new Architecture theory; the frozen dossier becomes evidence for closure. |
+
+## The Machine Dossier is the persistent object
+
+Weeks 5-14 reuse one living artifact rather than resetting context every week.
+
+The dossier contains:
+
+- a student-designed machine;
+- an observable real machine;
+- parts/specifications/costs/interfaces;
+- a Dollars-Per ledger that becomes more sophisticated as naive metrics are challenged;
+- a sensitivity profile built from experiments;
+- plots, traces, measurements, claims, corrections, and design decisions;
+- a final Week 14 redesign/defense.
+
+The dossier is **frozen at the end of Week 14**. Week 15 may curate it, Week 16 may naturally refer to it, and Week 17 may use it as reflection evidence, but those weeks do not add Architecture curriculum.
 
 ## Sister-week structure
 
-### Weeks 5 + 6 — Meaning and contract
+### Weeks 5 + 6 - What machine did I buy, and what contract does it obey?
 
-**Week 5: Bits Become Meaning** asks what information means inside a machine.
+**Week 5: Build the Machine** starts outside-in.
 
-**Week 6: Hardware/Software Contract** asks how software and hardware agree on operations over those representations.
+Students create compatible and workload-shaped PC designs, compare cost/capability, build the initial memory/storage hierarchy, and establish Machine Dossier v0.
 
-The same tiny programs/data should recur across both weeks where possible:
+**Week 6: Bits Become Instructions** turns inward.
 
-**value → bits → operation → instruction → machine-visible state**
+Students inspect representation, bytes, integer/floating-point behavior, RISC-V instructions, registers, and machine-visible state.
 
-### Weeks 7 + 8 — Correct execution and fast execution
+The shared movement is:
 
-**Week 7: Datapath + Control** asks how hardware executes one instruction correctly.
+**workload -> component choice -> value -> bits -> instruction -> machine state**
 
-**Week 8: Pipelines + Performance** asks how hardware overlaps many instructions without breaking that contract.
+Week 6 closes **Checkpoint 1**, a small evidence-backed trace across the hardware/software contract.
 
-The conceptual movement is:
+### Weeks 7 + 8 - Correct execution and fast execution
 
-**one instruction path → overlapping instruction paths → hazards → measured performance**
+**Week 7: Crack Open the CPU** asks what has to exist for one instruction to execute correctly.
 
-### Week 9 — Put the machine back together
+**Week 8: Make It Fast Without Breaking It** asks what changes when many instructions overlap.
 
-Week 9 is not filler for a short Fall Break week. It is a deliberate integration checkpoint.
+The movement is:
 
-Students should take one bounded program and connect several layers:
+**one instruction path -> overlapping paths -> dependency/hazard -> latency/throughput/CPI -> measured performance**
 
-**source → compiler/toolchain artifact → assembly/instruction → representation → datapath/pipeline behavior**
+### Week 9 - Put the machine back together
 
-The purpose is to expose gaps in the mental model before the course moves into memory and larger systems.
+Week 9 is a short Fall Break integration checkpoint, not filler.
 
-### Weeks 10 + 11 — Memory reality and memory illusion
+Students follow one bounded program through several layers:
 
-**Week 10: Memory Hierarchy + Caches** looks downward at the physical/performance problem: storage closer to the CPU is fast and scarce; storage farther away is large and slow.
+**source -> compiler/toolchain artifact -> representation -> RISC-V instruction -> processor behavior -> measured result**
 
-**Week 11: Virtual Memory + Protection + I/O + OS Support** looks upward at what hardware mechanisms let software pretend: private address spaces, protection, traps, interrupts, devices, and process abstractions.
+The purpose is diagnosis and revision of gaps in the mental model.
 
-The relationship is:
+### Weeks 10 + 11 - Feel the hierarchy, then see the illusion
 
-**messy physical hierarchy → hardware mechanisms → useful software illusion**
+**Week 10: Make the Memory Hierarchy Hurt** uses sensory experiments: pointer chasing versus streaming, changing working-set size, cache cliffs, latency, bandwidth, and locality.
 
-### Weeks 12 + 13 — General parallelism and specialized parallelism
-
-**Week 12: Multicore + Coherence + Synchronization** asks what happens when general-purpose cores share work and memory.
-
-**Week 13: Vectors + GPUs + ML Accelerators** asks why some workloads justify a different machine organization entirely.
+**Week 11: The Useful Lie of Memory** looks upward at the mechanisms that create private address spaces, protection, page translation, traps, interrupts, and device I/O.
 
 The relationship is:
 
-**more general-purpose workers → coordination costs → workload shape → specialization**
+**measured physical hierarchy -> translation/protection/I/O mechanisms -> useful software abstraction**
 
-Software matters enormously here: data layout, locality, synchronization, vectorization, and algorithm shape change what the hardware can accomplish.
+### Weeks 12 + 13 - General workers and specialized workers
 
-### Week 14 — Sit in the architect's chair
+**Week 12: More Cores, More Problems** makes students experience the cost of cooperation: synchronization, false sharing, communication latency, and scaling limits.
 
-Week 14 changes the question from "How does this mechanism work?" to:
+**Week 13: Different Machines for Different Work** asks when vectors, GPUs, or accelerators justify a different organization.
 
-> **Given competing constraints, why would a designer choose this architecture?**
+The relationship is:
 
-Students compare real systems through performance, latency, throughput, power/energy, memory/bandwidth, cost, programmability, reliability/security, and workload fit. This is the natural launch point for the Week 16 capstone measurement question.
+**more workers -> coordination/data movement cost -> workload shape -> specialization**
 
-## Standalone-but-connected weeks
+### Week 14 - Sit in the architect's chair
 
-The course intentionally contains several unusual weeks that should remain unusual:
+Week 14 changes the question from "how does this mechanism work?" to:
 
-- **Week 1:** survive the semester, thrive in the degree, enjoy the career. No Architecture technical gate.
-- **Week 2:** AI Lab Training. Teaches the investigation behavior used afterward.
-- **Week 3:** Containers & Repeatability. Establishes the environment contract.
-- **Week 4:** Linux Command Line as a Machine Telescope. Establishes the observation layer.
-- **Week 15:** Thanksgiving/travel. Lightweight asynchronous capstone preflight, no major new theory.
-- **Week 16:** Farkle + Machine Learning. ML is the workload; Architecture is the subject.
-- **Week 17:** reflection plus evidence-backed demonstration. No new technical material.
+> **Given a workload and a budget, what should I build now, and what evidence changed my mind?**
 
-These weeks are not interruptions to the course. They establish, test, or synthesize the habits used in the Architecture core.
+Students revisit the Week 5 machine under the same or explicitly bounded constraints, choose appropriate metrics, and defend changed or retained design choices with the semester's evidence.
 
-## Reusable course grammar
+This is the technical finale and **Checkpoint 3**. The Machine Dossier is frozen here.
 
-Like CS1, each week should eventually have a predictable planning file. Architecture uses:
+## Weeks 15-17 deliberately stop climbing
 
-1. **Status**
-2. **Weekly Focus**
-3. **Monday — Frame**
-4. **Wednesday — Inspect / Build / Measure**
-5. **Friday — Explain / Defend**
-6. **Evidence this week**
-7. **Open authoring notes** when the week is not yet complete
+- **Week 15:** asynchronous Thanksgiving wind-down. Curate/catch up. No new Architecture mechanism or dossier layer.
+- **Week 16:** shared Farkle + Machine Learning fun/application week. Architecture may echo through predictions or observations, but this is not a new capstone or Checkpoint 4.
+- **Week 17:** reflection. No new technical material.
 
-The official course remains asynchronous. Monday/Wednesday/Friday are release/design anchors, not attendance periods.
+## Reusable M/W/F grammar
+
+After Week 1, each week uses a recognizable asynchronous production shape:
+
+1. **Monday - Think / Frame / Lecture**
+   - AI Fluency lens;
+   - central machine question;
+   - course-owned lecture/digest/deck;
+   - prediction before evidence.
+2. **Wednesday - Investigate / Break / Measure**
+   - Professional Minds;
+   - hands-on experiment, trace, build, or measurement;
+   - Jeremy may record the canonical lab using his real stack.
+3. **Friday - Explain / Defend / Stack Showcase**
+   - Professional Minds;
+   - bounded evidence receipt;
+   - instructor real-stack showcase when useful.
+
+The instructor's paid/frontier/local stack is visible pedagogy, not a required student stack.
 
 ## Design test
 
-A strong sequence should let a student answer increasingly sophisticated versions of one question:
+A strong week should let a student answer a more sophisticated version of:
 
-> **What is this machine doing underneath my software, what evidence lets me know, and why was it designed this way?**
+> **What did I predict, what did I make the machine do, what changed, what evidence proves it, and what design decision follows?**

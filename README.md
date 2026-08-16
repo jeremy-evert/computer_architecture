@@ -1,107 +1,126 @@
 # Computer Architecture
 
-Course repository for **COMSC-3013 — Computer Architecture**, Dr. Jeremy P. Evert's Fall 2026 section (`COMSC-3013-1438`).
+Course repository for **COMSC-3013 - Computer Architecture**, Dr. Jeremy P. Evert's Fall 2026 section (`COMSC-3013-1438`).
 
-The course is officially **online/asynchronous**. Jeremy designs and manages it on a **Monday / Wednesday / Friday 2:00 PM working rhythm** for planning discipline; that rhythm is not a Banner meeting time.
+The course is officially **online/asynchronous**. Jeremy designs and records it on a **Monday / Wednesday / Friday 2:00 PM working rhythm** for production discipline; that rhythm is not a Banner meeting time.
 
 **Git is the source of truth.** Course Foundry / Imprint may compile this repository into Savnac or Canvas-facing objects, but the rendered LMS copy does not become the authoritative course source.
 
+## Course identity in one sentence
+
+Students spend Weeks 1-4 becoming capable investigators, then spend Weeks 5-14 repeatedly opening, measuring, stressing, and explaining one machine until architecture words such as latency, bandwidth, locality, throughput, scaling, and bottleneck have experimental meaning rather than textbook definitions.
+
+Week 15 winds down asynchronously, Week 16 is the shared Farkle + Machine Learning experience, and Week 17 is reflection. Computer Architecture instruction **ends in Week 14**.
+
+## The online M/W/F production rhythm
+
+Architecture intentionally keeps the recognizable M/W/F family rhythm used across the Fall 2026 computing courses, but translates it for an asynchronous section:
+
+- **Monday - Think / Frame / Lecture.** AI Fluency plus the week's central machine question and a course-owned lecture package. Jeremy records the deck and can visibly use his real AI/tool stack while reasoning through the material.
+- **Wednesday - Investigate / Break / Measure.** Professional Minds plus the hands-on lab. Students make the machine behave differently and gather evidence.
+- **Friday - Explain / Defend / Stack Showcase.** Professional Minds plus a short evidence receipt. Jeremy may record a real-stack demonstration showing where the week's ideas lead on his own systems.
+
+The instructor stack may visibly include ChatGPT, Claude, Copilot, Gemini, Grok, Codex, Claude Code, aider, OpenClaw, local models, shell tools, profilers, debuggers, containers, and other current tools. **Visible instructor tooling is pedagogy, not a student requirement.** No student must purchase or reproduce Jeremy's stack to earn the same grade.
+
+See [`planning/block-map.md`](planning/block-map.md) for the full 17-week M/W/F map.
+
 ## Fall 2026 course shape
 
-The accepted semester design is curriculum-first rather than textbook-chapter-first:
+1. **Week 1 - Success Foundations:** survive the semester, thrive in the degree, enjoy the career.
+2. **Week 2 - AI Lab Training:** AI can propose; evidence decides.
+3. **Week 3 - Containers & Repeatability:** build the reproducible laboratory.
+4. **Week 4 - Linux as a Machine Telescope:** learn to ask the machine questions.
+5. **Week 5 - Build the Machine:** PCPartPicker-style design, workload fit, compatibility, hierarchy, Dollars-Per, and the first Machine Dossier.
+6. **Week 6 - Bits Become Instructions:** representation plus the RISC-V hardware/software contract; Checkpoint 1.
+7. **Week 7 - Crack Open the CPU:** datapath and control.
+8. **Week 8 - Make It Fast Without Breaking It:** pipeline, hazards, latency, throughput, CPI, and performance.
+9. **Week 9 - Follow the Program Down:** integration Checkpoint 2.
+10. **Week 10 - Make the Memory Hierarchy Hurt:** caches, locality, latency, bandwidth, and measured cliffs.
+11. **Week 11 - The Useful Lie of Memory:** virtual memory, protection, I/O, traps, interrupts, and OS support.
+12. **Week 12 - More Cores, More Problems:** scaling, synchronization, coherence, false sharing, and communication cost.
+13. **Week 13 - Different Machines for Different Work:** vectors, GPUs, accelerators, data movement, and workload fit.
+14. **Week 14 - Sit in the Architect's Chair:** redesign the Week 5 machine from evidence; freeze the Machine Dossier; Checkpoint 3.
+15. **Week 15 - Async Wind-Down / Thanksgiving:** curate and catch up; no new architecture theory or dossier layer.
+16. **Week 16 - Farkle + Machine Learning:** shared applied fun week; Architecture may echo naturally but this is not Checkpoint 4.
+17. **Week 17 - Reflection:** no new technical content; use the frozen dossier as evidence of what changed.
 
-1. **Week 1 — Success Foundations:** survive the semester, thrive in the degree, enjoy the career.
-2. **Week 2 — AI Lab Training.**
-3. **Week 3 — Containers & Repeatability.**
-4. **Week 4 — Linux Command Line as a Machine Telescope.**
-5. **Weeks 5–14 — Computer Architecture core:** representation/logic/arithmetic, ISA, processor/datapath, pipelining, memory hierarchy, OS-facing mechanisms, multicore/coherence, GPUs/accelerators, and real-world architecture tradeoffs.
-6. **Week 15 — asynchronous Thanksgiving/travel capstone preflight.**
-7. **Week 16 — Farkle + Machine Learning Architecture capstone.**
-8. **Week 17 — reflection plus an evidence-backed demonstration of Computer Architecture understanding.**
+## The persistent Architecture artifact
 
-The core intentionally uses **sister weeks** that revisit one machine story from another side: Weeks 5+6 (meaning + ISA contract), 7+8 (correct execution + fast execution), 10+11 (memory reality + software-visible illusion), and 12+13 (general + specialized parallelism). Week 9 is a deliberate integration checkpoint, and Week 14 moves students into architecture tradeoff judgment.
+Weeks 5-14 revolve around a living **Machine Dossier** with two complementary views:
 
-## Planning grammar shared with CS1
+1. **Machine Map:** what the machine has, what it costs, what its pieces do, and what constraints/interfaces connect them.
+2. **Sensitivity Profile:** what happens when latency, bandwidth, working-set size, synchronization, worker count, data movement, or another architectural constraint changes.
 
-Computer Architecture intentionally uses the same recognizable planning zoom levels as CS1 without copying CS1's classroom-specific strands:
+The dossier begins with a student-designed machine and an observable machine, then accumulates measurements, plots, explanations, corrections, and design decisions through Week 14.
 
-- [`planning/fall-2026-course-design.md`](planning/fall-2026-course-design.md) — compact course purpose, outcomes, doctrine, and semester summary.
-- [`planning/architecture-arc-map.md`](planning/architecture-arc-map.md) — why neighboring weeks belong together and where arcs/checkpoints close; analogous to CS1's Coding Odyssey arc map.
-- [`planning/block-map.md`](planning/block-map.md) — master production target list. Because Architecture is asynchronous, its blocks are **Frame → Inspect / Build / Measure → Explain / Defend**, not scheduled 10–15 minute classroom blocks.
-- [`planning/week-01.md`](planning/week-01.md) through [`planning/week-17-finals.md`](planning/week-17-finals.md) — predictable per-week planning files using **Status → Weekly Focus → Monday → Wednesday → Friday → Evidence this week → Open authoring notes**.
-- [`planning/fall-2026-spine.md`](planning/fall-2026-spine.md) — durable semester map and central questions.
+The dossier is intended to compile into a clean technical PDF using a scaffolded LaTeX workflow and course-provided Python/matplotlib plotting helpers. Students are not expected to become LaTeX or data-visualization specialists; those tools exist to make experimental evidence legible.
 
-The point is family resemblance: opening CS1 and Computer Architecture side by side should make the operating pattern obvious while preserving the different pedagogy of each course.
+See [`planning/machine-dossier.md`](planning/machine-dossier.md).
+
+## Laboratory doctrine
+
+The course follows a strong sensory rule:
+
+> **Do not ask students to use an important architecture adjective until the course has tried to make them experience the phenomenon it names.**
+
+Examples:
+
+- latency versus bandwidth;
+- cache-friendly versus cache-hostile access;
+- sequential versus random storage behavior;
+- dependent versus independent work;
+- scalable versus synchronization-bound parallel work;
+- general-purpose versus specialized execution;
+- setup/data-movement cost versus steady-state throughput.
+
+The recurring experimental move is:
+
+**predict -> perturb one constraint -> run -> measure -> visualize -> explain -> revise.**
+
+Python/matplotlib is the standard visualization instrument. LaTeX is the report/publishing instrument. Linux, compilers, debuggers, disassemblers, profilers, simulators/emulators, and course scripts are observation instruments.
+
+## Planning grammar shared with CS1/CS2/DSCT
+
+Computer Architecture intentionally preserves the recognizable family pattern without pretending an asynchronous course has live pair programming or show-and-tell:
+
+- [`planning/fall-2026-course-design.md`](planning/fall-2026-course-design.md) - course promise, outcomes, doctrine, and semester design.
+- [`planning/architecture-arc-map.md`](planning/architecture-arc-map.md) - why neighboring weeks belong together and where checkpoints close.
+- [`planning/block-map.md`](planning/block-map.md) - full 17-week M/W/F production target map, including AI Fluency and Professional Minds.
+- [`planning/machine-dossier.md`](planning/machine-dossier.md) - persistent artifact, sensory-lab, plotting, and reporting contract.
+- `planning/week-01.md` through `planning/week-17-finals.md` - thin per-week planning shells that future passes can deepen honestly.
+- [`docs/grading-model.md`](docs/grading-model.md) - Architecture adaptation of the CS1 grading family.
 
 ## Required-materials doctrine
 
 **The required course path should cost students $0 beyond ordinary access to a computer and university/course infrastructure.**
 
-Computer Architecture will be built so students can complete every required learning activity using:
+Students can complete every required learning activity using:
 
 - openly available course readings and references;
 - open-source or freely available development/simulation tools;
 - the course's reproducible lab environment;
-- a no-cost/accessible AI path for any activity where AI use is expected.
+- a no-cost/accessible AI path when AI is expected;
+- a CPU-only path for every required experiment.
 
-Commercial textbooks, zyBooks, paid AI subscriptions, Codex, Claude Code, and other premium tools may be excellent **optional accelerators or references**, but they are not prerequisites for completing the course or earning a strong grade.
-
-Students may use the AI provider and interface they prefer. Premium command-line agents can be demonstrated and supported as an advanced workflow, but no required assignment may depend on a student purchasing them.
-
-## Repository map
-
-| Path | Purpose |
-| --- | --- |
-| [`course_metadata.yaml`](course_metadata.yaml) | Durable source of truth for official catalog/section facts, the official-vs-working-cadence distinction, and historical/reference resource provenance. |
-| [`planning/fall-2026-course-design.md`](planning/fall-2026-course-design.md) | Course promise, learning outcomes, weekly learning chassis, laboratory doctrine, and curriculum-source strategy. |
-| [`planning/architecture-arc-map.md`](planning/architecture-arc-map.md) | Arc boundaries, sister-week relationships, integration points, and course movement. |
-| [`planning/block-map.md`](planning/block-map.md) | Master asynchronous Frame → Investigate → Defend production map for all 17 weeks. |
-| [`planning/fall-2026-spine.md`](planning/fall-2026-spine.md) | Accepted 17-week semester map and central questions. |
-| `planning/week-01.md` … `planning/week-17-finals.md` | Per-week source shells, intentionally patterned after CS1's predictable week planning files. |
-| [`sidecar/PLANNING.md`](sidecar/PLANNING.md) | Active deployment workbench and readiness plan for Jeremy, ChatGPT, Foreman, and workers. |
-| [`sidecar/questions/`](sidecar/questions/) | Genuine unresolved decisions that need Jeremy rather than agent invention. |
-| [`sidecar/prompts/`](sidecar/prompts/) | Bounded Foreman work orders for source reconciliation, open-source curriculum research, lab infrastructure, curriculum authoring, capstone construction, and Savnac imprint/read-back. |
-| `sidecar/reports/` | Execution evidence and accepted results from sidecar work orders as they land. |
-| `docs/` | Durable student/course policy documentation once authored. |
-| `prompts/` / `reports/` | Older course-local prompt/report locations that predate the sidecar convention. New deployment orchestration belongs in `sidecar/`. |
+Commercial textbooks, zyBooks, paid AI subscriptions, premium agents, and specialized GPU hardware may be useful optional accelerators or references. They are not prerequisites and may not raise the attainable grading ceiling.
 
 ## Textbooks, zyBooks, and the teaching ISA
 
-**No commercial textbook or zyBook is required for Fall 2026.**
+No commercial textbook or zyBook is required for Fall 2026. Patterson/Hennessy and historical zyBooks material can remain instructor/reference provenance.
 
-Patterson/Hennessy, historical zyBooks material, and other excellent texts can still guide course design and may be recommended as optional references. The repository preserves that provenance because good books remain useful research material, not because students must purchase them.
-
-The course itself must contain or link to sufficient openly accessible material to teach the required curriculum without a paywall.
-
-**RISC-V remains the planning-leading teaching ISA** because it fits the accepted course spine, has an open specification, and is widely used in strong contemporary architecture courses. That choice should stand on pedagogical and tooling merit rather than on whichever commercial textbook happens to be available.
-
-## Laboratory philosophy
-
-By Week 5, students should already know how to:
-
-- use AI as an investigation partner while independently verifying claims;
-- run work in a reproducible environment;
-- use Linux/system tools to observe the machine;
-- record evidence rather than merely repeat an explanation.
-
-Technical weeks then follow a recurring move:
-
-**frame a machine question → inspect/build/measure → explain/defend with evidence.**
-
-The online course must always have a **CPU-only completion path**. GPU or accelerator access may enrich later work, especially Weeks 13 and 16, but specialized hardware is not a course prerequisite.
-
-Likewise, premium AI or agentic CLI tools may enrich the experience but are never required for the core path.
+**RISC-V remains the planning-leading teaching ISA** because it fits the accepted course spine, has an open specification, and has strong contemporary teaching/tooling support. That choice is independent of any commercial textbook.
 
 ## Current readiness
 
-The semester spine and CS1-family planning chassis are now established, but the course is **not yet deployment-complete**. In particular:
+The semester structure is now intentionally frozen enough for bounded building:
 
-- the week files currently record the agreed spine and intended evidence shape, not finished student-facing lessons;
-- weekly open references and course-created learning material still need research/authoring;
-- the reproducible lab capsule/toolchain must be built and smoke-tested;
-- executable labs must be validated in that environment;
-- the grading/assessment contract remains open;
-- the Week 16 capstone must be implemented and tested;
-- Savnac should be used as the inspection/dogfood surface before any production Canvas deployment.
+- the M/W/F online recording/delivery model is defined;
+- AI Fluency and Professional Minds are mapped across the semester;
+- the Machine Dossier and sensory-lab doctrine are defined;
+- Weeks 5-14 are the complete technical Architecture runway;
+- Week 14, not Week 16, is the technical finale;
+- the Architecture grading structure is established, with due/late operational mechanics still to finalize;
+- week files remain planning shells rather than fake-complete lessons;
+- the open-source canon, reproducible lab platform, lecture packages, validated sensory labs, plotting/report pipeline, and Savnac rendering still need to be built and tested.
 
 Active work is organized in [`sidecar/PLANNING.md`](sidecar/PLANNING.md) and [`sidecar/prompts/`](sidecar/prompts/).
