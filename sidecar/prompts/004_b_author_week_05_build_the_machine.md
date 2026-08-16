@@ -1,9 +1,13 @@
 # Prompt 004_b - Author Week 5: Build the Machine
 
-**Status:** READY TO EXECUTE  
+**Status:** COMPLETE WITH NAMED YELLOWS - 2026-08-16  
 **Depends on:** 004_a complete  
 **Continuity role:** creates the machine/workload/budget story that returns in Week 14  
-**Parent charter:** `004_author_weeks_05_14_architecture_core.md`
+**Parent charter:** `004_author_weeks_05_14_architecture_core.md`  
+**Implementation:** `weeks/week-05/`  
+**Execution receipt:** `../reports/004_b_author_week_05_build_the_machine.md`
+
+> This work order has been executed. The student/instructor Week 5 core is authored and validated on the named Linux/container-visible surface. STF 320 showcase capture plus broader WSL/macOS platform proof remain explicitly YELLOW and belong to later validation rather than reopening Week 5 pedagogy.
 
 ## Why this week exists
 
