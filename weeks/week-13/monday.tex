@@ -1,0 +1,17 @@
+\documentclass{beamer}
+\input{../_shared/beamer-preamble.tex}
+\title{Week 13 Monday}\subtitle{Different Machines for Different Work}\author{COMSC-3013}\date{}
+\begin{document}
+\begin{frame}\titlepage\end{frame}
+\ArchQuestionSlide{When does the workload justify a different kind of machine?}{Predict whether vectorization improves the course loop and name one reason the expected advantage might fail.}
+\begin{frame}{Beyond more general workers}\begin{itemize}\item Week 12 exposed scaling/coordination cost.\item Week 13 changes the organization of work.\item Workload fit decides whether specialization is useful.\end{itemize}\end{frame}
+\begin{frame}{Scalar and vector}\begin{itemize}\item Scalar operates on individual elements.\item Vector/SIMD can operate across several related elements.\item Regular data shape creates opportunity.\end{itemize}\end{frame}
+\begin{frame}{The compiler makes a decision}\begin{itemize}\item Vectorization must be legal.\item A cost model judges profitability.\item A vectorization remark is not a speedup receipt.\end{itemize}\end{frame}
+\begin{frame}{Throughput orientation}\begin{itemize}\item Abundant regular work can benefit.\item Dependency/divergence/irregular access can fight the organization.\item Problem size matters.\end{itemize}\end{frame}
+\begin{frame}{Data movement is work}\begin{itemize}\item Setup and launch cost time.\item Host/device transfers cost time.\item Steady-state throughput is not the whole application.\end{itemize}\end{frame}
+\begin{frame}{GPU / SIMT taste}\begin{itemize}\item Many lightweight lanes execute related threads.\item Organization is throughput oriented.\item GPU programming is optional enrichment, not the required path.\end{itemize}\end{frame}
+\begin{frame}{Precision as a tradeoff}\begin{itemize}\item Lower precision can reduce storage/bandwidth needs.\item Some accelerators reward particular formats.\item Accuracy/range requirements constrain the choice.\end{itemize}\end{frame}
+\begin{frame}{Preserve inconvenient evidence}\begin{itemize}\item The reference compiler reported vectorization.\item The reference vectorized/native run was slower.\item Architecture decisions require measurement, not adjective worship.\end{itemize}\end{frame}
+\begin{frame}{Wednesday}\begin{itemize}\item Predict.\item Run scalar-disabled and native/vectorized paths.\item Inspect compiler evidence.\item Decide whether specialization earned its cost.\end{itemize}\end{frame}
+\begin{frame}{Closing rule}\centering\Large Accelerated is a claim about organization; faster is a claim that needs evidence.\end{frame}
+\end{document}

@@ -1,0 +1,17 @@
+\documentclass{beamer}
+\input{../_shared/beamer-preamble.tex}
+\title{Week 12 Monday}\subtitle{More Cores, More Problems}\author{COMSC-3013}\date{}
+\begin{document}
+\begin{frame}\titlepage\end{frame}
+\ArchQuestionSlide{When does adding workers help, and when does cooperation cost more than it buys?}{Predict 1--2--4 worker speedup and which workload is more sensitive to a 20 ms per-message wait.}
+\begin{frame}{More workers is a hypothesis}\begin{itemize}\item Serial work remains.\item Coordination and scheduling cost time.\item Shared resources can become bottlenecks.\end{itemize}\end{frame}
+\begin{frame}{Amdahl's Law}\begin{itemize}\item S(N)=1/((1-P)+P/N)\item Useful as an idealized prediction.\item Assumptions make the model conditional.\end{itemize}\end{frame}
+\begin{frame}{Speedup and efficiency}\begin{itemize}\item Speedup compares baseline to N workers.\item Efficiency compares speedup with ideal N.\item Always name the baseline and conditions.\end{itemize}\end{frame}
+\begin{frame}{Shared memory and synchronization}\begin{itemize}\item Workers can share data.\item Correctness may require coordination.\item Waiting can erase parallel benefit.\end{itemize}\end{frame}
+\begin{frame}{Coherence and false sharing}\begin{itemize}\item Caches must maintain a coherent shared-memory view.\item Independent variables can still share a cache line.\item False sharing is a plausible cost, not something this lab automatically proves.\end{itemize}\end{frame}
+\begin{frame}{Workload grain}\begin{itemize}\item Chunky work performs useful computation between coordination points.\item Chatty work coordinates/waits frequently.\item Granularity changes overhead sensitivity.\end{itemize}\end{frame}
+\begin{frame}{Chatterbox vs Freight Train}\begin{itemize}\item Similar total payload.\item Many dependent small exchanges versus one bulk transfer.\item Per-message waiting punishes chatter.\end{itemize}\end{frame}
+\begin{frame}{Two experiments, one question}\begin{itemize}\item Scaling varies worker count.\item Communication varies waiting shape.\item Both attack 'more workers is faster.'\end{itemize}\end{frame}
+\begin{frame}{Wednesday}\begin{itemize}\item Predict with Amdahl.\item Measure scaling.\item Measure Chatterbox/Freight Train.\item Revise the rule.\end{itemize}\end{frame}
+\begin{frame}{Closing rule}\centering\Large Parallelism helps when useful work outruns serial, synchronization, and communication costs.\end{frame}
+\end{document}
