@@ -1,11 +1,12 @@
 # Prompt 004_a - Build the shared Architecture authoring kit
 
-**Status:** OPEN - READY TO EXECUTE  
+**Status:** COMPLETE - executed 2026-08-16  
 **Parent charter:** `004_author_weeks_05_14_architecture_core.md`  
 **Depends on:** Prompts 001-003 complete enough for authoring  
-**Blocks:** 004_b through 004_k
+**Receipt:** `../reports/004_a_build_shared_authoring_kit.md`  
+**Unblocks:** 004_b through 004_k under the shared week contract
 
-> This is an execution work order. Do not author a technical week before this prompt gives all weeks one common production grammar.
+> This work order has been executed. The durable authoring contract now lives in `../../weeks/` and the receipt records the decisions and build proof.
 
 ## Why this prompt exists
 
