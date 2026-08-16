@@ -1,13 +1,8 @@
 # Computer Architecture — durable course metadata
 #
 # This is the tracked source of truth for COMSC-3013's Fall 2026 offering.
-# Nothing here is inferred or fabricated -- every field traces to either the
-# official catalog/section record Jeremy supplied, or is explicitly marked
-# as Jeremy's own planning/working decision, not an official Banner fact.
-# Generators (e.g. course_foundry's Course Information page push) read this
-# file; it is never hand-edited from a Canvas/Savnac copy. See
-# course_foundry/reports/2026-08-09_computer_architecture_fall_2026_onboarding.md
-# for the onboarding decisions this file encodes.
+# Official facts remain separate from Jeremy's instructional decisions.
+# Git is authoritative; Canvas/Savnac copies are generated inspection/deployment surfaces.
 
 course:
   code: "COMSC-3013"
@@ -21,10 +16,6 @@ course:
   requisites: "None"
   catalog_offering_note: "Offered Spring Only"
 
-# Official Banner/catalog facts, preserved verbatim. Do not "correct" the
-# apparent Spring-Only vs. real-Fall-2026-section contradiction -- both are
-# true simultaneously and both are recorded, per Jeremy's explicit
-# instruction (prompts/044_add_comp_arch.md).
 official:
   modality: "Online"
   location: "Weatherford Campus (Main), Online W 1 / Online"
@@ -36,74 +27,85 @@ official:
     concepts of each layer in the hierarchy and relationships between
     the layers.
 
-# Jeremy's own planning/instructional cadence -- NOT a Banner meeting time.
-# Exists so Course Foundry can give this online course the same weekly
-# rhythm and planning discipline as the face-to-face courses (CS1/CS2/DSCT).
-# Never overwrites the `official` block above; any generator surfacing this
-# to students must label it as the working rhythm, not an official meeting
-# time.
 instructional_working_cadence:
   days: "Monday / Wednesday / Friday"
   time: "2:00 PM"
   label: "Working instructional cadence (Jeremy's planning rhythm) -- not a Banner-listed meeting time"
 
-textbook:
-  title: "Computer Organization and Design (6e) — Interactive Version (MIPS)"
-  authors:
-    - "David A. Patterson"
-    - "John L. Hennessy"
-  zybook_identifier: "SWOSUCOMSC3013EvertFall2026"
-  zybook_url: "https://learn.zybooks.com/zybook/SWOSUCOMSC3013EvertFall2026"
-  historical_zybook_identifiers:
-    - "EvertCOD(MIPS)Jul2021"
-  main_chapters:
-    - number: 1
-      title: "Computer Abstractions and Technology"
-    - number: 2
-      title: "Instructions: Language of the Computer"
-    - number: 3
-      title: "Arithmetic for Computers"
-    - number: 4
-      title: "The Processor"
-    - number: 5
-      title: "Large and Fast: Exploiting Memory Hierarchy"
-    - number: 6
-      title: "Parallel Processors from Client to Cloud"
-  appendices:
-    - number: "A"
-      note: "Appendix A"
-    - number: "B"
-      note: "Appendix B"
-    - number: "C"
-      note: "Appendix C"
-    - number: "D"
-      note: "Appendix D"
-    - number: "E"
-      note: "Appendix E"
+required_materials_policy:
+  commercial_textbook_required: false
+  zybooks_required: false
+  paid_ai_subscription_required: false
+  paid_ai_cli_required: false
+  student_cost_target: >-
+    Every required course activity should have a zero-cost path beyond
+    ordinary access to a computer and university/course infrastructure.
+  doctrine: >-
+    The course is authored to stand on open and freely accessible readings,
+    references, tools, labs, and course-created materials. Commercial books,
+    zyBooks, premium AI subscriptions, Codex, Claude Code, and similar paid
+    tools may be recommended or demonstrated as optional accelerators, but no
+    required assignment or grading outcome may depend on purchasing them.
+  ai_choice: >-
+    Students may use the AI provider/interface they prefer when AI use is
+    allowed or encouraged. Required AI-supported activities must have a
+    no-cost or otherwise course-accessible path. Premium command-line agents
+    are optional enrichment, not a prerequisite.
+
+teaching_isa:
+  planning_choice: "RISC-V"
+  status: "planning-leading choice"
+  rationale: >-
+    RISC-V aligns well with the accepted curriculum, has an open primary
+    specification, strong open-source toolchains/simulators, and widespread
+    use in contemporary computer-architecture teaching. Final lab-tool
+    selection is validated separately; this field does not imply a commercial
+    textbook or zyBooks dependency.
+
+reference_resources:
+  commercial_resources_required: false
   note: >-
-    `SWOSUCOMSC3013EvertFall2026` is the operational Fall 2026 course URL.
-    `EvertCOD(MIPS)Jul2021` remains product-history provenance, not the
-    current course link. Detailed subsection names, release, assignment,
-    roster, due-date, and LTI configuration are not established by the URL
-    and require authorized current-page/UI verification.
+    Textbooks and historical zyBooks materials are reference/provenance only.
+    They may guide course authorship, sequencing, examples, and instructor
+    preparation, but the student-facing required curriculum must be complete
+    without them.
+  historical_zybook:
+    title: "Computer Organization and Design (6e) — Interactive Version (MIPS)"
+    authors:
+      - "David A. Patterson"
+      - "John L. Hennessy"
+    zybook_identifier: "SWOSUCOMSC3013EvertFall2026"
+    zybook_url: "https://learn.zybooks.com/zybook/SWOSUCOMSC3013EvertFall2026"
+    historical_zybook_identifiers:
+      - "EvertCOD(MIPS)Jul2021"
+    role: "historical/reference provenance; not required student material"
+    main_chapters:
+      - number: 1
+        title: "Computer Abstractions and Technology"
+      - number: 2
+        title: "Instructions: Language of the Computer"
+      - number: 3
+        title: "Arithmetic for Computers"
+      - number: 4
+        title: "The Processor"
+      - number: 5
+        title: "Large and Fast: Exploiting Memory Hierarchy"
+      - number: 6
+        title: "Parallel Processors from Client to Cloud"
 
 provenance:
-  - source: "Jeremy's directly supplied Fall 2026 catalog/section record and zyBook chapter list (prompts/044_add_comp_arch.md, 2026-08-09)"
-    covers: "course/official/textbook blocks"
-  - source: "Jeremy, directly, 2026-08-11 conversation"
+  - source: "Jeremy's directly supplied Fall 2026 catalog/section record (2026-08-09)"
+    covers: "course/official blocks"
+  - source: "Jeremy's Fall 2026 planning decision"
+    covers: "instructional_working_cadence"
+  - source: "Jeremy, directly, 2026-08-16 conversation"
     covers: >-
-      Confirms this zyBook (`EvertCOD(MIPS)Jul2021`) has a real, current
-      adoption on the ZyBooks server -- resolves the "is it still active"
-      unknown flagged in jeremy_task_tracking/reports/
-      048_four_course_zybooks_semester_readiness_inventory.md. Still
-      Jeremy-stated, not independently re-verified via a live ZyBooks
-      read-back or a Canvas LTI tool listing.
-  - source: "Jeremy, directly, 2026-08-11 (Fall 2026 zyBooks URL)"
-    covers: "textbook.zybook_identifier/textbook.zybook_url; historical identifier preserved"
-  - source: "jeremy_task_tracking/prompts/044_add_comp_arch.md"
-    covers: "instructional_working_cadence block, MWF 2:00 PM planning decision"
+      No required zyBooks/commercial textbook; prefer a complete open-source
+      course. Paid AI subscriptions and paid CLI agents are not required.
+      Premium AI/CLI tools may be optional enhancements only.
+  - source: "Historical Fall 2026 zyBooks adoption records"
+    covers: "reference_resources.historical_zybook"
   - note: >-
       The catalog page displaying "Offered: Spring Only" alongside a real
-      Fall 2026 section (COMSC-3013-1438) is a known, preserved
-      contradiction in the source record itself -- not a data-entry error
-      this file corrects. See `official.catalog_offering_note`.
+      Fall 2026 section (COMSC-3013-1438) is a known preserved contradiction
+      in the source record, not a data-entry correction made here.
