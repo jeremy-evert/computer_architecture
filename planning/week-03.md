@@ -1,22 +1,43 @@
-# Week 3 — Containers & Repeatability (Aug 31–Sep 4)
+# Week 3 - Containers & Repeatability (Aug 31-Sep 4)
 
 ## Status
-Pinned focus; reproducible lab capsule still needs implementation and smoke testing.
+Pinned focus; reproducible laboratory capsule still needs implementation and smoke testing.
 
 ## Weekly Focus
-Understand why systems experiments need a reproducible environment and establish the semester lab capsule that later Architecture work can reuse.
+**How do I make a systems experiment run the same way twice and on another computer?**
 
-## Monday — Aug 31 — Frame
-Why does "it worked on my machine" happen, and what information makes a computing experiment reproducible?
+Establish the semester lab capsule before Architecture experiments depend on it.
 
-## Wednesday — Sep 2 — Inspect / Build / Measure
-Build/run the supported course container or equivalent environment, capture versions/environment facts, and reproduce a small provided experiment.
+## Monday - Think / Frame / Lecture
+**AI Fluency Lens 3: Plan the Work.**
 
-## Friday — Sep 4 — Explain / Defend
-Explain what the environment controls, what it does not control, and what another person would need in order to reproduce the result.
+Why does "it worked on my machine" happen? What must a plan capture for a computing experiment to be reproducible?
+
+## Wednesday - Investigate / Break / Measure
+**Professional Minds: _Limitless Mind_ - How do we keep growing through challenges?**
+
+Build/run the supported course container or equivalent environment, capture environment/tool facts, and reproduce a small provided experiment.
+
+## Friday - Explain / Defend / Stack Showcase
+**Professional Minds: Resilience Education - How do we keep growing through challenges?**
+
+Explain what the environment controls, what it does not control, and what another person would need to reproduce the result.
+
+Jeremy's Stack Showcase can demonstrate the same tiny experiment across two of his own machines/environments to make reproducibility concrete.
 
 ## Evidence this week
-A compact reproducibility receipt: environment/tool versions, exact run command, output/evidence, and a second successful run or equivalent reproduction check.
+A compact reproducibility receipt:
+
+- environment/tool versions;
+- exact run command;
+- output/evidence;
+- second successful run or equivalent reproduction check.
+
+## Machine Dossier role
+None. Week 3 creates the laboratory contract the dossier later relies upon.
+
+## Online-delivery note
+M/W/F are asynchronous production/release anchors, not attendance periods.
 
 ## Open authoring notes
-Required path should use free/open tooling. Target ordinary CPU hardware and common student platforms through containers/WSL2/native paths where feasible. Do not make Jeremy's private network or specialized hardware a student prerequisite.
+Required path should use free/open tooling and target ordinary CPU hardware. Prompt 003 owns the actual laboratory implementation and validation.

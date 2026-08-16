@@ -1,22 +1,38 @@
-# Week 15 — Thanksgiving / Architecture Field Notebook (Nov 23–27)
+# Week 15 - Thanksgiving Wind-Down (Nov 23-27)
 
 ## Status
-Pinned lightweight asynchronous travel/Thanksgiving week. No major new technical concept.
+Pinned asynchronous/lightweight week. No new Architecture theory.
 
 ## Weekly Focus
-Prepare rather than punish. Students confirm that the Week 16 workload runs, capture a baseline/environment receipt, and identify what evidence they still need before making an architecture claim.
+**What evidence should I preserve, what needs to be caught up, and what did I learn strongly enough to carry forward?**
 
-## Monday — Nov 23 — Frame / Preflight
-Review the Week 14 capstone question and measurement plan. Run the smallest supported preflight needed to prove the workload/environment is ready.
+The technical course ended in Week 14. This week intentionally lowers the load.
 
-## Wednesday — Nov 25 — Thanksgiving break
-No instructor-dependent or fragile live activity.
+## Monday - Think / Frame / Lecture
+**AI Fluency Lens 15: Measure.**
 
-## Friday — Nov 27 — Thanksgiving break
-No major new requirement or theory.
+Use measurement as a reflective question: which evidence from the semester actually changed a belief or decision?
+
+No new Architecture lecture is introduced.
+
+## Wednesday - Investigate / Break / Measure
+Thanksgiving period. No normal Professional Minds/lab burden.
+
+## Friday - Explain / Defend / Stack Showcase
+Thanksgiving period. No normal Professional Minds/showcase burden.
 
 ## Evidence this week
-A lightweight capstone preflight/field-notebook entry: environment works, baseline captured or planned, question still bounded, missing evidence identified.
+Light curation/catch-up only, plus the planned professional-pathway Week 15 submission.
+
+A useful Architecture-facing curation prompt is to identify a small number of dossier/lab artifacts that most changed the student's understanding.
+
+## Machine Dossier role
+**No new layer.** The dossier was frozen in Week 14.
+
+Students may clean/organize existing evidence where policy permits, but Week 15 does not create new Architecture content.
+
+## Online-delivery note
+This is deliberately asynchronous and humane.
 
 ## Open authoring notes
-This week should be resilient to travel, family obligations, weaker connectivity, and instructor unavailability. Anything complex belongs before or after Thanksgiving.
+Do not let a worker turn "curation" into a hidden capstone preflight or new measurement assignment.

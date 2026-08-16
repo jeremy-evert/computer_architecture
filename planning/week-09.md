@@ -1,22 +1,42 @@
-# Week 9 — Follow the Program Down: Integration Checkpoint (Oct 12–14)
+# Week 9 - Follow the Program Down (Oct 12-14)
 
 ## Status
-Short Fall Break week. Accepted as a consolidation/integration week with little or no major new theory.
+Short Fall Break integration week. Accepted Checkpoint 2 role; exact bounded program/evidence package still needs authoring.
 
 ## Weekly Focus
-Can I follow one small program through the stack without hand-waving? Put Weeks 5–8 back together before moving into memory.
+**Can I connect source, representation, ISA, and processor behavior without hand-waving?**
 
-## Monday — Oct 12 — Frame
-Choose one bounded program and predict the path from source-level intent through representation, compiler/toolchain output, ISA instructions, and processor execution.
+Introduce little or no major new theory. This week exists to put Weeks 5-8 back together before moving into memory/system mechanisms.
 
-## Wednesday — Oct 14 — Inspect / Build / Measure
-Build the evidence trail: source → assembly/disassembly → instruction/machine representation → datapath/pipeline trace or other supported processor evidence. Identify and repair weak links in the explanation.
+## Monday - Think / Frame / Lecture
+**AI Fluency Lens 9: Generate.**
 
-## Friday — Oct 16 — Fall Break
-No Friday requirement. Fall Break begins Wednesday night; the integration artifact closes the week.
+Generate candidate explanations/traces/hypotheses, then require evidence to select among them.
+
+Lecture framing: **Follow the Program Down.** Revisit the abstraction stack and identify where students still tend to jump over missing layers.
+
+## Wednesday - Investigate / Break / Measure
+**Professional Minds: _Refactoring_ - How do systems stay healthy over time?**
+
+Take one bounded course-owned program and follow:
+
+**source -> representation -> compiler/toolchain -> RISC-V instruction(s) -> datapath/pipeline/performance evidence**
+
+Revise weak or incomplete explanations discovered during the trace.
+
+## Friday - Explain / Defend / Stack Showcase
+**Fall Break - no normal Friday requirement.**
+
+No substitute Friday burden is invented.
 
 ## Evidence this week
-One compact source-to-CPU narrative backed by actual artifacts from the supported environment. The student should explicitly identify at least one misconception or gap that changed during investigation.
+**Checkpoint 2:** a compact full-stack integration artifact showing that the student can move through several layers with evidence.
+
+## Machine Dossier role
+Add the source-to-CPU integration checkpoint and explicit corrections to the student's mental model.
+
+## Online-delivery note
+The short week remains short. M/W are asynchronous anchors; no Friday catch-up assignment.
 
 ## Open authoring notes
-This week should reuse earlier programs and tools rather than introduce a new project. Its value is diagnostic integration, not novelty.
+Reuse the same tiny program/data already seen where possible. The point is integration, not novelty.

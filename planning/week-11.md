@@ -1,24 +1,55 @@
-# Week 11 — The Memory Illusion II: Virtual Memory, Protection, I/O + OS Support (Oct 26–30)
+# Week 11 - The Useful Lie of Memory (Oct 26-30)
 
 ## Status
-Accepted spine; exact process/address-space/syscall/I/O investigation still needs authoring and validation.
+Accepted focus; exact VM/I/O observation path still needs authoring and platform validation.
 
 ## Weekly Focus
-What hardware does an operating system need in order to create the private, protected world a process sees? Connect virtual/physical addressing, translation, protection/privilege, traps/exceptions/syscalls, interrupts, and basic I/O mechanisms.
+**What hardware mechanisms create the memory/process world software thinks it sees?**
 
-This is the second half of the **Memory Reality + Memory Illusion** sister pair with Week 10.
+Move from Week 10's physical hierarchy to the abstractions hardware and the OS jointly provide.
 
-## Monday — Oct 26 — Frame
-Begin with Week 10's messy physical hierarchy and ask how software can nevertheless experience a clean address space and controlled access to devices/resources.
+## Monday - Think / Frame / Lecture
+**AI Fluency Lens 11: Verify.**
 
-## Wednesday — Oct 28 — Inspect / Build / Measure
-Inspect a real process address space and one OS-facing hardware mechanism. Candidate evidence includes mappings, page/address observations, syscall/trap traces, privilege boundaries, or an interrupt/I/O path where supported and safe.
+Lecture: **The Useful Lie of Memory.**
 
-## Friday — Oct 30 — Explain / Defend
-Explain one useful software abstraction and identify the hardware mechanisms that make the illusion safe and practical.
+Coverage at introductory architecture depth:
+
+- virtual versus physical addresses;
+- page tables and TLB;
+- protection/privilege;
+- page faults;
+- traps/exceptions/syscalls;
+- interrupts;
+- basic device/I/O path.
+
+## Wednesday - Investigate / Break / Measure
+**Professional Minds: _Software Project Management_ - How do projects become reliable products?**
+
+Inspect one or more observable mechanisms:
+
+- process address-space information;
+- page/storage behavior;
+- syscall/trap transition;
+- sequential versus random storage/I/O behavior where portable and useful.
+
+The lab should connect a software-visible abstraction to observable underlying mechanisms.
+
+## Friday - Explain / Defend / Stack Showcase
+**Professional Minds: _Growing Object-Oriented Software, Guided by Tests_ - How do projects become reliable products?**
+
+Verify one abstraction with evidence: what software appears to see, what hardware/OS machinery helps create that appearance, and what observation supports the explanation.
+
+**Stack Showcase:** trace a real process/syscall/I/O path with Jeremy's system tools where safe.
 
 ## Evidence this week
-An evidence-backed explanation connecting a software-visible abstraction to at least one concrete hardware/OS mechanism.
+A verified mechanism explanation with command/trace/measurement evidence.
+
+## Machine Dossier role
+Add VM/protection/I/O evidence that explains what the earlier physical-machine map hides from normal software.
+
+## Online-delivery note
+M/W/F are asynchronous anchors. Avoid privileged-only required tooling.
 
 ## Open authoring notes
-Do not turn this into a full Operating Systems course. The focus is the architecture support that makes OS abstractions possible.
+Do not turn Week 11 into an operating-systems survey. Choose mechanisms that clarify Architecture's role in creating software abstractions.

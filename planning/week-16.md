@@ -1,22 +1,46 @@
-# Week 16 — Farkle + Machine Learning Architecture Capstone (Nov 30–Dec 4)
+# Week 16 - Farkle + Machine Learning (Nov 30-Dec 4)
 
 ## Status
-Pinned capstone shape; exact workload and measurement package still needs final implementation/validation.
+Pinned shared application/fun week. The former Architecture-capstone framing is retired.
 
 ## Weekly Focus
-Use a real, bounded Farkle + machine-learning workload to make several layers of Computer Architecture visible at once. Machine learning is the workload; Architecture is the subject.
+**What does this shared computational workload make me notice now that I know how to look?**
 
-## Monday — Nov 30 — Frame
-Revisit the Week 14 question and Week 15 preflight. Establish the controlled baseline, the one meaningful variable/comparison to change, and the architecture evidence that will matter.
+Week 16 is Farkle + Machine Learning across the course family. It should be joyful, bounded, and accessible.
 
-## Wednesday — Dec 2 — Inspect / Build / Measure
-Run the baseline and controlled variation. Profile/measure/inspect relevant behavior and connect results to several course layers such as representation, ISA/toolchain, CPU execution, memory/locality, parallelism, vectorization, or accelerators.
+Computer Architecture may naturally echo through the student's observations, but no new Architecture theory, dossier layer, or checkpoint is introduced.
 
-## Friday — Dec 4 — Explain / Defend
-Make one bounded architecture claim and defend it with evidence. Separate AI assistance from the evidence used to validate the claim.
+## Monday - Think / Frame / Lecture
+**AI Fluency Lens 16: Reflect and Improve.**
+
+Enter the shared workload with a light prediction based on prior learning.
+
+No new Architecture lecture/mechanism.
+
+## Wednesday - Investigate / Break / Measure
+**Professional Minds: _Generative AI Design Patterns_ - What kind of professional do I want to become?**
+
+Run/play with the shared Farkle + ML experience through the validated CPU-accessible path.
+
+If an Architecture idea appears naturally, notice it rather than turning the week into another profiling project.
+
+## Friday - Explain / Defend / Stack Showcase
+**Professional Minds: Semester Reflection - What kind of professional do I want to become?**
+
+A light application/reflection receipt may ask what the workload made the student notice or what surprised them.
+
+**Optional fun Stack Showcase:** Jeremy runs the workload through interesting parts of his real stack/hardware/tools. This is enrichment only.
 
 ## Evidence this week
-A reproducible capstone investigation containing environment/workload details, baseline, controlled variation, architecture evidence, interpretation, and one defensible claim.
+Shared Farkle + ML application/participation/reflection evidence as defined by the shared source.
+
+**No Architecture Checkpoint 4.**
+
+## Machine Dossier role
+No expansion. Students may refer to existing dossier evidence if useful.
+
+## Online-delivery note
+M/W/F are asynchronous anchors. CPU-only completion is mandatory; GPU/premium AI is optional enrichment.
 
 ## Open authoring notes
-CPU-only completion is mandatory. GPU/accelerator comparison is optional enrichment. No giant model, dataset, or prior ML expertise should be required. The strongest version should reuse the semester lab platform and feed naturally into Week 17 reflection.
+Keep this week fun. Do not resurrect the retired heavy Architecture capstone through profiling requirements or multi-layer dossier work.

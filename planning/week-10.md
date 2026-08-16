@@ -1,24 +1,63 @@
-# Week 10 — The Memory Illusion I: Memory Hierarchy + Caches (Oct 19–23)
+# Week 10 - Make the Memory Hierarchy Hurt (Oct 19-23)
 
 ## Status
-Accepted spine; exact locality/cache experiment still needs authoring and execution validation.
+Accepted sensory-lab focus; memory benchmark harness, plotting helper, and validation still need implementation.
 
 ## Weekly Focus
-Why can memory appear both large and fast only by using layers? Introduce temporal/spatial locality, cache lines/blocks, hits/misses, mapping/associativity at an appropriate depth, and basic performance reasoning.
+**Why do we need layers of memory, and what does crossing a layer feel like?**
 
-This is the first half of the **Memory Reality + Memory Illusion** sister pair with Week 11.
+This is a major sensory week. Cache, locality, latency, bandwidth, and working-set size should become experiences attached to measured curves.
 
-## Monday — Oct 19 — Frame
-Start from the processor's need for data and confront the physical problem: fast storage is scarce and expensive; large storage is farther away and slower. Locality is the software behavior that makes hierarchy useful.
+## Monday - Think / Frame / Lecture
+**AI Fluency Lens 10: Critique.**
 
-## Wednesday — Oct 21 — Inspect / Build / Measure
-Run or inspect a bounded access-pattern experiment that changes locality and exposes timing/cache behavior. Connect measured behavior to cache organization where practical.
+Lecture: **Make the Memory Hierarchy Hurt.**
 
-## Friday — Oct 23 — Explain / Defend
-Explain why two programs/access patterns doing apparently similar work can behave differently because of the memory hierarchy.
+Critique claims such as "more memory is faster" or "cache is just small RAM."
+
+Coverage:
+
+- temporal/spatial locality;
+- cache blocks/lines;
+- mapping/associativity/replacement at useful depth;
+- hits/misses;
+- basic AMAT;
+- latency versus bandwidth;
+- capacity and hierarchy tradeoffs.
+
+## Wednesday - Investigate / Break / Measure
+**Professional Minds: _Software Engineering_ - How do teams build quality systems?**
+
+Run a memory sensory experiment such as:
+
+- dependent pointer chase versus streaming/bulk access;
+- increasing working-set sizes;
+- repeated controlled measurements.
+
+Students should attempt to **find the cliffs** rather than being handed a graph to memorize.
+
+## Friday - Explain / Defend / Stack Showcase
+**Professional Minds: _Agile Software Development_ - How do teams build quality systems?**
+
+Plot working-set size/access behavior against latency/throughput using course helpers. Annotate likely hierarchy transitions only where the evidence justifies them.
+
+Revisit Week 5 **Dollars-Per** with latency/bandwidth/Time-Per context.
+
+**Stack Showcase:** Jeremy runs a richer cache/memory profiler or counter path on one of his systems.
 
 ## Evidence this week
-A locality/cache investigation with measured or simulated evidence and a short interpretation of hits/misses/performance behavior.
+Major Sensitivity Profile update:
+
+- raw measurement receipt;
+- memory hierarchy plot(s);
+- latency/bandwidth explanation;
+- revised hierarchy/economics claim.
+
+## Machine Dossier role
+Major expansion: measured memory hierarchy rather than specification-only hierarchy.
+
+## Online-delivery note
+M/W/F are asynchronous anchors. If a student's hardware cannot expose a clean cliff, provide course-owned fallback data that preserves the reasoning task.
 
 ## Open authoring notes
-Carry one program/data story into Week 11 so physical memory behavior becomes the foundation for software-visible address-space abstractions rather than a disconnected cache chapter.
+Avoid false precision and cross-machine benchmark contests. The shape/mechanism matters more than whose laptop is fastest.

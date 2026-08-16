@@ -1,22 +1,68 @@
-# Week 14 — Architecture Is Tradeoffs (Nov 16–20)
+# Week 14 - Sit in the Architect's Chair (Nov 16-20)
 
 ## Status
-Accepted synthesis week; real-system comparison set and capstone launch artifact still need authoring.
+Accepted technical finale and Checkpoint 3. Exact redesign brief, dossier template, and rubric implementation still need authoring/validation.
 
 ## Weekly Focus
-Why is there no single best computer? Move from mechanism-by-mechanism learning into architecture judgment using real systems and competing constraints.
+**Given a workload and budget, what should I build now, and what evidence changed or strengthened my decision?**
 
-## Monday — Nov 16 — Frame
-Compare real contemporary machines as bundles of choices rather than product trivia. Candidate lenses include performance, latency, throughput, power/energy, memory/bandwidth, cost, programmability, security/reliability, compatibility, and workload fit.
+This is the final week of Computer Architecture technical instruction.
 
-## Wednesday — Nov 18 — Inspect / Build / Measure
-Build an evidence-backed comparison around a bounded workload or design question. Students should distinguish measured/specification evidence from marketing claims and identify what evidence is actually comparable.
+Students return to the machine they designed in Week 5 and make architecture judgments using the evidence accumulated since then.
 
-## Friday — Nov 20 — Explain / Defend
-Defend one architecture/design choice and launch the Week 16 capstone with a bounded question, hypothesis, and measurement plan.
+## Monday - Think / Frame / Lecture
+**AI Fluency Lens 14: Automate.**
+
+Lecture: **Sit in the Architect's Chair.**
+
+Automate evidence collection, plotting, and report assembly where useful, but **do not automate the judgment itself**.
+
+Synthesize:
+
+- performance;
+- latency/throughput;
+- memory/bandwidth;
+- cost;
+- power/energy where responsibly supported;
+- programmability;
+- specialization;
+- security/reliability where appropriate;
+- workload fit.
+
+## Wednesday - Investigate / Break / Measure
+**Professional Minds: _Docs for Developers_ - How do we communicate with humans and AI?**
+
+Rebuild/reconsider the Week 5 machine under the same or explicitly bounded budget/workload.
+
+For important choices, record:
+
+- original choice;
+- current choice;
+- changed or deliberately unchanged;
+- metric used;
+- evidence;
+- accepted tradeoff.
+
+## Friday - Explain / Defend / Stack Showcase
+**Professional Minds: _Prompt Engineering for Generative AI_ - How do we communicate with humans and AI?**
+
+**Checkpoint 3:** submit/defend the final Machine Dossier and redesign argument.
+
+**Final Architecture Stack Showcase:** Jeremy selects a real machine/system choice from his own stack and demonstrates how he would defend it now using workload, measurements, constraints, and tradeoffs.
 
 ## Evidence this week
-A concise architecture tradeoff argument plus a capstone investigation proposal identifying the workload, variable/comparison, evidence to collect, and expected architecture connection.
+- final Machine Dossier PDF/source/evidence bundle;
+- redesign or deliberate no-change decisions;
+- evidence-backed defense;
+- explicit tradeoffs.
+
+## Machine Dossier role
+**Final checkpoint. Freeze the dossier at the end of this week.**
+
+No new Architecture dossier layer is added in Weeks 15-17.
+
+## Online-delivery note
+M/W/F are asynchronous anchors. Checkpoint 3 must be completable without synchronous presentation.
 
 ## Open authoring notes
-This is the natural home for selected modern topics that sharpen design judgment without requiring a full standalone week: branch prediction/out-of-order execution, SoCs, energy, security/speculative side effects, specialized accelerators, or historical counterexamples. Select based on explanatory value rather than feature-count ambition.
+This replaces the old "capstone launch" concept. Do not push the technical climax into Week 16.

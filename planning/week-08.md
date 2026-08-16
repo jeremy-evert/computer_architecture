@@ -1,24 +1,55 @@
-# Week 8 — Do Many Things at Once: Pipelining + Performance (Oct 5–9)
+# Week 8 - Make It Fast Without Breaking It (Oct 5-9)
 
 ## Status
-Accepted spine; detailed pipeline activity and measurement path still need authoring/validation.
+Accepted focus; pipeline/performance sensory lab and plotting scaffold still need implementation/validation.
 
 ## Weekly Focus
-How can a processor overlap instruction execution without violating the ISA contract? Introduce latency, throughput, CPI, pipeline stages, hazards, forwarding, stalls, flushing, and branch effects at an appropriate depth.
+**Why does doing several things at once improve performance, and why does it create new problems?**
 
-This is the second half of the **Correct + Fast** sister pair with Week 7.
+This week should make latency, throughput, dependencies, hazards, CPI, and pipeline behavior experiential rather than vocabulary-only.
 
-## Monday — Oct 5 — Frame
-Start from Week 7's one-instruction datapath and ask what changes when several instructions occupy different stages at once. Distinguish latency from throughput and connect the pipeline to performance goals.
+## Monday - Think / Frame / Lecture
+**AI Fluency Lens 8: Reason.**
 
-## Wednesday — Oct 7 — Inspect / Build / Measure
-Trace overlapping instructions through a simple pipeline. Expose at least one data/control hazard and observe or calculate the consequence of forwarding, stalling, or flushing.
+Lecture: **Make It Fast Without Breaking It.**
 
-## Friday — Oct 9 — Explain / Defend
-Defend one performance claim: what improved, what new complication appeared, and what evidence supports the explanation.
+Coverage:
+
+- latency versus throughput;
+- CPU-time equation and CPI at useful depth;
+- pipeline stages;
+- structural/data/control hazards;
+- forwarding, stalls, flushes;
+- branch effects;
+- why GHz alone is not a performance argument.
+
+## Wednesday - Investigate / Break / Measure
+**Professional Minds: _The Pragmatic Programmer_ - What does professional craftsmanship look like?**
+
+Run a bounded performance/pipeline experiment that contrasts dependent and more-independent work or otherwise makes overlap/hazards visible.
+
+Students predict what should matter before timing/tracing.
+
+## Friday - Explain / Defend / Stack Showcase
+**Professional Minds: _Clean Code_ - What does professional craftsmanship look like?**
+
+Use course-scaffolded Python/matplotlib tooling to create the first real **Sensitivity Profile** curve.
+
+Explain what the plot says about latency/throughput/dependencies rather than merely uploading it.
+
+**Stack Showcase:** Jeremy profiles/times the same idea with his real compiler/profiler/tool stack.
 
 ## Evidence this week
-A pipeline timing/trace artifact plus a short performance interpretation using appropriate metrics such as cycles, CPI, latency, or throughput.
+- controlled performance/pipeline evidence;
+- first sensitivity plot;
+- explanation of what "fast" means for this experiment;
+- revision of any naive Week 5 performance metric that the evidence complicates.
+
+## Machine Dossier role
+Add first performance/sensitivity plot and latency/throughput evidence.
+
+## Online-delivery note
+M/W/F are asynchronous anchors. Plotting is scaffolded; matplotlib syntax itself is not the learning objective.
 
 ## Open authoring notes
-Branch prediction, superscalar execution, and out-of-order execution are candidates for enrichment or later tradeoff discussion. Do not crowd the core pipeline mental model merely to name modern features.
+Choose an experiment that is stable enough across student systems to teach the concept without rewarding noisy benchmark theater.

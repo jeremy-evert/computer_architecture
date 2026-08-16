@@ -1,24 +1,61 @@
-# Week 12 — More Cores, More Problems (Nov 2–6)
+# Week 12 - More Cores, More Problems (Nov 2-6)
 
 ## Status
-Accepted spine; small parallel experiment and coherence/synchronization demonstration still need authoring and validation.
+Accepted sensory-lab focus; shared-memory/communication harness and validation still need implementation.
 
 ## Weekly Focus
-What changes when several cores can touch the same world at once? Introduce thread/data parallelism, speedup, Amdahl's Law, shared memory, synchronization, cache coherence, false sharing, and only enough consistency reasoning to explain observed behavior.
+**When does adding workers help, and when does cooperation cost more than it buys?**
 
-This is the first half of the **General + Specialized Parallelism** sister pair with Week 13.
+Students should feel the difference between a workload that can do substantial local work and one that constantly waits, synchronizes, or communicates.
 
-## Monday — Nov 2 — Frame
-Why does adding cores help some workloads a lot, others a little, and some not at all? Establish serial fraction, coordination, and shared-state costs.
+## Monday - Think / Frame / Lecture
+**AI Fluency Lens 12: Revise.**
 
-## Wednesday — Nov 4 — Inspect / Build / Measure
-Run a bounded repeatable parallel experiment. Compare one-thread and multi-thread behavior and, where the supported environment permits, expose a coordination effect such as synchronization overhead, contention, or false sharing.
+Lecture: **More Cores, More Problems.**
 
-## Friday — Nov 6 — Explain / Defend
-Explain why the measured speedup differs from the naive "N cores = N times faster" story and identify at least one architecture/software interaction responsible.
+Coverage:
+
+- thread/data parallelism;
+- speedup and Amdahl's Law;
+- shared memory;
+- synchronization;
+- cache coherence;
+- false sharing;
+- computation-to-communication ratio;
+- latency/synchronization as scaling constraints.
+
+## Wednesday - Investigate / Break / Measure
+**Professional Minds: _Getting Things Done_ - How do professionals sustain performance?**
+
+Parallel sensory lab comparing:
+
+- chunky/local useful work between coordination events; versus
+- deliberately chatty/dependent/synchronized work.
+
+Vary worker count and, where the validated harness permits, communication/synchronization delay.
+
+MPI may appear if Prompt 003 proves it humane; MPI itself is not the objective.
+
+## Friday - Explain / Defend / Stack Showcase
+**Professional Minds: _Joy on Demand_ - How do professionals sustain performance?**
+
+Plot runtime/speedup against workers and/or added communication delay. Explain the shape and identify where additional workers stopped helping.
+
+**Stack Showcase:** Jeremy may demonstrate a multicore/MPI/NRP-style run on a richer system to show where the road leads.
 
 ## Evidence this week
-A small parallel-performance receipt with controlled workload size, timing/measurement, and an evidence-backed speedup explanation.
+Scaling/communication Sensitivity Profile update:
+
+- controlled experiment receipt;
+- plot;
+- explanation of computation versus coordination;
+- revised belief about "more cores = faster."
+
+## Machine Dossier role
+Add core/thread topology context plus measured scaling/communication sensitivity.
+
+## Online-delivery note
+M/W/F are asynchronous anchors. Required path must run on ordinary CPU hardware without access to Jeremy's cluster/network.
 
 ## Open authoring notes
-Reuse a workload/data layout that can continue into Week 13. The point is not concurrent-programming syntax mastery; it is understanding what general-purpose parallel hardware makes possible and difficult.
+Teach the transferable communication-to-computation principle rather than memorizing that a named application is inherently latency-sensitive or insensitive.

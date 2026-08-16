@@ -1,24 +1,61 @@
-# Week 6 — The Hardware/Software Contract: ISA + RISC-V (Sep 21–25)
+# Week 6 - Bits Become Instructions (Sep 21-25)
 
 ## Status
-Accepted spine. RISC-V is the planning-leading teaching ISA; exact free/open toolchain and simulator path still need prototype validation.
+Accepted spine and Checkpoint 1 role; exact examples/toolchain/lab still need authoring and execution validation.
 
 ## Weekly Focus
-What must software and hardware agree on for a program to run? Connect source intent to registers, memory, instructions, encodings, control flow, procedures, and machine-visible state.
+**What must software and hardware agree on for a program to run?**
 
-This is the second half of the **Meaning + Contract** sister pair with Week 5.
+Move from the machine students chose in Week 5 to the representations and instruction contract inside it, using RISC-V as the planning-leading teaching ISA.
 
-## Monday — Sep 21 — Frame
-An ISA as a contract between software and hardware. Introduce the smallest useful subset of RISC-V needed to understand a tiny program: registers, loads/stores, arithmetic, branches/jumps, and instruction encoding where it improves understanding.
+## Monday - Think / Frame / Lecture
+**AI Fluency Lens 6: Engineer the Prompt.**
 
-## Wednesday — Sep 23 — Inspect / Build / Measure
-Compile/disassemble/step one of Week 5's tiny programs. Inspect assembly, instructions, registers, memory, and machine code using the supported open toolchain/simulator path.
+Lecture: **Bits Become Instructions.**
 
-## Friday — Sep 25 — Explain / Defend
-Trace how a small source-level operation becomes machine instructions and defend the explanation with compiler/disassembly/simulator evidence.
+Useful coverage:
+
+- binary and hexadecimal as machine-reading notation;
+- fixed-width unsigned/signed integers and two's complement;
+- overflow;
+- floating-point approximation at useful depth;
+- bytes/endianness where useful;
+- registers, memory, RISC-V instruction forms and encodings;
+- source -> assembly -> machine-visible state;
+- calling convention/ABI only far enough to explain observed compiler output.
+
+## Wednesday - Investigate / Break / Measure
+**Professional Minds: _Statistics Done Wrong_ - How do we know something is true?**
+
+Reuse a tiny program/value story from Week 5.
+
+Inspect:
+
+**source value/operation -> bytes/representation -> assembly/RISC-V instruction -> registers/memory/state**
+
+Students should change one bounded input/operation and predict what will change before recompiling/inspecting.
+
+## Friday - Explain / Defend / Stack Showcase
+**Professional Minds: _Understanding Statistics and Experimental Design_ - How do we know something is true?**
+
+**Checkpoint 1:** defend one compact evidence chain across multiple layers.
+
+**Stack Showcase:** Jeremy compiles, disassembles, and steps the same tiny program with his real stack, using AI tools as visible assistants while machine evidence remains authoritative.
 
 ## Evidence this week
-A source → assembly → instruction/register/memory trace for one bounded program, with a short explanation of what the ISA contract made possible.
+Checkpoint 1 should show:
+
+- claimed software meaning;
+- actual representation/encoding;
+- relevant instruction(s);
+- observed state/result;
+- student's explanation of the contract.
+
+## Machine Dossier role
+Add representation/ISA evidence and Checkpoint 1.
+
+## Online-delivery note
+M/W/F are asynchronous anchors. Checkpoint evidence must be individually reproducible; no live demonstration is required.
 
 ## Open authoring notes
-Prefer the smallest coherent RISC-V stack that works reliably on the Week 3 lab platform. The course must not depend on zyBooks or a paid simulator. Keep compiler/assembler/linker/loader boundaries only as deep as they sharpen the architecture story.
+Avoid turning the week into either a binary-conversion worksheet marathon or an assembly-programming course. Floating-point and ABI depth should be bounded by what later labs need.

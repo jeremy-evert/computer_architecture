@@ -1,24 +1,51 @@
-# Week 7 — Build One Instruction: Datapath + Control (Sep 28–Oct 2)
+# Week 7 - Crack Open the CPU (Sep 28-Oct 2)
 
 ## Status
-Accepted spine; bounded build/trace tool and lab still need selection and validation.
+Accepted focus; exact datapath teaching model/simulator/build and validation still need authoring.
 
 ## Weekly Focus
-What physically has to happen inside a processor to execute one instruction correctly? Connect the ISA contract to PC, register file, ALU, memory, muxes, control signals, and instruction decode.
+**What has to exist inside the CPU for one instruction to execute correctly?**
 
-This is the first half of the **Correct + Fast** sister pair with Week 8.
+Students previously treated the CPU as a chosen component and the ISA as a contract. Now crack the box open enough to see how hardware keeps that contract.
 
-## Monday — Sep 28 — Frame
-Follow one familiar Week 6 instruction into the processor. Establish the stored-program model and the minimum datapath components required to make the instruction's promise true.
+## Monday - Think / Frame / Lecture
+**AI Fluency Lens 7: Research and Retrieve.**
 
-## Wednesday — Sep 30 — Inspect / Build / Measure
-Trace or build a bounded single-cycle datapath/control path for a small instruction subset. Students should manipulate state or signals, not merely label a static diagram.
+Lecture: **Crack Open the CPU.**
 
-## Friday — Oct 2 — Explain / Defend
-Explain the path one instruction takes and justify the relevant control choices using a trace, diagram, simulator state, or bounded build artifact.
+Use authoritative references to establish the bounded model:
+
+- stored-program idea;
+- program counter;
+- register file;
+- ALU;
+- instruction/data memory;
+- muxes and control signals;
+- decode;
+- single-cycle datapath/control at an appropriate scope.
+
+## Wednesday - Investigate / Break / Measure
+**Professional Minds: _Understanding by Design_ - How do we design meaningful systems?**
+
+Trace or build the bounded datapath/control required for one already-familiar RISC-V instruction.
+
+The student should be able to change/remove one needed path/control choice and explain what breaks.
+
+## Friday - Explain / Defend / Stack Showcase
+**Professional Minds: _Rethinking Grading_ - How do we design meaningful learning?**
+
+Defend why each important datapath/control component is necessary for the chosen instruction rather than merely labeling a diagram.
+
+**Stack Showcase:** use the selected simulator/visualizer or real microarchitecture evidence to connect the teaching model to a contemporary processor.
 
 ## Evidence this week
-An instruction-through-datapath trace or small build that connects instruction fields to actual processor actions.
+A processor/datapath trace or bounded build plus an explanation of what machine state changes and why.
+
+## Machine Dossier role
+Crack the Week 5 CPU box open conceptually; add a compact datapath/control trace where it improves the persistent machine model.
+
+## Online-delivery note
+M/W/F are asynchronous anchors. The build/trace must have a supported individual path.
 
 ## Open authoring notes
-Reuse Week 6 programs/instructions. Scope discipline matters: understanding a small CPU is better than half-building a giant one.
+Keep the build bounded. A small processor path students truly understand is more valuable than a giant half-finished CPU project.

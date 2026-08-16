@@ -1,22 +1,50 @@
-# Week 2 — AI Laboratory Training (Aug 24–28)
+# Week 2 - AI Laboratory Training (Aug 24-28)
 
 ## Status
 Pinned focus; student-facing lesson and lab still need full authoring/validation.
 
 ## Weekly Focus
-Learn to use AI as a technical investigation partner without treating generated claims as evidence. Establish the investigation notebook used throughout the semester.
+**How can AI help me investigate a machine without becoming my source of truth?**
 
-## Monday — Aug 24 — Frame
-What makes a useful technical question? Gather context, state what is known/unknown, ask AI for hypotheses or investigation paths, and distinguish suggestion from fact.
+Establish the investigation behavior reused throughout the semester: AI may propose explanations, commands, hypotheses, and paths; evidence decides.
 
-## Wednesday — Aug 26 — Inspect / Build / Measure
-Take a bounded claim about a computer and verify it against commands, documentation, source/specification, or measurement. Compare what the model said with what the machine/evidence says.
+## Monday - Think / Frame / Lecture
+**AI Fluency Lens 1+2: Define the Problem + Gather Context.**
 
-## Friday — Aug 28 — Explain / Defend
-Explain what changed after verification: what the AI proposed, what evidence confirmed/rejected it, and what the revised explanation should be.
+What makes a useful technical question? Gather context, state knowns/unknowns, and distinguish an AI suggestion from a verified fact.
+
+The Monday package should model Jeremy using one or more current AI tools while visibly separating model fluency from evidence.
+
+## Wednesday - Investigate / Break / Measure
+**Professional Minds: _Make It Stick_ - How does the brain improve?**
+
+Take one bounded claim about a computer and verify it against commands, official documentation, source/specification, or measurement.
+
+Compare what the model said with what the machine/evidence says.
+
+## Friday - Explain / Defend / Stack Showcase
+**Professional Minds: _Mindset_ - How does the brain improve?**
+
+Explain what changed after verification: what AI proposed, what evidence confirmed/rejected it, and what the revised explanation should be.
+
+A short instructor showcase may compare several AI tools on the same technical question, but no provider is required of students.
 
 ## Evidence this week
-First AI investigation notebook entry: question/hypothesis, context, AI/tool use, observation, evidence artifact, conclusion, and revision after verification.
+First AI investigation notebook entry:
+
+- question/hypothesis;
+- context;
+- AI/tool used;
+- observation;
+- evidence artifact;
+- conclusion;
+- revision after verification.
+
+## Machine Dossier role
+None. Week 2 builds the investigation method later used by the dossier.
+
+## Online-delivery note
+M/W/F are asynchronous production/release anchors, not attendance periods.
 
 ## Open authoring notes
-Required path must not depend on a paid AI subscription or premium CLI agent. Premium tools may be demonstrated as optional enrichment only. Brief shared Professional Minds touchpoints such as *Make It Stick* and *Mindset* may support the week without displacing the AI-lab center.
+Required path must not depend on a paid AI subscription or premium CLI agent. Premium tools may appear in Jeremy's recording as optional workflow examples only.

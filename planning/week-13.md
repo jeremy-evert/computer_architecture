@@ -1,24 +1,50 @@
-# Week 13 — Different Machines for Different Work (Nov 9–13)
+# Week 13 - Different Machines for Different Work (Nov 9-13)
 
 ## Status
-Accepted spine; CPU-only comparison activity and optional accelerator extension still need authoring/validation.
+Accepted focus; exact scalar/vector/accelerator comparison and CPU-only fallback need implementation/validation.
 
 ## Weekly Focus
-Why do vectors, GPUs, NPUs, and other accelerators exist if CPUs are already programmable? Connect workload shape to SIMD/vector execution, throughput vs latency, GPU/SIMT ideas, memory bandwidth/data movement, and specialization.
+**When does workload shape justify a different kind of machine?**
 
-This is the second half of the **General + Specialized Parallelism** sister pair with Week 12.
+Specialization should emerge as a response to workload structure, throughput, data movement, and cost rather than as a parade of GPU buzzwords.
 
-## Monday — Nov 9 — Frame
-Start from Week 12's multicore workload and ask whether adding more general-purpose cores is always the right answer. Introduce specialization as a response to regular, parallel, data-heavy workloads.
+## Monday - Think / Frame / Lecture
+**AI Fluency Lens 13: Decide.**
 
-## Wednesday — Nov 11 — Inspect / Build / Measure
-Compare at least two execution shapes, such as scalar vs vectorized CPU or general-purpose vs accelerator-oriented implementations. A CPU-only path is mandatory; GPU/accelerator access may provide an optional comparison.
+Lecture: **Different Machines for Different Work.**
 
-## Friday — Nov 13 — Explain / Defend
-Explain when specialized hardware is a good fit, what overhead or limitation comes with it, and why software/data layout still matters.
+Coverage:
+
+- SIMD/vector processing;
+- GPU/SIMT concepts;
+- throughput-oriented versus latency-oriented design;
+- memory/bandwidth/data movement;
+- setup/transfer overhead;
+- accelerator/tensor/ML workload shapes;
+- tradeoffs with general-purpose CPU execution.
+
+## Wednesday - Investigate / Break / Measure
+**Professional Minds: _97 Things Every Programmer Should Know_ - How do professionals work with others?**
+
+Compare the same conceptual workload under two or more execution organizations such as scalar versus vectorized or CPU versus accelerator-shaped execution.
+
+**CPU-only required path is mandatory.** Optional GPU evidence may enrich the comparison but cannot gate success.
+
+## Friday - Explain / Defend / Stack Showcase
+**Professional Minds: _How to Win Friends and Influence People_ - How do professionals work with others?**
+
+Defend one workload/architecture match while naming setup/data-movement costs and a real tradeoff.
+
+**Stack Showcase:** Jeremy may use a GPU/accelerator/vector path on his own hardware to demonstrate what students would see on richer systems.
 
 ## Evidence this week
-A controlled comparison of workload implementations or execution models with an evidence-backed explanation of throughput, latency, bandwidth, parallelism, or specialization tradeoffs.
+A specialization/workload-fit receipt using measurement/trace evidence and an explicit tradeoff.
+
+## Machine Dossier role
+Add workload-fit/general-versus-specialized evidence. Revisit representation formats where FP32/FP16/BF16/int8 or another format materially clarifies accelerator tradeoffs.
+
+## Online-delivery note
+M/W/F are asynchronous anchors. No student GPU requirement.
 
 ## Open authoring notes
-Do not create a hardware-access arms race. Students without a GPU must be able to complete the same required conceptual work and earn the same grade.
+Avoid making GPU ownership an implicit prestige path. The CPU-only experiment must preserve the same reasoning objective.
