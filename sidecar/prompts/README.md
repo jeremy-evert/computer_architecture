@@ -16,11 +16,15 @@ Project-local work orders for getting COMSC-3013 ready for Fall 2026 deployment.
 
 1. **COMPLETE** - `001_reconcile_course_source_chassis.md`
    - receipt: `../reports/001_reconcile_course_source_chassis.md`
-2. **ACTIVE** - `002_build_open_source_architecture_canon.md`
-3. **UNBLOCKED / PARALLEL** - `003_build_reproducible_architecture_lab.md`
-4. **WAITING ON 002 + 003** - `004_author_weeks_05_14_architecture_core.md`
+2. **COMPLETE** - `002_build_open_source_architecture_canon.md`
+   - receipt: `../reports/002_build_open_source_architecture_canon.md`
+3. **COMPLETE WITH PLATFORM YELLOWS** - `003_build_reproducible_architecture_lab.md`
+   - implementation: `../../lab/`
+   - receipt: `../reports/003_build_reproducible_architecture_lab.md`
+   - executed Linux substrate is green; WSL2/container-image/macOS claims remain evidence-gated
+4. **UNBLOCKED** - `004_author_weeks_05_14_architecture_core.md`
 5. **LATER** - `005_build_farkle_ml_architecture_capstone.md`
    - historical filename retained; current mission is the shared Week 16 Farkle + ML experience, **not** an Architecture capstone
 6. **LATER** - `006_imprint_architecture_to_savnac_and_read_back.md`
 
-Read `../PLANNING.md`, `../../planning/block-map.md`, `../../planning/machine-dossier.md`, and `../../docs/grading-model.md` before dispatching work.
+Read `../PLANNING.md`, `../../planning/block-map.md`, `../../planning/machine-dossier.md`, `../../planning/open-source-resource-canon.md`, `../../lab/CONTRACT.md`, and `../../docs/grading-model.md` before dispatching work.
