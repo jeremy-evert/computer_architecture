@@ -1,0 +1,89 @@
+{
+  "accelerator": {
+    "detected": false,
+    "scope": "not detected; absence is not proof the physical host has no accelerator"
+  },
+  "caches": [
+    {
+      "coherency_line_size": "64",
+      "level": "1",
+      "number_of_sets": "64",
+      "shared_cpu_list": "0-1",
+      "size": "32K",
+      "type": "Data",
+      "ways_of_associativity": "8"
+    },
+    {
+      "coherency_line_size": "64",
+      "level": "1",
+      "number_of_sets": "64",
+      "shared_cpu_list": "0-1",
+      "size": "32K",
+      "type": "Instruction",
+      "ways_of_associativity": "8"
+    },
+    {
+      "coherency_line_size": "64",
+      "level": "2",
+      "number_of_sets": "2048",
+      "shared_cpu_list": "0-1",
+      "size": "1024K",
+      "type": "Unified",
+      "ways_of_associativity": "8"
+    },
+    {
+      "coherency_line_size": "64",
+      "level": "3",
+      "number_of_sets": "32768",
+      "shared_cpu_list": "0-4",
+      "size": "32768K",
+      "type": "Unified",
+      "ways_of_associativity": "16"
+    }
+  ],
+  "cpu": {
+    "architecture": "x86_64",
+    "byte_order": "Little Endian",
+    "cores_per_socket": "5",
+    "logical_processors": "5",
+    "model": "AMD EPYC 9V74 80-Core Processor",
+    "sockets": "1",
+    "threads_per_core": "1",
+    "vendor": "AuthenticAMD"
+  },
+  "memory": {
+    "bytes": 6368813056,
+    "source": "/proc/meminfo"
+  },
+  "os": {
+    "distribution": "Debian GNU/Linux 13 (trixie)",
+    "machine": "x86_64",
+    "release": "6.18.35",
+    "system": "Linux"
+  },
+  "privacy": {
+    "intentionally_omitted": [
+      "username",
+      "home_path",
+      "serial_numbers",
+      "mac_addresses",
+      "public_ip",
+      "device_ids"
+    ]
+  },
+  "probe_version": "0.1.0",
+  "schema": "swosu.archprobe.snapshot/v1",
+  "scope": {
+    "notes": [
+      "Running inside a container; CPU/memory/storage visibility may differ from the physical host."
+    ],
+    "scope": "container-visible"
+  },
+  "storage": {
+    "note": "This is filesystem capacity visible to the process, not a physical-drive inventory.",
+    "scope": "current-root-filesystem",
+    "visible_filesystem_free_bytes": 40537935872,
+    "visible_filesystem_total_bytes": 67049664512
+  },
+  "timestamp_utc": "2026-08-16T15:42:39.465738+00:00"
+}

@@ -1,0 +1,10 @@
+SWOSU Architecture Observatory
+Scope: container-visible
+OS: Debian GNU/Linux 13 (trixie)
+Architecture: x86_64
+CPU: AMD EPYC 9V74 80-Core Processor
+Logical processors: 5
+Visible memory: 5.9 GiB
+Cache records: 4
+Accelerator visible: False
+NOTE: Running inside a container; CPU/memory/storage visibility may differ from the physical host.

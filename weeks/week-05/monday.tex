@@ -1,0 +1,190 @@
+\documentclass{beamer}
+\input{../_shared/beamer-preamble.tex}
+
+\title{Week 5 Monday}
+\subtitle{Build the Machine}
+\author{COMSC-3013 Computer Architecture}
+\date{}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\ArchQuestionSlide{What should I build for this workload, what does each part buy me, and how should I compare choices?}{Under a fixed \$1,500 tower budget, which resource deserves the largest budget share for your workload, and what evidence would make you move about \$150?}
+\note{Open with the student's useful prior belief: bigger numbers often buy capability. The week is not here to shame that instinct; it is here to make the word ``better'' conditional on workload and evidence.}
+
+\begin{frame}{Start with verbs, not parts}
+\begin{itemize}
+  \item Compile, render, encode, analyze, store, move, respond.
+  \item A workload names what the machine must \textbf{do}.
+  \item A specification describes a resource a component provides.
+  \item The design question is whether that resource matters under this workload and budget.
+\end{itemize}
+\note{Use two different workloads and ask whether the same expensive component deserves the same share of the budget. Do not begin naming a preferred CPU/GPU.}
+\end{frame}
+
+\begin{frame}{First gate: would it run?}
+\small
+\begin{tabular}{ll}
+\toprule
+Relationship & Bounded compatibility question \\
+\midrule
+CPU $\leftrightarrow$ board & socket/platform/firmware support? \\
+Board $\leftrightarrow$ RAM & correct memory type/capacity? \\
+Storage $\leftrightarrow$ board & compatible slot/interface? \\
+Board/GPU/cooler $\leftrightarrow$ case & form factor and clearance? \\
+CPU/GPU $\leftrightarrow$ PSU & power budget and connectors? \\
+Graphics path & integrated or discrete path exists? \\
+\bottomrule
+\end{tabular}
+\note{A commercial builder can help surface problems, but the manufacturer specs explain the actual relationship. Keep this bounded. We are not teaching every physical/electrical PC-building detail.}
+\end{frame}
+
+\begin{frame}{Three questions that are not the same}
+\begin{columns}[T]
+\column{0.31\textwidth}
+\textbf{Capacity}
+
+How much can be held?
+
+\column{0.31\textwidth}
+\textbf{Latency}
+
+How long until one requested thing is available?
+
+\column{0.31\textwidth}
+\textbf{Bandwidth}
+
+How much can move/complete per unit time once work is flowing?
+\end{columns}
+
+\vspace{1.4em}
+\centering
+A bigger number on one axis does not answer the other two.
+\note{These words return all semester. Do not teach numeric latency tables here. The goal is simply to prevent students from treating GB, ns, and GB/s as versions of the same idea.}
+\end{frame}
+
+\begin{frame}{The hierarchy starts a story}
+\small
+\begin{tabular}{llll}
+\toprule
+Layer & Capacity tendency & Buy separately? & Persistent? \\
+\midrule
+L1/L2/L3 cache & small & no & no \\
+RAM & much larger & yes & no \\
+SSD/NVMe & larger again & yes & yes \\
+optional bulk storage & very large & yes & yes \\
+\bottomrule
+\end{tabular}
+
+\vspace{1em}
+\textbf{Week 5 question:} what can we responsibly compare now?\\
+\textbf{Week 10 question:} what happens when we make the hierarchy hurt?
+\note{This is explicitly a first map. Cache has no honest retail price-per-GB. Week 10 will add measured sensitivity instead of memorized internet numbers.}
+\end{frame}
+
+\begin{frame}{Dollars Per: correct arithmetic, weak verdict}
+\begin{center}
+\begin{tabular}{lrrr}
+\toprule
+Synthetic option & Price & Cores & Naive \$/core \\
+\midrule
+CPU A & \$280 & 8 & \$35.00 \\
+CPU B & \$390 & 12 & \$32.50 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+CPU B wins this metric. What has the metric \textbf{not} told us?
+\note{Stress that the numbers are invented. Ask for missing variables: workload scaling, core type, single-thread behavior, memory behavior, power, and opportunity cost. The arithmetic is true. The implied judgment is not yet earned.}
+\end{frame}
+
+\begin{frame}{Some Dollars-Per is literal}
+\begin{itemize}
+  \item RAM \$/GB: real separately purchased capacity.
+  \item Storage \$/TB: real separately purchased capacity.
+  \item CPU \$/core or GPU \$/GB VRAM: intentionally naive workload proxies.
+  \item L1/L2/L3 cache \$/GB: \textbf{do not invent it}.
+\end{itemize}
+
+\vspace{1em}
+Cache is an architectural scarcity problem: capacity competes with area, latency, power, organization, and total chip design.
+\note{This is the correction to the historical Dollars-Per activity. We preserve the instinct but stop pretending cache is a retail SSD glued to the CPU.}
+\end{frame}
+
+\begin{frame}{A budget is an architecture statement}
+\[
+\text{budget share} = \frac{\text{component price}}{1500}\times 100\%
+\]
+
+\begin{itemize}
+  \item 40\% on one component is a claim about what the workload needs.
+  \item Every dollar has an opportunity cost.
+  \item The same parts can be sensible for one workload and silly for another.
+\end{itemize}
+\note{The fixed budget equalizes the intellectual task. Owning a more expensive real computer confers no advantage.}
+\end{frame}
+
+\begin{frame}{Make tradeoff a verb}
+Build one compatible baseline, then move about \$100--\$200 while keeping workload and total budget approximately fixed.
+
+\vspace{1em}
+Examples:
+\begin{itemize}
+  \item CPU $\rightarrow$ GPU;
+  \item storage capacity $\rightarrow$ RAM;
+  \item discrete GPU $\rightarrow$ CPU/RAM/storage when integrated graphics is enough;
+  \item premium case/board $\rightarrow$ workload-facing resource.
+\end{itemize}
+\note{Students are not asked for two giant builds. One bounded reallocation creates the comparison. Ask: what became better, what became worse, and what evidence is still missing?}
+\end{frame}
+
+\begin{frame}{AI Fluency Lens 5: select the right model}
+\begin{itemize}
+  \item Ask for recommendations under meaningfully different workload framing.
+  \item Identify the assumed workload and metric behind each recommendation.
+  \item Verify exact compatibility/spec claims outside the model.
+  \item Treat recommendation confidence as rhetoric, not evidence.
+\end{itemize}
+
+\vspace{1em}
+\centering
+\textbf{AI can propose. Evidence decides.}
+\note{This can use two providers, one provider with two prompts, or course-provided samples. No paid AI dependency. Verify one claim live against an official manufacturer specification page.}
+\end{frame}
+
+\begin{frame}{What Week 5 can and cannot claim}
+\textbf{Can support:}
+\begin{itemize}
+  \item compatibility under checked evidence;
+  \item dated market price;
+  \item capacity and budget-share comparisons;
+  \item a workload hypothesis.
+\end{itemize}
+
+\textbf{Cannot yet support:}
+\begin{itemize}
+  \item measured application performance;
+  \item cache latency/bandwidth;
+  \item scaling or accelerator benefit;
+  \item ``best PC'' conclusions.
+\end{itemize}
+\note{This is the epistemic boundary. The rest of the technical arc exists because Week 5 does not have enough evidence yet.}
+\end{frame}
+
+\begin{frame}{Wednesday: make the design move}
+\Large
+Build the \$1,500 baseline. Move about \$150. Keep the workload fixed.
+
+\vspace{1em}
+\normalsize
+Record what the move buys, what it costs, and what you still cannot prove.
+
+\vspace{1em}
+\textbf{Prediction to preserve:} Which resource deserves the budget, and what evidence would make you reallocate it?
+\note{Stop here. Do not show a canonical ``correct'' parts list. Wednesday's purpose is for the student to own the first hypothesis.}
+\end{frame}
+
+\end{document}
