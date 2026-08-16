@@ -1,42 +1,12 @@
 # Week 9 - Follow the Program Down (Oct 12-14)
 
-## Status
-Short Fall Break integration week. Accepted Checkpoint 2 role; exact bounded program/evidence package still needs authoring.
+**Status:** IMPLEMENTED WITH NAMED RELEASE YELLOWS - 2026-08-16
 
-## Weekly Focus
-**Can I connect source, representation, ISA, and processor behavior without hand-waving?**
+**Authored teaching truth:** `../weeks/week-09/`  
+**Execution report:** `../sidecar/reports/004_f_author_week_09_follow_the_program_down.md`
 
-Introduce little or no major new theory. This week exists to put Weeks 5-8 back together before moving into memory/system mechanisms.
+Central question: **Can I follow one small program through the stack without losing the evidence chain?**
 
-## Monday - Think / Frame / Lecture
-**AI Fluency Lens 9: Generate.**
+Persistent role: closes the Weeks 6-9 `transform()` act with Checkpoint 2. Fall Break has no normal Friday burden.
 
-Generate candidate explanations/traces/hypotheses, then require evidence to select among them.
-
-Lecture framing: **Follow the Program Down.** Revisit the abstraction stack and identify where students still tend to jump over missing layers.
-
-## Wednesday - Investigate / Break / Measure
-**Professional Minds: _Refactoring_ - How do systems stay healthy over time?**
-
-Take one bounded course-owned program and follow:
-
-**source -> representation -> compiler/toolchain -> RISC-V instruction(s) -> datapath/pipeline/performance evidence**
-
-Revise weak or incomplete explanations discovered during the trace.
-
-## Friday - Explain / Defend / Stack Showcase
-**Fall Break - no normal Friday requirement.**
-
-No substitute Friday burden is invented.
-
-## Evidence this week
-**Checkpoint 2:** a compact full-stack integration artifact showing that the student can move through several layers with evidence.
-
-## Machine Dossier role
-Add the source-to-CPU integration checkpoint and explicit corrections to the student's mental model.
-
-## Online-delivery note
-The short week remains short. M/W are asynchronous anchors; no Friday catch-up assignment.
-
-## Open authoring notes
-Reuse the same tiny program/data already seen where possible. The point is integration, not novelty.
+This planning file is an index only.
