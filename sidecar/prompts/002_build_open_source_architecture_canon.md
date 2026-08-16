@@ -1,8 +1,45 @@
 # Sidecar Prompt 002 - Build the open-source Computer Architecture canon
 
-**Status:** OPEN - ready after Prompt 001 reconciliation  
-**Owner:** Foreman / current helm  
+**Status:** OPEN - active focused pass  
+**Owner:** ChatGPT / current helm  
 **Mode:** research -> licensing/access check -> week mapping -> sensory-lab support -> gap analysis -> report
+
+## Why we need Prompt 002
+
+Prompt 001 made the course structurally coherent. Prompt 002 makes it **source-coherent**.
+
+The design conversation has produced a rich mental model of the course: Weeks 1-4 build the investigator; Weeks 5-14 open and stress the machine; the Machine Dossier carries evidence forward; important architecture adjectives should be attached to experiences; Python/matplotlib makes behavior visible; LaTeX turns the evidence into a durable technical artifact; Week 14 is the technical finale; Weeks 15-17 wind down.
+
+That design memory cannot remain only in Jeremy and ChatGPT's conversation history. Before implementation accelerates, we need to dump the source implications into durable Git truth so later authoring does not drift back toward:
+
+- one textbook silently becoming the curriculum;
+- a pile of famous links with no pedagogical hierarchy;
+- technically correct sources that are too dense for our students;
+- public material being copied as though public meant openly licensed;
+- sensory labs being invented without trustworthy conceptual or measurement references;
+- volatile hardware prices/specifications being treated as timeless facts;
+- ten workers independently researching the same topic and producing ten incompatible source stacks.
+
+Prompt 002 is therefore the **memory-transfer and source-selection pass** between course design and course construction.
+
+It should leave Prompt 003 and Prompt 004 able to focus. Prompt 003 should be able to build one lab platform without reopening the curriculum research question. Prompt 004 should be able to author Weeks 5-14 without going on a fresh textbook hunt every week.
+
+The intended outcome is not a bibliography. It is a set of explicit decisions about **what we trust for truth, what we give directly to students, what we may legally adapt, what we only link, and what we deliberately author ourselves**.
+
+## Questions Prompt 002 must answer
+
+1. **What is the strongest truth source for each technical concept?**
+2. **What source should a student actually read/watch/use, rather than merely what an expert instructor respects?**
+3. **Which public sources are legally adaptable, and which must remain link-first references?**
+4. **Where is the open landscape too fragmented, advanced, vendor-shaped, or pedagogically wrong for this course?** Those are authoring instructions, not failures.
+5. **What source pair supports each sensory lab?** One source should explain the mechanism; another should support the measurement/tool path that makes it observable.
+6. **How do Weeks 5 and 14 use current hardware specifications and prices without baking temporary market facts into permanent course doctrine?**
+7. **How do we preserve the historical Dollars-Per instinct without fabricating fake economics for on-die cache?**
+8. **Which sources support one continuous machine story across sister weeks and checkpoints instead of resetting context every Monday?**
+9. **What should become durable course-owned explanation, diagrams, traces, reference cards, datasets, plotting helpers, and lab guides?**
+10. **What can Prompt 003 and Prompt 004 now treat as settled so they can build instead of re-researching?**
+
+If this prompt cannot answer those questions clearly, it is not done.
 
 ## Mission
 
