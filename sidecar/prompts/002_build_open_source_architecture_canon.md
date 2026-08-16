@@ -1,288 +1,388 @@
-# Sidecar Prompt 002 — Build the open-source Computer Architecture canon
+# Sidecar Prompt 002 - Build the open-source Computer Architecture canon
 
-**Status:** OPEN  
-**Owner:** Foreman  
-**Mode:** research → licensing/access check → week mapping → gap analysis → report
+**Status:** OPEN - ready after Prompt 001 reconciliation  
+**Owner:** Foreman / current helm  
+**Mode:** research -> licensing/access check -> week mapping -> sensory-lab support -> gap analysis -> report
 
 ## Mission
 
-Assemble the best open/freely accessible source set we can find for COMSC-3013 so the course can teach its entire required curriculum **without a commercial textbook or zyBooks dependency**.
+Assemble the strongest open/freely accessible source set for COMSC-3013 so the required course can stand on its own **without a commercial textbook or zyBooks dependency**.
 
-This is not a link-dump exercise. Build a deliberately curated canon that tells later week authors:
+This is not a link dump. Build a curated canon that tells later authors:
 
 - what students can read/watch/use for free;
-- which source is strongest for each concept;
+- which primary/open source is strongest for each concept;
 - what license/access constraints apply;
-- what we should create ourselves because the available open material is weak, fragmented, inaccessible, or pedagogically wrong for this course.
+- what source can support each planned sensory experiment;
+- what current specification/price data can responsibly support Week 5 and Week 14 machine-design economics;
+- what we should author ourselves because the open landscape is fragmented, overly advanced, fragile, or pedagogically wrong for this course.
 
-The output should make it realistic for the course itself to become the textbook.
+The goal is that **the course itself is the coherent textbook and laboratory guide**; external sources deepen and verify it.
 
 ## Read first
 
 - `course_metadata.yaml`
 - `README.md`
-- `planning/fall-2026-spine.md`
 - `planning/fall-2026-course-design.md`
+- `planning/architecture-arc-map.md`
+- `planning/block-map.md`
+- `planning/machine-dossier.md`
+- `planning/fall-2026-spine.md`
+- `planning/week-02.md` through `planning/week-14.md`
+- `docs/grading-model.md`
 - `sidecar/PLANNING.md`
+- `sidecar/reports/001_reconcile_course_source_chassis.md`
 - `sidecar/questions/001_zybooks_decision_for_architecture.md`
 - `sidecar/questions/002_zybooks_isa_product_and_course_role.md`
-- current week-source chassis after Prompt 001 lands
 
 ## Pinned doctrine
 
-Do not reopen these decisions:
+Do not reopen:
 
 - no required commercial textbook;
 - no required zyBooks purchase;
 - no required paid AI subscription;
-- no required Codex, Claude Code, or premium command-line agent;
-- students using the free/accessible path must be able to complete the same required work and earn the same grade;
-- commercial books may still guide instructors or be offered as optional references;
-- RISC-V is the planning-leading teaching ISA unless technical evidence later shows a better open teaching path.
+- no required premium AI command-line agent;
+- no required GPU/FPGA/Raspberry Pi;
+- CPU-only required path;
+- free/accessible path has the same grading ceiling;
+- RISC-V is the planning-leading teaching ISA;
+- Weeks 5-14 are the complete Architecture technical runway;
+- Machine Dossier begins Week 5 and freezes Week 14;
+- Week 16 is shared Farkle + ML application/fun, not an Architecture capstone or Checkpoint 4.
 
 ## Research standard
 
-Search broadly, but prefer sources in roughly this order:
+Prefer sources in roughly this order:
 
 1. **primary specifications / official documentation**;
 2. **openly licensed textbooks and educational resources**;
 3. **current university course materials published for public use**;
 4. **open-source project documentation and tutorials**;
-5. **high-quality technical articles/videos** when they fill a real pedagogical gap.
+5. **high-quality technical articles/videos** only where they fill a real pedagogical gap.
 
-Do not assume that "publicly viewable" means "freely reusable." Record the licensing/use status when it matters.
+For technical claims, prefer primary/official evidence when practical.
 
-Do not copy proprietary textbook or zyBooks content into the repository.
+Do not assume publicly viewable means openly licensed/reusable. Record access and licensing separately.
+
+Do not copy proprietary textbook/zyBooks prose, exercises, diagrams, or answer material.
 
 ## Starting benchmark set
 
-At minimum inspect the useful portions of:
+At minimum inspect relevant portions of:
 
+- RISC-V International specifications/learning resources;
 - UC Berkeley CS61C;
 - Cornell CS3410;
-- MIT 6.004 Computation Structures;
+- MIT 6.004 / Computation Structures;
 - Nand2Tetris;
 - University of Cambridge Computer Architecture materials;
-- RISC-V International specifications and learning resources;
-- official GNU/binutils/GDB documentation where relevant;
-- QEMU / selected simulator documentation where relevant;
-- Linux kernel or other primary OS documentation for Week 11 topics where pedagogically suitable.
+- official GCC/LLVM/binutils/GDB documentation as appropriate;
+- official QEMU / selected simulator documentation;
+- Linux/kernel/man-page or other primary OS documentation for Week 4/11;
+- official Python/matplotlib documentation for the plotting scaffold;
+- official/open publishing documentation for the selected LaTeX/PDF path;
+- official hardware/vendor specification pages where Week 5/14 comparison needs real contemporary machine facts.
 
-Then look beyond these. The mission is "best available open course," not "repackage six famous links."
+Then look beyond this set. Famous is not the same thing as useful.
 
 ## Required week-by-week mapping
 
-Build the canon against the accepted course spine.
+### Week 2 - AI Laboratory Training
 
-### Week 2 — AI Lab Training
+Find provider-neutral/open material supporting:
 
-Find provider-neutral, freely accessible material on:
-
-- effective context gathering;
-- verification and epistemic discipline;
+- context gathering;
+- technical-question framing;
+- verification/epistemic discipline;
 - command/code review before execution;
-- distinguishing model output from evidence.
+- distinguishing generated explanation from evidence.
 
-Do not require a particular paid AI product.
+No paid provider can own the required path.
 
-### Week 3 — Containers & Repeatability
+### Week 3 - Containers & Repeatability
 
-Find open material explaining:
+Find concise open material on:
 
+- image/container/runtime concepts;
 - reproducible environments;
-- containers/images/runtime concepts;
-- practical student-safe container workflows.
+- version/environment receipts;
+- safe beginner container workflows.
 
-### Week 4 — Linux Command Line
+### Week 4 - Linux as a Machine Telescope
 
-Find concise open references/tutorials for the exact command set selected by Prompt 003, prioritizing material that supports observation of the machine.
+Find strong references for the exact observation tools Prompt 003 validates, such as:
 
-### Week 5 — Representation, Logic, Arithmetic
+- `uname`, `lscpu`, `/proc`, `free`, `ps`;
+- `file`, `xxd`/`od`;
+- compiler/binutils/disassembly tools.
+
+The source set should support **asking the machine questions**, not a generic Linux certification syllabus.
+
+### Week 5 - Build the Machine
+
+This is the **Machine Dossier start**, not the old representation week.
+
+Research/support:
+
+- PC compatibility and interfaces;
+- workload-driven component selection;
+- CPU/motherboard/socket/chipset relationships at useful depth;
+- RAM compatibility/capacity/channel considerations;
+- storage interfaces and classes;
+- GPU/accelerator fit where relevant;
+- power/form-factor/thermal constraints at introductory depth;
+- cache -> RAM -> NVMe/SSD/HDD -> network/cloud hierarchy;
+- capacity/cost comparisons;
+- latency and bandwidth order-of-magnitude context;
+- the limits of naive Dollars-Per metrics.
+
+Build a **source/date strategy for prices**. Prices are time-sensitive evidence, not permanent textbook constants. Prefer current vendor/retailer/PC-part sources for the student exercise, clearly date-stamped, while durable course prose teaches the reasoning independent of one day's price.
+
+Identify what can be responsibly sourced for L1/L2/L3 cost/economic discussion. If direct literal $/GB for on-die cache would create false precision, recommend a better pedagogical treatment rather than fabricating a market price.
+
+### Week 6 - Bits Become Instructions
 
 Cover:
 
 - binary/hex;
-- two's complement;
+- fixed-width unsigned/signed integers and two's complement;
 - overflow;
-- IEEE-754 at the right depth;
-- Boolean logic;
-- combinational logic / ALU ideas.
+- floating-point approximation at useful depth;
+- bytes/endianness where useful;
+- RISC-V registers/instructions/encodings;
+- source -> assembly -> machine-visible state;
+- calling convention/ABI only as needed to interpret compiler output.
 
-### Week 6 — RISC-V ISA
+Week 5's machine/value story should flow into Week 6 rather than resetting context.
 
-Prioritize primary/open RISC-V material plus excellent teaching explanations for:
+### Week 7 - Crack Open the CPU
 
-- registers;
-- instruction formats;
-- arithmetic/data movement;
-- branches/jumps;
-- procedures/calling convention;
-- machine encoding;
-- assembler/linker/loader/compiler relationship where useful.
+Find material supporting a bounded teaching model of:
 
-### Week 7 — Datapath + Control
-
-Find material that lets students understand or build/trace:
-
+- stored-program execution;
 - PC;
 - register file;
 - ALU;
-- memory;
-- muxes;
-- control signals;
-- single-cycle datapath.
+- instruction/data memory;
+- muxes/control signals;
+- decode;
+- single-cycle datapath/control.
 
-### Week 8 — Pipelining + Performance
+Prefer something students can trace/build rather than a diagram to memorize.
+
+### Week 8 - Make It Fast Without Breaking It
 
 Cover:
 
-- latency/throughput/CPI;
+- latency versus throughput;
+- CPU time / CPI basics;
 - pipeline stages;
-- hazards;
+- structural/data/control hazards;
 - forwarding/stalls/flushes;
-- branch effects.
+- branch effects;
+- dependent versus independent work.
 
-### Week 9 — Source-to-CPU Integration
+Find sources that support a **sensory performance experiment** and an interpretable first matplotlib curve.
 
-Find or construct a small coherent example that can travel through:
+### Week 9 - Follow the Program Down
 
-source → compiler/toolchain → assembly → encoding → CPU trace.
+Prefer one coherent course-owned small program that can travel through:
 
-Prefer one course-owned example over forcing students to stitch five unrelated web pages together.
+**source -> representation -> compiler/toolchain -> RISC-V instruction -> processor/performance evidence**
 
-### Week 10 — Memory Hierarchy + Caches
+Use external sources for verification, not as five disconnected fragments students must stitch together.
 
-Cover locality, cache organization, mapping/associativity, hits/misses, AMAT, and runnable/measurable examples.
+### Week 10 - Make the Memory Hierarchy Hurt
 
-### Week 11 — Virtual Memory, Protection, I/O, OS Support
+Cover:
+
+- temporal/spatial locality;
+- cache lines/blocks;
+- mapping/associativity/replacement at appropriate depth;
+- hit/miss behavior and AMAT;
+- latency versus bandwidth;
+- pointer-chase/dependent access;
+- streaming/bulk access;
+- varying working-set size;
+- measured cache/locality cliffs.
+
+Find both conceptual sources and evidence/tool references suitable for the sensory lab.
+
+### Week 11 - The Useful Lie of Memory
 
 Cover introductory:
 
-- virtual/physical addresses;
-- paging/TLB;
+- virtual versus physical addresses;
+- page tables/TLB;
 - privilege/protection;
+- page faults;
 - traps/exceptions/syscalls;
-- interrupts/I/O.
+- interrupts;
+- device/I/O paths.
 
-### Week 12 — Multicore, Coherence, Synchronization
+Prefer sources that let students connect an observable process/software abstraction to underlying mechanism. Do not turn this into a full OS course.
+
+### Week 12 - More Cores, More Problems
 
 Cover:
 
-- parallel speedup/Amdahl's Law;
+- thread/data parallelism;
+- speedup and Amdahl's Law;
 - shared memory;
 - synchronization;
 - false sharing;
-- coherence;
-- introductory consistency ideas where needed.
+- cache coherence;
+- computation-to-communication ratio;
+- communication/synchronization latency;
+- why adding workers may stop helping.
 
-### Week 13 — Vectors, GPUs, ML Accelerators
+Find sources/tool docs that support a CPU-accessible scaling experiment. MPI may be included if Prompt 003 proves the path humane; MPI itself is not the learning objective.
 
-Find open/current material for:
+### Week 13 - Different Machines for Different Work
+
+Cover:
 
 - SIMD/vector processing;
-- SIMT/GPU execution;
-- bandwidth/throughput;
-- accelerator specialization;
-- ML workload/hardware relationship.
+- GPU/SIMT execution;
+- latency-oriented versus throughput-oriented design;
+- memory/bandwidth/data movement;
+- setup/transfer overhead;
+- accelerator/tensor/ML workload shapes;
+- CPU versus specialized execution tradeoffs;
+- representation formats such as FP32/FP16/BF16/int8 where they materially clarify hardware tradeoffs.
 
-Required student path must remain CPU-accessible.
+Required path remains CPU-accessible. GPU material can enrich, not gate.
 
-### Week 14 — Architectures in the Wild
+### Week 14 - Sit in the Architect's Chair
 
-Identify primary/open sources useful for comparing real modern CPUs/SoCs/GPUs/accelerators across:
+Identify primary/open/current sources useful for comparing real architectures and revisiting the Week 5 build across:
 
 - performance;
-- power/energy;
+- latency/throughput;
 - memory/bandwidth;
-- cost/complexity;
+- cost;
+- power/energy where responsibly supported;
 - programmability;
-- workload fit;
-- security/reliability where useful.
+- specialization;
+- reliability/security where useful;
+- workload fit.
 
-Prefer vendor architecture manuals/specifications and reputable primary measurements over marketing summaries where possible.
+This week ends Architecture instruction. It does **not** launch a Week 16 capstone.
 
-### Weeks 15–17
+### Weeks 15-17 - Wind down / shared application / reflection
 
-Find only supporting reference material needed for capstone/reflection. Do not bury the synthesis experience under new reading.
+Find only light supporting material needed for:
 
-## Required source classification
+- Week 15 curation/catch-up;
+- Week 16 shared Farkle + ML experience;
+- Week 17 evidence-backed reflection.
 
-For each source record:
+Do not introduce a new Architecture reading arc, new dossier layer, or hidden capstone.
+
+## Sensory-lab source requirement
+
+For each major experimental adjective, identify both:
+
+1. a conceptual source explaining the mechanism;
+2. a measurement/tool/source path that can make the phenomenon observable.
+
+Priority examples:
+
+- latency vs bandwidth;
+- dependent vs independent work;
+- cache/locality cliffs;
+- sequential vs random storage behavior;
+- worker-count/scaling behavior;
+- communication/synchronization cost;
+- data-movement/setup cost vs steady-state throughput.
+
+## Required source record
+
+For each source record capture:
 
 - title;
 - author/institution/project;
 - URL/reference;
 - topics/weeks served;
-- format (text/video/spec/tool/etc.);
-- accessibility status;
+- format;
+- access status;
 - license/reuse status when identifiable;
-- whether students should read it directly or instructors should use it to create course-owned explanation;
-- estimated student burden;
+- student-facing vs instructor-background role;
+- estimated burden;
 - strengths;
 - limitations;
-- permanence risk (stable project/spec vs fragile personal page).
+- permanence risk;
+- whether it directly supports a planned lab/measurement.
 
-## Gap analysis
+## Gap classification
 
-For each week classify required content as:
+For each week/concept classify:
 
-- **GREEN — excellent open student-facing source exists**;
-- **YELLOW — useful sources exist but need course-created synthesis/scaffolding**;
-- **RED — we should author this ourselves because the open landscape is insufficient for our students/course shape**.
+- **GREEN - excellent open student-facing source exists**;
+- **YELLOW - useful sources exist but course-owned synthesis/scaffolding is needed**;
+- **RED - author it ourselves** because the available material does not fit this course/student population.
 
-A RED is not a failure. It is an authoring instruction.
+A RED is productive information.
+
+## Durable outputs
+
+Create:
+
+- `planning/open-source-resource-canon.md`
+- `planning/open-source-resource-map.csv`
+- `sidecar/reports/002_build_open_source_architecture_canon.md`
+
+The durable canon/map should be course-author-facing planning truth, not a pile of raw search notes.
 
 ## Course-created textbook strategy
 
-Recommend which content should become durable course-owned material, such as:
+Recommend exactly which pieces should become durable course-owned material, such as:
 
-- short chapter/lesson pages;
-- diagrams;
+- short lecture/digest chapters;
+- diagrams/concept maps;
 - worked traces;
 - command reference cards;
 - RISC-V examples;
 - CPU/pipeline/cache visualizations;
-- lab walkthroughs;
-- glossary/concept maps.
+- PC-build/Dollars-Per guidance;
+- sensory-lab walkthroughs;
+- interpretation examples showing how to read a plot without overclaiming.
 
-The goal is not to reproduce a 700-page textbook. The goal is to give students exactly enough coherent explanation that the external open sources enrich the course instead of holding it together with duct tape.
+Do not reproduce a 700-page textbook. Write the bridges our course actually needs.
 
 ## AI tooling boundary
 
-The canon may include documentation/tutorials for AI-assisted coding or command-line agents as **optional advanced material**.
-
-Do not design required Week 2 or later content around a paid subscription. For every required AI use case, identify a provider-neutral/no-cost route or recommend a course-created workflow that does not depend on premium features.
+Optional AI/agent documentation may appear as enrichment. No required source path can depend on paid AI/CLI features.
 
 ## Required report
 
-Write:
-
-`sidecar/reports/002_build_open_source_architecture_canon.md`
-
-Include:
+`sidecar/reports/002_build_open_source_architecture_canon.md` must include:
 
 - sources researched;
-- week-by-week canon table;
-- licensing/accessibility notes;
-- GREEN/YELLOW/RED coverage matrix;
-- recommended course-created material;
+- week-by-week canon;
+- licensing/access notes;
+- GREEN/YELLOW/RED matrix;
+- sensory-lab support map;
+- Week 5 current-price/spec sourcing strategy;
+- course-created material recommendations;
 - fragile-link/permanence risks;
-- reusable material that belongs in `swosu_cs_curriculum` or another shared repo;
-- concrete handoff instructions for Prompt 004 week authors.
+- reusable material candidates for shared curriculum repos;
+- concrete handoff instructions for Prompt 003/004.
 
-If useful, also create a durable course-facing resource map outside `sidecar/` once Foreman accepts the research.
+## Acceptance
 
-## Foreman acceptance
+Accept only when:
 
-Foreman verifies that:
-
-1. every required Architecture week has a plausible no-paywall content path;
-2. sources are technically strong and appropriate for students, not merely famous;
+1. every required Architecture week has a plausible no-paywall learning path;
+2. sources are technically strong and appropriate, not merely famous;
 3. licensing/access distinctions are honest;
-4. commercial resources are optional only;
-5. paid AI/CLI tools are optional only;
-6. gaps are explicitly handed to course authors rather than hidden behind weak links.
+4. Week 5/14 current-spec/price evidence is dated and not treated as permanent doctrine;
+5. sensory labs have conceptual + measurement support;
+6. commercial resources remain optional;
+7. paid AI/CLI and specialized hardware remain optional;
+8. gaps are handed to course authors explicitly.
 
 ## Done when
 
-The course has an evidence-backed open-source/reference canon and a clear list of what we must author ourselves to make COMSC-3013 fully teachable without requiring students to buy content or premium AI tooling.
+The course has a durable, evidence-backed open-source canon and a precise authoring gap map that can feed the common laboratory and Weeks 5-14 production without reopening settled curriculum decisions.
