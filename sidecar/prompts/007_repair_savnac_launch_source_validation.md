@@ -1,9 +1,10 @@
 # Sidecar Prompt 007 - Repair Architecture Savnac launch-source validation
 
-**Status:** READY  
+**Status:** IMPLEMENTED — AWAITING REAL BRANDY ACCEPTANCE  
 **Owner:** Foreman / validation worker  
-**Priority:** BLOCKS Prompt 006  
-**Target branch:** `savnac/architecture-launch-readiness`
+**Priority:** BLOCKS Prompt 006 until accepted  
+**Target branch:** `savnac/architecture-launch-readiness`  
+**Implemented branch tip to validate:** `3ab17ba5d0d943cf9f63b6de378ef104dc3002f3`
 
 ## Mission
 
@@ -11,60 +12,86 @@ Turn the real Brandy launch-source validation from RED into an honest GREEN or e
 
 This is a validation-contract repair, not a machine-configuration campaign.
 
+## Current state
+
+The repair has been authored on the target branch but is **not accepted until Brandy fast-forwards to the implemented tip and reruns the real validator**.
+
+Before judging the repair, prove the worktree is actually on the intended code:
+
+```bash
+git pull --ff-only
+git rev-parse HEAD
+```
+
+Expected commit:
+
+```text
+3ab17ba5d0d943cf9f63b6de378ef104dc3002f3
+```
+
+A validation result from an older commit does not accept or reject this implementation.
+
 ## Evidence that opened this prompt
 
-Real Brandy receipt:
-
-`sidecar/runs/architecture_savnac_source_validation_20260817T011634Z.md`
+Real Brandy receipts against the older launch tip `3221af8d4d76a84e92fb5560d94f8b834353263e` were RED.
 
 Observed facts:
 
-- branch tip under test: `3221af8d4d76a84e92fb5560d94f8b834353263e`;
 - host: Brandy;
 - Python: 3.9.21;
-- all newly authored launch-source files exist;
-- no launch-week template placeholders remain;
-- the Week 2 portable Python machine probe executes;
-- validation stops because `./lab/bin/archlab doctor` exits 1.
+- all newly authored launch-source files existed;
+- no launch-week template placeholders remained;
+- the Week 2 portable Python machine probe executed;
+- validation stopped because `./lab/bin/archlab doctor` exited 1.
 
 ## Important contract distinction
 
-`archlab doctor` is a capability diagnostic for the *full* laboratory. It currently requires, among other things, Python 3.10+, plotting, RISC-V cross-compile capability, PDF build capability, OpenMP, and other laboratory prerequisites.
+`archlab doctor` is a capability diagnostic for the *full* laboratory. It currently checks, among other things, Python version, plotting, RISC-V cross-compile capability, PDF build capability, OpenMP, and other laboratory prerequisites.
 
-Week 3 does **not** say every machine must make the full doctor PASS. The student source explicitly says:
-
-> If your platform cannot execute the wrapper, use the course-provided fallback receipt and identify it as fallback evidence.
+Week 3 does **not** say every machine must make the full doctor PASS. The student source now names the committed course fallback explicitly when full local capability is unavailable.
 
 Therefore the Savnac launch-source validator must not silently redefine "source ready" to mean "this particular Brandy host satisfies the entire semester laboratory stack."
 
-## Required work
+## Implemented repair
 
-1. Reproduce and capture `./lab/bin/archlab doctor` on Brandy without discarding stdout/stderr or the JSON payload merely because the command exits 1.
-2. Identify the exact `missing_required` checks on Brandy.
-3. Keep `archlab doctor` itself strict. Do **not** change the laboratory's PASS definition merely to make this launch validator green.
-4. Repair `scripts/validate_savnac_launch_source.py` so it distinguishes:
-   - launch-source contract checks that must be GREEN;
-   - full-laboratory capability diagnostics that may be YELLOW on the named host when the documented fallback path exists;
-   - actual failures of the required launch path that remain RED.
-5. The validator should retain the doctor output in the receipt even when doctor returns 1.
-6. Prove the Week 3 required/fallback contract materially:
-   - run `archprobe` twice if it works on Brandy and retain receipt heads;
-   - verify the fallback evidence/source named by Week 3 exists and is student-usable when full doctor capability is unavailable;
-   - do not install packages, elevate privileges, or mutate Brandy merely to turn diagnostic YELLOWs green.
-7. Re-run:
+The target branch now:
+
+- keeps `archlab doctor` strict;
+- captures doctor output even when the diagnostic exits nonzero;
+- distinguishes launch-source readiness from full-lab host capability;
+- preserves missing full-lab capabilities as named YELLOW evidence when the required/fallback student path remains usable;
+- verifies the committed Week 3 fallback path rather than gesturing vaguely at fallback evidence;
+- keeps missing source, missing fallback, broken required path, or validator execution failure as RED.
+
+Week 3 now points to the real committed privacy-safe fallback receipt under `lab/fallback_data/` rather than leaving students to infer which artifact to use.
+
+## Required acceptance work
+
+1. Fast-forward the Brandy Architecture Savnac worktree to the implemented branch tip and assert the exact commit before validation.
+2. Run:
 
 ```bash
 python3 scripts/validate_savnac_launch_source.py
 ```
 
-8. Run `git diff --check` and any targeted Python syntax/tests appropriate to the changed validator.
-9. Retain the new real Brandy receipt under `sidecar/runs/`.
-10. Update the Prompt 006/readiness report only with observed results.
+3. Retain the full receipt, including doctor output and missing capability details.
+4. Confirm repeated `archprobe` behavior or the documented fallback behavior as recorded by the validator.
+5. Run:
+
+```bash
+git diff --check
+```
+
+6. Retain the new real Brandy receipt under `sidecar/runs/`.
+7. Update Prompt 006/readiness reporting only from the observed result.
+
+Do **not** install packages, elevate privileges, or mutate Brandy merely to turn diagnostic YELLOWs green.
 
 ## Acceptance
 
 Accept when:
 
+- the Brandy worktree is proven to be on `3ab17ba5d0d943cf9f63b6de378ef104dc3002f3` or a descendant containing the same repair;
 - newly authored Week 2-4/15/17 source checks remain GREEN;
 - the validator no longer treats optional/full-semester host capabilities as an unexplained source-launch RED;
 - doctor output and missing capabilities are visible in the receipt;
