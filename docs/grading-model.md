@@ -1,6 +1,6 @@
 # COMSC-3013 Fall 2026 grading model
 
-**Status:** grading structure accepted; Canvas implementation and due/late mechanics still require a later operational decision/pass.
+**Status:** grading structure accepted; Week 16 dead-days posture resolved; remaining due/late/drop/revision mechanics require the operational Canvas pass.
 
 Computer Architecture inherits the recognizable **CS1 grading family** while adapting it to an online/asynchronous laboratory course.
 
@@ -11,11 +11,11 @@ The course does not have live paired-programming, show-and-tell, peer-feedback, 
 | Category | Weight | Cadence / role |
 |---|---:|---|
 | Semester kickoff week | 5% | Week 1 universal success-foundations work |
-| AI Fluency / Monday Moment | 5% | recurring through Week 16 where scheduled |
-| Professional Minds - Wednesday strand | 5% | recurring where scheduled |
-| Professional Minds - Friday strand | 5% | recurring where scheduled |
-| Weekly Architecture / investigation work | 30% | recurring evidence labs, traces, controlled experiments, and early investigation/reproducibility work |
-| Weekly Explain / Defend evidence receipt | 10% | short individual evidence-backed interpretation; not raw output |
+| AI Fluency / Monday Moment | 5% | recurring through Week 15 where scheduled; Week 16 dead-days content is ungraded |
+| Professional Minds - Wednesday strand | 5% | recurring where scheduled; Week 16 dead-days content is ungraded |
+| Professional Minds - Friday strand | 5% | recurring where scheduled; Week 16 dead-days content is ungraded |
+| Weekly Architecture / investigation work | 30% | recurring evidence labs, traces, controlled experiments, and early investigation/reproducibility work; no graded Week 16 instance |
+| Weekly Explain / Defend evidence receipt | 10% | short individual evidence-backed interpretation; not raw output; no graded Week 16 instance |
 | Machine Dossier checkpoints | 20% | **Weeks 6, 9, and 14**; larger synthesis using a full evidence/build rubric |
 | Final reflection | 8% | Week 17; uses prior evidence, no new technical material |
 | Professional pathway - Week 14 update | 5% | professional/career artifact update |
@@ -119,7 +119,7 @@ For design-comparison checkpoints, an additional expectation is that the student
 ## Week 15-17 grading posture
 
 - **Week 15:** wind-down/catch-up/professional-pathway submission. No new Architecture mechanism or dossier layer.
-- **Week 16:** shared Farkle + ML experience. It may contain low-stakes participation/application evidence, but it is not Checkpoint 4 and should not reopen the technical grading arc.
+- **Week 16:** shared Farkle + ML experience during the Fall 2026 dead-days window. The lesson/content/experiment remain available, but recurring Week 16 AI Fluency, Professional Minds, Architecture Investigation, and Explain/Defend work is **ungraded**. There is no Checkpoint 4.
 - **Week 17:** final reflection. The student uses existing dossier/lab evidence to explain what they understand now that they could not explain earlier.
 
 ## Paid tools and hardware
@@ -142,27 +142,42 @@ Premium tools may improve convenience. They do not create additional grading cei
 
 Architecture should preserve the **spirit** of CS1's humane recurring-work policy.
 
-A later Canvas implementation pass should decide the exact mechanically supported form for:
+The operational Canvas pass must decide the exact mechanically supported form for:
 
 - drop-lowest behavior on recurring weekly categories;
 - resubmission/revision windows;
-- due dates;
+- due dates/times where owning source does not already specify them;
 - late-work handling.
 
 Those mechanics are not silently invented in this document.
 
-## Week 16 dead-days/calendar check
+The bounded recommendation and decision surface live in `sidecar/questions/003_assessment_and_grading_contract.md`.
 
-Before Canvas publication, the deployment pass must verify the official Fall 2026 finals/dead-days/calendar policy against the planned Week 16 objects, just as CS1 did. If institutional policy prevents graded recurring work, the rendered course must comply.
+## Week 16 dead-days/calendar decision - RESOLVED
+
+The course-family grading closeout already verified the SWOSU Semester Exam Policies against the official Fall 2026 calendar: the three class days immediately before finals are **Mon Nov. 30, Wed Dec. 2, and Fri Dec. 4**.
+
+For COMSC-3013's M/W/F grammar, those are the three Week 16 class days.
+
+Therefore the deployment contract is:
+
+- Week 16 Farkle + ML learning content remains available;
+- no recurring graded AI Fluency, Professional Minds, Architecture Investigation, or Explain/Defend object is scheduled in Week 16;
+- no Week 16 Machine Dossier checkpoint exists;
+- optional Stack Showcase/hardware enrichment never creates points;
+- Course Foundry must carry a regression test proving those constraints before Savnac release.
+
+This is an institutional-calendar compliance decision, not a convenience preference.
 
 ## Done when operationalized
 
-A later implementation pass must map these categories to Canvas assignment groups and verify:
+The implementation pass must map these categories to Canvas assignment groups and verify:
 
 - weights sum to 100%;
 - every graded object lands in the intended group;
 - Week 1 work is not stranded in a 0% group;
 - Week 17 final reflection has a real object/group mapping;
 - no Week 16 checkpoint exists;
+- no prohibited recurring graded Week 16 object exists;
 - no premium-resource path changes attainable points;
-- due/late/drop mechanics are explicit and tested.
+- drop/due/late/revision mechanics are explicit, source/decision-backed, and tested.
