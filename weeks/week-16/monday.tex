@@ -1,0 +1,100 @@
+\documentclass{beamer}
+\input{../_shared/beamer-preamble.tex}
+\title{Week 16 Monday}
+\subtitle{Farkle + Machine Learning: What Did the Compute Buy?}
+\author{COMSC-3013}
+\date{}
+\begin{document}
+\begin{frame}\titlepage\end{frame}
+\ArchQuestionSlide{What does it cost a machine to make a better Farkle decision, and when is that extra cost actually worth paying?}{Choose two fixed strategies. Predict effectiveness, preparation cost, operating cost, and whether the extra computation will be worth it under one declared objective.}
+
+\begin{frame}{The shortcut we are testing}
+\begin{itemize}
+\item More computation is not automatically a better architecture.
+\item Faster hardware is not automatically the right machine.
+\item The workload, objective, and constraint decide what matters.
+\end{itemize}
+\note{Frame Week 16 as payoff and judgment, not a new technical unit.}
+\end{frame}
+
+\begin{frame}{Two different axes}
+\begin{itemize}
+\item Algorithmic effort: threshold, learned table, bounded rollout.
+\item Execution substrate: the machine and execution path underneath the fixed workload.
+\item Change both at once and causal interpretation gets muddy.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Four currencies}
+\begin{itemize}
+\item Effectiveness: what did the strategy accomplish?
+\item Preparation: what did it cost before play?
+\item Operation: what did it cost while playing?
+\item Machine/environment: what actually executed the work?
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Pay now or pay later?}
+\begin{itemize}
+\item Learned strategy: preparation/training cost first, cheap decisions later.
+\item Rollout strategy: little preparation, repeated simulation during decisions.
+\item Heuristic: tiny cost may still be rational under a bounded objective.
+\end{itemize}
+\note{Use amortization language without opening a new math unit.}
+\end{frame}
+
+\begin{frame}{Throughput is evidence, not scripture}
+\begin{itemize}
+\item Wall-clock measurements have noise.
+\item Repeat the same fixed workload.
+\item Report median, minimum, and maximum games/second.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Correctness before speed}
+\begin{itemize}
+\item Balanced starters and raw denominators stay visible.
+\item Deterministic seeds keep the software comparison stable.
+\item A faster wrong benchmark does not win.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{A GPU in the chassis proves nothing}
+\begin{itemize}
+\item Required Week 16 path is native Python CPU.
+\item Physical accelerator presence is not accelerator use.
+\item A future accelerator lane must prove dispatch and equivalence.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Your prediction}
+\begin{itemize}
+\item Pick two fixed strategies.
+\item Predict effectiveness.
+\item Predict where each pays its computational cost.
+\item Name the objective that will determine your verdict.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Wednesday}
+\begin{itemize}
+\item Hold game rules, seed, workload, and machine lane fixed.
+\item Run repeated evidence.
+\item Read JSON/CSV, not just terminal output.
+\item Ask: what did the extra computation buy?
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Scope}
+\begin{itemize}
+\item No Checkpoint 4.
+\item No new Machine Dossier layer.
+\item No required GPU, cloud, Kubernetes, or paid AI.
+\item One playful workload, one architectural judgment.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Final question}
+\centering\Large When is ``more compute'' actually worth paying for?
+\end{frame}
+\end{document}
