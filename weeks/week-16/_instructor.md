@@ -2,6 +2,21 @@
 
 This file is not student-facing by default.
 
+## Dead-days boundary
+
+Fall 2026 Week 16 is the three-class-day dead-days window immediately before finals.
+
+Keep the Farkle + ML experience because it is a useful, playful synthesis, but do **not** turn it into recurring graded work:
+
+- no graded AI Fluency object;
+- no graded Professional Minds object;
+- no graded Architecture Investigation object;
+- no graded Explain / Defend object;
+- no Machine Dossier checkpoint;
+- no hidden points for optional hardware/showcase work.
+
+Students may run the benchmark, discuss it, write the bounded judgment, and retain receipts as learning/portfolio evidence. The instructor may demonstrate and discuss. Canvas must not assign recurring Week 16 points during dead days.
+
 ## Monday recording spine
 
 **Target shape:** a concise payoff lecture, not a new Architecture unit.
@@ -80,6 +95,7 @@ Do not call a run a T4/2080/5080/GPU result because `nvidia-smi` sees a device. 
 - no production leaderboard/service;
 - no Kubernetes requirement;
 - no package-registry detour;
-- no paid AI/CLI requirement.
+- no paid AI/CLI requirement;
+- no recurring graded Week 16 objects during dead days.
 
 The learning game is complete when students can use a trustworthy fixed workload to make one cost-versus-effectiveness judgment.
