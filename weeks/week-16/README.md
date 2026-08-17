@@ -2,21 +2,36 @@
 
 > **Central machine question:** What does it cost a machine to make a better Farkle decision, and when is that extra cost actually worth paying?
 
+## Dead-days grading boundary
+
+Fall 2026 Week 16 is the three-class-day dead-days window immediately before finals.
+
+Therefore this week is a **real learning/application experience but not a graded recurring-work week**:
+
+- no Machine Dossier checkpoint;
+- no graded AI Fluency assignment;
+- no graded Professional Minds assignment;
+- no graded Architecture Investigation assignment;
+- no graded Explain / Defend assignment;
+- no premium tool/hardware path creates points.
+
+You may still run the benchmark, write the judgment, discuss the evidence, and keep the receipt as portfolio/learning evidence. The work exists because it is useful and fun, not because Canvas is dangling points over it.
+
 ## Week at a Glance
 
 **Prior belief we are testing/refining:** a more computationally expensive strategy or a more powerful machine is automatically the better architecture.
 
 **Prediction before measurement:** choose two fixed Farkle strategies and predict which will be more effective, which will consume more preparation or runtime work, and whether the extra work will be worth paying for under one objective you name.
 
-**AI Fluency lens:** Lens 16 - Reflect and Improve.
+**AI Fluency lens:** Lens 16 - Reflect and Improve. Use it as an ungraded reflection lens this week.
 
-**Professional Minds:** Wednesday - *Generative AI Design Patterns* reflection; Friday - semester reflection: what kind of professional do I want to become?
+**Professional Minds:** Wednesday - *Generative AI Design Patterns* reflection; Friday - semester reflection: what kind of professional do I want to become? These remain enrichment/reflection surfaces rather than graded Week 16 assignments.
 
 | Day | Mode | What happens | Evidence |
 |---|---|---|---|
-| Monday | Think / Frame | Separate effectiveness, preparation cost, operating cost, and machine context. Make a prediction. | short prediction |
+| Monday | Think / Frame | Separate effectiveness, preparation cost, operating cost, and machine context. Make a prediction. | short prediction for yourself / discussion |
 | Wednesday | Investigate / Break / Measure | Run two fixed strategies on one validated CPU lane and inspect repeated machine-readable evidence. | JSON/CSV receipt + observed relationship |
-| Friday | Explain / Defend | Decide whether the extra computation bought enough effectiveness for your declared objective. | bounded architecture judgment |
+| Friday | Explain / Defend | Decide whether the extra computation bought enough effectiveness for your declared objective. | bounded ungraded architecture judgment |
 
 ## Continuity
 
@@ -44,7 +59,7 @@ That layer records the host, repeats timings, preserves raw effectiveness eviden
 
 ## The required lane
 
-The required student path is:
+The required learning path is:
 
 - native Python;
 - CPU;
@@ -56,11 +71,13 @@ The required student path is:
 
 A machine may physically contain a GPU. That does not make a native Python CPU run a GPU benchmark.
 
+If your local machine cannot run the lane cleanly, use the course-provided real fallback receipt and do the same reasoning task. Hardware convenience does not create a grading ceiling because Week 16 itself is ungraded.
+
 ## Student path
 
 1. Read [`monday.md`](monday.md) and make the prediction before seeing benchmark results.
-2. Follow [`wednesday.md`](wednesday.md), choose two fixed strategies, and run repeated evidence on one CPU lane.
-3. Complete [`friday.md`](friday.md) using the receipt rather than a screenshot dump.
+2. Follow [`wednesday.md`](wednesday.md), choose two fixed strategies, and run repeated evidence on one CPU lane when practical.
+3. Complete the reasoning in [`friday.md`](friday.md) using the receipt rather than a screenshot dump. Keep it as learning/portfolio evidence; it is not a graded Week 16 submission.
 4. Use [`references.md`](references.md) when you need to trace ownership or verify what the benchmark does.
 
 ## Fixed strategy menu
