@@ -13,11 +13,21 @@ Do not call implemented work `drafted` merely because final deployment has not h
 
 ## Current launch queue
 
-Work this list in order. The detailed work stays here in the course sidecar; the global `jeremy_task_tracking/TASKS.md` should point here rather than duplicate the implementation narrative.
+Work this list in order. The detailed work stays here in the course sidecar; the global task tracker should point here rather than duplicate the implementation narrative.
 
-1. **READY - Prompt 007:** repair the Brandy Savnac launch-source validator. Real receipt `architecture_savnac_source_validation_20260817T011634Z.md` is RED because the validator currently treats the full `archlab doctor` capability result as a launch-source hard gate. Preserve doctor strictness; repair the validator contract and prove the required/fallback Week 3 path honestly.
-2. **READY - Prompt 008:** repair the Course Foundry full-semester Architecture compiler. Real Brandy targeted run is 6 failed / 4 passed because `_week1_modules()` calls `compute_kickoff_plan` with an obsolete `course_repo_path` keyword; Ruff also has six E501 nits. Fix from current API source, prove pytest/Ruff, then run the guarded no-write Savnac course-8 dry run.
-3. **WAITING ON 007 + 008 - Prompt 006:** imprint Computer Architecture into the intended Savnac course and read it back. Prompt 006 is the umbrella deployment/dogfood gate. Do not begin a live Savnac push until the source validator and full-semester compiler/dry-run are trustworthy and the live write is explicitly authorized. Production SWOSU Canvas remains separate and unauthorized.
+1. **IMPLEMENTED / WAITING ON BRANDY ACCEPTANCE - Prompt 007:** repair the Savnac launch-source validator. The repair is authored on `savnac/architecture-launch-readiness` at `3ab17ba5d0d943cf9f63b6de378ef104dc3002f3`. It now distinguishes strict full-lab capability diagnostics from launch-source readiness and names the committed Week 3 fallback evidence. Before accepting or rejecting it, Brandy must fast-forward to that commit (or an accepted descendant), assert the SHA, rerun the validator, and retain the real receipt.
+2. **IMPLEMENTED / WAITING ON BRANDY ACCEPTANCE - Prompt 008:** repair the Course Foundry full-semester Architecture compiler. The known kickoff-API mismatch and six Ruff E501 failures are repaired on `course_foundry:savnac/architecture-full-semester` at `667693d9b06066c1268e0f319668029019ccef82`. Brandy must fast-forward/assert the exact implementation, run targeted pytest + Ruff against the real sibling checkouts, inspect the full plan, then run the guarded no-write Savnac course-8 dry run.
+3. **WAITING ON ACCEPTED 007 + 008 - Prompt 006:** reconcile the full course into the intended Savnac course and read it back. Course 8 is **not blank**: an earlier accepted partial imprint already placed shared Week 1 + authored Week 5 there. Prompt 006 must reconcile that existing state rather than create a duplicate course or assume a clean slate. Do not begin a live Savnac push until the source validator and full-semester compiler/dry-run are trustworthy and the live write is explicitly authorized. Production SWOSU Canvas remains separate and unauthorized.
+
+### Real-host rule
+
+Before any validation run used as acceptance evidence:
+
+1. fetch/pull the intended branch;
+2. print/assert the exact commit under test;
+3. only then execute the gate.
+
+A RED produced by an older worktree tip is evidence about that older tip, not about a newer remote repair.
 
 ## Completed / implemented foundation
 
