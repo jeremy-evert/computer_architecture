@@ -1,6 +1,6 @@
 # Sidecar Prompt 006 - Imprint Computer Architecture into Savnac and read it back
 
-**Status:** WAITING ON ACCEPTED PROMPTS 007 + 008  
+**Status:** ACCEPTED 2026-08-17 — see `sidecar/reports/006_imprint_architecture_to_savnac_and_read_back.md`  
 **Owner:** Foreman / deployment worker  
 **Mode:** inspect -> compile -> dry-run -> authorized imprint -> read back -> walk -> verify
 
