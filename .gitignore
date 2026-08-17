@@ -3,3 +3,6 @@
 
 # Week deck/PDF build products are reproducible from canonical source.
 weeks/**/build/
+
+# Week 16 Farkle benchmark outputs are machine/run-specific evidence.
+weeks/week-16/artifacts/
