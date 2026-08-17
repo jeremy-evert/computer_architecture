@@ -1,8 +1,8 @@
 # Friday - Explain / Defend: Was the Extra Compute Worth It?
 
-Submit a short architectural judgment. This is not a screenshot assignment and not a new Machine Dossier checkpoint.
+Write a short architectural judgment for your own learning, discussion, or portfolio evidence. **Week 16 is inside the Fall 2026 dead-days window, so this is not a graded Canvas submission and does not create a new Machine Dossier checkpoint.**
 
-Use your Wednesday JSON/CSV evidence to answer the six parts below.
+Use your Wednesday JSON/CSV evidence to answer the six parts below. If you used the course fallback receipt rather than a local run, identify it honestly and make the same bounded judgment from that evidence.
 
 ## 1. Bounded claim
 
@@ -83,3 +83,5 @@ End with:
 > **The extra computation was / was not worth paying for because __________.**
 
 Different objectives may produce different defensible winners. That is the point.
+
+Keep this judgment if it is useful to you. The learning value is the evidence-backed decision, not a Week 16 point value.
