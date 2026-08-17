@@ -1,20 +1,18 @@
 # Question 003 - What is the Fall 2026 assessment and grading contract?
 
-**Status:** STRUCTURE RESOLVED; ONE OPERATIONAL POLICY CLUSTER REMAINS BEFORE LIVE SAVNAC IMPRINT  
+**Status:** RESOLVED 2026-08-16  
 **Owner:** Jeremy  
 **Durable source:** `docs/grading-model.md`
 
-## Jeremy decision already made
+## Jeremy decision
 
-Computer Architecture should **inherit the grading family from CS1** rather than inventing an unrelated assessment system.
+Computer Architecture inherits the grading family from CS1 rather than inventing an unrelated assessment system.
 
 Because Architecture is online/asynchronous, it does not fabricate live pair-programming, show-and-tell, peer-feedback, or attendance categories. That weight is redirected toward the work this course actually asks students to do: investigate, measure, reproduce, visualize, explain, and defend.
 
 ## Resolved grading weights
 
 See `docs/grading-model.md` for the full contract.
-
-Pinned high-level structure:
 
 - Semester kickoff: 5%
 - AI Fluency: 5%
@@ -67,30 +65,13 @@ Therefore:
 - Farkle + ML content remains available as the shared application/fun experience;
 - Week 16 has no Machine Dossier checkpoint;
 - recurring graded assignments may not be scheduled on those three dead days;
-- any Week 16 participation/evidence surface must be ungraded or otherwise institutionally compliant.
+- any Week 16 participation/evidence surface is ungraded or otherwise institutionally compliant.
 
-This is no longer an open preference question for the deployment compiler.
+## Resolved drop-lowest policy
 
-## Resolved source-scheduling facts
+Jeremy's decision: **drop the lowest 1 in each genuinely recurring graded category**.
 
-Some deadlines come directly from owning shared source and may be compiled as written. Example: Professional Minds Wednesday reading assignments explicitly close Wednesday at 8:00 AM before the session.
-
-Some sources specify a **day/date relationship without a clock**, such as Professional Minds slides assignments closing the following Monday. A compiler must not pretend the source itself said `23:59` unless an accepted operational convention supplies that clock time.
-
-## The remaining Jeremy-level policy cluster
-
-### 1. Drop-lowest policy
-
-Architecture's grading model says to preserve the **spirit** of CS1's humane recurring-work policy but deliberately left the exact Canvas mechanics for this operational pass.
-
-Accepted CS1 precedent is:
-
-- drop lowest 1 in recurring weekly categories;
-- do not drop one-time/milestone categories such as kickoff, checkpoints, professional pathway, final reflection, or course evaluation.
-
-**Recommended Architecture adoption:**
-
-Drop lowest 1 in each recurring graded category that has enough instances to make a drop meaningful:
+Apply `drop_lowest=1` to:
 
 - AI Fluency;
 - Professional Minds Wednesday;
@@ -98,7 +79,7 @@ Drop lowest 1 in each recurring graded category that has enough instances to mak
 - Weekly Architecture / investigation work;
 - Weekly Explain / Defend evidence receipt.
 
-No drop for:
+Do not drop:
 
 - Semester kickoff;
 - Machine Dossier checkpoints;
@@ -107,38 +88,50 @@ No drop for:
 - Professional pathway Week 15;
 - Course evaluation.
 
-This recommendation is coherent with the stated "inherit the CS1 grading family" decision while avoiding an arbitrary partial inheritance.
+This is the Architecture adoption of the humane CS1-family recurring-work rule.
 
-### 2. Default due-time convention when source names the day but not the clock
+## Resolved due-time convention
 
-Need one operational convention for assignments whose owning source says a due **day** but not a clock time.
+Jeremy's decision: when owning source names a due **day** but not a clock time, the student gets the whole named day.
 
-**Recommended default:** end of that named day at **11:59 PM America/Chicago**, unless:
+Operational default:
 
-- the owning source specifies another time;
-- institutional calendar policy requires an earlier close;
-- the activity's pedagogy requires a pre-session deadline (for example the Professional Minds 8:00 AM reading close).
+> **11:59 PM America/Chicago on the named due day.**
 
-This makes `23:59` an explicit course-family operational convention rather than a compiler hallucination.
+Precedence remains:
 
-### 3. Late-work / revision window
+1. owning source with an explicit clock time wins;
+2. institutional-calendar/dead-days constraints win;
+3. otherwise a source-backed named due day closes at 11:59 PM Central.
 
-Architecture's source currently has no accepted exact late/revision mechanics.
+Example: a Professional Minds reading that explicitly says Wednesday 8:00 AM remains due at 8:00 AM. A source that says "the following Monday" with no clock closes at 11:59 PM Monday.
 
-This can be resolved separately from the immediate Savnac dry run if the compiler leaves unsupported late/revision policy unset. It must be decided before production Canvas publication if Canvas needs mechanical enforcement.
+## Resolved late-work policy ownership
 
-A worker may not invent a late penalty or resubmission window merely to fill a setting.
+Jeremy's decision: **late penalties are already documented and owned by Marker**.
 
-## Recommended decision for Jeremy
+Architecture must not invent a second late-penalty schedule in Course Foundry or Canvas configuration.
 
-Adopt now:
+Implementation rule:
 
-1. **Drop lowest 1** in the five recurring categories listed above; no drop in milestone/one-time categories.
-2. **11:59 PM America/Chicago** as the default end-of-day due time only where source/policy names a due day but no clock, with explicit source/calendar exceptions taking precedence.
-3. Keep late-work and revision/resubmission mechanics **unset for now** until a separate policy decision, rather than fabricating penalties/windows in Course Foundry.
+- resolve and use the authoritative Marker late-policy implementation/documentation from source;
+- preserve the due/submission timestamps Marker needs to apply that policy;
+- do not duplicate penalty arithmetic in the Architecture compiler;
+- if deployment plumbing cannot carry the needed timestamps/policy context, that is a shared pipeline defect to repair, not a new course-policy question.
 
-If Jeremy accepts those three lines, Prompt 008 may encode them, add regression tests, and proceed to the no-write Savnac dry-run gate.
+## Resolved resubmission policy
+
+Jeremy's decision: **resubmission is always allowed, and the highest score is retained**.
+
+Operational interpretation:
+
+- do not create an Architecture-specific resubmission cutoff merely because an LMS field permits one;
+- later attempts may be graded through the normal Marker/pipeline path;
+- a later attempt must not reduce the student's recorded best score;
+- writeback/reconciliation should preserve the maximum accepted score across attempts while still retaining attempt/feedback history.
+
+If the existing shared grading pipeline does not already enforce highest-score retention, that is a shared-mechanism repair for the owning repository, not permission for Course Foundry to invent a separate implementation.
 
 ## Done condition
 
-This question closes operationally when the remaining policy cluster above is decided and recorded, after which Course Foundry can implement/test it and Prompt 006 can verify the live Savnac gradebook behavior.
+This question is closed. Course Foundry / Imprint / grading-pipeline implementation may now encode and test the decisions above. Workers should escalate only if source inspection reveals a genuine conflict with the existing Marker late-policy or highest-score machinery, not merely because mechanical work remains.
