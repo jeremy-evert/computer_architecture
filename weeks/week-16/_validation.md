@@ -1,11 +1,11 @@
 # Week 16 authoring / execution validation receipt
 
-**Status:** YELLOW - authored; real Brandy execution receipt required before GREEN
+**Status:** GREEN - required CPU path and deck source both validated
 
 **Validation date:** 2026-08-16  
 **Authored branch:** `farkle/shared-core-architecture-brandy`  
-**Validator:** Foreman + real Brandy checkout  
-**Execution platform:** pending final real-host validator run
+**Validator:** Foreman + real Brandy checkout + independent exact-source LaTeX build  
+**Execution platform:** Brandy for workload; independent LaTeX toolchain for deck compilation
 
 ## Authoring checks
 
@@ -19,46 +19,83 @@
 - [x] No Checkpoint 4 or new grading category was invented.
 - [x] Canonical shared computational ownership is recorded through `_SHARED_PROVENANCE.json`.
 
-## Execution gate
+## Required execution path - GREEN
 
-Run from repository root:
+Executed from a real Brandy checkout:
 
 ```bash
 python scripts/validate_week16_farkle.py
 ```
 
-The validator must produce a GREEN raw receipt under:
+Retained receipt to commit:
 
-`sidecar/runs/week16_farkle_architecture_validation_<timestamp>.md`
+`sidecar/runs/week16_farkle_architecture_validation_20260817T003425Z.md`
 
-Required checks:
+Observed platform:
 
-- generated canonical package hashes match its provenance manifest;
-- required execution mode is explicitly `native-python-cpu`;
-- no accelerator use is claimed;
-- fixed five-strategy CPU suite executes;
-- raw denominators are internally consistent;
-- deterministic playing outcomes repeat across timing trials;
-- throughput median/min/max evidence is positive and ordered;
-- JSON and CSV machine-readable evidence are emitted.
+- host: `brandy`
+- CPU: `Intel(R) Xeon(R) Gold 6252 CPU @ 2.10GHz`
+- logical CPUs: 96
+- execution mode: `native-python-cpu`
+- accelerator used: `False`
+- Python: 3.9.21
+- shared source commit: `d3a1ed379a652731b0b6237c33b4fe42c518ac9e`
 
-## Deck build gate
+Required checks all passed:
 
-From `weeks/week-16/`:
+- [x] generated canonical package hashes match its provenance manifest;
+- [x] required execution mode is explicitly `native-python-cpu`;
+- [x] no accelerator use is claimed;
+- [x] fixed five-strategy CPU suite executes;
+- [x] raw denominators are internally consistent;
+- [x] deterministic playing outcomes repeat across timing trials;
+- [x] throughput median/min/max evidence is positive and ordered;
+- [x] JSON and CSV machine-readable evidence are emitted.
+
+Observed fixed CPU suite:
+
+| strategy | win rate vs `bank_at_425` | median games/s | min | max |
+|---|---:|---:|---:|---:|
+| `bank_at_300` | 0.600 | 3039.38 | 2999.05 | 3079.72 |
+| `learner:2000` | 0.650 | 3065.15 | 3065.01 | 3065.29 |
+| `learner:500` | 0.525 | 2987.56 | 2981.92 | 2993.19 |
+| `rollout:10` | 0.650 | 824.86 | 824.67 | 825.06 |
+| `rollout:25` | 0.600 | 427.08 | 426.78 | 427.38 |
+
+Interpretation boundary retained by the validator:
+
+> This is a Brandy native-Python CPU receipt. It is not a Tesla T4 result.
+
+That sentence is part of the Architecture lesson, not merely bookkeeping. Physical accelerator presence is not evidence of accelerator execution.
+
+## Deck build gate - GREEN
+
+Brandy itself did not have `latexmk`, so Brandy correctly reported a toolchain YELLOW rather than changing the course/runtime environment.
+
+The exact committed:
+
+- `weeks/week-16/monday.tex`
+- `weeks/_shared/beamer-preamble.tex`
+
+were then compiled in an independent LaTeX environment with:
 
 ```bash
 latexmk -pdf -interaction=nonstopmode -halt-on-error -outdir=build monday.tex
 ```
 
-- [ ] Deck compilation must be checked on a host with the course LaTeX toolchain before student release.
-- [x] Deck source is authored as a visual storyboard rather than copied digest paragraphs.
-- [x] Speaker notes are present where they materially help the recording.
+Result:
 
-A missing LaTeX toolchain is a named authoring YELLOW, not a reason to alter the required Farkle CPU path.
+- [x] compilation GREEN;
+- [x] output PDF produced;
+- [x] 13 pages;
+- [x] deck source remains a visual storyboard rather than copied digest paragraphs;
+- [x] speaker notes remain present where they materially help the recording.
+
+The rendered PDF is a reproducible build product and is not required to be committed during source authoring.
 
 ## Fallback
 
-The latest retained real GREEN validator receipt may be used as instructor fallback evidence if a live classroom run is unavailable. Do not invent benchmark numbers.
+The retained real Brandy GREEN validator receipt may be used as instructor fallback evidence if a live classroom run is unavailable. Do not invent benchmark numbers.
 
 The fallback preserves the same reasoning task: students compare effectiveness, preparation/operation cost, and named execution context before making the Architecture judgment.
 
@@ -66,12 +103,14 @@ The fallback preserves the same reasoning task: students compare effectiveness, 
 
 | Yellow | Why it remains | Blocks authoring? | Blocks student release? | Owner / next proof |
 |---|---|---:|---:|---|
-| real Brandy execution receipt | connector cannot execute private checkout | no | yes | run `python scripts/validate_week16_farkle.py` on Brandy |
-| deck compilation | LaTeX not executed in connector environment | no | yes for rendered deck | run `latexmk` on course authoring host |
-| optional hardware zoo | additional lanes are enrichment and require separate verified receipts | no | no | future Stack Showcase |
+| optional hardware zoo | T4, RTX 2080 SUPER, RTX 5080, GTX 1080, and NRP/RTX 6000-class lanes require separate verified execution receipts | no | no | future Stack Showcase / hardware-lane campaign |
+| accelerator execution | no accelerator backend has yet proved actual dispatch plus benchmark equivalence | no | no | future optional enrichment |
+| power / energy evidence | no synchronized power sampler is part of the required CPU path | no | no | future optional enrichment |
 
 ## Validation judgment
 
-**What is genuinely ready:** canonical shared package, Architecture-owned runner/CLI, student Monday/Wednesday/Friday surfaces, instructor plan, deck source, provenance and one-command validation contract.
+**What is genuinely ready:** canonical shared package, Architecture-owned runner/CLI, student Monday/Wednesday/Friday surfaces, instructor plan, exact-source deck build, provenance, real Brandy CPU evidence, and one-command validation contract.
 
-**What should not yet be claimed:** a GREEN Brandy runtime, a compiled Week 16 PDF deck, Tesla T4 execution, GPU acceleration, power/energy results, or cross-machine performance rankings.
+**What should not yet be claimed:** Tesla T4 execution, GPU acceleration, power/energy results, or cross-machine performance rankings.
+
+The required student Week 16 path is GREEN.
