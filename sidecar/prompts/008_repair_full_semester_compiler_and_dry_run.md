@@ -1,134 +1,101 @@
 # Sidecar Prompt 008 - Repair the full-semester Architecture compiler and prove the dry run
 
-**Status:** IMPLEMENTED IN PART — POLICY/COMPLIANCE RECONCILIATION REQUIRED BEFORE BRANDY ACCEPTANCE  
+**Status:** READY — POLICY DECISIONS RESOLVED; IMPLEMENT + PROVE ON BRANDY  
 **Owner:** Foreman / deployment worker  
 **Priority:** BLOCKS Prompt 006 until accepted  
 **Primary target branch:** `course_foundry:savnac/architecture-full-semester`  
-**Known implementation tip:** `667693d9b06066c1268e0f319668029019ccef82`  
+**Known mechanical-repair tip:** `667693d9b06066c1268e0f319668029019ccef82`  
 **Architecture source branch:** `computer_architecture:savnac/architecture-launch-readiness`
 
 ## Mission
 
-Repair the full-semester Computer Architecture DesiredCourse compiler until it is not merely test-green but **source-truthful, policy-truthful, calendar-compliant, and dry-run clean** against the real Savnac course 8.
+Make the full-semester Computer Architecture DesiredCourse compiler **source-truthful, policy-truthful, calendar-compliant, test-green, and dry-run clean** against real Savnac course 8.
 
 Do not push live Savnac changes in this prompt.
 
-## Current state
+## Sync before judging
 
-The original connector-authored API/style failures have been repaired on the Course Foundry branch, but a source audit found additional policy/compliance gaps that must be reconciled before the implementation may be accepted.
-
-Before judging any implementation, prove the worktree is actually on the intended remote code:
+The earlier Brandy run tested stale worktrees. Before every validation:
 
 ```bash
+git fetch origin
 git pull --ff-only
 git rev-parse HEAD
 ```
 
-The known API/style repair tip is:
+Print/assert the Architecture and Course Foundry commits actually under test. A result from an older commit neither accepts nor rejects a newer repair.
 
-```text
-667693d9b06066c1268e0f319668029019ccef82
-```
+## Mechanical repair already authored
 
-A validation result from an older commit does not accept or reject a newer repair.
+The Course Foundry target branch already contains a repair for the original failures:
 
-## Evidence that opened this prompt
+- obsolete `compute_kickoff_plan(..., course_repo_path=...)` removed/reconciled to the current kickoff API;
+- universal shared Week 1 preserved;
+- Architecture course id remains 8;
+- six known Ruff E501 failures wrapped without changing semantics.
 
-A real Brandy run against older Course Foundry tip `6f82a68f53389530e4fdb3d81e3efaf23de13d67` produced:
+These changes still require real Brandy proof.
 
-- 6 failed / 4 passed targeted tests;
-- all six failures collapsed to the same kickoff API mismatch:
+## Architecture policy is now closed
 
-```text
-TypeError: compute_kickoff_plan() got an unexpected keyword argument 'course_repo_path'
-```
+Authoritative sources:
 
-- Ruff found six E501 line-length violations.
+- `computer_architecture/docs/grading-model.md`
+- `computer_architecture/sidecar/questions/003_assessment_and_grading_contract.md`
 
-Those mechanical failures have been repaired on the target branch.
+Do not reopen these decisions during compiler work.
 
-## Additional audit findings that now block acceptance
+### Drop-lowest
 
-### A. Drop-lowest mechanics are not yet source-authorized
+Set `drop_lowest=1` on the five genuinely recurring graded groups:
 
-`computer_architecture/docs/grading-model.md` explicitly says the exact drop-lowest mechanics are still an operational decision/pass. The candidate compiler currently hardcodes `drop_lowest=1` for some recurring groups.
+- AI Fluency;
+- Professional Minds Wednesday;
+- Professional Minds Friday;
+- Weekly Architecture / investigation work;
+- Weekly Explain / Defend evidence receipt.
 
-That is not acceptable merely because CS1 has a similar humane policy.
+No drop for kickoff, Machine Dossier checkpoints, professional pathway Week 14/15, final reflection, or course evaluation.
 
-CS1 provides a **precedent**, not automatic authorization. Its accepted rule drops the lowest one in recurring weekly categories while leaving one-time/milestone categories intact. Architecture's own grading model says to preserve that *spirit* but still requires an explicit operational decision.
+### Due-time convention
 
-Required resolution:
+If owning source names a due day but no clock, use **11:59 PM America/Chicago on that named day**.
 
-- do not silently ship invented drop rules;
-- either leave Architecture drop rules unset until explicitly decided, or record an explicit Architecture operational decision adopting a clearly named policy;
-- if Architecture adopts the CS1-family rule, apply it coherently to every intended recurring category rather than an arbitrary subset;
-- checkpoints, kickoff, professional-pathway submissions, final reflection, and course evaluation must not casually disappear through drop-lowest.
+Source-explicit clocks and institutional-calendar constraints take precedence. Professional Minds reading assignments that explicitly say 8:00 AM remain 8:00 AM.
 
-### B. Week 16 dead-days compliance is a hard gate
+### Late penalties
 
-The accepted CS1 grading closeout already verified the SWOSU semester-exam/dead-days rule and found that the three class days before finals are Monday Nov. 30, Wednesday Dec. 2, and Friday Dec. 4 — all of Week 16 for the Fall 2026 M/W/F calendar.
+Late penalties are owned by the existing Marker policy. Do not duplicate penalty arithmetic in the Architecture compiler or invent Canvas-local penalties. Preserve due/submission context needed by the shared grading path.
 
-Architecture's own grading model explicitly says the deployment pass must verify the same institutional rule before publication.
+### Resubmission
 
-The current candidate compiler still creates graded recurring Week 16 objects, including AI Fluency, Professional Minds, Architecture Investigation, and Explain/Defend work.
+Resubmission is always allowed and the highest accepted score is retained. Do not add an Architecture-specific close window merely because Canvas exposes one. If highest-score retention is missing in the shared grading/writeback path, report/fix that in its owning shared repository rather than inventing a Course Foundry-only rule.
 
-That is a compliance blocker.
+## Week 16 dead-days compliance — hard gate
 
-Required resolution:
+The verified Fall 2026 dead days are Mon Nov. 30, Wed Dec. 2, Fri Dec. 4, which is all of Architecture Week 16.
 
-- Week 16 Farkle + ML content remains available as the shared application/fun week;
-- **no recurring graded assignment may be scheduled during the three dead days**;
-- Week 16 must not gain a Machine Dossier checkpoint;
-- any Week 16 evidence retained for participation/learning must be ungraded or otherwise compliant with the verified institutional rule;
-- add a regression test that fails if a Week 16 recurring graded assignment is reintroduced.
+Therefore:
 
-### C. Due-date provenance must be explicit
-
-The compiler may not manufacture exact clock times merely because Canvas accepts them.
-
-Use three buckets:
-
-1. **Source-explicit:** e.g. Professional Minds Wednesday reading source explicitly closes Wednesday at 8:00 AM. Preserve it.
-2. **Source-explicit date but no clock:** e.g. a Professional Minds slides assignment explicitly closes the following Monday but does not itself state a clock time. Do not pretend the source specified 23:59; either apply an already-accepted family-wide operational convention and document that provenance, or leave the exact clock unresolved until decided.
-3. **Compiler-derived / course-owned:** Architecture Wednesday/Friday placement and break avoidance may derive a date from the accepted weekly grammar and official calendar, but exact due-time policy still requires an accepted operational rule.
-
-Do not conflate "official calendar says this date is legal" with "Jeremy chose this exact due time."
-
-Late-work and revision/resubmission mechanics also remain unresolved unless an accepted Architecture source/decision explicitly says otherwise.
-
-## Implemented mechanical repair already present
-
-The Course Foundry target branch now:
-
-- reconciles `_week1_modules()` to the current `compute_kickoff_plan` API;
-- uses the supported universal shared Week 1 path rather than inventing an Architecture-only kickoff overlay;
-- preserves Architecture course id 8;
-- keeps Week 1 free of a fake Architecture technical gate;
-- wraps the six observed E501 violations without changing rubric/course semantics.
-
-These fixes remain necessary but are no longer sufficient for acceptance.
+- Farkle + ML learning content remains present;
+- no recurring graded AI Fluency object in Week 16;
+- no recurring graded Professional Minds object in Week 16;
+- no graded Architecture Investigation in Week 16;
+- no graded Explain / Defend in Week 16;
+- no Week 16 Machine Dossier checkpoint;
+- add/retain regression tests that fail if those graded objects return.
 
 ## Required work
 
-### 1. Reconcile policy/compliance before chasing GREEN tests
+### 1. Reconcile compiler policy
 
-Inspect:
+Update `course_foundry/architecture_desired_course.py` and tests to match the authoritative Architecture policy above.
 
-- `computer_architecture/docs/grading-model.md`;
-- accepted CS1-family precedent only as precedent, not automatic Architecture policy;
-- Architecture weekly source files;
-- Professional Minds scheduling language;
-- official Fall 2026 calendar/dead-days evidence already preserved in the course-family grading work.
+Do not treat green tests as a substitute for reading the policy files.
 
-Repair the compiler and tests so unsupported policy cannot silently become Canvas truth.
+### 2. Run targeted tests on real sibling checkouts
 
-### 2. Assert source commits first
-
-Fast-forward and print the exact Course Foundry and Architecture source commits before testing. Do not validate a stale worktree by accident.
-
-### 3. Run targeted tests on real sibling checkouts
-
-Use the Architecture launch worktree rather than requiring Architecture `main` to move first:
+Use the Architecture launch worktree:
 
 ```bash
 export ARCHITECTURE_SOURCE_ROOT=/mnt/brandy_nvme/jevert/git/computer_architecture_savnac
@@ -148,7 +115,7 @@ PYTHONPATH=. "$PY" -m ruff check \
 
 Do not claim GREEN from code inspection alone.
 
-### 4. Inspect the resulting plan before Savnac contact
+### 3. Inspect the generated plan before Savnac contact
 
 Record at minimum:
 
@@ -156,17 +123,17 @@ Record at minimum:
 - module count and positions;
 - object count by kind;
 - assignment groups and total weight;
-- exact group rules, including whether any drop-lowest rule is present and its source/decision provenance;
+- exact drop rules;
 - checkpoint titles/weeks;
 - Week 9 Fall Break behavior;
 - Week 15 Thanksgiving behavior;
-- **Week 16: content present, no prohibited recurring graded work, no checkpoint**;
+- Week 16 content present but no prohibited recurring graded work/checkpoint;
 - Week 17 reflection/evaluation objects;
-- every due date/time near official breaks/finals, with provenance category (source-explicit, accepted operational convention, or compiler-derived date).
+- due dates/times near official breaks/finals and their provenance.
 
-### 5. Run the guarded Savnac dry run
+### 4. Run guarded Savnac dry run
 
-Only after policy/compliance reconciliation, targeted tests, and Ruff are GREEN:
+Only after policy reconciliation, pytest, and Ruff are GREEN:
 
 ```bash
 PYTHONPATH=. "$PY" -m course_foundry.savnac_deploy dry-run \
@@ -174,46 +141,45 @@ PYTHONPATH=. "$PY" -m course_foundry.savnac_deploy dry-run \
   --architecture-root /mnt/brandy_nvme/jevert/git/computer_architecture_savnac
 ```
 
-This prompt authorizes **dry-run/read-only reconciliation only**. It does not authorize `push` or `--confirm-live`.
+This is **dry-run/read-only only**. No `push` / `--confirm-live`.
 
-The target is **not blank**. Savnac course 8 already contains the earlier partial Architecture imprint (shared Week 1 + authored Week 5). The full-semester dry run must therefore be interpreted as reconciliation against existing course state, not a first creation pass.
+Savnac course 8 is not blank. It already contains the earlier partial Architecture imprint (shared Week 1 + authored Week 5). Interpret the output as reconciliation against existing dogfood state.
 
-Retain the complete reconcile summary and enough detail to inspect create/update/skip/delete intent. Any unexpected delete, duplicate, course-id mismatch, suspicious existing-object conflict, unsupported group rule, or dead-days violation blocks Prompt 006.
+Any unexpected delete, duplicate, course-id mismatch, suspicious conflict, policy drift, or dead-days violation blocks Prompt 006.
 
-### 6. Write a durable report
+### 5. Retain evidence
 
-Write an Architecture-side receipt/report or update Prompt 006's report with:
+Write/retain a durable Architecture-side report/receipt containing:
 
-- Course Foundry commit tested;
-- Architecture source commit tested;
-- targeted pytest output;
+- exact Course Foundry commit;
+- exact Architecture source commit;
+- pytest output;
 - Ruff output;
-- plan summary;
-- group-rule provenance;
-- due-date/time provenance;
-- dead-days proof;
+- generated-plan summary;
+- group/drop rules;
+- due-time provenance;
+- Week 16 compliance proof;
 - Savnac dry-run summary;
-- any collision/drift concerns;
-- explicit statement that no live Savnac write occurred.
+- collision/drift concerns;
+- explicit confirmation no live Savnac write occurred.
 
 ## Acceptance
 
 Accept only when:
 
-1. the kickoff compiler call matches the real current API;
-2. targeted Architecture/deployer tests are GREEN on Brandy;
-3. Ruff is GREEN for the touched compiler/test files;
-4. the full Architecture plan builds from the launch worktree;
-5. assignment-group weights sum to 100%;
-6. no drop-lowest rule exists without explicit Architecture decision/source provenance;
-7. calendar exception tests remain GREEN;
-8. Week 16 satisfies the verified dead-days rule and contains no prohibited recurring graded work or hidden Checkpoint 4;
-9. exact due times have explicit provenance rather than compiler convenience;
-10. the Savnac course-8 dry run completes without writes;
-11. the dry-run intent contains no unexplained deletes/duplicates/cross-course objects or policy drift;
-12. the observed diff is retained for Prompt 006 review;
-13. production Canvas and live Savnac state are unchanged.
+1. the real Brandy worktrees were synced and exact tested commits recorded;
+2. targeted Architecture/deployer tests are GREEN;
+3. Ruff is GREEN;
+4. assignment-group weights sum to 100%;
+5. drop-lowest exactly matches the resolved Architecture policy;
+6. due times follow source-explicit clocks or the resolved all-day/11:59 PM convention;
+7. Week 16 contains no prohibited recurring graded work or Checkpoint 4;
+8. compiler introduces no conflicting late-penalty or resubmission cutoff policy;
+9. the course-8 dry run completes without writes;
+10. no unexplained deletes/duplicates/cross-course objects/policy drift appear;
+11. the observed diff is retained for Prompt 006;
+12. production Canvas and live Savnac state are unchanged.
 
 ## Done when
 
-Prompt 006 has a tested, policy-truthful, calendar-compliant full-semester compiler and an inspected course-8 dry-run diff, not merely a green unit test suite.
+Prompt 006 has a tested, policy-truthful, calendar-compliant full-semester compiler and an inspected course-8 dry-run diff.
