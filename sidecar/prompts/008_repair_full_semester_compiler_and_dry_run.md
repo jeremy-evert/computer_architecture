@@ -1,8 +1,33 @@
 # Sidecar Prompt 008 - Repair the full-semester Architecture compiler and prove the dry run
 
-**Status:** READY — POLICY DECISIONS RESOLVED; IMPLEMENT + PROVE ON BRANDY  
+**Status:** ACCEPTED 2026-08-17 — `course_foundry` main `acdff26`  
 **Owner:** Foreman / deployment worker  
-**Priority:** BLOCKS Prompt 006 until accepted  
+**Priority:** BLOCKS Prompt 006 until accepted
+
+## Acceptance record (2026-08-17)
+
+Compiler reconciled against the real `KickoffObjectSpec`/`KickoffModulePlan`
+schema (dispatched to a golem, independently re-verified by Foreman:
+pytest 10/11 green — the one remaining failure is a pre-existing,
+out-of-scope `SourcePaths.defaults()` gap unrelated to this repair — Ruff
+clean, dry-run reproduced with identical numbers on a second run). Full
+detail: `course_foundry/reports/2026-08-16_prompt008_repair_full_semester_compiler_and_dry_run.md`.
+
+**Real blocker found for Prompt 006, not resolved here (deliberately out of
+this compiler unit's scope):** the dry-run against live Savnac course 8
+returned `create=250, update=0, skip=11, delete=0` — effectively
+all-create, not a reconciliation. Root cause, confirmed directly against
+live Canvas: the existing partial imprint's title format doesn't
+byte-match the current compiler's output (e.g. live module `"Computer
+Architecture Week 5 — Build the Machine"` vs desired `"Computer
+Architecture Week 05 - Build the Machine"` — zero-padding and
+em-dash-vs-hyphen), so Imprint's title-based matching treats every object
+as new. Left as-is rather than silently reformatting either side. Prompt
+006 must resolve this (retitle the compiler to match live, or explicitly
+clean up/retire the 6 stale modules/20 stale assignments from the earlier
+partial imprint before any live write) before authorizing a live push —
+this is exactly the "not a blank slate" / "block on duplicate
+titles/objects" condition Prompt 006 already names.  
 **Primary target branch:** `course_foundry:savnac/architecture-full-semester`  
 **Known mechanical-repair tip:** `667693d9b06066c1268e0f319668029019ccef82`  
 **Architecture source branch:** `computer_architecture:savnac/architecture-launch-readiness`
