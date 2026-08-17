@@ -1,6 +1,6 @@
 # COMSC-3013 Fall 2026 grading model
 
-**Status:** grading structure accepted; Week 16 dead-days posture resolved; remaining due/late/drop/revision mechanics require the operational Canvas pass.
+**Status:** grading structure and operational due/drop/resubmission policy accepted; Week 16 dead-days posture resolved; late penalties inherit the existing Marker policy.
 
 Computer Architecture inherits the recognizable **CS1 grading family** while adapting it to an online/asynchronous laboratory course.
 
@@ -138,20 +138,58 @@ A student using only the required free/accessible path must be able to earn the 
 
 Premium tools may improve convenience. They do not create additional grading ceiling.
 
-## Drop-lowest / revision direction
+## Drop-lowest policy - RESOLVED
 
-Architecture should preserve the **spirit** of CS1's humane recurring-work policy.
+Drop the lowest 1 in each genuinely recurring graded category:
 
-The operational Canvas pass must decide the exact mechanically supported form for:
+- AI Fluency / Monday Moment;
+- Professional Minds Wednesday;
+- Professional Minds Friday;
+- Weekly Architecture / investigation work;
+- Weekly Explain / Defend evidence receipt.
 
-- drop-lowest behavior on recurring weekly categories;
-- resubmission/revision windows;
-- due dates/times where owning source does not already specify them;
-- late-work handling.
+Do **not** drop any of these one-time/milestone categories:
 
-Those mechanics are not silently invented in this document.
+- Semester kickoff;
+- Machine Dossier checkpoints;
+- Final reflection;
+- Professional pathway Week 14;
+- Professional pathway Week 15;
+- Course evaluation.
 
-The bounded recommendation and decision surface live in `sidecar/questions/003_assessment_and_grading_contract.md`.
+This is the Architecture form of the humane CS1-family recurring-work policy.
+
+## Due-time convention - RESOLVED
+
+When the owning source names a due **day** but not an exact clock time, students get the entire named day.
+
+Default:
+
+> **11:59 PM America/Chicago on the named due day.**
+
+Precedence:
+
+1. a source-explicit clock time wins;
+2. institutional calendar/dead-days rules win;
+3. otherwise a source-backed named due day closes at 11:59 PM Central.
+
+A Professional Minds reading explicitly due at 8:00 AM stays due at 8:00 AM. A source saying "the following Monday" without a clock closes at 11:59 PM Monday.
+
+## Late-work policy - RESOLVED OWNER
+
+Late penalties are already documented and owned by **Marker**.
+
+Architecture does not define a second late-penalty schedule in Course Foundry or Canvas configuration. The deployment/grading pipeline must preserve the due/submission timestamps and other context the existing Marker late-policy needs.
+
+If the shared plumbing cannot carry or apply that existing policy correctly, fix the shared owner rather than inventing course-local penalty arithmetic.
+
+## Resubmission policy - RESOLVED
+
+Resubmission is **always allowed**, subject only to the system continuing to accept the submission, and the **highest accepted score is retained**.
+
+A later attempt may generate new feedback and a new policy-adjusted score, but it must not lower the student's recorded best score. The grading/writeback pipeline should preserve attempt history while using the maximum accepted score for the gradebook.
+
+Do not add an Architecture-specific resubmission cutoff merely because Canvas exposes an `available_until`-style mechanism.
 
 ## Week 16 dead-days/calendar decision - RESOLVED
 
@@ -180,4 +218,7 @@ The implementation pass must map these categories to Canvas assignment groups an
 - no Week 16 checkpoint exists;
 - no prohibited recurring graded Week 16 object exists;
 - no premium-resource path changes attainable points;
-- drop/due/late/revision mechanics are explicit, source/decision-backed, and tested.
+- recurring group drops match the policy above;
+- due times have explicit source/policy provenance;
+- the shared Marker late policy is used rather than duplicated;
+- resubmission remains open and highest-score retention is tested end to end.
