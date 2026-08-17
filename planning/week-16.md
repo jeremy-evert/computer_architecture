@@ -1,120 +1,177 @@
 # Week 16 - Farkle + Machine Learning (Nov 30-Dec 4)
 
 ## Status
-Pinned shared application/fun week. The former Architecture-capstone framing is retired.
+
+**Runnable canonical-shared consumer authored on `farkle/shared-core-architecture-brandy`; real Brandy CPU validation and deck compilation remain release gates.**
+
+The former Architecture-capstone framing is retired. Week 16 is a joyful shared application/fun week after the Week 14 technical finale and Week 15 asynchronous wind-down.
+
+Student teaching package:
+
+`weeks/week-16/`
+
+Canonical generated computational package:
+
+`weeks/week-16/code/farkle_ml/`
+
+Architecture-owned execution evidence layer:
+
+`weeks/week-16/code/architecture_farkle/`
+
+One-command runtime validator:
+
+```text
+python scripts/validate_week16_farkle.py
+```
 
 ## Weekly Focus
 
 **What does it cost a machine to make a better Farkle decision, and when is that extra cost actually worth paying?**
 
-Week 16 is Farkle + Machine Learning across the course family. It should be joyful, bounded, and accessible.
-
 Computer Architecture may naturally echo through the student's decisions, but no new Architecture theory, Machine Dossier layer, or checkpoint is introduced.
 
-The software problem should stay mostly fixed. Students compare a small prescribed set of Farkle/ML strategies or effort levels while changing meaningful execution choices underneath them.
+The software problem stays fixed through the canonical `Farkle_and_Machine_Learning` core. Students compare a small prescribed strategy/effort menu while the course-owned wrapper records preparation, operation, effectiveness, and actual execution context.
 
-Possible execution dimensions include compiler optimization, container versus bare metal, CPU worker count, optional GPU/accelerator use, and instructor-provided local/cloud/NRP hardware lanes.
+## Shared design doctrine
 
-The point is not to find one universally best machine. The point is to identify an objective and decide whether additional computational cost purchases enough additional effectiveness to be worth it.
+The full cross-course Architecture/Farkle vision lives in the canonical shared repository rather than being re-invented here:
+
+- `planning/architecture-cost-effectiveness-lens.md`
+- `planning/hardware-lane-and-receipt-map.md`
+
+This course consumes the smallest student-facing slice of that doctrine.
+
+## Required execution lane
+
+The required path is explicitly:
+
+- native Python;
+- CPU;
+- ordinary supported student computer;
+- repeated timings;
+- JSON/CSV evidence;
+- no paid AI/API;
+- no GPU/cloud/NRP/Kubernetes requirement.
+
+A physically present GPU does not count as accelerator evidence. A future accelerator lane must separately prove actual dispatch, benchmark equivalence, and recorded backend identity.
+
+## Fixed strategy menu
+
+The canonical bounded menu is:
+
+1. `bank_at_300` - cheap human threshold;
+2. `learner:500` - small training/preparation budget;
+3. `learner:2000` - larger training/preparation budget;
+4. `rollout:10` - modest decision-time simulation;
+5. `rollout:25` - larger decision-time simulation.
+
+The usual comparison baseline is `bank_at_425`.
+
+A normal student needs only **one execution lane and two fixed strategies**.
 
 ## Cost / effectiveness vocabulary
 
 Keep currencies separate rather than hiding them in one score.
 
-Useful cost dimensions:
+### Effectiveness
 
-- model training/preparation time and compute;
-- decision/runtime latency;
-- games completed per fixed time window;
-- normalized or observed compute/hardware cost;
-- hardware/deployment class.
+- win rate against the same fixed opponent/workload;
+- raw wins/ties and balanced starts;
+- deterministic outcome stability.
 
-Useful effectiveness dimensions:
+### Preparation
 
-- win rate or another fixed tournament success measure;
-- expected score/value if useful;
-- stability across repeated fixed-seed tournament bundles.
+- training turns;
+- preparation wall time;
+- model/table size when applicable.
 
-Training cost matters. An expensive model may cost more to prepare but become cheap to use repeatedly. A simulation strategy may cost almost nothing to prepare but spend compute on every decision. A simple heuristic may be nearly free and still be the rational architecture under some objective.
+### Operation
 
-## Monday - Think / Frame / Lecture
+- evaluation wall time;
+- games per second;
+- repeated timing median/min/max.
+
+### Machine / environment
+
+- actual host and CPU;
+- logical CPU count;
+- execution mode;
+- declared hardware lane;
+- accelerator-used flag.
+
+Training cost matters. A learned strategy may pay up front and play cheaply. A rollout strategy may pay little up front and spend compute at every decision. A simple threshold may be nearly free and remain rational under some objectives.
+
+## Monday - Think / Frame
 
 **AI Fluency Lens 16: Reflect and Improve.**
 
-Enter the shared workload with a light prediction:
+Students separate algorithmic effort from execution substrate, name one objective, choose two fixed strategies, and predict:
 
-- Which fixed Farkle strategy do I expect to perform best for my objective?
-- What do I think will be expensive?
-- Which hardware/execution choice do I expect to matter?
+- effectiveness;
+- preparation cost;
+- operating cost;
+- whether the extra computation will be worth paying for.
 
-No new Architecture lecture/mechanism.
+No new Architecture mechanism is introduced.
 
 ## Wednesday - Investigate / Break / Measure
 
-**Professional Minds: _Generative AI Design Patterns_ - What kind of professional do I want to become?**
+**Professional Minds: _Generative AI Design Patterns_ reflection.**
 
-Run/play with the shared Farkle + ML experience through the validated CPU-accessible path.
+Students run the fixed shared workload through the validated CPU path. The Architecture wrapper repeats timings, records host facts, preserves shared effectiveness evidence, and emits machine-readable receipts.
 
-A normal student should need only:
+The student experiment grammar is:
 
-- one hardware/execution lane; and
-- two fixed software strategies or effort levels.
+> **Predict -> Hold the workload still -> Run -> Measure -> Compare -> Explain -> Revise**
 
-Possible instructor-controlled hardware lanes include a constrained Raspberry Pi-class system, a normal laptop-like host, a proper desktop, and a large NRP/instructor-compute lane.
+The fixed workload prevents students from winning by rewriting the game or weakening correctness.
 
-The same fixed artifact may also be used for same-hardware round-robin or throughput comparisons when that materially improves the game.
+## Friday - Explain / Defend
 
-If an Architecture idea appears naturally, use it to explain the result rather than turning the week into another profiling project.
+**Professional Minds: semester reflection - What kind of professional do I want to become?**
 
-## Friday - Explain / Defend / Stack Showcase
+Students make one bounded architectural judgment:
 
-**Professional Minds: Semester Reflection - What kind of professional do I want to become?**
+> **For this Farkle workload, on this execution lane, under this objective, I would choose this architecture because the additional effectiveness is or is not worth the additional cost.**
 
-Make one short architectural judgment:
+The receipt requires:
 
-> For this workload, under this constraint, measured this way, I would choose this architecture because the additional effectiveness is or is not worth the additional cost.
-
-Useful tournament/showcase categories may include:
-
-- raw Farkle effectiveness;
-- most valid games in a fixed time window (Top 500);
-- effectiveness relative to compute/resource cost (Green 500);
-- cheapest architecture reaching a declared effectiveness floor (Bottom Dollar);
-- effectiveness relative to training/preparation cost;
-- same-hardware round robin.
-
-These are playful evidence surfaces, not separate grading requirements.
-
-**Optional Stack Showcase:** Jeremy runs the fixed workload through interesting parts of the real stack/hardware/tools. This is enrichment only.
-
-## Competition equity
-
-Expensive hardware must not determine the student's grading ceiling.
-
-Instructor-owned execution lanes can make hardware comparisons available without requiring students to own the machines. If ranking is used, performance and rarity/pioneer credit should be treated separately so a popular category is not automatically more valuable and a solo invalid entry is not automatically a winner.
-
-Any submitted artifact executed on instructor infrastructure must pass correctness checks before performance counts.
-
-## Infrastructure scope fence
-
-A small script/runner/static board is welcome if it directly supports the Week 16 game.
-
-Do **not** turn Week 16 into a production tournament platform, generalized Kubernetes submission system, persistent web service, or semester-long infrastructure project. Larger automation ideas belong in future infrastructure work and do not block the learning experience.
-
-## Evidence this week
-
-Shared Farkle + ML application/participation evidence plus a short prediction and Architecture-informed cost-versus-effectiveness judgment.
-
-**No Architecture Checkpoint 4.**
+- bounded claim;
+- concrete effectiveness/cost/context evidence;
+- one prior Architecture concept;
+- one limitation;
+- defend/revise/qualify/refuse after evidence;
+- AI/tool use plus independent verification when relevant.
 
 ## Machine Dossier role
 
-No expansion. Students may refer to existing dossier evidence if useful.
+**NO CHANGE.**
 
-## Online-delivery note
+The technical Machine Dossier froze in Week 14. Students may consult prior evidence or concepts, but Week 16 does not add a new dossier layer.
 
-M/W/F are asynchronous anchors. CPU-only completion is mandatory; GPU/premium AI is optional enrichment.
+## Optional Stack Showcase / hardware zoo
 
-## Open authoring notes
+After the required CPU path is GREEN, the instructor may execute the same receipt contract on additional verified hardware lanes. Potential lanes include Brandy, Maise, April, a GTX 1080-class desktop, and later NRP professional-GPU hardware.
 
-Keep this week fun. Freeze enough of the software stack to make hardware/execution comparisons meaningful. Do not resurrect the retired heavy Architecture capstone through profiling requirements, multi-layer dossier work, or tournament-infrastructure ambition.
+Those are enrichment/research receipts, not a student grading requirement. Cross-machine claims must keep the workload contract fixed and record the actual executing hardware/backend.
+
+## Competition equity
+
+Expensive hardware must not determine the student's grading ceiling. The required student work can be completed on one ordinary CPU lane.
+
+Playful categories such as Top 500, Green 500, Bottom Dollar, or Training Miser belong to optional showcase surfaces only. They do not create new grading categories.
+
+## Infrastructure scope fence
+
+Do **not** turn Week 16 into a production tournament platform, generalized Kubernetes submission system, persistent web service, or semester-long infrastructure project.
+
+The course is done when the learning game works and students can make a defensible cost-versus-effectiveness judgment.
+
+## Release gates
+
+Before the package is marked GREEN on `main`:
+
+1. run `python scripts/validate_week16_farkle.py` on a real Brandy checkout and retain the GREEN raw receipt;
+2. compile `weeks/week-16/monday.tex` with the course LaTeX toolchain and record the result in `weeks/week-16/_validation.md`;
+3. confirm no hidden GPU/private-host/paid-tool dependency entered the required path;
+4. keep larger hardware-lane experiments explicitly optional.
