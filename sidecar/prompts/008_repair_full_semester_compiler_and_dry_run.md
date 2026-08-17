@@ -1,9 +1,10 @@
 # Sidecar Prompt 008 - Repair the full-semester Architecture compiler and prove the dry run
 
-**Status:** READY  
+**Status:** IMPLEMENTED — AWAITING REAL BRANDY ACCEPTANCE  
 **Owner:** Foreman / deployment worker  
-**Priority:** BLOCKS Prompt 006  
+**Priority:** BLOCKS Prompt 006 until accepted  
 **Primary target branch:** `course_foundry:savnac/architecture-full-semester`  
+**Implemented Course Foundry tip to validate:** `667693d9b06066c1268e0f319668029019ccef82`  
 **Architecture source branch:** `computer_architecture:savnac/architecture-launch-readiness`
 
 ## Mission
@@ -12,12 +13,33 @@ Repair the connector-authored full-semester Computer Architecture DesiredCourse 
 
 Do not push live Savnac changes in this prompt.
 
+## Current state
+
+The known compiler/API/style repairs have been authored remotely. They are **not accepted until Brandy fast-forwards the Course Foundry worktree to the implemented tip and reruns the real tests**.
+
+Before judging the implementation, prove the worktree is on the intended code:
+
+```bash
+git pull --ff-only
+git rev-parse HEAD
+```
+
+Expected Course Foundry commit:
+
+```text
+667693d9b06066c1268e0f319668029019ccef82
+```
+
+Also assert the Architecture source worktree is on the accepted Prompt 007 implementation or a later accepted descendant before the final dry run.
+
+A failing result from the older `6f82a68...` compiler does not reject the implementation at `667693d...`.
+
 ## Evidence that opened this prompt
 
-Real Brandy run against Course Foundry tip `6f82a68f53389530e4fdb3d81e3efaf23de13d67` produced:
+A real Brandy run against older Course Foundry tip `6f82a68f53389530e4fdb3d81e3efaf23de13d67` produced:
 
 - 6 failed / 4 passed targeted tests;
-- all six failures collapse to the same kickoff API mismatch:
+- all six failures collapsed to the same kickoff API mismatch:
 
 ```text
 TypeError: compute_kickoff_plan() got an unexpected keyword argument 'course_repo_path'
@@ -25,35 +47,29 @@ TypeError: compute_kickoff_plan() got an unexpected keyword argument 'course_rep
 
 - Ruff found six E501 line-length violations.
 
-The failing kickoff call is in `_week1_modules()` in `course_foundry/architecture_desired_course.py`.
+The failing kickoff call was in `_week1_modules()` in `course_foundry/architecture_desired_course.py`.
 
-## Required work
+## Implemented repair
 
-### 1. Reconcile the kickoff API from source
+The Course Foundry target branch now:
 
-Inspect the current `compute_kickoff_plan` signature in Course Foundry. Do not guess from an older caller.
+- reconciles `_week1_modules()` to the **current** `compute_kickoff_plan` API;
+- uses the supported universal shared Week 1 path rather than inventing an Architecture-only kickoff overlay;
+- preserves Architecture course id 8;
+- keeps Week 1 free of a fake Architecture technical gate;
+- wraps the six observed E501 violations without changing rubric/course semantics.
 
-Repair Architecture's `_week1_modules()` to call the current API correctly while preserving the intended doctrine:
+This remains connector-authored code until Brandy proves it against the real sibling checkouts.
 
-- shared `semester_kickoff_week` owns universal Week 1;
-- Architecture does not create a duplicate Week 1 curriculum fork;
-- course id remains 8;
-- no fake Architecture technical gate is introduced into Week 1.
+## Required acceptance work
 
-If the current kickoff API cannot accept an Architecture course-root overlay, do not smuggle one in. Use the existing supported universal path.
+### 1. Assert source commits first
 
-### 2. Fix style failures without changing behavior
+Fast-forward and print the exact Course Foundry and Architecture source commits before testing. Do not validate a stale worktree by accident.
 
-Resolve the six observed E501 violations in:
+### 2. Run the targeted tests on real sibling checkouts
 
-- `course_foundry/architecture_desired_course.py`;
-- `tests/test_architecture_desired_course.py`.
-
-Keep the text/rubric semantics unchanged.
-
-### 3. Run the targeted tests on real sibling checkouts
-
-Use the Architecture launch worktree rather than requiring Architecture main to move first:
+Use the Architecture launch worktree rather than requiring Architecture `main` to move first:
 
 ```bash
 export ARCHITECTURE_SOURCE_ROOT=/mnt/brandy_nvme/jevert/git/computer_architecture_savnac
@@ -73,7 +89,7 @@ PYTHONPATH=. "$PY" -m ruff check \
 
 Do not claim GREEN from code inspection alone.
 
-### 4. Inspect the resulting plan before Canvas contact
+### 3. Inspect the resulting plan before Canvas contact
 
 Record at minimum:
 
@@ -88,7 +104,7 @@ Record at minimum:
 - Week 17 reflection/evaluation objects;
 - due dates that fall near official breaks/finals.
 
-### 5. Run the guarded Savnac dry run
+### 4. Run the guarded Savnac dry run
 
 Only after targeted tests and Ruff are GREEN:
 
@@ -100,9 +116,11 @@ PYTHONPATH=. "$PY" -m course_foundry.savnac_deploy dry-run \
 
 This prompt authorizes **dry-run/read-only reconciliation only**. It does not authorize `push` or `--confirm-live`.
 
+The target is **not blank**. Savnac course 8 already contains the earlier partial Architecture imprint (shared Week 1 + authored Week 5). The full-semester dry run must therefore be interpreted as a reconciliation against existing course state, not a first creation pass.
+
 Retain the complete reconcile summary and enough detail to inspect create/update/skip/delete intent. Any unexpected delete, duplicate, course-id mismatch, or suspicious existing-object conflict is a blocker for Prompt 006 live imprint.
 
-### 6. Write a durable report
+### 5. Write a durable report
 
 Write an Architecture-side receipt/report or update Prompt 006's report with:
 
@@ -119,16 +137,17 @@ Write an Architecture-side receipt/report or update Prompt 006's report with:
 
 Accept only when:
 
-1. the kickoff compiler call matches the real current API;
-2. targeted Architecture/deployer tests are GREEN on Brandy;
-3. Ruff is GREEN for the touched compiler/test files;
-4. the full Architecture plan builds from the launch worktree;
-5. assignment-group weights sum to 100%;
-6. calendar exception tests remain GREEN;
-7. the Savnac course-8 dry run completes without writes;
-8. the dry-run intent contains no unexplained deletes/duplicates/cross-course objects;
-9. the observed diff is retained for Prompt 006 review;
-10. production Canvas and live Savnac state are unchanged.
+1. the Course Foundry worktree is proven to be on `667693d9b06066c1268e0f319668029019ccef82` or a descendant containing the repair;
+2. the kickoff compiler call matches the real current API;
+3. targeted Architecture/deployer tests are GREEN on Brandy;
+4. Ruff is GREEN for the touched compiler/test files;
+5. the full Architecture plan builds from the launch worktree;
+6. assignment-group weights sum to 100%;
+7. calendar exception tests remain GREEN;
+8. the Savnac course-8 dry run completes without writes;
+9. the dry-run intent contains no unexplained deletes/duplicates/cross-course objects;
+10. the observed diff is retained for Prompt 006 review;
+11. production Canvas and live Savnac state are unchanged.
 
 ## Done when
 
