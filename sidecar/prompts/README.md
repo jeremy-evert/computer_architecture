@@ -11,14 +11,21 @@ Project-local work orders for COMSC-3013 Fall 2026 deployment.
 
 Do not call implemented work `drafted` merely because final deployment has not happened.
 
-## Queue status
+## Current launch queue
+
+Work this list in order. The detailed work stays here in the course sidecar; the global `jeremy_task_tracking/TASKS.md` should point here rather than duplicate the implementation narrative.
+
+1. **READY - Prompt 007:** repair the Brandy Savnac launch-source validator. Real receipt `architecture_savnac_source_validation_20260817T011634Z.md` is RED because the validator currently treats the full `archlab doctor` capability result as a launch-source hard gate. Preserve doctor strictness; repair the validator contract and prove the required/fallback Week 3 path honestly.
+2. **READY - Prompt 008:** repair the Course Foundry full-semester Architecture compiler. Real Brandy targeted run is 6 failed / 4 passed because `_week1_modules()` calls `compute_kickoff_plan` with an obsolete `course_repo_path` keyword; Ruff also has six E501 nits. Fix from current API source, prove pytest/Ruff, then run the guarded no-write Savnac course-8 dry run.
+3. **WAITING ON 007 + 008 - Prompt 006:** imprint Computer Architecture into the intended Savnac course and read it back. Prompt 006 is the umbrella deployment/dogfood gate. Do not begin a live Savnac push until the source validator and full-semester compiler/dry-run are trustworthy and the live write is explicitly authorized. Production SWOSU Canvas remains separate and unauthorized.
+
+## Completed / implemented foundation
 
 1. **IMPLEMENTED / COMPLETE** - Prompt 001 reconciliation.
 2. **IMPLEMENTED / COMPLETE** - Prompt 002 open-source Architecture canon.
 3. **IMPLEMENTED WITH PLATFORM YELLOWS** - Prompt 003 reproducible Architecture laboratory.
 4. **IMPLEMENTED / COMPLETE WITH NAMED PHYSICAL/RELEASE YELLOWS** - Prompt 004 Weeks 5-14 technical core.
-5. **READY WHEN DELIBERATELY STARTED** - Prompt 005 shared Week 16 Farkle + ML experience; historical filename retained, not an Architecture capstone.
-6. **WAITING ON SOURCE-READY COURSE + AUTHORIZATION** - Prompt 006 Savnac imprint/read-back. Production Canvas remains separate and unauthorized.
+5. **IMPLEMENTED / VALIDATED** - Prompt 005 shared Week 16 Farkle + ML experience; historical filename retained, not an Architecture capstone.
 
 ## Prompt 004 campaign
 
