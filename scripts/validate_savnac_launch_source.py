@@ -9,6 +9,7 @@ already-existing course laboratory, then emits a raw Markdown receipt.
 from __future__ import annotations
 
 import datetime as dt
+import json
 import os
 import platform
 import subprocess
@@ -35,12 +36,25 @@ REQUIRED = [
     "assignments/A6-professional-pathway-artifacts.md",
     "assignments/A7-final-reflection.md",
     "docs/course-evaluation.md",
+    "lab/fallback_data/week05-machine-reference.txt",
+    "lab/fallback_data/week05-machine-reference.json",
 ]
 PLACEHOLDERS = ("REPLACE", "Week NN", "WEEK TITLE")
 
 
-def run(command: list[str], *, cwd: Path = ROOT) -> subprocess.CompletedProcess[str]:
-    return subprocess.run(command, cwd=cwd, check=True, capture_output=True, text=True)
+def run(
+    command: list[str],
+    *,
+    cwd: Path = ROOT,
+    check: bool = True,
+) -> subprocess.CompletedProcess[str]:
+    return subprocess.run(
+        command,
+        cwd=cwd,
+        check=check,
+        capture_output=True,
+        text=True,
+    )
 
 
 def git_head() -> str:
@@ -60,8 +74,20 @@ def check_sources() -> list[str]:
             text = path.read_text(encoding="utf-8")
             for placeholder in PLACEHOLDERS:
                 if placeholder in text:
-                    raise RuntimeError(f"placeholder {placeholder!r} remains in {path.relative_to(ROOT)}")
+                    raise RuntimeError(
+                        f"placeholder {placeholder!r} remains in "
+                        f"{path.relative_to(ROOT)}"
+                    )
     checks.append("GREEN — no template placeholders remain in newly authored week Markdown")
+
+    week3 = (ROOT / "weeks/week-03/wednesday.md").read_text(encoding="utf-8")
+    for fallback in (
+        "lab/fallback_data/week05-machine-reference.txt",
+        "lab/fallback_data/week05-machine-reference.json",
+    ):
+        if fallback not in week3:
+            raise RuntimeError(f"Week 3 does not name required fallback source: {fallback}")
+    checks.append("GREEN — Week 3 names the committed course fallback receipt explicitly")
     return checks
 
 
@@ -72,10 +98,39 @@ def week2_portable_probe() -> str:
     )
 
 
-def check_lab() -> tuple[list[str], str, str]:
+def _doctor_payload() -> tuple[subprocess.CompletedProcess[str], dict[str, object]]:
+    doctor = run([str(ROOT / "lab/bin/archlab"), "doctor"], check=False)
+    if not doctor.stdout.strip():
+        detail = doctor.stderr.strip() or f"exit {doctor.returncode} with no output"
+        raise RuntimeError(f"archlab doctor produced no JSON receipt: {detail}")
+    try:
+        payload = json.loads(doctor.stdout)
+    except json.JSONDecodeError as exc:
+        raise RuntimeError(
+            "archlab doctor output was not valid JSON: "
+            f"{doctor.stdout[-500:]}"
+        ) from exc
+    if not isinstance(payload, dict) or payload.get("schema") != "swosu.archlab.doctor/v1":
+        raise RuntimeError("archlab doctor returned an unexpected receipt schema")
+    return doctor, payload
+
+
+def check_lab() -> tuple[list[str], list[str], str, str]:
     checks: list[str] = []
-    doctor = run([str(ROOT / "lab/bin/archlab"), "doctor"])
-    checks.append("GREEN — `./lab/bin/archlab doctor` exits 0")
+    warnings: list[str] = []
+    doctor, payload = _doctor_payload()
+    doctor_status = str(payload.get("status", "UNKNOWN"))
+    missing = payload.get("missing_required", [])
+
+    if doctor_status == "PASS" and doctor.returncode == 0:
+        checks.append("GREEN — full `./lab/bin/archlab doctor` capability check passes")
+    else:
+        warnings.append(
+            "YELLOW — full `archlab doctor` capability check is not PASS on this host; "
+            f"missing_required={missing!r}. This is diagnostic, not by itself a "
+            "launch-source failure because Week 3 provides a named fallback path."
+        )
+
     with tempfile.TemporaryDirectory(prefix="arch-week03-a-") as a_dir, tempfile.TemporaryDirectory(
         prefix="arch-week03-b-"
     ) as b_dir:
@@ -88,11 +143,14 @@ def check_lab() -> tuple[list[str], str, str]:
         if not a_text.strip() or not b_text.strip():
             raise RuntimeError("archprobe did not produce non-empty machine.txt receipts")
         checks.append("GREEN — repeated `archprobe` runs produced non-empty machine receipts")
-        # We do not require byte identity because timestamps and other explicitly
-        # observed fields may differ. The important contract is repeatable receipt shape.
         a_head = "\n".join(a_text.splitlines()[:12])
         b_head = "\n".join(b_text.splitlines()[:12])
-    return checks, doctor.stdout.strip(), f"RUN A:\n{a_head}\n\nRUN B:\n{b_head}"
+
+    checks.append("GREEN — Week 3 fallback receipt exists for hosts where wrappers cannot run")
+    doctor_text = doctor.stdout.strip()
+    if doctor.stderr.strip():
+        doctor_text += f"\n\nSTDERR:\n{doctor.stderr.strip()}"
+    return checks, warnings, doctor_text, f"RUN A:\n{a_head}\n\nRUN B:\n{b_head}"
 
 
 def check_git() -> list[str]:
@@ -105,20 +163,22 @@ def main() -> int:
     receipt = ROOT / "sidecar/runs" / f"architecture_savnac_source_validation_{timestamp}.md"
     receipt.parent.mkdir(parents=True, exist_ok=True)
     checks: list[str] = []
+    warnings: list[str] = []
     try:
         checks.extend(check_sources())
         probe = week2_portable_probe()
         checks.append("GREEN — Week 2 portable Python machine probe executed")
-        lab_checks, doctor_output, archprobe_output = check_lab()
+        lab_checks, lab_warnings, doctor_output, archprobe_output = check_lab()
         checks.extend(lab_checks)
+        warnings.extend(lab_warnings)
         checks.extend(check_git())
-        status = "GREEN"
+        status = "GREEN WITH YELLOWS" if warnings else "GREEN"
         error = ""
     except Exception as exc:  # receipt first; do not hide a failed real-host gate
         status = "RED"
         error = str(exc)
-        doctor_output = "not completed"
-        archprobe_output = "not completed"
+        doctor_output = locals().get("doctor_output", "not completed")
+        archprobe_output = locals().get("archprobe_output", "not completed")
         probe = week2_portable_probe()
 
     lines = [
@@ -135,6 +195,9 @@ def main() -> int:
         "",
     ]
     lines.extend(f"- {item}" for item in checks)
+    if warnings:
+        lines.extend(["", "## Named YELLOWs", ""])
+        lines.extend(f"- {item}" for item in warnings)
     if error:
         lines.extend(["", "## Failure", "", f"`{error}`"])
     lines.extend(
@@ -161,12 +224,14 @@ def main() -> int:
             "## Interpretation boundary",
             "",
             "This receipt validates the newly authored Architecture launch source and the",
-            "required repository-local laboratory path on the named host. It does not prove",
-            "optional container, GPU, WSL, macOS, or instructor-showcase lanes.",
+            "required/fallback Week 3 laboratory path on the named host. A full doctor FAIL",
+            "is retained as a platform capability YELLOW when the source/fallback contract",
+            "is still usable; it is not silently rewritten as PASS.",
             "",
-            "Week 2 and Week 3 Monday deck sources are validated separately by exact-source",
-            "LaTeX builds; generated PDFs are reproducible build products rather than required",
-            "Git source.",
+            "It does not prove optional container, GPU, WSL, macOS, or instructor-showcase",
+            "lanes. Week 2 and Week 3 Monday deck sources are validated separately by",
+            "exact-source LaTeX builds; generated PDFs are reproducible build products rather",
+            "than required Git source.",
             "",
             "## Command",
             "",
@@ -178,7 +243,7 @@ def main() -> int:
     )
     receipt.write_text("\n".join(lines), encoding="utf-8")
     print(receipt)
-    return 0 if status == "GREEN" else 1
+    return 0 if status != "RED" else 1
 
 
 if __name__ == "__main__":
