@@ -1,6 +1,6 @@
 # Week 16 authoring / execution validation receipt
 
-**Status:** GREEN - required CPU path and deck source both validated
+**Status:** GREEN - required CPU path and deck source validated; release semantics reconciled to dead days
 
 **Validation date:** 2026-08-16  
 **Authored branch:** `farkle/shared-core-architecture-brandy`  
@@ -19,6 +19,22 @@
 - [x] No Checkpoint 4 or new grading category was invented.
 - [x] Canonical shared computational ownership is recorded through `_SHARED_PROVENANCE.json`.
 
+## Fall 2026 dead-days release check - GREEN
+
+The course-family grading work verified that the three class days immediately before finals are Monday Nov. 30, Wednesday Dec. 2, and Friday Dec. 4, which is all of Week 16 for the Fall 2026 M/W/F calendar.
+
+The Week 16 student/instructor source now explicitly preserves the learning experience while preventing a deployment compiler from interpreting it as recurring graded work:
+
+- [x] no Machine Dossier checkpoint;
+- [x] no graded AI Fluency Week 16 object should be created;
+- [x] no graded Professional Minds Week 16 object should be created;
+- [x] no graded Architecture Investigation Week 16 object should be created;
+- [x] no graded Explain / Defend Week 16 object should be created;
+- [x] Friday judgment is student learning/portfolio evidence, not a graded Canvas submission;
+- [x] optional hardware/Stack Showcase work creates no grading advantage.
+
+**Deployment gate:** Course Foundry Prompt 008 must contain a regression test that fails if recurring graded Week 16 objects are reintroduced. This source-level check does not by itself prove the compiler is compliant until that test and the Savnac dry run pass.
+
 ## Required execution path - GREEN
 
 Executed from a real Brandy checkout:
@@ -27,7 +43,7 @@ Executed from a real Brandy checkout:
 python scripts/validate_week16_farkle.py
 ```
 
-Retained receipt to commit:
+Retained receipt:
 
 `sidecar/runs/week16_farkle_architecture_validation_20260817T003425Z.md`
 
@@ -95,7 +111,7 @@ The rendered PDF is a reproducible build product and is not required to be commi
 
 ## Fallback
 
-The retained real Brandy GREEN validator receipt may be used as instructor fallback evidence if a live classroom run is unavailable. Do not invent benchmark numbers.
+The retained real Brandy GREEN validator receipt may be used as instructor/student fallback evidence if a live local run is unavailable. Do not invent benchmark numbers.
 
 The fallback preserves the same reasoning task: students compare effectiveness, preparation/operation cost, and named execution context before making the Architecture judgment.
 
@@ -103,14 +119,15 @@ The fallback preserves the same reasoning task: students compare effectiveness, 
 
 | Yellow | Why it remains | Blocks authoring? | Blocks student release? | Owner / next proof |
 |---|---|---:|---:|---|
+| full-semester compiler dead-days regression | source is now explicit, but Course Foundry must prove it emits no recurring graded Week 16 objects | no | **yes for graded LMS release** | Prompt 008 |
 | optional hardware zoo | T4, RTX 2080 SUPER, RTX 5080, GTX 1080, and NRP/RTX 6000-class lanes require separate verified execution receipts | no | no | future Stack Showcase / hardware-lane campaign |
 | accelerator execution | no accelerator backend has yet proved actual dispatch plus benchmark equivalence | no | no | future optional enrichment |
 | power / energy evidence | no synchronized power sampler is part of the required CPU path | no | no | future optional enrichment |
 
 ## Validation judgment
 
-**What is genuinely ready:** canonical shared package, Architecture-owned runner/CLI, student Monday/Wednesday/Friday surfaces, instructor plan, exact-source deck build, provenance, real Brandy CPU evidence, and one-command validation contract.
+**What is genuinely ready:** canonical shared package, Architecture-owned runner/CLI, student Monday/Wednesday/Friday surfaces, instructor plan, exact-source deck build, provenance, real Brandy CPU evidence, one-command validation contract, and a source-explicit ungraded dead-days posture.
 
-**What should not yet be claimed:** Tesla T4 execution, GPU acceleration, power/energy results, or cross-machine performance rankings.
+**What should not yet be claimed:** Tesla T4 execution, GPU acceleration, power/energy results, cross-machine performance rankings, or a dead-days-compliant Savnac grading surface until Prompt 008 proves the compiler and dry run.
 
-The required student Week 16 path is GREEN.
+The required Week 16 **learning** path is GREEN. The LMS release gate remains dependent on the full-semester compiler honoring the ungraded dead-days contract.
