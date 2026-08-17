@@ -1,0 +1,13 @@
+\documentclass{beamer}
+\input{../_shared/beamer-preamble.tex}
+\title{Week 3 Monday}\subtitle{Containers \& Repeatability}\author{COMSC-3013}\date{}
+\begin{document}
+\begin{frame}\titlepage\end{frame}
+\ArchQuestionSlide{How do I make a systems experiment run the same way twice and on another computer?}{Name three environment facts a reproducibility receipt needs and one thing you expect to vary.}
+\begin{frame}{It worked on my machine}\begin{itemize}\item Exact code is not the whole experiment.\item Tool versions and execution context matter.\item Timing and hardware can vary even when software is fixed.\end{itemize}\end{frame}
+\begin{frame}{The reproducibility contract}\begin{itemize}\item exact command/workload\item software/tool versions\item execution environment\item fixed inputs/configuration\item expected outputs\item known uncontrolled variables\end{itemize}\end{frame}
+\begin{frame}{Containers help, but...}\begin{itemize}\item They can freeze much of the software environment.\item They do not make physical hardware identical.\item They do not eliminate scheduler/timing noise.\item A container runtime is not required for our base path.\end{itemize}\end{frame}
+\begin{frame}{Course rule}\centering\Large Control what must be controlled.\\[1em]Record what cannot be controlled.\end{frame}
+\begin{frame}{Our laboratory contract}\begin{itemize}\item repository-local wrappers\item no mandatory pip install\item structured receipts\item explicit evidence scope\item fallback evidence preserves reasoning ceiling\end{itemize}\end{frame}
+\begin{frame}{Wednesday}\begin{itemize}\item run the health/probe path\item repeat it\item compare stable and changing fields\item write a reproduction receipt\end{itemize}\end{frame}
+\end{document}
