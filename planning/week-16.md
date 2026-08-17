@@ -2,7 +2,7 @@
 
 ## Status
 
-**Runnable canonical-shared consumer authored on `farkle/shared-core-architecture-brandy`; real Brandy CPU validation and deck compilation remain release gates.**
+**GREEN - canonical shared consumer validated on Brandy CPU; exact committed Monday deck source also compiles successfully.**
 
 The former Architecture-capstone framing is retired. Week 16 is a joyful shared application/fun week after the Week 14 technical finale and Week 15 asynchronous wind-down.
 
@@ -23,6 +23,18 @@ One-command runtime validator:
 ```text
 python scripts/validate_week16_farkle.py
 ```
+
+Retained real-host validation receipt:
+
+`sidecar/runs/week16_farkle_architecture_validation_20260817T003425Z.md`
+
+Required build/runtime status:
+
+- Brandy native-Python CPU path: **GREEN**;
+- canonical provenance/hash checks: **GREEN**;
+- fixed repeated five-strategy suite: **GREEN**;
+- exact committed Monday Beamer source compilation: **GREEN**;
+- GPU/accelerator lane: optional future enrichment, not part of required release.
 
 ## Weekly Focus
 
@@ -55,6 +67,10 @@ The required path is explicitly:
 
 A physically present GPU does not count as accelerator evidence. A future accelerator lane must separately prove actual dispatch, benchmark equivalence, and recorded backend identity.
 
+The real Brandy receipt states this boundary directly:
+
+> **This is a Brandy native-Python CPU receipt. It is not a Tesla T4 result.**
+
 ## Fixed strategy menu
 
 The canonical bounded menu is:
@@ -68,6 +84,29 @@ The canonical bounded menu is:
 The usual comparison baseline is `bank_at_425`.
 
 A normal student needs only **one execution lane and two fixed strategies**.
+
+## Real Brandy evidence
+
+Observed host:
+
+- `brandy`;
+- Intel Xeon Gold 6252 @ 2.10 GHz;
+- 96 logical CPUs;
+- Python 3.9.21;
+- execution mode `native-python-cpu`;
+- accelerator used `False`.
+
+Observed fixed-suite results:
+
+| strategy | win rate vs `bank_at_425` | median games/s | min | max |
+|---|---:|---:|---:|---:|
+| `bank_at_300` | 0.600 | 3039.38 | 2999.05 | 3079.72 |
+| `learner:500` | 0.525 | 2987.56 | 2981.92 | 2993.19 |
+| `learner:2000` | 0.650 | 3065.15 | 3065.01 | 3065.29 |
+| `rollout:10` | 0.650 | 824.86 | 824.67 | 825.06 |
+| `rollout:25` | 0.600 | 427.08 | 426.78 | 427.38 |
+
+These numbers are evidence for this exact workload, seed/configuration contract, host, and execution path. They are not universal hardware rankings.
 
 ## Cost / effectiveness vocabulary
 
@@ -151,9 +190,11 @@ The technical Machine Dossier froze in Week 14. Students may consult prior evide
 
 ## Optional Stack Showcase / hardware zoo
 
-After the required CPU path is GREEN, the instructor may execute the same receipt contract on additional verified hardware lanes. Potential lanes include Brandy, Maise, April, a GTX 1080-class desktop, and later NRP professional-GPU hardware.
+The instructor may execute the same receipt contract on additional verified hardware lanes. Potential lanes include Brandy/T4, Maise/RTX 2080 SUPER, April/RTX 5080, a GTX 1080-class desktop, and later NRP professional-GPU hardware.
 
 Those are enrichment/research receipts, not a student grading requirement. Cross-machine claims must keep the workload contract fixed and record the actual executing hardware/backend.
+
+No accelerator result is presently claimed.
 
 ## Competition equity
 
@@ -167,11 +208,8 @@ Do **not** turn Week 16 into a production tournament platform, generalized Kuber
 
 The course is done when the learning game works and students can make a defensible cost-versus-effectiveness judgment.
 
-## Release gates
+## Release judgment
 
-Before the package is marked GREEN on `main`:
+The required Week 16 student path is GREEN.
 
-1. run `python scripts/validate_week16_farkle.py` on a real Brandy checkout and retain the GREEN raw receipt;
-2. compile `weeks/week-16/monday.tex` with the course LaTeX toolchain and record the result in `weeks/week-16/_validation.md`;
-3. confirm no hidden GPU/private-host/paid-tool dependency entered the required path;
-4. keep larger hardware-lane experiments explicitly optional.
+Future hardware/accelerator receipts may enrich the Stack Showcase, but they do not block the course package and must not reopen Week 16 into another infrastructure project.
