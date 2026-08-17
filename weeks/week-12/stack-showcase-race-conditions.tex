@@ -1,0 +1,256 @@
+\documentclass{beamer}
+\input{../_shared/beamer-preamble.tex}
+\title{Race Conditions in the Wild}
+\subtitle{Agents, Git, networks, and shared mutable state}
+\author{COMSC-3013 Computer Architecture}
+\date{}
+
+\begin{document}
+
+\begin{frame}\titlepage\end{frame}
+
+\begin{frame}{The incident}
+\Large We added a second Foreman because two workers should get more done.
+
+\vspace{1em}
+\normalsize
+\begin{itemize}
+  \item Lead Foreman pulled from the top of the task queue.
+  \item Assistant Foreman pulled from the bottom.
+  \item Their tasks were logically different.
+  \item They still touched the same mutable Git checkout.
+\end{itemize}
+
+\vspace{0.7em}
+\centering
+\textbf{Nothing collided in the plan. The state collided anyway.}
+\note{Tell the real story: the queue design was sensible. The failure was shared mutable state, not bad task selection.}
+\end{frame}
+
+\begin{frame}{What is a race condition?}
+\begin{block}{Working definition}
+A race condition exists when the correctness or visible result depends on the timing or interleaving of operations that access shared state.
+\end{block}
+
+\begin{itemize}
+  \item The workers can each be individually correct.
+  \item The operations can each be individually valid.
+  \item The combined result can still be wrong or unstable.
+  \item The bug may disappear when you try to reproduce it.
+\end{itemize}
+
+\vspace{0.5em}
+\textbf{Race conditions are about ordering plus shared state, not merely about threads.}
+\end{frame}
+
+\begin{frame}{The architecture pattern}
+\begin{columns}[T]
+\column{0.47\textwidth}
+\begin{block}{Worker A}
+read state\\
+compute\\
+write state
+\end{block}
+
+\column{0.47\textwidth}
+\begin{block}{Worker B}
+read state\\
+compute\\
+write state
+\end{block}
+\end{columns}
+
+\vspace{1em}
+\centering
+\Large Shared mutable state
+
+\vspace{0.6em}
+\normalsize
+If A and B can overlap, the system needs an ownership, synchronization, isolation, or message-passing rule.
+\end{frame}
+
+\begin{frame}{Agents do not make concurrency disappear}
+\begin{itemize}
+  \item Claude and Codex were different agents with different instructions.
+  \item Separate prompts are not separate memory.
+  \item Separate terminal sessions are not separate filesystems.
+  \item Even separate machines can still race through a shared filesystem, database, API, or repository workflow.
+\end{itemize}
+
+\vspace{0.8em}
+\begin{block}{Important distinction}
+\textbf{Logical independence} of workers does not imply \textbf{resource independence} of the state they mutate.
+\end{block}
+\note{Connect this to cores: two cores can execute different instructions and still contend on the same cache line or memory location.}
+\end{frame}
+
+\begin{frame}{The network was not the isolation boundary}
+\begin{columns}[T]
+\column{0.45\textwidth}
+\textbf{What looked separate}
+\begin{itemize}
+  \item different agent processes
+  \item different task directions
+  \item different terminal sessions
+  \item potentially different network paths
+\end{itemize}
+
+\column{0.50\textwidth}
+\textbf{What was actually shared}
+\begin{itemize}
+  \item one physical checkout
+  \item one working tree
+  \item one Git index
+  \item one set of uncommitted files
+  \item one stash/rebase state
+\end{itemize}
+\end{columns}
+
+\vspace{0.8em}
+\centering
+\textbf{Network separation can move workers apart without isolating the state that matters.}
+\end{frame}
+
+\begin{frame}{Git has more shared state than the files you edit}
+\small
+\begin{tabular}{p{0.30\textwidth}p{0.61\textwidth}}
+\toprule
+\textbf{Git surface} & \textbf{Why concurrent Foremen care} \\
+\midrule
+working tree & file contents can change underneath another process \\
+index & staging is repository state, not a property of one shell \\
+HEAD / branch & checkout and commit operations change context \\
+stash / rebase / merge state & one process can alter recovery/integration state another process assumes \\
+refs / origin & pushes can create ordinary divergence that must be reconciled \\
+\bottomrule
+\end{tabular}
+
+\vspace{0.8em}
+\textbf{``We edit different files'' is not a complete concurrency-control strategy.}
+\end{frame}
+
+\begin{frame}{A simplified failure timeline}
+\small
+\begin{enumerate}
+  \item Lead Foreman reads the control repo and begins reconciliation.
+  \item Assistant Foreman is already changing task/control-plane files in the same checkout.
+  \item Lead observes concurrent edits and tries to preserve them while committing separate work.
+  \item Files and Git state change between observations; a Foreman log edit appears and disappears during the race.
+  \item Git eventually reports divergence and refuses unsafe integration steps.
+  \item Lead Foreman stops mutation rather than guessing which state should win.
+\end{enumerate}
+
+\vspace{0.6em}
+\begin{block}{The safety success}
+The system did not avoid the race. It \textbf{detected enough inconsistency to stop before turning a transient interleaving into silent corruption}.
+\end{block}
+\end{frame}
+
+\begin{frame}{Why top-of-queue vs bottom-of-queue was not enough}
+\begin{columns}[T]
+\column{0.47\textwidth}
+\begin{block}{Task-level partitioning}
+Lead: top\\
+Assistant: bottom\\
+Different intended jobs
+\end{block}
+
+\column{0.47\textwidth}
+\begin{block}{Resource-level reality}
+Same checkout\\
+Same index\\
+Same control files
+\end{block}
+\end{columns}
+
+\vspace{1em}
+\centering
+\Large Partitioning \textit{work} does not partition \textit{state}.
+
+\vspace{0.6em}
+\normalsize
+This is the same reason two cores can execute different functions yet still race on one shared variable.
+\end{frame}
+
+\begin{frame}{The repair: isolation plus ownership}
+\begin{columns}[T]
+\column{0.47\textwidth}
+\textbf{Filesystem isolation}
+\begin{itemize}
+  \item one Git worktree per Foreman seat
+  \item separate working tree and per-worktree Git state
+  \item shared repository history without shared mutable checkout state
+\end{itemize}
+
+\column{0.47\textwidth}
+\textbf{Single-writer ownership}
+\begin{itemize}
+  \item Lead owns canonical queue/control files
+  \item Assistant writes completion receipts
+  \item Chat sessions submit proposals
+  \item integration happens through Git, not simultaneous editing
+\end{itemize}
+\end{columns}
+\note{Emphasize both parts. Isolation alone reduces accidental collision; ownership makes authority explicit.}
+\end{frame}
+
+\begin{frame}{Why worktrees are an Architecture idea}
+\begin{block}{Analogy, not identity}
+A Git worktree gives each Foreman a separate mutable execution context while still sharing durable repository objects/history.
+\end{block}
+
+\begin{itemize}
+  \item Similar goal to separate process address spaces: isolate mutable state.
+  \item Similar goal to per-core/private cache state: reduce unnecessary sharing.
+  \item Git integration becomes an explicit synchronization point.
+  \item Conflicts become visible events instead of invisible timing accidents.
+\end{itemize}
+
+\vspace{0.5em}
+\textbf{Good systems make dangerous sharing explicit.}
+\end{frame}
+
+\begin{frame}{Three ways to tame shared state}
+\begin{enumerate}
+  \item \textbf{Synchronize it} - locks, transactions, atomic operations, serialized critical sections.
+  \item \textbf{Partition it} - give each worker its own state and merge at explicit boundaries.
+  \item \textbf{Own it} - designate one writer; everyone else sends messages/receipts/proposals.
+\end{enumerate}
+
+\vspace{1em}
+Our Foreman redesign uses mostly \textbf{partition + ownership}, with Git as an explicit reconciliation mechanism.
+\end{frame}
+
+\begin{frame}{The same bug wears many costumes}
+\begin{itemize}
+  \item two CPU cores update one counter;
+  \item two threads mutate one data structure;
+  \item two services update one database row;
+  \item two deployment jobs rewrite one environment;
+  \item two agents edit one repository checkout;
+  \item two humans overwrite the same shared document.
+\end{itemize}
+
+\vspace{0.8em}
+\centering
+\Large Different costume. Same question:
+
+\vspace{0.4em}
+\textbf{Who owns this state, and what orders the writes?}
+\end{frame}
+
+\begin{frame}{Closing rule}
+\Large
+More workers is a hypothesis.
+
+\vspace{0.8em}
+Parallelism only helps when the useful work outruns the costs of communication, synchronization, contention, and recovery.
+
+\vspace{1em}
+\normalsize
+\begin{block}{Our incident in one sentence}
+The agents were not fighting over the task queue; they were racing over the mutable machinery used to represent and coordinate that queue.
+\end{block}
+\end{frame}
+
+\end{document}
