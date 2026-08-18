@@ -1,8 +1,10 @@
 # Computer Architecture - Deployment Planning Board
 
+> **CURRENT FORWARD PATH — Initiative 009 (2026-08-17).** This board's detailed workstream/gate text below predates accepted Prompt 006 and is intentionally retained temporarily as historical context. Accepted `sidecar/reports/009_a_report_architecture_launch_readiness.md` proved that the course is much farther along than those old OUTSTANDING/WAITING labels, but also found a new canonical-source seam: the launch-ready source used by Prompt 006 remains on a diverged `savnac/architecture-launch-readiness` branch rather than fully integrated into current `main`. The accepted Initiative-009 route is documented in `sidecar/reports/009_c_plan_architecture_launch_readiness.md`. **Next READY unit: `sidecar/prompts/009_d_01_reconcile_canonical_launch_source.md`.** d_02 will replace the stale detailed board after d_01 establishes the final canonical source shape.
+
 **Course:** COMSC-3013 Computer Architecture, Fall 2026  
 **Repository:** `jeremy-evert/computer_architecture`  
-**Status:** active build; Prompts 001-004 implemented; Prompt 004 complete with named physical/release YELLOWs  
+**Status:** Initiative 009 active; reconnaissance/map/plan accepted; canonical launch-source reconciliation is next  
 **Source of truth:** Git. Savnac is the inspection/dogfood surface; production Canvas requires explicit authorization.
 
 ## Mission
@@ -25,6 +27,10 @@ Build an online Computer Architecture course where students understand a compute
 - CPU-only, zero-cost required path; no required paid AI, premium agent, GPU, private infrastructure, or commercial textbook;
 - Week 15 wind-down, Week 16 shared Farkle + ML not Architecture capstone, Week 17 reflection only;
 - production Canvas writes remain unauthorized.
+
+## Historical pre-Initiative-009 board
+
+The sections below are preserved until d_02 reconciles them. **Do not use their OUTSTANDING/WAITING labels for dispatch.**
 
 ## Current durable technical-core truth
 
@@ -103,7 +109,7 @@ Also requires physical support claims appropriate to the final student environme
 
 ## Next numbered prompt
 
-**Prompt 005** is the next numbered build workstream when deliberately started. It builds the shared Week 16 Farkle + ML experience, not another Architecture capstone.
+**Historical text:** Prompt 005 was the next numbered build workstream at the time this board was written. It has since been implemented and validated. **Current next prompt is 009_d_01**, per the Initiative-009 accepted plan.
 
 Separately, physical Windows/Mac/container checks can be run opportunistically from `lab/PLATFORM_VALIDATION_RUNBOOK.md` and update support rows without reopening Prompt 004.
 
