@@ -1,8 +1,8 @@
 # 009 d02 - Reconcile current Architecture status and navigation
 
-**Status:** WORKER COMPLETE - AWAITING FOREMAN ACCEPTANCE  
-**Initiative:** 009  
-**Branch:** `foreman/009-d02-status-reconcile`  
+**Status:** WORKER COMPLETE - AWAITING FOREMAN ACCEPTANCE
+**Initiative:** 009
+**Branch:** `foreman/009-d02-status-reconcile`
 **Starting main:** `8679d599f47fb11892a226dc81695229312638a2`
 
 ## Mission result
