@@ -40,12 +40,13 @@ if git ls-remote --exit-code --heads origin "$JOB_BRANCH" >/dev/null 2>&1; then
 fi
 
 STARTUP_PROMPT=$(cat <<EOF
-You are the project-local execution Foreman for jeremy-evert/computer_architecture Initiative 009 d04.
+You are the bounded Luna validation Golem for jeremy-evert/computer_architecture Initiative 009 d04.
 
 Read $PROMPT_REL from the current canonical main and execute it exactly as the governing work order. d03 has been externally accepted; the acceptance receipt is $ACCEPTANCE_REL.
 
-LOCAL FOREMAN BOUNDARY:
-- This is a Computer Architecture-local Foreman run.
+WORKSHOP ROLE BOUNDARY:
+- You are the execution/validation Golem for this bounded Computer Architecture unit, not the acceptance or promotion Foreman.
+- The external ChatGPT Foreman owns review, ACCEPT/RETRY/REJECT, promotion, and release of the next unit.
 - Do NOT use jeremy_task_tracking to choose, log, prioritize, or close work.
 - Do NOT read or mutate JTT TASKS.md, FOREMAN_LOG.md, DECISIONS.md, completed_tasks, assistant/luna, or any JTT worktree as part of this run.
 - Do NOT dispatch or advance any other course/project task.
@@ -79,7 +80,7 @@ The external ChatGPT Foreman owns review, acceptance, promotion, and the decisio
 EOF
 )
 
-say "Launching Architecture-local Luna Foreman for d04"
+say "Launching Architecture-local Luna validation Golem for d04"
 printf 'Prompt: %s\n' "$PROMPT_REL"
 printf 'Job branch: %s\n' "$JOB_BRANCH"
 printf 'Savnac: course 8, READ-ONLY\n'
