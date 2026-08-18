@@ -1,11 +1,12 @@
-# Prompt 009d03 — Validate current-main Architecture source and compiler
+# Prompt 009d03 - Validate current-main Architecture source and compiler
 
-**Status:** READY TO EXECUTE
+**Status:** ACCEPTED / PROMOTED
 **Initiative:** 009
 **Plan:** `sidecar/reports/009_c_plan_architecture_launch_readiness.md`
 **Mode:** execution/validation with shared repositories read-only; no LMS write
 **Evidence owner:** `computer_architecture`
-**Recommended seat:** Architecture-local Luna via `sidecar/scripts/009_d_03_launch_architecture_luna.sh`
+**Execution report:** `sidecar/reports/009_d_03_validate_current_main_compiler.md`
+**Foreman acceptance:** `sidecar/reports/009_d_03_foreman_acceptance.md`
 
 ## Mission
 
@@ -15,101 +16,48 @@ This is the first post-reconciliation execution gate. It may read and execute co
 
 ## Execution-seat boundary
 
-This is a **Computer Architecture-local** execution gate. `jeremy_task_tracking` is not the work queue, evidence ledger, or dispatch authority for this run.
+This was a **Computer Architecture-local** execution gate. `jeremy_task_tracking` was not the work queue, evidence ledger, or dispatch authority for this run.
 
-The recommended launcher uses the Luna/medium Codex seat directly from this repository and explicitly excludes JTT traversal:
+The accepted execution used the Luna/medium Codex seat directly from this repository through:
 
 `sidecar/scripts/009_d_03_launch_architecture_luna.sh`
 
-If another active run owns a Brandy checkout or process, do not commandeer, reset, stash, clean, kill, or alter it. Use isolated Architecture work, preserve shared state, and stop on real ownership conflicts.
+## Accepted result
 
-## Preflight
+The exact current-main source set was SOURCE-VALIDATED and COMPILED on Brandy. The worker package was independently reviewed and promoted by the external Foreman.
 
-Record exact branch/HEAD/worktree state for:
+Accepted evidence includes:
 
-- `computer_architecture`;
-- `course_foundry`;
-- `semester_kickoff_week`;
-- `ai_fluency`;
-- `professional_minds`;
-- any other source actually consumed by the current compiler/validator.
+- 21 modules covering Weeks 1-17;
+- 229 objects: 81 pages, 32 files, 116 assignments;
+- 11 assignment groups totaling 100%;
+- exactly five recurring groups with `drop_lowest=1`;
+- Week 16 recurring activities ungraded with no checkpoint;
+- Machine Dossier checkpoints only Weeks 6, 9, and 14;
+- A6, A7, and course evaluation present;
+- zero undeclared omissions;
+- zero unresolved `{{link:...}}` tokens;
+- Architecture Course Foundry tests: 8 passed;
+- Course Foundry deployment tests: 8 passed;
+- historical `SourcePaths.defaults()` / `ARCHITECTURE_SOURCE_ROOT` concern retested and passed;
+- Architecture `git diff --check`: PASS.
 
-Preserve pre-existing dirt. Do not update a dirty shared checkout merely for neatness.
+The current 11-group count is authoritative because `docs/grading-model.md` defines exactly 11 weighted categories totaling 100%, and the current compiler implements those same 11 categories. Prompt 006's historical 12-group count is not a current acceptance target.
 
-## Required validation
+## Named yellows retained
 
-Use the repository's current source validator and current Course Foundry Architecture compiler/tests. At minimum prove:
+Brandy's full `archlab doctor` capability remains YELLOW for missing optional/full laboratory capabilities. The committed Week 3 fallback contract passed, so this did not block d03.
 
-1. every course-local launch source path exists on current Architecture main;
-2. shared-source paths resolve from the recorded checkouts;
-3. the current full-semester desired course builds from current main rather than the old Savnac worktree;
-4. Weeks 1–17 are represented with no undeclared omission;
-5. assignment groups total 100%;
-6. accepted `drop_lowest=1` rules are present on the five recurring categories;
-7. Week 16 recurring Architecture/AI/Professional-Minds work is not graded on dead days;
-8. Machine Dossier checkpoints exist only Weeks 6, 9, and 14;
-9. A6 Week-14/15, A7 final reflection, and course evaluation are included;
-10. holiday/fall-break/Thanksgiving/finals date rules are coherent;
-11. required file/source paths exist;
-12. no unresolved `{{link:...}}` token can ship;
-13. targeted Architecture Course Foundry tests pass or fail with an exact bounded reproduction;
-14. Architecture repo-local validation and `git diff --check` are clean for any report-only changes.
+The consumed Course Foundry checkout was pre-existing dirty. It was preserved without update or patch, and no shared defect reproduced under the required tests.
 
-Record module/object/assignment-group counts from the actual run. Do not import counts from Prompt 006 as current truth.
+## Authority boundary preserved
 
-## Shared-defect handling
+No JTT mutation, Savnac mutation, production Canvas access/write, shared-repository edit, package installation, or environment-wide reconfiguration occurred in d03.
 
-If a Course Foundry/Harbor/shared-source defect appears:
+## Promotion
 
-- reproduce it minimally;
-- name the exact owning repo/file/test/contract;
-- classify whether it blocks the required launch path;
-- record the current shared SHA;
-- stop without patching the shared repo.
+The worker evidence branch `golem/009-d03-current-main-compiler` was fast-forward promoted to `main` without force. Foreman acceptance is durable at `sidecar/reports/009_d_03_foreman_acceptance.md`.
 
-Foreman will decide whether to author the next unused evidence-specific `009_d_NN` repair prompt after checking collision/ownership.
+## Next gate
 
-The historical `SourcePaths.defaults()` / `ARCHITECTURE_SOURCE_ROOT` test issue must be retested rather than assumed alive or dead.
-
-## Required report
-
-Write:
-
-`sidecar/reports/009_d_03_validate_current_main_compiler.md`
-
-Include:
-
-- exact source SHAs and worktree caveats;
-- commands/tests run;
-- current desired-state counts;
-- policy/sentinel-week validation table;
-- failures/warnings with blocker classification;
-- whether current main is `SOURCE-VALIDATED` and `COMPILED`;
-- recommended d_04 readiness;
-- report commit SHA.
-
-Useful raw receipts may go under `sidecar/runs/` with no secrets/student data.
-
-## Authority
-
-Allowed:
-
-- read shared repos;
-- execute their existing tests/compiler paths;
-- write Architecture report/run evidence only.
-
-Forbidden:
-
-- JTT task traversal/logging/mutation for this course-local run;
-- shared repo edits/commits;
-- Savnac mutation;
-- production Canvas read/write;
-- environment-wide package/config changes merely to make the receipt prettier.
-
-## Acceptance criterion
-
-GREEN only if one exact current-main source set produces a complete, policy-consistent Architecture desired course without depending on the old launch branch.
-
-## Stop condition
-
-Stop after validation evidence and report. Do not proceed into Savnac or production reconnaissance in this prompt.
+Proceed to `sidecar/prompts/009_d_04_rebaseline_savnac.md` for read-only Savnac course-8 inventory and guarded dry-run. d04 may not perform a live Savnac reconcile.
