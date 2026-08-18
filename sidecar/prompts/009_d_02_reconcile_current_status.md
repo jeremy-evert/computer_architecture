@@ -1,9 +1,9 @@
 # Prompt 009d02 — Reconcile current Architecture status and navigation
 
-**Status:** WORKER COMPLETE / AWAITING FOREMAN ACCEPTANCE  
-**Initiative:** 009  
-**Plan:** `sidecar/reports/009_c_plan_architecture_launch_readiness.md`  
-**Worksite:** `computer_architecture` only  
+**Status:** WORKER COMPLETE / AWAITING FOREMAN ACCEPTANCE
+**Initiative:** 009
+**Plan:** `sidecar/reports/009_c_plan_architecture_launch_readiness.md`
+**Worksite:** `computer_architecture` only
 **Mode:** status/navigation repair; no curriculum redesign and no LMS work
 
 ## Mission
