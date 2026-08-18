@@ -100,7 +100,7 @@ Run d07 only after d06 returns `GREEN TO WRITE` and Jeremy gives fresh execution
 
 ### Gate 5 - Independent closeout
 
-Run d08 as a separate read-only production verification. Then d09e/009e performs final Foreman acceptance.
+Run d08 as a separate read-only production verification. Then `009_e` performs final Foreman acceptance.
 
 ## Named non-blocking yellows
 
