@@ -1,7 +1,7 @@
 # Week 3 - Containers & Repeatability (Aug 31-Sep 4)
 
 ## Status
-Pinned focus; reproducible laboratory capsule still needs implementation and smoke testing.
+**IMPLEMENTED / SOURCE PRESENT WITH FALLBACK CONTRACT.** Durable student/instructor teaching truth lives in `weeks/week-03/`; the common laboratory substrate lives in `lab/`.
 
 ## Weekly Focus
 **How do I make a systems experiment run the same way twice and on another computer?**
@@ -16,7 +16,7 @@ Why does "it worked on my machine" happen? What must a plan capture for a comput
 ## Wednesday - Investigate / Break / Measure
 **Professional Minds: _Limitless Mind_ - How do we keep growing through challenges?**
 
-Build/run the supported course container or equivalent environment, capture environment/tool facts, and reproduce a small provided experiment.
+Use the supported course environment or named fallback evidence path, capture environment/tool facts, and reproduce a small provided experiment.
 
 ## Friday - Explain / Defend / Stack Showcase
 **Professional Minds: Resilience Education - How do we keep growing through challenges?**
@@ -39,5 +39,6 @@ None. Week 3 creates the laboratory contract the dossier later relies upon.
 ## Online-delivery note
 M/W/F are asynchronous production/release anchors, not attendance periods.
 
-## Open authoring notes
-Required path should use free/open tooling and target ordinary CPU hardware. Prompt 003 owns the actual laboratory implementation and validation.
+## Implemented source
+
+See `weeks/week-03/` for the current student/instructor package. Week 3 explicitly names the committed fallback receipts under `lab/fallback_data/` for hosts where the full wrapper capability set is unavailable. Platform capability YELLOWs remain evidence, not an excuse to reopen source authoring.
