@@ -101,8 +101,9 @@ Computer Architecture intentionally preserves the recognizable family pattern wi
 - [`planning/block-map.md`](planning/block-map.md) - full 17-week M/W/F production target map, including AI Fluency and Professional Minds.
 - [`planning/machine-dossier.md`](planning/machine-dossier.md) - persistent artifact, sensory-lab, plotting, and reporting contract.
 - [`planning/open-source-resource-canon.md`](planning/open-source-resource-canon.md) - accepted truth/teaching/reference source strategy.
-- `planning/week-01.md` through `planning/week-17-finals.md` - thin per-week planning shells that future passes can deepen honestly.
+- `planning/week-01.md` through `planning/week-17-finals.md` - durable week design/index notes; authored student/instructor teaching truth lives under `weeks/` where course-local.
 - [`docs/grading-model.md`](docs/grading-model.md) - Architecture adaptation of the CS1 grading family.
+- [`docs/professional-pathway.md`](docs/professional-pathway.md) - accepted Claim -> Evidence -> Gap -> Decision professional-pathway doctrine.
 
 ## Required-materials doctrine
 
@@ -126,19 +127,25 @@ No commercial textbook or zyBook is required for Fall 2026. Patterson/Hennessy a
 
 ## Current readiness
 
-The semester structure is now intentionally frozen enough for focused week authoring:
+The Fall 2026 Architecture-local course source is now substantially authored and consolidated on canonical `main`:
 
-- the M/W/F online recording/delivery model is defined;
-- AI Fluency and Professional Minds are mapped across the semester;
-- the Machine Dossier and sensory-lab doctrine are defined;
-- Weeks 5-14 are the complete technical Architecture runway;
-- Week 14, not Week 16, is the technical finale;
-- the Architecture grading structure is established, with due/late operational mechanics still to finalize;
-- the open-source/free canon and licensing/source-use doctrine are established;
-- the common Architecture laboratory substrate exists and has passed its executed Linux end-to-end smoke path;
-- week files remain planning shells rather than fake-complete lessons;
-- WSL2/container/macOS deployment validation, full Week 5-14 lecture/deck/lab authoring, grading operations, and Savnac rendering still need to be completed.
+- Weeks 2-4 have authored student/instructor packages;
+- Weeks 5-14 are the complete authored technical Architecture runway;
+- Week 15 asynchronous wind-down/professional-pathway source is authored;
+- Week 16 shared Farkle + Machine Learning is implemented and validated on the required CPU path;
+- Week 17 reflection/closure source is authored;
+- A6 professional-pathway artifacts, A7 final reflection, course-evaluation source, grading doctrine, and the launch-source validator are present;
+- Prompt 009 d01 reconciled the previously stranded launch source into `main` and was Foreman-accepted after a real Brandy validation receipt;
+- the historical Prompt 006 Savnac run reached a full fixed point, but it used the older launch worktree and is therefore evidence, not current-state proof.
 
-**Prompt 004 is now unblocked:** Weeks 5-14 can be authored against a real source canon and a real common laboratory contract instead of imagined infrastructure.
+The remaining launch work is validation and deployment control, not broad course authoring. Initiative 009 now needs to:
 
-Active work is organized in [`sidecar/PLANNING.md`](sidecar/PLANNING.md) and [`sidecar/prompts/`](sidecar/prompts/).
+1. prove the **current `main`** full-semester compiler and policy contract;
+2. re-baseline current desired state against Savnac course 8;
+3. lock the exact production Canvas target and semantic diff read-only;
+4. perform any production write only behind a fresh explicit human gate;
+5. independently read back and close out the launch.
+
+Physical WSL2/macOS/container/optional-accelerator support remains evidence-gated where not executed. Those named YELLOWs do not erase the validated required CPU/fallback path.
+
+For current launch status and the next executable unit, start at [`sidecar/PLANNING.md`](sidecar/PLANNING.md). For the bounded dispatch chain, use [`sidecar/prompts/README.md`](sidecar/prompts/README.md).
