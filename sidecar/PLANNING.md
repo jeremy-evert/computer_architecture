@@ -1,10 +1,10 @@
 # Computer Architecture - Deployment Planning Board
 
-**Course:** COMSC-3013 Computer Architecture, Fall 2026  
-**Repository:** `jeremy-evert/computer_architecture`  
-**Source of truth:** Git  
-**Current initiative:** 009 - Architecture launch readiness  
-**Current stage:** d01 accepted/promoted; d02 status reconciliation in progress  
+**Course:** COMSC-3013 Computer Architecture, Fall 2026
+**Repository:** `jeremy-evert/computer_architecture`
+**Source of truth:** Git
+**Current initiative:** 009 - Architecture launch readiness
+**Current stage:** d01 accepted/promoted; d02 status reconciliation in progress
 **Next execution gate after d02:** `sidecar/prompts/009_d_03_validate_current_main_compiler.md`
 
 ## Mission
