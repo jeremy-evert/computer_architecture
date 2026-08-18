@@ -18,3 +18,5 @@
 - Production Canvas: not accessed.
 - Shared repositories: read-only; no mutation.
 - JTT: not accessed.
+- Validation: `git diff --check` passed; `make task-check` and `make check` unavailable because neither target exists.
+- Final evidence commit: `bc0bf2beb339f6f3c61484f44a638f70428c6235`; pushed and synchronized to `origin/golem/009-d05-savnac-fixed-point`.

@@ -57,8 +57,11 @@ The accepted d04 comparison remains `0 create / 7 update / 233 unchanged / 0 del
 
 ## Validation and repository record
 
-- `git diff --check`: pending until this stop evidence is staged.
-- `make task-check`: not run; no implementation/write occurred.
-- `make check`: not run; no implementation/write occurred.
+- `git diff --check`: passed.
+- `make task-check`: unavailable: `make: *** No rule to make target 'task-check'.  Stop.`
+- `make check`: unavailable: `make: *** No rule to make target 'check'.  Stop.`
 - Tests: not run; the required shared compiler freshness gate failed first.
+- Final d05 evidence commit: `bc0bf2beb339f6f3c61484f44a638f70428c6235` (`Synchronize d05 freshness-gate stop evidence`).
+- Remote branch: pushed and synchronized at the same commit, `origin/golem/009-d05-savnac-fixed-point`.
+- Final isolated d05 worktree: clean. Base Architecture checkout: clean and unchanged.
 - Next action: external Foreman should resolve/re-establish the accepted shared compiler SHA and authorize a fresh bounded d05 attempt. This report does not self-certify acceptance and does not execute d06.
