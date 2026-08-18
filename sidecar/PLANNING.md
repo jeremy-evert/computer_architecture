@@ -1,118 +1,113 @@
 # Computer Architecture - Deployment Planning Board
 
-> **CURRENT FORWARD PATH — Initiative 009 (2026-08-17).** This board's detailed workstream/gate text below predates accepted Prompt 006 and is intentionally retained temporarily as historical context. Accepted `sidecar/reports/009_a_report_architecture_launch_readiness.md` proved that the course is much farther along than those old OUTSTANDING/WAITING labels, but also found a new canonical-source seam: the launch-ready source used by Prompt 006 remains on a diverged `savnac/architecture-launch-readiness` branch rather than fully integrated into current `main`. The accepted Initiative-009 route is documented in `sidecar/reports/009_c_plan_architecture_launch_readiness.md`. **Next READY unit: `sidecar/prompts/009_d_01_reconcile_canonical_launch_source.md`.** d_02 will replace the stale detailed board after d_01 establishes the final canonical source shape.
-
 **Course:** COMSC-3013 Computer Architecture, Fall 2026  
 **Repository:** `jeremy-evert/computer_architecture`  
-**Status:** Initiative 009 active; reconnaissance/map/plan accepted; canonical launch-source reconciliation is next  
-**Source of truth:** Git. Savnac is the inspection/dogfood surface; production Canvas requires explicit authorization.
+**Source of truth:** Git  
+**Current initiative:** 009 - Architecture launch readiness  
+**Current stage:** d01 accepted/promoted; d02 status reconciliation in progress  
+**Next execution gate after d02:** `sidecar/prompts/009_d_03_validate_current_main_compiler.md`
 
 ## Mission
 
-Build an online Computer Architecture course where students understand a computer as a connected, measurable system rather than a vocabulary list.
+Build and launch an online Computer Architecture course where students understand a computer as a connected, measurable system rather than a vocabulary list.
 
 **build the investigator -> build the machine -> open the machine -> stress the machine -> make the architecture decision -> wind down and reflect**
 
-## Pinned decisions
+## Current course/source truth
+
+The Architecture-local Fall 2026 source is now on canonical `main`.
+
+- Week 1 is consumed from the shared semester-kickoff source.
+- Weeks 2-4 have authored Architecture-local student/instructor packages on `main`.
+- Weeks 5-14 are the authored technical Architecture runway.
+- Week 15 is the authored asynchronous Thanksgiving wind-down and professional-pathway close.
+- Week 16 is the implemented shared Farkle + Machine Learning experience; it is not Checkpoint 4.
+- Week 17 is authored reflection/closure.
+- Machine Dossier checkpoints exist only in Weeks 6, 9, and 14.
+- A6 professional-pathway artifacts, A7 final reflection, course-evaluation source, grading doctrine, and the launch-source validator are present on `main`.
+
+Prompt 009 d01 recovered the still-valid launch source from `savnac/architecture-launch-readiness`, reconciled A6 to current professional-pathway doctrine, validated it on Brandy, and was Foreman-accepted/promoted. See:
+
+- `sidecar/reports/009_d_01_reconcile_canonical_launch_source.md`
+- `sidecar/reports/009_d_01_foreman_acceptance.md`
+- `sidecar/runs/architecture_savnac_source_validation_20260818T053147Z.md`
+
+The Brandy source receipt is **GREEN WITH YELLOWS**. The named yellows are host-capability limitations, not missing launch source.
+
+## Historical Savnac proof
+
+Accepted Prompt 006 previously proved that a full Architecture desired course could be reconciled into Savnac course 8 and converge to a fixed point. That historical run reached:
+
+- 21 modules;
+- 229 module items;
+- 116 assignments;
+- 12 assignment groups totaling 100%;
+- two consecutive dry-runs at `0 create / 0 update / 240 unchanged / 0 delete`.
+
+That proof used the older launch worktree. Initiative 009 exists to prove the **current canonical `main`** independently before any production deployment.
+
+## Pinned course decisions
 
 - online/asynchronous; M/W/F is production/release rhythm, not attendance;
 - Monday model/AI Fluency, Wednesday investigation/Professional Minds, Friday Explain/Defend + optional Stack Showcase;
 - Weeks 5-14 are the complete technical Architecture runway;
 - Machine Dossier begins Week 5 and freezes Week 14;
-- Checkpoints only Weeks 6, 9, 14;
+- checkpoints only Weeks 6, 9, and 14;
 - evidence grammar: **predict -> perturb -> run -> measure -> visualize -> explain -> revise**;
-- RISC-V planning-leading teaching ISA;
-- common Observatory + Experimental Chamber laboratory;
-- matplotlib for evidence plots; LaTeX/PDF for the Dossier;
+- RISC-V is the planning-leading teaching ISA;
 - CPU-only, zero-cost required path; no required paid AI, premium agent, GPU, private infrastructure, or commercial textbook;
-- Week 15 wind-down, Week 16 shared Farkle + ML not Architecture capstone, Week 17 reflection only;
-- production Canvas writes remain unauthorized.
+- accepted recurring-category rule is `drop_lowest=1` for AI Fluency, Professional Minds Wednesday, Professional Minds Friday, Weekly Architecture/Investigation, and Weekly Explain/Defend;
+- when a source names a due day but no clock, default is 11:59 PM America/Chicago unless an explicit source/calendar exception applies;
+- late-work penalties are owned by Marker policy, not invented by Course Foundry;
+- Week 16 pre-finals dead days do not carry recurring graded work;
+- Week 15 winds down, Week 16 is shared Farkle + ML, Week 17 is reflection only;
+- production Canvas writes require a separate explicit human authorization gate.
 
-## Historical pre-Initiative-009 board
+## Initiative 009 launch path
 
-The sections below are preserved until d_02 reconciles them. **Do not use their OUTSTANDING/WAITING labels for dispatch.**
+| Unit | Status | Purpose |
+|---|---|---|
+| 009_a | ACCEPTED | report current launch truth |
+| 009_b | ACCEPTED | map launch-ready end state |
+| 009_c | ACCEPTED | plan bounded route |
+| 009_d_01 | ACCEPTED / PROMOTED | restore canonical launch source to `main` |
+| 009_d_02 | IN PROGRESS | make cold-start status/navigation truthful |
+| 009_d_03 | NEXT / READY AFTER d02 | validate current-main source + compiler with shared repos read-only |
+| 009_d_04 | WAITING ON d03 | read-only Savnac re-baseline |
+| 009_d_05 | CONDITIONAL | reconcile Savnac only if d04 proves a live delta |
+| 009_d_06 | WAITING | read-only production reconnaissance and exact target lock |
+| 009_d_07 | HUMAN GATE | bounded production Canvas write after fresh authorization |
+| 009_d_08 | WAITING | independent production launch closeout |
+| 009_e | WAITING | final Foreman launch-readiness validation |
 
-## Current durable technical-core truth
+## Remaining launch gates
 
-- `weeks/README.md`
-- `weeks/week-05/` through `weeks/week-14/`
-- `planning/technical-core-continuity.md`
-- `planning/machine-dossier.md`
-- `planning/open-source-resource-canon.md`
-- `docs/grading-model.md`
-- `lab/README.md`
-- `lab/CONTRACT.md`
-- `lab/MEASUREMENT.md`
-- `lab/PLATFORM_SUPPORT.md`
-- `lab/PLATFORM_VALIDATION_RUNBOOK.md`
-- `lab/validation/2026-08-16-authored-weeks-05-14-linux.json`
-- `sidecar/reports/004_author_weeks_05_14_architecture_core.md`
+### Gate 1 - Current-main compiler proof
 
-`planning/week-06.md` through `planning/week-14.md` are now concise indexes. Authored teaching truth lives in `weeks/`.
+Run d03 against exact recorded checkouts. Prove the full current-main desired course, source paths, 100% assignment groups, drop-lowest rules, dead days, checkpoint placement, dates, and unresolved-link safety. Shared repositories are read-only during this gate.
 
-## Workstreams
+### Gate 2 - Current Savnac equivalence
 
-### A. Reconcile source chassis - IMPLEMENTED / COMPLETE
-Prompt 001 receipt: `sidecar/reports/001_reconcile_course_source_chassis.md`.
+Run d04 read-only against Savnac course 8. If the current desired state already produces a zero diff, d05 is skipped. If there is a bounded explained delta, d05 becomes required.
 
-### B. Open-source Architecture canon - IMPLEMENTED / COMPLETE
-Prompt 002 receipt: `sidecar/reports/002_build_open_source_architecture_canon.md`.
+### Gate 3 - Production target lock and semantic diff
 
-### C. Student laboratory - IMPLEMENTED WITH PHYSICAL PLATFORM YELLOWS
-Core laboratory, sensory experiments, plots, Dossier builder, and fallbacks exist. Linux authored path is freshly GREEN. WSL2, macOS, and Containerfile runtime remain evidence-gated YELLOWs. See `lab/PLATFORM_SUPPORT.md`.
+Run d06 read-only against production Canvas. Resolve the exact Fall 2026 `COMSC-3013-1438` course ID from live evidence. Do not guess or reuse the Savnac course ID.
 
-### D. Weeks 1-4 - OUTSTANDING
-- Week 1 shared Success Foundations;
-- Week 2 AI Laboratory Training;
-- Week 3 Containers & Repeatability;
-- Week 4 Linux as Machine Telescope.
+### Gate 4 - Production write
 
-These are outside Prompt 004 and still require source-ready authoring before complete-course deployment.
+Run d07 only after d06 returns `GREEN TO WRITE` and Jeremy gives fresh execution-time authorization. No production write is authorized merely because this board exists.
 
-### E. Weeks 5-14 - IMPLEMENTED / PROMPT 004 COMPLETE WITH NAMED YELLOWS
-All ten technical weeks have student/instructor packages, deck sources, evidence paths, Dossier handoffs, references, validations, and reports.
+### Gate 5 - Independent closeout
 
-Continuity audit: PASS.  
-Fresh authored Linux execution: PASS.  
-Parent receipt: `sidecar/reports/004_author_weeks_05_14_architecture_core.md`.
+Run d08 as a separate read-only production verification. Then d09e/009e performs final Foreman acceptance.
 
-### F. Weeks 15-17 - OUTSTANDING
-- Week 15 asynchronous wind-down/professional pathway;
-- Week 16 shared Farkle + ML experience (Prompt 005 when started);
-- Week 17 frozen-evidence reflection.
+## Named non-blocking yellows
 
-### G. Grading operational mechanics - OUTSTANDING
-The accepted weights/categories remain in `docs/grading-model.md`. Still decide/test due/late/drop/revision mechanics, Canvas assignment groups, and official calendar/dead-days constraints. Prompt 004 did not invent these.
+Physical platform support remains evidence-gated where not executed: WSL2, macOS, some container/image paths, and optional accelerator lanes. These do not justify pretending the required CPU/fallback path is missing.
 
-### H. Savnac / deployment - WAITING
-Use Course Foundry/Imprint only after the relevant course source is ready. Savnac dogfood precedes any production Canvas authorization.
+## Dispatch rule
 
-## Gates
+For current work, use this board and `sidecar/prompts/README.md`. Prompts/reports 001-008 remain historical provenance and must not be redispatched as if they are the current queue.
 
-### Gate 0 - Truth - PASS
-One current doctrine; stale technical week planning status has been reconciled into `weeks/` + concise planning indexes.
-
-### Gate 1 - Open content sufficiency - PASS AT AUTHORING-CANON LEVEL
-No required commercial textbook/paywall path.
-
-### Gate 2 - Lab works - PASS ON EXECUTED LINUX / PHYSICAL PLATFORM YELLOWS TRACKED
-Prompt 003 and Prompt 004_m prove the substrate and final authored workloads on Linux.
-
-### Gate 3 - Weeks 5-14 are real - PASS WITH RELEASE YELLOWS
-Lecture/digest/deck, investigation, evidence, references, fallback, Dossier handoff, and validation exist for the technical core. Cross-week continuity audit passed.
-
-### Gate 4 - Complete-course Savnac dogfood - WAITING
-Blocked by source-ready Weeks 1-4, 15-17 and grading/deployment mechanics, not by Prompt 004 technical authoring.
-
-### Gate 5 - Production readiness - WAITING / EXPLICIT AUTHORIZATION REQUIRED
-Also requires physical support claims appropriate to the final student environment.
-
-## Next numbered prompt
-
-**Historical text:** Prompt 005 was the next numbered build workstream at the time this board was written. It has since been implemented and validated. **Current next prompt is 009_d_01**, per the Initiative-009 accepted plan.
-
-Separately, physical Windows/Mac/container checks can be run opportunistically from `lab/PLATFORM_VALIDATION_RUNBOOK.md` and update support rows without reopening Prompt 004.
-
-## Planning principle
-
-**Build the scientist. Build the machine. Make the machine argue with the model. Plot the argument. Explain the smoke. Then make the architecture decision.**
+**The next executable Architecture unit after d02 acceptance is `009_d_03_validate_current_main_compiler.md`.**
