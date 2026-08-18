@@ -2,57 +2,95 @@
 
 Project-local work orders for COMSC-3013 Fall 2026 deployment.
 
-> **CURRENT FORWARD PATH — Initiative 009 (2026-08-17).** Accepted `../reports/009_a_report_architecture_launch_readiness.md` proved the legacy launch queue below is stale: Prompts 007/008 were consumed by accepted Prompt 006, Prompt 006 reached a real Savnac fixed point, and the launch-ready source remains stranded on a diverged `savnac/architecture-launch-readiness` branch rather than fully integrated into current `main`. **Do not redispatch 006–008 from the historical queue below.** The accepted route is `009_a → 009_b → 009_c → 009_d_NN → 009_e`; the first READY implementation unit is [`009_d_01_reconcile_canonical_launch_source.md`](009_d_01_reconcile_canonical_launch_source.md). Full status reconciliation belongs to d_02 after d_01 establishes canonical source truth.
+## Current dispatch rule
+
+Initiative 009 is the active launch path. Prompts 001-008 remain useful historical provenance, but they are **not** the current dispatch queue.
+
+Current chain:
+
+`009_a -> 009_b -> 009_c -> 009_d_01 -> 009_d_02 -> 009_d_03 -> 009_d_04 -> [009_d_05 if needed] -> 009_d_06 -> 009_d_07 -> 009_d_08 -> 009_e`
+
+### Initiative 009 status
+
+| Prompt | Status | Purpose |
+|---|---|---|
+| `009_a_report_architecture_launch_readiness.md` | ACCEPTED | establish current launch truth |
+| `009_b_map_architecture_launch_ready_shape.md` | ACCEPTED | define launch-ready end state |
+| `009_c_plan_architecture_launch_readiness.md` | ACCEPTED | decompose the route |
+| `009_d_01_reconcile_canonical_launch_source.md` | ACCEPTED / PROMOTED | restore launch-required Architecture-local source to canonical `main` |
+| `009_d_02_reconcile_current_status.md` | IN PROGRESS | make cold-start status/navigation truthful |
+| `009_d_03_validate_current_main_compiler.md` | READY AFTER d02 | validate current-main source + compiler; shared repos read-only |
+| `009_d_04_rebaseline_savnac.md` | WAITING ON d03 | read-only Savnac inventory/dry-run |
+| `009_d_05_reconcile_savnac_fixed_point.md` | CONDITIONAL | bounded Savnac write only if d04 proves a delta |
+| `009_d_06_production_recon_and_target_lock.md` | WAITING | read-only production target lock + semantic diff |
+| `009_d_07_reconcile_production_canvas.md` | HUMAN GATE | production write only after `GREEN TO WRITE` + fresh Jeremy authorization |
+| `009_d_08_production_launch_closeout.md` | WAITING | independent read-only production closeout |
+| `009_e_validate_architecture_launch_readiness.md` | WAITING | final Foreman validation |
+
+**Next executable unit after d02 acceptance:** [`009_d_03_validate_current_main_compiler.md`](009_d_03_validate_current_main_compiler.md).
 
 ## Status vocabulary
 
 - **READY** - bounded work order exists and dependencies are satisfied.
-- **IMPLEMENTED** - real durable artifacts exist behind the work order.
+- **ACCEPTED / PROMOTED** - Foreman reviewed the evidence and promoted the bounded result into authoritative `main`.
+- **IMPLEMENTED** - real durable artifacts exist behind the historical work order.
 - **IMPLEMENTED WITH YELLOWS** - implementation exists; named evidence/deployment checks remain.
-- **WAITING** - cannot honestly advance until a named dependency/physical condition is available.
+- **WAITING** - cannot honestly advance until a named dependency is accepted.
+- **CONDITIONAL** - execute only if prior evidence proves it is needed.
+- **HUMAN GATE** - a fresh explicit human authorization is required at execution time.
 
-Do not call implemented work `drafted` merely because final deployment has not happened.
+## Current source truth
 
-## Current launch queue
+Prompt 009 d01 recovered the still-valid launch source from the diverged `savnac/architecture-launch-readiness` branch and promoted it to `main` after Brandy validation. The canonical Architecture source now includes local Weeks 2-4, 15, and 17; A6/A7; course-evaluation source; and the launch-source validator while preserving newer main doctrine.
 
-**Historical pre-Initiative-009 queue retained temporarily for provenance. Do not dispatch from this section.** d_02 will reconcile this file after d_01 is accepted.
+See:
 
-1. **IMPLEMENTED / WAITING ON BRANDY ACCEPTANCE - Prompt 007:** repair the Savnac launch-source validator. The repair is authored on `savnac/architecture-launch-readiness` at `3ab17ba5d0d943cf9f63b6de378ef104dc3002f3`. It now distinguishes strict full-lab capability diagnostics from launch-source readiness and names the committed Week 3 fallback evidence. Before accepting or rejecting it, Brandy must fast-forward to that commit (or an accepted descendant), assert the SHA, rerun the validator, and retain the real receipt.
-2. **MECHANICAL REPAIR IMPLEMENTED / POLICY-COMPLIANCE RECONCILIATION REQUIRED - Prompt 008:** the known kickoff-API mismatch and Ruff failures are repaired on `course_foundry:savnac/architecture-full-semester`, but the pre-acceptance audit found three additional truth gates: unsupported/incomplete drop-lowest rules, Week 16 dead-days compliance, and exact due-time provenance. `sidecar/questions/003_assessment_and_grading_contract.md` now contains the bounded Jeremy-level policy recommendation. After that decision is recorded, the worker repairs the compiler/tests, then Brandy runs targeted pytest + Ruff and the guarded no-write Savnac course-8 dry run.
-3. **WAITING ON ACCEPTED 007 + 008 - Prompt 006:** reconcile the full course into the intended Savnac course and read it back. Course 8 is **not blank**: an earlier accepted partial imprint already placed shared Week 1 + authored Week 5 there. Prompt 006 must reconcile that existing state rather than create a duplicate course or assume a clean slate. Do not begin a live Savnac push until the source validator and full-semester compiler/dry-run are trustworthy and the live write is explicitly authorized. Production SWOSU Canvas remains separate and unauthorized.
+- `../reports/009_d_01_reconcile_canonical_launch_source.md`
+- `../reports/009_d_01_foreman_acceptance.md`
+- `../runs/architecture_savnac_source_validation_20260818T053147Z.md`
 
-## Current human decision surface
+Prompt 006 is historical evidence that the full course once reached a real Savnac fixed point. It is **not** authorization to assume current `main`, current Savnac, or production Canvas still match that snapshot. d03 and d04 re-prove those surfaces from current truth.
 
-`sidecar/questions/003_assessment_and_grading_contract.md` is structurally resolved and now contains only the remaining operational policy cluster.
+## Human decision surface
 
-Current recommendation:
+There is no current Jeremy decision blocking d03.
 
-- drop lowest 1 in AI Fluency, Professional Minds Wednesday, Professional Minds Friday, Weekly Architecture/Investigation, and Weekly Explain/Defend;
-- no drop in kickoff, Dossier checkpoints, professional pathway, final reflection, or evaluation;
-- where source/policy names a due day but no clock, default to 11:59 PM America/Chicago unless an explicit source/calendar exception overrides it;
-- leave late-work penalties and revision/resubmission windows unset until separately decided rather than fabricating them.
+Accepted assessment/deployment doctrine includes:
 
-Week 16 dead-days compliance is **not** an open preference question: recurring graded work must not be scheduled on the three pre-finals class days.
+- `drop_lowest=1` in the five recurring groups: AI Fluency, Professional Minds Wednesday, Professional Minds Friday, Weekly Architecture/Investigation, and Weekly Explain/Defend;
+- no drop in kickoff, Machine Dossier checkpoints, professional pathway, final reflection, or course evaluation;
+- due-day-without-clock defaults to 11:59 PM America/Chicago unless explicit source/calendar truth overrides it;
+- recurring graded work does not land on Week 16 pre-finals dead days;
+- production Canvas remains separately gated.
 
-### Real-host rule
+### Real-host evidence rule
 
-Before any validation run used as acceptance evidence:
+Before a machine run is used as acceptance evidence:
 
 1. fetch/pull the intended branch;
 2. print/assert the exact commit under test;
-3. only then execute the gate.
+3. record the exact shared-source SHAs actually consumed;
+4. preserve unrelated dirt;
+5. execute the bounded gate.
 
-A RED produced by an older worktree tip is evidence about that older tip, not about a newer remote repair.
+A result from an older worktree tip is evidence about that older tip, not about a newer remote repair.
 
-## Completed / implemented foundation
+## Historical completed foundation
 
-1. **IMPLEMENTED / COMPLETE** - Prompt 001 reconciliation.
-2. **IMPLEMENTED / COMPLETE** - Prompt 002 open-source Architecture canon.
-3. **IMPLEMENTED WITH PLATFORM YELLOWS** - Prompt 003 reproducible Architecture laboratory.
-4. **IMPLEMENTED / COMPLETE WITH NAMED PHYSICAL/RELEASE YELLOWS** - Prompt 004 Weeks 5-14 technical core.
-5. **IMPLEMENTED / VALIDATED** - Prompt 005 shared Week 16 Farkle + ML experience; historical filename retained, not an Architecture capstone.
+| Prompt family | Historical status | Durable result |
+|---|---|---|
+| 001 | IMPLEMENTED / COMPLETE | reconciled source chassis |
+| 002 | IMPLEMENTED / COMPLETE | open-source Architecture canon |
+| 003 | IMPLEMENTED WITH PLATFORM YELLOWS | reproducible Architecture laboratory |
+| 004 | IMPLEMENTED / COMPLETE WITH NAMED YELLOWS | Weeks 5-14 technical core |
+| 005 | IMPLEMENTED / VALIDATED | Week 16 shared Farkle + ML experience |
+| 006 | IMPLEMENTED / ACCEPTED HISTORICAL SAVNAC FIXED POINT | full Savnac reconcile/read-back using the older launch worktree |
+| 007 | CONSUMED BY ACCEPTED 006 | validator repair evidence |
+| 008 | CONSUMED BY ACCEPTED 006 | compiler/policy repair evidence |
 
-## Prompt 004 campaign
+Do not redispatch 006, 007, or 008 as current launch dependencies.
+
+## Prompt 004 campaign provenance
 
 | Prompt | Status | Result |
 |---|---|---|
@@ -71,6 +109,4 @@ A RED produced by an older worktree tip is evidence about that older tip, not ab
 | 004_m | IMPLEMENTED WITH PHYSICAL YELLOWS | Linux release truth + platform matrix/runbook |
 | 004_n | IMPLEMENTED / PASS | helm acceptance |
 
-**Authoritative Prompt 004 receipt:** `../reports/004_author_weeks_05_14_architecture_core.md`.
-
-Physical Windows/Mac/container validation can update support receipts without reopening the 004 authoring campaign unless it exposes a real course-contract failure.
+Authoritative Prompt 004 receipt: `../reports/004_author_weeks_05_14_architecture_core.md`.
