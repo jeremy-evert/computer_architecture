@@ -1,10 +1,11 @@
 # Prompt 009d03 — Validate current-main Architecture source and compiler
 
-**Status:** WAITING ON 009_d_01 + 009_d_02  
-**Initiative:** 009  
-**Plan:** `sidecar/reports/009_c_plan_architecture_launch_readiness.md`  
-**Mode:** execution/validation with shared repositories read-only; no LMS write  
+**Status:** READY TO EXECUTE
+**Initiative:** 009
+**Plan:** `sidecar/reports/009_c_plan_architecture_launch_readiness.md`
+**Mode:** execution/validation with shared repositories read-only; no LMS write
 **Evidence owner:** `computer_architecture`
+**Recommended seat:** Architecture-local Luna via `sidecar/scripts/009_d_03_launch_architecture_luna.sh`
 
 ## Mission
 
@@ -14,9 +15,13 @@ This is the first post-reconciliation execution gate. It may read and execute co
 
 ## Execution-seat boundary
 
-Cleo owns Brandy while CS1 production work is active. Do not commandeer, reset, stash, clean, kill processes, or alter working trees owned by that run.
+This is a **Computer Architecture-local** execution gate. `jeremy_task_tracking` is not the work queue, evidence ledger, or dispatch authority for this run.
 
-Use another capable local seat, an isolated worktree, or wait until the ownership window is clear. Runtime inconvenience is not permission to mutate shared state.
+The recommended launcher uses the Luna/medium Codex seat directly from this repository and explicitly excludes JTT traversal:
+
+`sidecar/scripts/009_d_03_launch_architecture_luna.sh`
+
+If another active run owns a Brandy checkout or process, do not commandeer, reset, stash, clean, kill, or alter it. Use isolated Architecture work, preserve shared state, and stop on real ownership conflicts.
 
 ## Preflight
 
@@ -95,6 +100,7 @@ Allowed:
 
 Forbidden:
 
+- JTT task traversal/logging/mutation for this course-local run;
 - shared repo edits/commits;
 - Savnac mutation;
 - production Canvas read/write;
