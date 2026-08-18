@@ -1,7 +1,7 @@
 # Week 2 - AI Laboratory Training (Aug 24-28)
 
 ## Status
-Pinned focus; student-facing lesson and lab still need full authoring/validation.
+**IMPLEMENTED / SOURCE PRESENT.** Durable student/instructor teaching truth lives in `weeks/week-02/`. This planning file preserves the design intent and points forward rather than reopening authoring.
 
 ## Weekly Focus
 **How can AI help me investigate a machine without becoming my source of truth?**
@@ -13,7 +13,7 @@ Establish the investigation behavior reused throughout the semester: AI may prop
 
 What makes a useful technical question? Gather context, state knowns/unknowns, and distinguish an AI suggestion from a verified fact.
 
-The Monday package should model Jeremy using one or more current AI tools while visibly separating model fluency from evidence.
+The Monday package models Jeremy using one or more current AI tools while visibly separating model fluency from evidence.
 
 ## Wednesday - Investigate / Break / Measure
 **Professional Minds: _Make It Stick_ - How does the brain improve?**
@@ -46,5 +46,6 @@ None. Week 2 builds the investigation method later used by the dossier.
 ## Online-delivery note
 M/W/F are asynchronous production/release anchors, not attendance periods.
 
-## Open authoring notes
-Required path must not depend on a paid AI subscription or premium CLI agent. Premium tools may appear in Jeremy's recording as optional workflow examples only.
+## Implemented source
+
+See `weeks/week-02/` for the current student/instructor package, validation notes, references, and Monday deck source. Required work does not depend on a paid AI subscription or premium CLI agent.
