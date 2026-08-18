@@ -2,6 +2,8 @@
 
 Project-local work orders for COMSC-3013 Fall 2026 deployment.
 
+> **CURRENT FORWARD PATH — Initiative 009 (2026-08-17).** Accepted `../reports/009_a_report_architecture_launch_readiness.md` proved the legacy launch queue below is stale: Prompts 007/008 were consumed by accepted Prompt 006, Prompt 006 reached a real Savnac fixed point, and the launch-ready source remains stranded on a diverged `savnac/architecture-launch-readiness` branch rather than fully integrated into current `main`. **Do not redispatch 006–008 from the historical queue below.** The accepted route is `009_a → 009_b → 009_c → 009_d_NN → 009_e`; the first READY implementation unit is [`009_d_01_reconcile_canonical_launch_source.md`](009_d_01_reconcile_canonical_launch_source.md). Full status reconciliation belongs to d_02 after d_01 establishes canonical source truth.
+
 ## Status vocabulary
 
 - **READY** - bounded work order exists and dependencies are satisfied.
@@ -13,7 +15,7 @@ Do not call implemented work `drafted` merely because final deployment has not h
 
 ## Current launch queue
 
-Work this list in order. The detailed work stays here in the course sidecar; the global task tracker should point here rather than duplicate the implementation narrative.
+**Historical pre-Initiative-009 queue retained temporarily for provenance. Do not dispatch from this section.** d_02 will reconcile this file after d_01 is accepted.
 
 1. **IMPLEMENTED / WAITING ON BRANDY ACCEPTANCE - Prompt 007:** repair the Savnac launch-source validator. The repair is authored on `savnac/architecture-launch-readiness` at `3ab17ba5d0d943cf9f63b6de378ef104dc3002f3`. It now distinguishes strict full-lab capability diagnostics from launch-source readiness and names the committed Week 3 fallback evidence. Before accepting or rejecting it, Brandy must fast-forward to that commit (or an accepted descendant), assert the SHA, rerun the validator, and retain the real receipt.
 2. **MECHANICAL REPAIR IMPLEMENTED / POLICY-COMPLIANCE RECONCILIATION REQUIRED - Prompt 008:** the known kickoff-API mismatch and Ruff failures are repaired on `course_foundry:savnac/architecture-full-semester`, but the pre-acceptance audit found three additional truth gates: unsupported/incomplete drop-lowest rules, Week 16 dead-days compliance, and exact due-time provenance. `sidecar/questions/003_assessment_and_grading_contract.md` now contains the bounded Jeremy-level policy recommendation. After that decision is recorded, the worker repairs the compiler/tests, then Brandy runs targeted pytest + Ruff and the guarded no-write Savnac course-8 dry run.
