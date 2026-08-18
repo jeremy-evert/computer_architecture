@@ -1,7 +1,7 @@
 # Week 15 - Thanksgiving Wind-Down (Nov 23-27)
 
 ## Status
-Pinned asynchronous/lightweight week. No new Architecture theory.
+**IMPLEMENTED / SOURCE PRESENT.** Deliberately asynchronous/lightweight week with no new Architecture theory. Durable teaching truth lives in `weeks/week-15/` and A6.
 
 ## Weekly Focus
 **What evidence should I preserve, what needs to be caught up, and what did I learn strongly enough to carry forward?**
@@ -22,7 +22,7 @@ Thanksgiving period. No normal Professional Minds/lab burden.
 Thanksgiving period. No normal Professional Minds/showcase burden.
 
 ## Evidence this week
-Light curation/catch-up only, plus the planned professional-pathway Week 15 submission.
+Light curation/catch-up only, plus the Week 15 portion of **A6 - Professional Pathway Artifacts**.
 
 A useful Architecture-facing curation prompt is to identify a small number of dossier/lab artifacts that most changed the student's understanding.
 
@@ -34,5 +34,6 @@ Students may clean/organize existing evidence where policy permits, but Week 15 
 ## Online-delivery note
 This is deliberately asynchronous and humane.
 
-## Open authoring notes
-Do not let a worker turn "curation" into a hidden capstone preflight or new measurement assignment.
+## Implemented source
+
+See `weeks/week-15/` and `assignments/A6-professional-pathway-artifacts.md`. The accepted professional-pathway loop is **Claim -> Evidence -> Gap -> Decision**. Do not turn curation into a hidden capstone preflight or new measurement assignment.
