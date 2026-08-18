@@ -1,0 +1,19 @@
+1. Week 1 source on current main is the shared “Success Foundations” week, Aug 17–21: Monday “Survive the semester,” Wednesday “Thrive in the degree,” Friday “Enjoy the career.” It deliberately has no Architecture lecture, lab, quiz, setup gate, technical submission, Stack Showcase, or Machine Dossier work. It is a 5%-weight kickoff category; default named-day due times are 11:59 PM America/Chicago.
+
+2. The actual Course Foundry checkout/builder is not mounted in this worktree, so I could not open it directly. Committed current-main compiler evidence says it composes the shared `semester_kickoff_week` source (rather than cloning it) into five Week-1 modules: Monday, Wednesday, Friday, “A07 — Advisor (Later),” and “Success Foundations (Optional / Bonus).” The current compiled plan has 21 modules, 229 objects, 11 groups totaling 100%, and zero unresolved link tokens.
+
+3. Savnac course 8 was historically proven live at a fixed point. Report 006 records Week-1 module items 905–929 preserved under the five renamed modules, no duplicates/orphans, correct navigation, and a final repeated dry-run result of `0 create / 0 update / 240 unchanged / 0 delete`. The earlier broken kickoff cross-links were repaired to plain text; report evidence says no broken link tokens remained. This is historical evidence, not a fresh live-state check.
+
+4. Functionally, `main` is no longer missing Weeks 2–4/15/17: the later reconciliation report says all launch-required artifacts were integrated and “no known launch-required Architecture-local source remains stranded” on `savnac/architecture-launch-readiness`. However, I cannot supply current Git divergence counts: this isolated worktree’s `.git` file points to `/mnt/brandy_nvme/jevert/git/computer_architecture/.git/...`, but that common Git directory is absent, so both requested `git log` commands fail before reading refs. The last recorded pre-reconciliation divergence was main-only 46 / launch-only 8. The branch divergence does not block Week 1 teachability; Week 1 is shared and compiled on main.
+
+5. No Week-1 source change is indicated. The minimum operational action is a fresh guarded Savnac course-8 dry-run against current main; push only if it shows a bounded Week-1 delta. Historical evidence plus current compiler validation indicate Week 1 itself is already teachable.
+
+6. From the Architecture/Course Foundry root, Foreman’s dry-run invocation is:
+
+```bash
+PYTHONPATH=. "$PY" -m course_foundry.savnac_deploy dry-run \
+  --course architecture \
+  --architecture-root /mnt/brandy_nvme/jevert/git/computer_architecture
+```
+
+The `architecture` target resolves to Savnac course ID **8**, confirmed by the compiler receipt and Report 006. Do not add `push` or `--confirm-live` for the dry-run.
