@@ -1,15 +1,25 @@
-# Prompt 009d04 — Re-baseline Architecture against Savnac
+# Prompt 009d04 - Re-baseline Architecture against Savnac
 
-**Status:** WAITING ON 009_d_03 GREEN  
-**Initiative:** 009  
-**Mode:** Savnac read-only inventory/dry run; no live reconcile  
+**Status:** READY TO EXECUTE
+**Initiative:** 009
+**Mode:** Savnac read-only inventory/dry run; no live reconcile
 **Target:** existing Savnac Computer Architecture course 8 only
+**Recommended seat:** Architecture-local Luna via `sidecar/scripts/009_d_04_launch_architecture_luna.sh`
+**Prerequisite evidence:** `sidecar/reports/009_d_03_foreman_acceptance.md`
 
 ## Mission
 
 Determine whether Prompt 006's proven Savnac fixed point remains materially valid after canonical launch source is reconciled into current main.
 
 Do the smallest falsifiable check first. Do **not** automatically rewrite Savnac just because source SHAs changed.
+
+## Execution-seat boundary
+
+This is a Computer Architecture-local execution gate. `jeremy_task_tracking` is not the work queue, evidence ledger, or dispatch authority for this run.
+
+The recommended launcher uses the Luna/medium Codex seat directly from this repository and explicitly excludes JTT traversal:
+
+`sidecar/scripts/009_d_04_launch_architecture_luna.sh`
 
 ## Preflight
 
@@ -19,7 +29,7 @@ Record exact current SHAs for:
 - `course_foundry`;
 - shared sources used by the compiler.
 
-Confirm d_03's desired-state build is the one under test.
+Confirm d03's desired-state build is the one under test.
 
 Record current Savnac course-8 identity and inventory read-only. Do not assume the course remains unchanged since Prompt 006.
 
@@ -39,13 +49,13 @@ Return exactly one:
 
 Current Savnac state is already a no-op fixed point or the only differences are proven normalization/evidence-only changes that do not require a live reconcile.
 
-Consequence: d_05 is SKIPPED; proceed to d_06 after Foreman acceptance.
+Consequence: d05 is SKIPPED; proceed to d06 after Foreman acceptance.
 
 ### `EXPECTED_MATERIAL_DELTA`
 
 Current authoritative source intentionally differs from Savnac in student-facing desired state, and the dry run shows a bounded, understood non-destructive reconcile is needed.
 
-Consequence: d_05 becomes READY.
+Consequence: d05 becomes READY.
 
 ### `UNEXPLAINED_DELTA`
 
@@ -78,6 +88,7 @@ Allowed:
 
 Forbidden:
 
+- JTT task traversal/logging/mutation for this course-local run;
 - live Savnac push/reconcile;
 - production Canvas access/write;
 - shared repo mutation;
@@ -89,7 +100,7 @@ Write:
 
 `sidecar/reports/009_d_04_rebaseline_savnac.md`
 
-Include exact SHAs, inventory, dry-run counts, semantic delta, verdict, and whether d_05 is required.
+Include exact SHAs, inventory, dry-run counts, semantic delta, verdict, and whether d05 is required.
 
 ## Acceptance criterion
 
@@ -97,4 +108,4 @@ A fresh Foreman can decide whether Prompt-006 Savnac evidence may be inherited o
 
 ## Stop condition
 
-Stop after read-only evidence. Do not execute d_05 in the same focus.
+Stop after read-only evidence. Do not execute d05 in the same focus.
