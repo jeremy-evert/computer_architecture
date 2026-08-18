@@ -1,11 +1,11 @@
 # Prompt 009d04 - Re-baseline Architecture against Savnac
 
-**Status:** READY TO EXECUTE
+**Status:** ACCEPTED / PROMOTED — verdict `EXPECTED_MATERIAL_DELTA`
 **Initiative:** 009
 **Mode:** Savnac read-only inventory/dry run; no live reconcile
 **Target:** existing Savnac Computer Architecture course 8 only
-**Recommended seat:** Architecture-local Luna via `sidecar/scripts/009_d_04_launch_architecture_luna.sh`
-**Prerequisite evidence:** `sidecar/reports/009_d_03_foreman_acceptance.md`
+**Execution evidence:** `sidecar/reports/009_d_04_rebaseline_savnac.md`
+**Foreman acceptance:** `sidecar/reports/009_d_04_foreman_acceptance.md`
 
 ## Mission
 
@@ -13,59 +13,44 @@ Determine whether Prompt 006's proven Savnac fixed point remains materially vali
 
 Do the smallest falsifiable check first. Do **not** automatically rewrite Savnac just because source SHAs changed.
 
+## Accepted result
+
+d04 returned and Foreman accepted `EXPECTED_MATERIAL_DELTA`.
+
+The accepted dry-run is:
+
+```text
+0 create / 7 update / 233 unchanged / 0 delete
+```
+
+The seven updates are bounded student-facing body changes already explained by accepted current-main source. No creates, deletes, assignment-group changes, kind changes, duplicate collisions, or prune actions were proposed. Conditional d05 is therefore released.
+
 ## Execution-seat boundary
 
-This is a Computer Architecture-local execution gate. `jeremy_task_tracking` is not the work queue, evidence ledger, or dispatch authority for this run.
+This was a Computer Architecture-local execution gate. `jeremy_task_tracking` was not the work queue, evidence ledger, or dispatch authority for the run.
 
-The recommended launcher uses the Luna/medium Codex seat directly from this repository and explicitly excludes JTT traversal:
+## Required actions executed
 
-`sidecar/scripts/009_d_04_launch_architecture_luna.sh`
-
-## Preflight
-
-Record exact current SHAs for:
-
-- `computer_architecture`;
-- `course_foundry`;
-- shared sources used by the compiler.
-
-Confirm d03's desired-state build is the one under test.
-
-Record current Savnac course-8 identity and inventory read-only. Do not assume the course remains unchanged since Prompt 006.
-
-## Required actions
-
-1. Build current desired state from authoritative Architecture main.
+1. Built current desired state from authoritative Architecture main.
 2. Read current Savnac course 8.
-3. Run the existing guarded dry-run/diff path with **no live-write confirmation**.
-4. Compare current desired/live state against Prompt 006's historical fixed-point contract.
-5. Classify every delta as expected or unexplained.
+3. Ran the existing guarded dry-run/diff path with no live-write confirmation.
+4. Compared current desired/live state against Prompt 006 historical fixed-point evidence.
+5. Classified every observed delta.
 
-## Verdicts
-
-Return exactly one:
+## Verdict contract
 
 ### `ZERO_OR_EQUIVALENT`
-
-Current Savnac state is already a no-op fixed point or the only differences are proven normalization/evidence-only changes that do not require a live reconcile.
-
-Consequence: d05 is SKIPPED; proceed to d06 after Foreman acceptance.
+Current Savnac state already a no-op fixed point or only evidence-only normalization. d05 skipped.
 
 ### `EXPECTED_MATERIAL_DELTA`
-
-Current authoritative source intentionally differs from Savnac in student-facing desired state, and the dry run shows a bounded, understood non-destructive reconcile is needed.
-
-Consequence: d05 becomes READY.
+Current authoritative source intentionally differs from Savnac in bounded student-facing desired state. **This is the accepted d04 verdict.** d05 is required.
 
 ### `UNEXPLAINED_DELTA`
+Unexpected create/update/delete behavior, unknown live objects, source contradictions, missing assets, non-convergence, or unsafe prune scope. Would require a separate repair/investigation unit.
 
-The diff contains unexpected create/update/delete behavior, unknown live objects, source contradictions, missing assets, non-convergence, or unsafe prune scope.
+## Semantic checks completed
 
-Consequence: stop. Foreman authors the next unused evidence-specific repair/investigation unit.
-
-## Required semantic checks
-
-At minimum inspect:
+The accepted report covers:
 
 - module titles/order;
 - object counts/types;
@@ -76,36 +61,31 @@ At minimum inspect:
 - duplicates/orphans;
 - file/link diffs;
 - delete/prune scope;
-- any student/submission/enrollment state relevant to non-production write safety.
+- student/submission/enrollment state relevant to non-production write safety.
 
-## Authority
+## Authority boundary
 
-Allowed:
+Allowed during d04:
 
 - Savnac reads;
 - dry-run/diff;
 - Architecture-local report/run evidence.
 
-Forbidden:
+Forbidden and not performed:
 
-- JTT task traversal/logging/mutation for this course-local run;
+- JTT task traversal/logging/mutation;
 - live Savnac push/reconcile;
 - production Canvas access/write;
 - shared repo mutation;
 - opportunistic compiler repair.
 
-## Required report
+## Durable evidence
 
-Write:
-
-`sidecar/reports/009_d_04_rebaseline_savnac.md`
-
-Include exact SHAs, inventory, dry-run counts, semantic delta, verdict, and whether d05 is required.
-
-## Acceptance criterion
-
-A fresh Foreman can decide whether Prompt-006 Savnac evidence may be inherited or whether a fresh live Savnac reconcile is justified without guessing from changed SHAs alone.
+- `sidecar/reports/009_d_04_rebaseline_savnac.md`
+- `sidecar/reports/009_d_04_foreman_acceptance.md`
+- `sidecar/runs/009_d_04_savnac_rebaseline_receipt.md`
+- `sidecar/runs/architecture_savnac_source_validation_20260818T143157Z.md`
 
 ## Stop condition
 
-Stop after read-only evidence. Do not execute d05 in the same focus.
+d04 is complete. Do not redispatch it. The next executable unit is `009_d_05_reconcile_savnac_fixed_point.md`.
