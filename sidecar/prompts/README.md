@@ -4,7 +4,7 @@ Project-local work orders for COMSC-3013 Fall 2026 deployment.
 
 ## Current dispatch rule
 
-Initiative 009 is the active launch path. Prompts 001-008 remain useful historical provenance, but they are **not** the current dispatch queue.
+Initiative 009 is the active launch path. Prompts 001-008 remain historical provenance and are not the current dispatch queue.
 
 Current chain:
 
@@ -17,75 +17,76 @@ Current chain:
 | `009_a_report_architecture_launch_readiness.md` | ACCEPTED | establish current launch truth |
 | `009_b_map_architecture_launch_ready_shape.md` | ACCEPTED | define launch-ready end state |
 | `009_c_plan_architecture_launch_readiness.md` | ACCEPTED | decompose the route |
-| `009_d_01_reconcile_canonical_launch_source.md` | ACCEPTED / PROMOTED | restore launch-required Architecture-local source to canonical `main` |
+| `009_d_01_reconcile_canonical_launch_source.md` | ACCEPTED / PROMOTED | restore canonical launch source |
 | `009_d_02_reconcile_current_status.md` | ACCEPTED / PROMOTED | make cold-start status/navigation truthful |
-| `009_d_03_validate_current_main_compiler.md` | READY TO EXECUTE | validate current-main source + compiler; shared repos read-only |
-| `009_d_04_rebaseline_savnac.md` | WAITING ON d03 | read-only Savnac inventory/dry-run |
-| `009_d_05_reconcile_savnac_fixed_point.md` | CONDITIONAL | bounded Savnac write only if d04 proves a delta |
+| `009_d_03_validate_current_main_compiler.md` | ACCEPTED / PROMOTED | validate current-main source + compiler |
+| `009_d_04_rebaseline_savnac.md` | READY TO EXECUTE | read-only Savnac course-8 inventory and guarded dry-run |
+| `009_d_05_reconcile_savnac_fixed_point.md` | CONDITIONAL | bounded Savnac write only if d04 proves a material delta |
 | `009_d_06_production_recon_and_target_lock.md` | WAITING | read-only production target lock + semantic diff |
-| `009_d_07_reconcile_production_canvas.md` | HUMAN GATE | production write only after `GREEN TO WRITE` + fresh Jeremy authorization |
+| `009_d_07_reconcile_production_canvas.md` | HUMAN GATE | production write only after GREEN TO WRITE + fresh Jeremy authorization |
 | `009_d_08_production_launch_closeout.md` | WAITING | independent read-only production closeout |
 | `009_e_validate_architecture_launch_readiness.md` | WAITING | final Foreman validation |
 
-**Next executable unit:** [`009_d_03_validate_current_main_compiler.md`](009_d_03_validate_current_main_compiler.md).
+**Next executable unit:** [`009_d_04_rebaseline_savnac.md`](009_d_04_rebaseline_savnac.md).
 
 Recommended Brandy launcher:
 
-`sidecar/scripts/009_d_03_launch_architecture_luna.sh`
+`sidecar/scripts/009_d_04_launch_architecture_luna.sh`
 
-That launcher uses the Luna/medium Codex seat directly inside `computer_architecture`. It does **not** use JTT task traversal, `assistant/luna`, or the JTT completed-task intake.
+That launcher uses the Luna/medium Codex seat directly inside `computer_architecture`. It does not use JTT task traversal, `assistant/luna`, or the JTT completed-task intake.
 
-## Status vocabulary
+## Accepted evidence chain
 
-- **READY** - bounded work order exists and dependencies are satisfied.
-- **ACCEPTED / PROMOTED** - Foreman reviewed the evidence and promoted the bounded result into authoritative `main`.
-- **IMPLEMENTED** - real durable artifacts exist behind the historical work order.
-- **IMPLEMENTED WITH YELLOWS** - implementation exists; named evidence/deployment checks remain.
-- **WAITING** - cannot honestly advance until a named dependency is accepted.
-- **CONDITIONAL** - execute only if prior evidence proves it is needed.
-- **HUMAN GATE** - a fresh explicit human authorization is required at execution time.
+- d01 worker report: `../reports/009_d_01_reconcile_canonical_launch_source.md`
+- d01 Foreman acceptance: `../reports/009_d_01_foreman_acceptance.md`
+- d02 worker report: `../reports/009_d_02_reconcile_current_status.md`
+- d02 Foreman acceptance: `../reports/009_d_02_foreman_acceptance.md`
+- d03 worker report: `../reports/009_d_03_validate_current_main_compiler.md`
+- d03 Foreman acceptance: `../reports/009_d_03_foreman_acceptance.md`
+- d03 compiler receipt: `../runs/009_d_03_compiler_receipt.md`
 
-## Current source truth
+## Current source/compiler truth
 
-Prompt 009 d01 recovered the still-valid launch source from the diverged `savnac/architecture-launch-readiness` branch and promoted it to `main` after Brandy validation. The canonical Architecture source now includes local Weeks 2-4, 15, and 17; A6/A7; course-evaluation source; and the launch-source validator while preserving newer main doctrine.
+Accepted d03 proved the current canonical Architecture source under the current Course Foundry compiler:
 
-Prompt 009 d02 then reconciled the repository status/navigation surfaces and was accepted after a silent Brandy `git diff --check`.
+- 21 modules covering Weeks 1-17;
+- 229 objects: 81 pages, 32 files, 116 assignments;
+- 11 assignment groups totaling 100%;
+- exactly five recurring groups with `drop_lowest=1`;
+- no graded recurring Week 16 work and no Week 16 checkpoint;
+- Machine Dossier checkpoints only Weeks 6, 9, and 14;
+- A6, A7, and course evaluation present;
+- zero undeclared omissions;
+- zero unresolved link tokens;
+- Architecture tests and deployment tests both passed 8/8.
 
-See:
-
-- `../reports/009_d_01_reconcile_canonical_launch_source.md`
-- `../reports/009_d_01_foreman_acceptance.md`
-- `../runs/architecture_savnac_source_validation_20260818T053147Z.md`
-- `../reports/009_d_02_reconcile_current_status.md`
-- `../reports/009_d_02_foreman_acceptance.md`
-
-Prompt 006 is historical evidence that the full course once reached a real Savnac fixed point. It is **not** authorization to assume current `main`, current Savnac, or production Canvas still match that snapshot. d03 and d04 re-prove those surfaces from current truth.
+The current 11-group count follows the authoritative grading model. Prompt 006's historical 12-group count must not be substituted for current doctrine.
 
 ## Human decision surface
 
-There is no current Jeremy decision blocking d03.
+There is no current Jeremy decision blocking d04. d04 is a read-only Savnac course-8 inventory/dry-run gate.
 
-Accepted assessment/deployment doctrine includes:
+A fresh human authorization is required later for d07 production Canvas write. d04 does not grant or consume that authorization.
 
-- `drop_lowest=1` in the five recurring groups: AI Fluency, Professional Minds Wednesday, Professional Minds Friday, Weekly Architecture/Investigation, and Weekly Explain/Defend;
-- no drop in kickoff, Machine Dossier checkpoints, professional pathway, final reflection, or course evaluation;
-- due-day-without-clock defaults to 11:59 PM America/Chicago unless explicit source/calendar truth overrides it;
-- recurring graded work does not land on Week 16 pre-finals dead days;
-- production Canvas remains separately gated.
+## d04 verdict contract
 
-### Real-host evidence rule
+d04 must return exactly one:
 
-Before a machine run is used as acceptance evidence:
+- `ZERO_OR_EQUIVALENT`: d05 skipped after Foreman acceptance;
+- `EXPECTED_MATERIAL_DELTA`: d05 becomes ready after Foreman acceptance;
+- `UNEXPLAINED_DELTA`: stop and author a bounded repair/investigation unit.
 
-1. fetch/pull the intended Architecture branch;
-2. print/assert the exact Architecture commit under test;
-3. record the exact shared-source SHAs actually consumed;
-4. preserve unrelated dirt;
-5. execute the bounded gate.
+No d04 verdict authorizes a live Savnac reconcile by itself.
 
-A result from an older worktree tip is evidence about that older tip, not about a newer remote repair.
+## Status vocabulary
 
-## Historical completed foundation
+- **READY TO EXECUTE** - bounded work order exists and dependencies are accepted.
+- **ACCEPTED / PROMOTED** - Foreman independently reviewed the package and promoted it to authoritative `main`.
+- **WAITING** - a named predecessor or gate is not yet accepted.
+- **CONDITIONAL** - execute only if prior evidence proves it is needed.
+- **HUMAN GATE** - fresh explicit human authorization is required at execution time.
+
+## Historical foundation
 
 | Prompt family | Historical status | Durable result |
 |---|---|---|
@@ -93,30 +94,9 @@ A result from an older worktree tip is evidence about that older tip, not about 
 | 002 | IMPLEMENTED / COMPLETE | open-source Architecture canon |
 | 003 | IMPLEMENTED WITH PLATFORM YELLOWS | reproducible Architecture laboratory |
 | 004 | IMPLEMENTED / COMPLETE WITH NAMED YELLOWS | Weeks 5-14 technical core |
-| 005 | IMPLEMENTED / VALIDATED | Week 16 shared Farkle + ML experience |
-| 006 | IMPLEMENTED / ACCEPTED HISTORICAL SAVNAC FIXED POINT | full Savnac reconcile/read-back using the older launch worktree |
-| 007 | CONSUMED BY ACCEPTED 006 | validator repair evidence |
-| 008 | CONSUMED BY ACCEPTED 006 | compiler/policy repair evidence |
+| 005 | IMPLEMENTED / VALIDATED | Week 16 shared Farkle + ML |
+| 006 | ACCEPTED HISTORICAL SAVNAC FIXED POINT | full Savnac reconcile/read-back using older launch source |
+| 007 | CONSUMED BY 006 | validator repair evidence |
+| 008 | CONSUMED BY 006 | compiler/policy repair evidence |
 
 Do not redispatch 006, 007, or 008 as current launch dependencies.
-
-## Prompt 004 campaign provenance
-
-| Prompt | Status | Result |
-|---|---|---|
-| 004_a | IMPLEMENTED / PASS | shared authoring workbench |
-| 004_b | IMPLEMENTED WITH YELLOWS | Week 5 |
-| 004_c | IMPLEMENTED WITH YELLOWS | Week 6 + CP1 |
-| 004_d | IMPLEMENTED WITH YELLOWS | Week 7 |
-| 004_e | IMPLEMENTED WITH YELLOWS | Week 8 |
-| 004_f | IMPLEMENTED WITH YELLOWS | Week 9 + CP2 |
-| 004_g | IMPLEMENTED WITH YELLOWS | Week 10 |
-| 004_h | IMPLEMENTED WITH YELLOWS | Week 11 |
-| 004_i | IMPLEMENTED WITH YELLOWS | Week 12 |
-| 004_j | IMPLEMENTED WITH YELLOWS | Week 13 |
-| 004_k | IMPLEMENTED WITH YELLOWS | Week 14 + CP3 |
-| 004_l | IMPLEMENTED / PASS | continuity audit + fallback repairs |
-| 004_m | IMPLEMENTED WITH PHYSICAL YELLOWS | Linux release truth + platform matrix/runbook |
-| 004_n | IMPLEMENTED / PASS | helm acceptance |
-
-Authoritative Prompt 004 receipt: `../reports/004_author_weeks_05_14_architecture_core.md`.
