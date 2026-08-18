@@ -73,7 +73,7 @@ The bounded compiler receipt with command context is `sidecar/runs/009_d_03_comp
 - `make task-check`: unavailable, exact error recorded above.
 - `make check`: unavailable, exact error recorded above.
 - `git diff --check`: passed.
-- Report commit SHA: to be filled after the evidence commit is created.
+- Report introduced by evidence commit: `3ff7e56`.
 - Push status: to be filled after push.
 
 Recommended next prompt: external Foreman review of d03 evidence, followed only if authorized by the separate d04 work order.
