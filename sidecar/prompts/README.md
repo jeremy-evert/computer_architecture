@@ -18,8 +18,8 @@ Current chain:
 | `009_b_map_architecture_launch_ready_shape.md` | ACCEPTED | define launch-ready end state |
 | `009_c_plan_architecture_launch_readiness.md` | ACCEPTED | decompose the route |
 | `009_d_01_reconcile_canonical_launch_source.md` | ACCEPTED / PROMOTED | restore launch-required Architecture-local source to canonical `main` |
-| `009_d_02_reconcile_current_status.md` | IN PROGRESS | make cold-start status/navigation truthful |
-| `009_d_03_validate_current_main_compiler.md` | READY AFTER d02 | validate current-main source + compiler; shared repos read-only |
+| `009_d_02_reconcile_current_status.md` | ACCEPTED / PROMOTED | make cold-start status/navigation truthful |
+| `009_d_03_validate_current_main_compiler.md` | READY TO EXECUTE | validate current-main source + compiler; shared repos read-only |
 | `009_d_04_rebaseline_savnac.md` | WAITING ON d03 | read-only Savnac inventory/dry-run |
 | `009_d_05_reconcile_savnac_fixed_point.md` | CONDITIONAL | bounded Savnac write only if d04 proves a delta |
 | `009_d_06_production_recon_and_target_lock.md` | WAITING | read-only production target lock + semantic diff |
@@ -27,7 +27,13 @@ Current chain:
 | `009_d_08_production_launch_closeout.md` | WAITING | independent read-only production closeout |
 | `009_e_validate_architecture_launch_readiness.md` | WAITING | final Foreman validation |
 
-**Next executable unit after d02 acceptance:** [`009_d_03_validate_current_main_compiler.md`](009_d_03_validate_current_main_compiler.md).
+**Next executable unit:** [`009_d_03_validate_current_main_compiler.md`](009_d_03_validate_current_main_compiler.md).
+
+Recommended Brandy launcher:
+
+`sidecar/scripts/009_d_03_launch_architecture_luna.sh`
+
+That launcher uses the Luna/medium Codex seat directly inside `computer_architecture`. It does **not** use JTT task traversal, `assistant/luna`, or the JTT completed-task intake.
 
 ## Status vocabulary
 
@@ -43,11 +49,15 @@ Current chain:
 
 Prompt 009 d01 recovered the still-valid launch source from the diverged `savnac/architecture-launch-readiness` branch and promoted it to `main` after Brandy validation. The canonical Architecture source now includes local Weeks 2-4, 15, and 17; A6/A7; course-evaluation source; and the launch-source validator while preserving newer main doctrine.
 
+Prompt 009 d02 then reconciled the repository status/navigation surfaces and was accepted after a silent Brandy `git diff --check`.
+
 See:
 
 - `../reports/009_d_01_reconcile_canonical_launch_source.md`
 - `../reports/009_d_01_foreman_acceptance.md`
 - `../runs/architecture_savnac_source_validation_20260818T053147Z.md`
+- `../reports/009_d_02_reconcile_current_status.md`
+- `../reports/009_d_02_foreman_acceptance.md`
 
 Prompt 006 is historical evidence that the full course once reached a real Savnac fixed point. It is **not** authorization to assume current `main`, current Savnac, or production Canvas still match that snapshot. d03 and d04 re-prove those surfaces from current truth.
 
@@ -67,8 +77,8 @@ Accepted assessment/deployment doctrine includes:
 
 Before a machine run is used as acceptance evidence:
 
-1. fetch/pull the intended branch;
-2. print/assert the exact commit under test;
+1. fetch/pull the intended Architecture branch;
+2. print/assert the exact Architecture commit under test;
 3. record the exact shared-source SHAs actually consumed;
 4. preserve unrelated dirt;
 5. execute the bounded gate.
