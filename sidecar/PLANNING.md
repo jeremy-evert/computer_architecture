@@ -4,8 +4,9 @@
 **Repository:** `jeremy-evert/computer_architecture`
 **Source of truth:** Git
 **Current initiative:** 009 - Architecture launch readiness
-**Current stage:** d01 accepted/promoted; d02 status reconciliation in progress
-**Next execution gate after d02:** `sidecar/prompts/009_d_03_validate_current_main_compiler.md`
+**Current stage:** d01 and d02 accepted/promoted; d03 released
+**Next execution gate:** `sidecar/prompts/009_d_03_validate_current_main_compiler.md`
+**Recommended execution seat:** Architecture-local Luna via `sidecar/scripts/009_d_03_launch_architecture_luna.sh`
 
 ## Mission
 
@@ -32,7 +33,12 @@ Prompt 009 d01 recovered the still-valid launch source from `savnac/architecture
 - `sidecar/reports/009_d_01_foreman_acceptance.md`
 - `sidecar/runs/architecture_savnac_source_validation_20260818T053147Z.md`
 
-The Brandy source receipt is **GREEN WITH YELLOWS**. The named yellows are host-capability limitations, not missing launch source.
+Prompt 009 d02 reconciled the repository's cold-start status/navigation surfaces and was accepted after a clean Brandy `git diff --check`. See:
+
+- `sidecar/reports/009_d_02_reconcile_current_status.md`
+- `sidecar/reports/009_d_02_foreman_acceptance.md`
+
+The Brandy source receipt from d01 is **GREEN WITH YELLOWS**. The named yellows are host-capability limitations, not missing launch source.
 
 ## Historical Savnac proof
 
@@ -71,8 +77,8 @@ That proof used the older launch worktree. Initiative 009 exists to prove the **
 | 009_b | ACCEPTED | map launch-ready end state |
 | 009_c | ACCEPTED | plan bounded route |
 | 009_d_01 | ACCEPTED / PROMOTED | restore canonical launch source to `main` |
-| 009_d_02 | IN PROGRESS | make cold-start status/navigation truthful |
-| 009_d_03 | NEXT / READY AFTER d02 | validate current-main source + compiler with shared repos read-only |
+| 009_d_02 | ACCEPTED / PROMOTED | make cold-start status/navigation truthful |
+| 009_d_03 | READY TO EXECUTE | validate current-main source + compiler with shared repos read-only |
 | 009_d_04 | WAITING ON d03 | read-only Savnac re-baseline |
 | 009_d_05 | CONDITIONAL | reconcile Savnac only if d04 proves a live delta |
 | 009_d_06 | WAITING | read-only production reconnaissance and exact target lock |
@@ -85,6 +91,8 @@ That proof used the older launch worktree. Initiative 009 exists to prove the **
 ### Gate 1 - Current-main compiler proof
 
 Run d03 against exact recorded checkouts. Prove the full current-main desired course, source paths, 100% assignment groups, drop-lowest rules, dead days, checkpoint placement, dates, and unresolved-link safety. Shared repositories are read-only during this gate.
+
+The recommended execution seat is the project-local Luna launcher. It uses Luna/medium directly from this repository and explicitly does **not** traverse or mutate `jeremy_task_tracking`.
 
 ### Gate 2 - Current Savnac equivalence
 
@@ -110,4 +118,4 @@ Physical platform support remains evidence-gated where not executed: WSL2, macOS
 
 For current work, use this board and `sidecar/prompts/README.md`. Prompts/reports 001-008 remain historical provenance and must not be redispatched as if they are the current queue.
 
-**The next executable Architecture unit after d02 acceptance is `009_d_03_validate_current_main_compiler.md`.**
+**The next executable Architecture unit is `009_d_03_validate_current_main_compiler.md`.**
