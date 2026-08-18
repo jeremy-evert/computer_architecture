@@ -1,6 +1,6 @@
 # Prompt 009d02 — Reconcile current Architecture status and navigation
 
-**Status:** WORKER COMPLETE / AWAITING FOREMAN ACCEPTANCE
+**Status:** ACCEPTED / PROMOTED
 **Initiative:** 009
 **Plan:** `sidecar/reports/009_c_plan_architecture_launch_readiness.md`
 **Worksite:** `computer_architecture` only
