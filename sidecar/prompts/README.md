@@ -1,58 +1,56 @@
 # Computer Architecture Sidecar Prompts
 
-Project-local work orders for COMSC-3013 Fall 2026 deployment.
+Project-local work orders and design provenance for COMSC-3013 Fall 2026 deployment.
 
-## Current dispatch rule
+## Active dispatch rule
 
-Initiative 009 is the active launch path. Prompts 001-008 remain historical provenance and are not the current dispatch queue.
+**Do not manually walk the old 009 prompt chain.** Piper has collapsed the remaining executable work into the current Flo burn:
 
-Current chain:
+- `../FLO_BURN.md`
+- `../jobs/009_architecture_preflight_to_green_to_write.md`
+- `../jobs/009_architecture_production_closeout.md`
+- launcher: `../launch_flo.sh`
+
+Current command:
+
+```bash
+./sidecar/launch_flo.sh
+```
+
+Production remains a separate fresh human gate after accepted `GREEN TO WRITE`:
+
+```bash
+./sidecar/launch_flo.sh production
+```
+
+## Initiative 009 provenance chain
+
+The historical design chain remains:
 
 `009_a -> 009_b -> 009_c -> 009_d_01 -> 009_d_02 -> 009_d_03 -> 009_d_04 -> 009_d_05 -> 009_d_06 -> 009_d_07 -> 009_d_08 -> 009_e`
 
-### Initiative 009 status
-
-| Prompt | Status | Purpose |
+| Prompt | Durable status | Purpose now |
 |---|---|---|
-| `009_a_report_architecture_launch_readiness.md` | ACCEPTED | establish current launch truth |
-| `009_b_map_architecture_launch_ready_shape.md` | ACCEPTED | define launch-ready end state |
-| `009_c_plan_architecture_launch_readiness.md` | ACCEPTED | decompose the route |
-| `009_d_01_reconcile_canonical_launch_source.md` | ACCEPTED / PROMOTED | restore canonical launch source |
-| `009_d_02_reconcile_current_status.md` | ACCEPTED / PROMOTED | make cold-start status/navigation truthful |
-| `009_d_03_validate_current_main_compiler.md` | ACCEPTED / PROMOTED | validate current-main source + compiler |
-| `009_d_04_rebaseline_savnac.md` | ACCEPTED / PROMOTED | read-only Savnac re-baseline; `EXPECTED_MATERIAL_DELTA` |
-| `009_d_05_reconcile_savnac_fixed_point.md` | READY TO EXECUTE | apply exactly seven accepted Savnac body updates and prove fixed point |
-| `009_d_06_production_recon_and_target_lock.md` | WAITING ON d05 | read-only production target lock + semantic diff |
-| `009_d_07_reconcile_production_canvas.md` | HUMAN GATE | production write only after GREEN TO WRITE + fresh Jeremy authorization |
-| `009_d_08_production_launch_closeout.md` | WAITING | independent read-only production closeout |
-| `009_e_validate_architecture_launch_readiness.md` | WAITING | final Foreman validation |
+| `009_a_report_architecture_launch_readiness.md` | ACCEPTED | historical current-truth report |
+| `009_b_map_architecture_launch_ready_shape.md` | ACCEPTED | launch-ready end-state design |
+| `009_c_plan_architecture_launch_readiness.md` | ACCEPTED | original decomposition |
+| `009_d_01_reconcile_canonical_launch_source.md` | ACCEPTED / PROMOTED | canonical source repair provenance |
+| `009_d_02_reconcile_current_status.md` | ACCEPTED / PROMOTED | status/navigation repair provenance |
+| `009_d_03_validate_current_main_compiler.md` | ACCEPTED / PROMOTED | accepted desired-source/compiler baseline |
+| `009_d_04_rebaseline_savnac.md` | ACCEPTED / PROMOTED | accepted read-only Savnac baseline |
+| `009_d_05_reconcile_savnac_fixed_point.md` | SUPERSEDED AS DISPATCH | safety requirements consumed by Flo preflight |
+| `009_d_06_production_recon_and_target_lock.md` | SUPERSEDED AS DISPATCH | read-only target-lock/diff consumed by Flo preflight |
+| `009_d_07_reconcile_production_canvas.md` | SUPERSEDED AS DISPATCH | production reconcile requirements consumed by production Flo job |
+| `009_d_08_production_launch_closeout.md` | SUPERSEDED AS DISPATCH | independent closeout requirements consumed by production Flo job |
+| `009_e_validate_architecture_launch_readiness.md` | SUPERSEDED AS DISPATCH | final acceptance requirements consumed by production Flo job |
 
-**Next executable unit:** [`009_d_05_reconcile_savnac_fixed_point.md`](009_d_05_reconcile_savnac_fixed_point.md).
+`SUPERSEDED AS DISPATCH` does **not** mean the prompt was wrong or deleted. It means its useful constraints are now carried by one of the two current jobs so Jeremy does not have to relay five separate runs.
 
-Recommended Brandy launcher:
+## Accepted d03 source/compiler baseline
 
-`sidecar/scripts/009_d_05_launch_savnac_reconcile_luna.sh`
+Accepted d03 proved:
 
-That launcher uses Luna/medium as the bounded Computer Architecture execution/validation Golem. It does not use JTT traversal, `assistant/luna`, or JTT completed-task intake. The external Foreman owns acceptance and promotion.
-
-## Accepted evidence chain
-
-- d01 worker report: `../reports/009_d_01_reconcile_canonical_launch_source.md`
-- d01 Foreman acceptance: `../reports/009_d_01_foreman_acceptance.md`
-- d02 worker report: `../reports/009_d_02_reconcile_current_status.md`
-- d02 Foreman acceptance: `../reports/009_d_02_foreman_acceptance.md`
-- d03 worker report: `../reports/009_d_03_validate_current_main_compiler.md`
-- d03 Foreman acceptance: `../reports/009_d_03_foreman_acceptance.md`
-- d03 compiler receipt: `../runs/009_d_03_compiler_receipt.md`
-- d04 worker report: `../reports/009_d_04_rebaseline_savnac.md`
-- d04 Foreman acceptance: `../reports/009_d_04_foreman_acceptance.md`
-- d04 Savnac receipt: `../runs/009_d_04_savnac_rebaseline_receipt.md`
-
-## Current source/compiler truth
-
-Accepted d03 proved current canonical Architecture source under the current Course Foundry compiler:
-
-- 21 modules covering Weeks 1-17;
+- 21 modules covering Weeks 1–17;
 - 229 objects: 81 pages, 32 files, 116 assignments;
 - 11 desired assignment groups totaling 100%;
 - exactly five recurring groups with `drop_lowest=1`;
@@ -60,69 +58,57 @@ Accepted d03 proved current canonical Architecture source under the current Cour
 - Machine Dossier checkpoints only Weeks 6, 9, 14;
 - A6, A7, and course evaluation present;
 - zero undeclared omissions;
-- zero unresolved link tokens;
-- Architecture tests and deployment tests both passed 8/8.
+- zero unresolved link tokens.
 
-## Accepted d04 Savnac truth
+Piper later proved no student-facing Architecture source changed between accepted d03 and the pre-capsule current main. Flo preflight still reruns current validation before live-system claims.
 
-Savnac course 8 is structurally aligned with desired current state, but seven accepted body updates remain.
+## Accepted d04 Savnac baseline
 
-Accepted dry-run:
+Savnac course 8 was structurally aligned with desired state and had accepted dry-run:
 
 ```text
 0 create / 7 update / 233 unchanged / 0 delete
 ```
 
-Accepted updates:
+The seven accepted updates were only:
 
-- Week 02 Week at a Glance;
-- Week 03 Week at a Glance;
-- Week 04 Week at a Glance;
-- A6 Week 14 Update;
-- A6 Week 15 Submission;
-- Week 16 Week at a Glance;
-- Week 16 Explain / Defend.
+- Week 02 — Week at a Glance;
+- Week 03 — Week at a Glance;
+- Week 04 — Week at a Glance;
+- A6 — Professional Pathway (Week 14 Update);
+- A6 — Professional Pathway (Week 15 Submission);
+- Week 16 — Week at a Glance;
+- Week 16 — Explain / Defend.
 
-No creates, deletes, group changes, kind changes, duplicate collisions, or prune actions belong to d05.
+No creates, deletes, group changes, kind changes, topology changes, duplicate cleanup, or prune action belonged to d04.
 
-## Human decision surface
+A later worker branch `golem/009-d05-savnac-fixed-point` records a safe **zero-write STOP** caused by dirty/advanced shared Course Foundry state. It was not an accepted d05 fixed point. Flo preflight now consumes current semantic truth instead of requiring stale shared-SHA equality.
 
-There is **no Jeremy policy decision blocking d05**. d05 is the already-planned guarded non-production Savnac course-8 reconcile after accepted d04 evidence.
+## Current human decision surface
 
-A fresh human authorization is required later at d07 before any production Canvas write. d05 does not grant or consume production authorization.
+There is no Jeremy policy decision blocking preflight.
 
-## d05 execution contract
+The only intended production human gate occurs after canonical preflight evidence contains exactly:
 
-Before write, the launcher/Golem must re-prove the exact accepted `0 create / 7 update / 233 unchanged / 0 delete` envelope and confirm no source/compiler, enrollment, submission, or object drift.
+```text
+**Verdict:** `GREEN TO WRITE`
+```
 
-After write, require:
-
-- write envelope `0 create / 7 update / 0 delete`;
-- bounded read-back;
-- first guarded no-op dry-run;
-- second consecutive guarded no-op dry-run.
-
-Anything unexpected stops the run before further mutation.
-
-## Status vocabulary
-
-- **READY TO EXECUTE** - bounded work order exists and dependencies are accepted.
-- **ACCEPTED / PROMOTED** - Foreman independently reviewed the package and promoted it to authoritative `main`.
-- **WAITING** - a named predecessor or gate is not yet accepted.
-- **CONDITIONAL** - execute only if prior evidence proves it is needed.
-- **HUMAN GATE** - fresh explicit human authorization is required at execution time.
+At that point the separate `production` launcher invocation is fresh authorization only for the bounded Architecture write described by the production job.
 
 ## Historical foundation
+
+Prompts 001–008 remain historical provenance and are not the active launch queue.
 
 | Prompt family | Historical status | Durable result |
 |---|---|---|
 | 001 | IMPLEMENTED / COMPLETE | reconciled source chassis |
 | 002 | IMPLEMENTED / COMPLETE | open-source Architecture canon |
 | 003 | IMPLEMENTED WITH PLATFORM YELLOWS | reproducible Architecture laboratory |
-| 004 | IMPLEMENTED / COMPLETE WITH NAMED YELLOWS | Weeks 5-14 technical core |
+| 004 | IMPLEMENTED / COMPLETE WITH NAMED YELLOWS | Weeks 5–14 technical core |
 | 005 | IMPLEMENTED / VALIDATED | Week 16 shared Farkle + ML |
 | 006 | ACCEPTED HISTORICAL SAVNAC FIXED POINT | full Savnac reconcile/read-back using older launch source |
 | 007 | CONSUMED BY 006 | validator repair evidence |
 | 008 | CONSUMED BY 006 | compiler/policy repair evidence |
 
-Do not redispatch 006, 007, or 008 as current launch dependencies.
+For current work, start at `../FLO_BURN.md`, not here.
