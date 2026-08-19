@@ -4,9 +4,9 @@
 **Repository:** `jeremy-evert/computer_architecture`  
 **Source of truth:** Git  
 **Current initiative:** 009 — Architecture launch readiness  
-**Current stage:** Piper ship-prep complete; ready for credentialed Flo preflight  
+**Current stage:** Flo preflight complete — `GREEN TO WRITE`; only fresh production authorization remains  
 **Active burn:** `sidecar/FLO_BURN.md`  
-**Next command:** `./sidecar/launch_flo.sh`
+**Next command:** `./sidecar/launch_flo.sh production` (after Jeremy's explicit fresh authorization)
 
 ## Mission
 
@@ -66,6 +66,8 @@ A prior d05 worker attempt on branch `golem/009-d05-savnac-fixed-point` stopped 
 
 Piper later proved the Course Foundry drift that triggered that stop did not alter Architecture compilation/Savnac machinery. Preflight therefore reasons from current semantic truth rather than demanding stale SHA equality.
 
+**2026-08-19 — Flo preflight closed this out.** Savnac course 8 was reconciled to the exact seven d04-accepted body updates under Jeremy's explicit authorization, independently read back, and proven at fixed point across two consecutive `0/0/0` dry-runs. See `sidecar/reports/009_flo_preflight_to_green_to_write.md`.
+
 ## Production machinery truth
 
 Piper promoted guarded Architecture production support to `jeremy-evert/course_foundry` main through:
@@ -77,14 +79,24 @@ Architecture now has **no default production Canvas id**. The generic production
 
 The exact Fall 2026 SWOSU Canvas id remains intentionally **unknown until fresh live read-only discovery**. Historical ids are not proof.
 
+**2026-08-19 — locked.** Flo preflight discovered the exact live target from
+Canvas API evidence (128 teacher courses filtered/converged, 8 historical
+decoys rejected by term): **course id `75249`**, `Fall 2026 Computer
+Architecture (COMSC-3013-1438)`, `workflow_state=unpublished`. The
+production dry-run against that id returned a bounded, fully classified,
+additive-only diff (`225 create / 6 update / 25 unchanged / 0 delete`; zero
+title collisions, zero deletes/prunes). Full evidence:
+`sidecar/reports/009_flo_preflight_to_green_to_write.md` and
+`sidecar/runs/009_flo_preflight/20260819T115719Z/`.
+
 ## Active execution surface
 
 The old d05 → d06 → d07 → d08 → 009e sequence remains design/provenance. Piper collapsed its remaining runtime intent into two Foreman jobs so Jeremy is not the message bus.
 
 | Burn | Status | Launcher | Outcome |
 |---|---|---|---|
-| Architecture preflight | **READY** | `./sidecar/launch_flo.sh` | current validation + Savnac fixed point + fresh SWOSU target/diff → `GREEN TO WRITE` |
-| Architecture production closeout | **HUMAN GATE** | `./sidecar/launch_flo.sh production` | bounded production reconcile + independent closeout + final green |
+| Architecture preflight | **COMPLETE — `GREEN TO WRITE`** | `./sidecar/launch_flo.sh` | current validation + Savnac fixed point + fresh SWOSU target/diff → `GREEN TO WRITE` |
+| Architecture production closeout | **HUMAN GATE — only remaining burn** | `./sidecar/launch_flo.sh production` | bounded production reconcile + independent closeout + final green |
 
 Canonical jobs:
 
@@ -179,4 +191,7 @@ Piper may truthfully say **READY TO SHIP** only after evidence proves:
 - final 009 validation says `GREEN — PRODUCTION DEPLOYED AND LAUNCH-CLOSED`;
 - no launch-relevant yellow is disguised as green.
 
-Until then, current status is **READY FOR FLO PREFLIGHT**.
+Preflight is now complete (`GREEN TO WRITE`, 2026-08-19); current status is
+**READY FOR PRODUCTION AUTHORIZATION** — the only remaining human action is
+Jeremy's fresh explicit authorization to run
+`./sidecar/launch_flo.sh production`.

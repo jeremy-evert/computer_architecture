@@ -4,7 +4,17 @@ This is the active executable burn list for Initiative 009.
 
 Old `009_d_05` through `009_e` prompts remain durable design/provenance. They are **not** five separate human dispatches anymore. Piper collapsed their remaining runtime intent into the two jobs below.
 
-## 1. PRE-FLIGHT — current burn
+**Status (2026-08-19):** Preflight is COMPLETE. Flo independently re-proved
+current source/compiler/tests green (repairing one real Course Foundry
+defect that blocked the Architecture production dry-run — see
+`sidecar/reports/009_flo_preflight_to_green_to_write.md`), reconciled Savnac
+course 8 to a proven two-run fixed point under Jeremy's explicit
+authorization, and froze the exact fresh SWOSU Fall 2026 target (course id
+`75249`, `COMSC-3013-1438`) with a bounded, fully classified, additive-only
+semantic diff. Verdict: `GREEN TO WRITE`. **Production is now the only
+remaining burn.**
+
+## 1. PRE-FLIGHT — COMPLETE
 
 **Launch:**
 
