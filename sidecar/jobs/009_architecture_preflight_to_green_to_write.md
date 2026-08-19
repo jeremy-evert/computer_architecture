@@ -144,10 +144,19 @@ Flo independently inspects Wanda evidence before promotion. Write:
 
 Include Architecture/dependency SHAs, source/compiler/test results, Savnac before/write/readback/two fixed-point runs, exact production target identity, semantic diff counts/classification, enrollment/submission safety, exact future production command, partial-write stop behavior, commits, yellows, and verdict.
 
-Allowed verdicts:
+The report must contain exactly one machine-readable verdict line in one of these forms:
 
-- `GREEN TO WRITE`
-- `NOT GREEN TO WRITE — <precise blocker>`
+```text
+**Verdict:** `GREEN TO WRITE`
+```
+
+or:
+
+```text
+**Verdict:** `NOT GREEN TO WRITE — <precise blocker>`
+```
+
+The launcher consumes the first exact line from canonical `origin/main` before it will grant production authority.
 
 Update `sidecar/FLO_BURN.md`, `sidecar/PLANNING.md`, and active Sidecar navigation to current truth. Promote accepted Architecture evidence to `main` yourself. Do not ask Jeremy to merge.
 
@@ -163,7 +172,7 @@ Reduce any human need to one precise gate. Routine Git work, worker dispatch, te
 
 ## DONE
 
-Success requires green current source/compiler/tests, Savnac two-run fixed point, fresh production target lock, bounded current production diff, target-id/identity safety checks, `GREEN TO WRITE`, promoted evidence/status on Architecture `main`, and `sidecar/FLO_BURN.md` showing production as the only remaining burn.
+Success requires green current source/compiler/tests, Savnac two-run fixed point, fresh production target lock, bounded current production diff, target-id/identity safety checks, a report with exact verdict line `**Verdict:** ` followed by `GREEN TO WRITE`, promoted evidence/status on Architecture `main`, and `sidecar/FLO_BURN.md` showing production as the only remaining burn.
 
 A safe blocked closeout requires zero unauthorized production writes plus durable evidence of the smallest exact blocker and next action.
 
