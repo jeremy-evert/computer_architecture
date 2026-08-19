@@ -1,130 +1,182 @@
-# Computer Architecture - Deployment Planning Board
+# Computer Architecture — Deployment Planning Board
 
-**Course:** COMSC-3013 Computer Architecture, Fall 2026
-**Repository:** `jeremy-evert/computer_architecture`
-**Source of truth:** Git
-**Current initiative:** 009 - Architecture launch readiness
-**Current stage:** d01-d04 accepted/promoted; d05 released
-**Next execution gate:** `sidecar/prompts/009_d_05_reconcile_savnac_fixed_point.md`
-**Recommended execution seat:** Architecture-local Luna via `sidecar/scripts/009_d_05_launch_savnac_reconcile_luna.sh`
+**Course:** COMSC-3013 Computer Architecture, Fall 2026  
+**Repository:** `jeremy-evert/computer_architecture`  
+**Source of truth:** Git  
+**Current initiative:** 009 — Architecture launch readiness  
+**Current stage:** Piper ship-prep complete; ready for credentialed Flo preflight  
+**Active burn:** `sidecar/FLO_BURN.md`  
+**Next command:** `./sidecar/launch_flo.sh`
 
 ## Mission
 
 Build and launch an online Computer Architecture course where students understand a computer as a connected, measurable system rather than a vocabulary list.
 
-**build the investigator -> build the machine -> open the machine -> stress the machine -> make the architecture decision -> wind down and reflect**
+**build the investigator → build the machine → open the machine → stress the machine → make the architecture decision → wind down and reflect**
 
-## Accepted current truth
+## Current desired-course truth
 
-The Fall 2026 Architecture-local source is consolidated on canonical `main` and current Course Foundry compiler validation is accepted.
+Accepted d03 source/compiler evidence remains the current student-facing Git truth. Piper compared accepted d03 source through the pre-capsule Architecture main and found only Sidecar/control/evidence changes after d03, not course-source changes.
 
-- Week 1 is consumed from shared semester-kickoff source.
-- Weeks 2-4 are authored Architecture-local source.
-- Weeks 5-14 are the authored technical Architecture runway.
-- Week 15 is asynchronous wind-down/professional pathway.
-- Week 16 is shared Farkle + Machine Learning and is not Checkpoint 4.
-- Week 17 is reflection/closure.
-- Machine Dossier checkpoints exist only Weeks 6, 9, and 14.
-- A6, A7, course evaluation, grading doctrine, and launch-source validator are present.
+The desired Fall 2026 course remains:
 
-Accepted d03 proves the current desired course:
-
-- 21 modules covering Weeks 1-17;
+- Week 1 from shared semester kickoff;
+- Weeks 2–4 Architecture-local launch/runway;
+- Weeks 5–14 authored technical Architecture runway;
+- Week 15 asynchronous wind-down/professional pathway;
+- Week 16 shared Farkle + Machine Learning, not Checkpoint 4;
+- Week 17 reflection/closure;
+- Machine Dossier checkpoints only Weeks 6, 9, and 14;
+- A6, A7, course evaluation, grading doctrine, and source validator present;
+- 21 modules;
 - 229 objects: 81 pages, 32 files, 116 assignments;
 - 11 desired assignment groups totaling 100%;
 - exactly five recurring groups with `drop_lowest=1`;
-- no graded recurring Week 16 work and no Week 16 checkpoint;
 - zero undeclared omissions;
-- zero unresolved `{{link:...}}` tokens;
-- Architecture tests 8/8 and deployment tests 8/8 passed.
+- zero unresolved `{{link:...}}` tokens.
 
-The current 11-group count is authoritative. Savnac also contains one unused zero-weight default `Assignments` group, yielding 12 live groups without changing the desired grading contract.
+Accepted d03 historically passed Architecture/source/compiler/deployment validation. Flo preflight must rerun current validation on a clean execution worksite before live mutation claims are accepted.
 
-## Accepted d04 Savnac re-baseline
+## Savnac truth
 
-Read-only Savnac course-8 inventory and guarded dry-run were accepted with verdict:
+Accepted d04 read-only Savnac course-8 evidence had verdict `EXPECTED_MATERIAL_DELTA` and showed:
 
-`EXPECTED_MATERIAL_DELTA`
-
-Live/desired structure agrees on:
-
-- course 8 identity: `Computer Architecture (COMSC-3013)`;
-- 21 modules in canonical order;
+- intended Architecture course `8`;
+- 21 canonical modules;
 - 229 module items: 81 pages, 32 files, 116 assignments;
-- all 116 assignments with no submitted submissions;
+- no submitted student work;
 - no module-local duplicate titles;
 - 11 desired weighted groups at 100% with correct drop rules;
-- only Test Student and Jeremy teacher enrollments.
+- only Test Student and Jeremy teacher enrollments;
+- dry-run `0 create / 7 update / 233 unchanged / 0 delete`.
 
-The accepted dry-run is exactly:
+The seven accepted updates were only:
+
+1. Week 02 — Week at a Glance;
+2. Week 03 — Week at a Glance;
+3. Week 04 — Week at a Glance;
+4. A6 — Professional Pathway (Week 14 Update);
+5. A6 — Professional Pathway (Week 15 Submission);
+6. Week 16 — Week at a Glance;
+7. Week 16 — Explain / Defend.
+
+No create, delete, prune, assignment-group change, kind change, topology change, or duplicate cleanup belonged to the accepted envelope.
+
+A prior d05 worker attempt on branch `golem/009-d05-savnac-fixed-point` stopped correctly before all external writes because its shared Course Foundry checkout had advanced/dirty state relative to the historical d04 pin. That branch is a **zero-write stop receipt**, not an accepted fixed point.
+
+Piper later proved the Course Foundry drift that triggered that stop did not alter Architecture compilation/Savnac machinery. Preflight therefore reasons from current semantic truth rather than demanding stale SHA equality.
+
+## Production machinery truth
+
+Piper promoted guarded Architecture production support to `jeremy-evert/course_foundry` main through:
+
+- `165f8f2a382e06ad7a44c856f44ba2806165437f` — runtime-locked Architecture production target;
+- `9c4493520e5db08e7784e884eaf59a4c483121c7` — Architecture production target-lock tests.
+
+Architecture now has **no default production Canvas id**. The generic production deployer requires explicit `--course-id` from fresh target-lock evidence, preserves the production-host guard and one-course allowlist, performs live Architecture identity checking before reconcile, defaults to no prune, and still requires `--confirm-live` for a push.
+
+The exact Fall 2026 SWOSU Canvas id remains intentionally **unknown until fresh live read-only discovery**. Historical ids are not proof.
+
+## Active execution surface
+
+The old d05 → d06 → d07 → d08 → 009e sequence remains design/provenance. Piper collapsed its remaining runtime intent into two Foreman jobs so Jeremy is not the message bus.
+
+| Burn | Status | Launcher | Outcome |
+|---|---|---|---|
+| Architecture preflight | **READY** | `./sidecar/launch_flo.sh` | current validation + Savnac fixed point + fresh SWOSU target/diff → `GREEN TO WRITE` |
+| Architecture production closeout | **HUMAN GATE** | `./sidecar/launch_flo.sh production` | bounded production reconcile + independent closeout + final green |
+
+Canonical jobs:
+
+- `sidecar/jobs/009_architecture_preflight_to_green_to_write.md`
+- `sidecar/jobs/009_architecture_production_closeout.md`
+
+Canonical Piper preparation receipt:
+
+- `sidecar/reports/009_piper_ready_to_ship_preparation.md`
+
+## Preflight boundary
+
+Plain launcher mode is allowed to:
+
+- re-establish current Git/compiler truth in clean/isolated worktrees;
+- repair proven Architecture/shared-tool defects;
+- reconcile only Savnac course `8` inside the accepted d04 body-update envelope;
+- prove two consecutive Savnac no-op dry-runs;
+- read SWOSU production Canvas;
+- freshly lock exact `COMSC-3013-1438` target identity;
+- produce and classify a fresh production semantic diff.
+
+Plain mode is **forbidden from writing SWOSU production Canvas**.
+
+A successful preflight report must be promoted to canonical `main` and contain exactly:
 
 ```text
-0 create / 7 update / 233 unchanged / 0 delete
+**Verdict:** `GREEN TO WRITE`
 ```
 
-The seven updates are:
+before production mode can consume authorization.
 
-1. Week 02 - Week at a Glance;
-2. Week 03 - Week at a Glance;
-3. Week 04 - Week at a Glance;
-4. A6 - Professional Pathway (Week 14 Update);
-5. A6 - Professional Pathway (Week 15 Submission);
-6. Week 16 - Week at a Glance;
-7. Week 16 - Explain / Defend.
+## Production boundary
 
-No create, delete, assignment-group change, kind change, duplicate collision, or prune action belongs to the accepted delta.
+Only a separate fresh:
 
-See:
+```bash
+./sidecar/launch_flo.sh production
+```
 
-- `sidecar/reports/009_d_04_rebaseline_savnac.md`
-- `sidecar/reports/009_d_04_foreman_acceptance.md`
-- `sidecar/runs/009_d_04_savnac_rebaseline_receipt.md`
+may convey human authorization for the bounded production write.
 
-## Initiative 009 launch path
+The launcher checks canonical `origin/main` for the exact accepted preflight verdict before it grants that authority to fresh Flo. Flo must then re-prove source/target/enrollment/submission/diff freshness before mutation.
 
-| Unit | Status | Purpose |
-|---|---|---|
-| 009_a | ACCEPTED | report current launch truth |
-| 009_b | ACCEPTED | map launch-ready end state |
-| 009_c | ACCEPTED | plan bounded route |
-| 009_d_01 | ACCEPTED / PROMOTED | restore canonical launch source |
-| 009_d_02 | ACCEPTED / PROMOTED | reconcile current status/navigation |
-| 009_d_03 | ACCEPTED / PROMOTED | validate current-main source + compiler |
-| 009_d_04 | ACCEPTED / PROMOTED | read-only Savnac re-baseline; material delta proven |
-| 009_d_05 | READY TO EXECUTE | reconcile exactly seven Savnac body updates and prove fixed point |
-| 009_d_06 | WAITING ON d05 | read-only production target lock + semantic diff |
-| 009_d_07 | HUMAN GATE | production write only after GREEN TO WRITE + fresh Jeremy authorization |
-| 009_d_08 | WAITING | independent production closeout |
-| 009_e | WAITING | final Foreman launch-readiness validation |
+The intended production command shape is:
 
-## d05 write boundary
+```bash
+python -m course_foundry.production_deploy push \
+  --course architecture \
+  --course-id <FRESHLY_LOCKED_ID> \
+  --prune-scope none \
+  --confirm-live
+```
 
-d05 is a guarded **non-production** Savnac write, not the production human gate.
+No force, guessed target, broader prune, other course, or unexplained destructive cleanup belongs to this authority.
 
-Before write, Luna must reproduce the accepted `0 / 7 / 233 / 0` dry-run with no drift. She may then update only existing Savnac course 8 and only the seven accepted bodies. Creates, deletes, prune, group changes, unexpected enrollment/submission state, or source/compiler drift stop the run before write.
+After write, Flo performs independent API readback and dispatches a fresh read-only closeout focus for the d08 student path. A closeout defect requiring another mutation stops; it does not silently consume the old authorization twice.
 
-After write, d05 must read back course 8 and produce two consecutive guarded no-op dry-runs.
+## Stop / partial-write posture
 
-## Remaining launch gates
+Canvas reconcile is not assumed transactional. If mutation becomes ambiguous:
 
-### Gate 1 - Savnac current fixed point
-Run d05. Accept only if current Savnac reaches zero create/update/delete on two consecutive post-write dry-runs.
+- stop new writes;
+- independently read the locked course back;
+- classify applied/absent/ambiguous desired changes;
+- retry only the exact same idempotent desired operation when evidence makes that safe;
+- otherwise stop with the smallest precise gate.
 
-### Gate 2 - Production target lock and semantic diff
-Run d06 read-only. Resolve the exact Fall 2026 `COMSC-3013-1438` production Canvas ID from live evidence. Never guess or reuse Savnac course id 8.
+Do not broad-delete/recreate as rollback.
 
-### Gate 3 - Production write
-Run d07 only after d06 returns `GREEN TO WRITE` and Jeremy gives fresh execution-time authorization.
+## Human decision surface
 
-### Gate 4 - Independent closeout
-Run d08 read-only, then `009_e` final Foreman validation.
+There is no Jeremy decision blocking preflight.
 
-## Named non-blocking yellows
+After Flo preflight returns and promotes `GREEN TO WRITE`, the intended remaining human decision is only fresh authorization for production. Operationally:
 
-Brandy lacks some optional/full laboratory capabilities; the committed required/fallback path is validated. Course Foundry has substantial pre-existing dirt and remains read-only during Architecture validation/write gates.
+```bash
+./sidecar/launch_flo.sh production
+```
 
-## Dispatch rule
+## READY TO SHIP criterion
 
-Use this board for current launch state and `sidecar/prompts/README.md` for bounded dispatch. Historical prompts/reports remain provenance, not the active queue.
+Piper may truthfully say **READY TO SHIP** only after evidence proves:
 
-**The next executable Architecture unit is `009_d_05_reconcile_savnac_fixed_point.md`.**
+- current course source/compiler/tests green;
+- Savnac fixed point;
+- fresh exact production target lock;
+- bounded understood production semantic diff;
+- production reconcile completed on only that target;
+- independent readback/fixed point passed;
+- independent student-path closeout passed;
+- final 009 validation says `GREEN — PRODUCTION DEPLOYED AND LAUNCH-CLOSED`;
+- no launch-relevant yellow is disguised as green.
+
+Until then, current status is **READY FOR FLO PREFLIGHT**.
