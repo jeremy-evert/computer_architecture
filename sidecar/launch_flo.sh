@@ -74,11 +74,16 @@ for repo in "$ARCH_ROOT" "$COURSE_FOUNDRY_DIR"; do
 done
 
 if [[ "$MODE" == "production" ]]; then
-  PREFLIGHT_REPORT="$ARCH_ROOT/sidecar/reports/009_flo_preflight_to_green_to_write.md"
-  [[ -r "$PREFLIGHT_REPORT" ]] \
-    || fail "production requires accepted preflight report: $PREFLIGHT_REPORT"
-  grep -q '^GREEN TO WRITE$\|`GREEN TO WRITE`' "$PREFLIGHT_REPORT" \
-    || fail "preflight report does not contain GREEN TO WRITE; production authorization cannot be consumed"
+  # The preflight Foreman may have promoted evidence from an isolated worktree,
+  # so inspect canonical remote main instead of trusting a possibly stale base checkout.
+  git -C "$ARCH_ROOT" fetch -q origin main \
+    || fail "could not fetch canonical Architecture main before production gate"
+  PREFLIGHT_REL="sidecar/reports/009_flo_preflight_to_green_to_write.md"
+  PREFLIGHT_TEXT="$(git -C "$ARCH_ROOT" show "origin/main:$PREFLIGHT_REL" 2>/dev/null || true)"
+  [[ -n "$PREFLIGHT_TEXT" ]] \
+    || fail "production requires promoted preflight report on origin/main: $PREFLIGHT_REL"
+  printf '%s\n' "$PREFLIGHT_TEXT" | grep -Fxq '**Verdict:** `GREEN TO WRITE`' \
+    || fail "canonical preflight verdict is not GREEN TO WRITE; production authorization cannot be consumed"
 fi
 
 cd "$ARCH_ROOT"
