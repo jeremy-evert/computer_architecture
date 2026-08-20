@@ -28,8 +28,11 @@ case "$MODE" in
   production)
     JOB_PROMPT="$ARCH_ROOT/sidecar/jobs/009_architecture_production_closeout.md"
     ;;
+  recovery)
+    JOB_PROMPT="$ARCH_ROOT/sidecar/jobs/009_architecture_canvas_recovery_rebuild.md"
+    ;;
   *)
-    fail "usage: ./sidecar/launch_flo.sh [production]"
+    fail "usage: ./sidecar/launch_flo.sh [production|recovery]"
     ;;
 esac
 
@@ -73,9 +76,11 @@ for repo in "$ARCH_ROOT" "$COURSE_FOUNDRY_DIR"; do
     || fail "unfinished rebase in $repo"
 done
 
-if [[ "$MODE" == "production" ]]; then
-  # The preflight Foreman may have promoted evidence from an isolated worktree,
-  # so inspect canonical remote main instead of trusting a possibly stale base checkout.
+if [[ "$MODE" == "production" || "$MODE" == "recovery" ]]; then
+  # Preflight evidence is the base proof for both bounded production modes.
+  # Recovery intentionally widens the old additive-only plan only through its
+  # own fresh inventory + explicit removal manifest, never by reusing the old
+  # semantic diff as deletion authority.
   git -C "$ARCH_ROOT" fetch -q origin main \
     || fail "could not fetch canonical Architecture main before production gate"
   PREFLIGHT_REL="sidecar/reports/009_flo_preflight_to_green_to_write.md"
@@ -97,8 +102,9 @@ export ARCH_FLO_MODE="$MODE"
 
 LAUNCH_UTC="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
 
-if [[ "$MODE" == "production" ]]; then
-  AUTHORITY_TEXT=$(cat <<EOF
+case "$MODE" in
+  production)
+    AUTHORITY_TEXT=$(cat <<EOF
 PRODUCTION AUTHORIZATION:
 - The human intentionally invoked ./sidecar/launch_flo.sh production at $LAUNCH_UTC.
 - That invocation is fresh explicit authorization ONLY for the bounded Computer Architecture production content/configuration write described in $JOB_PROMPT, and only after every job precondition/freshness gate passes.
@@ -106,15 +112,29 @@ PRODUCTION AUTHORIZATION:
 - Record this launcher timestamp/provenance in the production receipt and report.
 EOF
 )
-else
-  AUTHORITY_TEXT=$(cat <<EOF
+    ;;
+  recovery)
+    AUTHORITY_TEXT=$(cat <<EOF
+PRODUCTION RECOVERY AUTHORIZATION:
+- The human intentionally invoked ./sidecar/launch_flo.sh recovery at $LAUNCH_UTC.
+- This is fresh explicit authorization ONLY for the Computer Architecture recovery job in $JOB_PROMPT on the exact freshly verified Fall 2026 COMSC-3013-1438 course.
+- First inventory and classify the entire live course. No destructive action is authorized until an explicit object-level REMOVE manifest proves each target is legacy/wrong-course, outside desired state, and free of protected student submission/graded state.
+- Once that gate passes, this launch authorizes the bounded REMOVE manifest and then reconciliation of the current Git-backed Architecture desired state.
+- This does NOT authorize course publication, enrollment/section/cross-list/SIS changes, another course, deletion of UNKNOWN/PRESERVE_BLOCKED objects, or broad blind pruning/reset.
+- Record this launcher timestamp/provenance in the recovery receipt and report.
+EOF
+)
+    ;;
+  *)
+    AUTHORITY_TEXT=$(cat <<EOF
 PRODUCTION AUTHORIZATION:
 - NOT GRANTED in this launch.
 - SWOSU production Canvas is read-only for this entire shift.
 - Savnac course 8 may be reconciled only inside the bounded envelope in $JOB_PROMPT.
 EOF
 )
-fi
+    ;;
+esac
 
 STARTUP_PROMPT=$(cat <<EOF
 You are Flo, the fresh Claude Sonnet Foreman for exactly one Computer Architecture job.
@@ -164,11 +184,17 @@ echo ">>> Launching fresh Flo for Computer Architecture: $MODE"
 echo ">>> Job: $JOB_PROMPT"
 echo ">>> Worksite: $ARCH_ROOT"
 echo ">>> Launch UTC: $LAUNCH_UTC"
-if [[ "$MODE" == "production" ]]; then
-  echo ">>> SWOSU production authority: BOUNDED WRITE AUTHORIZED, subject to job freshness gates"
-else
-  echo ">>> SWOSU production authority: READ ONLY"
-fi
+case "$MODE" in
+  production)
+    echo ">>> SWOSU production authority: BOUNDED WRITE AUTHORIZED, subject to job freshness gates"
+    ;;
+  recovery)
+    echo ">>> SWOSU production authority: RECOVERY INVENTORY + BOUNDED LEGACY REMOVAL + DESIRED RECONCILE AUTHORIZED, subject to job gates"
+    ;;
+  *)
+    echo ">>> SWOSU production authority: READ ONLY"
+    ;;
+esac
 
 # No --continue/--resume flag is used. Every invocation creates a fresh Foreman
 # shift while preserving repository-local durable state and evidence.
