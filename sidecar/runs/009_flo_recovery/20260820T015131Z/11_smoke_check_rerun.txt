@@ -1,0 +1,14 @@
+workflow_state: unpublished default_view: modules
+home front_page: True
+home body clean: True
+modules: 21 all published: True
+  pos= 1 pub=True 'Monday: Survive This Semester'
+  pos= 2 pub=True 'Wednesday: Thrive In Your Degree'
+  pos= 3 pub=True 'Friday: Entering Your Career'
+  pos= 4 pub=True 'A07 — Advisor (Later)'
+  pos= 5 pub=True 'Success Foundations (Optional / Bonus)'
+  pos= 6 pub=True 'Computer Architecture Week 02 - AI Laboratory Training'
+  pos= 7 pub=True 'Computer Architecture Week 03 - Containers & Repeatability'
+  pos= 8 pub=True 'Computer Architecture Week 04 - Linux as a Machine Telescope'
+unpublished items: []
+sentinel hit in Week1/Week2 content: False

@@ -1,0 +1,12 @@
+file 6558950 locked= False hidden= False size= 87231 content-type= application/pdf
+  module item 1528045 pos= 4 pub= True title= Slides -- Monday: Survive This Semester
+  remaining ExternalUrl items in module: []
+file 6558951 locked= False hidden= False size= 70948 content-type= application/pdf
+  module item 1528046 pos= 8 pub= True title= Slides -- Wednesday: Thrive In Your Degree
+  remaining ExternalUrl items in module: []
+file 6558952 locked= False hidden= False size= 79459 content-type= application/pdf
+  module item 1528047 pos= 8 pub= True title= Slides -- Friday: Entering Your Career
+  remaining ExternalUrl items in module: []
+download check 6558950 302 text/html; charset=utf-8 0
+download check 6558951 302 text/html; charset=utf-8 0
+download check 6558952 302 text/html; charset=utf-8 0
