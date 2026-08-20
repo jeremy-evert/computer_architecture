@@ -1,0 +1,6 @@
+workflow_state: unpublished
+modules: 21 all published: True
+any ExternalUrl items remaining: False
+Monday slide File items: 1 ['Slides — Monday (PDF)']
+Wednesday slide File items: 1 ['Slides — Wednesday (PDF)']
+Friday slide File items: 1 ['Slides — Friday (PDF)']
