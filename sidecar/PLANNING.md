@@ -4,9 +4,9 @@
 **Repository:** `jeremy-evert/computer_architecture`  
 **Source of truth:** Git  
 **Current initiative:** 009 — Architecture launch readiness  
-**Current stage:** recovery launch prepared after direct production-shell inspection exposed legacy/wrong-course content  
+**Current stage:** recovery COMPLETE — course clean and loaded, `READY FOR PUBLISH DECISION`  
 **Active burn:** `sidecar/FLO_BURN.md`  
-**Next command:** `./sidecar/launch_flo.sh recovery`
+**Next human action:** Jeremy's own publish decision on course `75249` (not part of this job)
 
 ## Mission
 
@@ -86,7 +86,7 @@ Canonical launcher:
 | Burn | Status | Launcher | Outcome |
 |---|---|---|---|
 | Architecture preflight | **COMPLETE — `GREEN TO WRITE`** | `./sidecar/launch_flo.sh` | source/test truth + Savnac fixed point + fresh production target/diff |
-| Architecture Canvas recovery | **ACTIVE HUMAN GATE** | `./sidecar/launch_flo.sh recovery` | full inventory → safe legacy cleanup → desired reconcile → independent closeout |
+| Architecture Canvas recovery | **COMPLETE — `GREEN — CLEAN AND LOADED; READY FOR PUBLISH DECISION`** | `./sidecar/launch_flo.sh recovery` | full inventory → safe legacy cleanup → desired reconcile → independent closeout; see `sidecar/reports/009_flo_canvas_recovery_rebuild.md` |
 | Prior additive-only production closeout | **HELD / SUPERSEDED FOR CURRENT OWNER INTENT** | `./sidecar/launch_flo.sh production` | retained as provenance; do not use for recovery cleanup |
 
 ## Recovery authority and safety boundary

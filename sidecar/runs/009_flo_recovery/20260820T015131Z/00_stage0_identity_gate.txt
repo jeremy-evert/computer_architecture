@@ -1,0 +1,22 @@
+CANVAS_API_BASE_URL: https://swosu.instructure.com
+allowed_course_ids: frozenset({75249})
+self profile: 200 24406 Jeremy Paul Evert jeremy.evert@swosu.edu
+{
+  "id": 75249,
+  "name": "Fall 2026 Computer Architecture (COMSC-3013-1438)",
+  "course_code": "COMSC-3013-1438.2026FA",
+  "sis_course_id": "51160",
+  "workflow_state": "unpublished",
+  "term": null,
+  "default_view": "wiki",
+  "start_at": null,
+  "end_at": null
+}
+enrollment count: 7
+ - StudentEnrollment active 67832 McKenna Anthony
+ - StudentEnrollment active 81782 Jesus Bonilla
+ - StudentEnrollment active 38773 Calen R Mayer
+ - StudentEnrollment active 78397 Jacob Jeffrey Nachimson
+ - StudentEnrollment active 78812 Micah William Stringfield
+ - StudentEnrollment active 47733 Austin Wade Wilson
+ - TeacherEnrollment active 24406 Jeremy Paul Evert

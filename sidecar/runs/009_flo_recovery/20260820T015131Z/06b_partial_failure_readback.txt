@@ -1,0 +1,15 @@
+156858 Semester kickoff week weight= 5.0 rules= {}
+156859 AI Fluency / Monday Moment weight= 5.0 rules= {}
+156860 Professional Minds - Wednesday strand weight= 5.0 rules= {}
+156861 Professional Minds - Friday strand weight= 5.0 rules= {}
+156862 Weekly Architecture / investigation work weight= 30.0 rules= {}
+156863 Weekly Explain / Defend evidence receipt weight= 10.0 rules= {}
+156864 Machine Dossier checkpoints weight= 20.0 rules= {}
+156865 Final reflection weight= 8.0 rules= {}
+156866 Professional pathway - Week 14 update weight= 5.0 rules= {}
+156867 Professional pathway - Week 15 submission weight= 5.0 rules= {}
+156868 Course evaluation weight= 2.0 rules= {}
+apply_assignment_group_weights: True
+workflow_state: unpublished
+module count: 5 [218090, 218091, 218092, 218093, 218094]
+assignment count: 13

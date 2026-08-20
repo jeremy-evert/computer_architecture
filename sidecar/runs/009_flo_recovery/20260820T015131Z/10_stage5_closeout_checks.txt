@@ -1,0 +1,49 @@
+=== sentinel scan ===
+Kim Zachary -> 0
+kim.zachary@swosu.edu -> 0
+SWOSUCOMSC3013ZacharyFall2026 -> 0
+Zachary -> 0
+zybook -> 0
+zyBook -> 0
+
+workflow_state: unpublished
+default_view: modules
+enrollments identical (before vs final): True count: 7
+
+=== module order (published) ===
+ 1 pub=True  'Monday: Survive This Semester' items=5
+ 2 pub=True  'Wednesday: Thrive In Your Degree' items=9
+ 3 pub=True  'Friday: Entering Your Career' items=9
+ 4 pub=True  'A07 — Advisor (Later)' items=1
+ 5 pub=True  'Success Foundations (Optional / Bonus)' items=4
+ 6 pub=False 'Computer Architecture Week 02 - AI Laboratory Training' items=14
+ 7 pub=False 'Computer Architecture Week 03 - Containers & Repeatability' items=14
+ 8 pub=False 'Computer Architecture Week 04 - Linux as a Machine Telescope' items=14
+ 9 pub=False 'Computer Architecture Week 05 - Build the Machine' items=14
+10 pub=False 'Computer Architecture Week 06 - Bits Become Instructions' items=15
+11 pub=False 'Computer Architecture Week 07 - Crack Open the CPU' items=14
+12 pub=False 'Computer Architecture Week 08 - Make It Fast Without Breaking It' items=14
+13 pub=False 'Computer Architecture Week 09 - Follow the Program Down' items=10
+14 pub=False 'Computer Architecture Week 10 - Make the Memory Hierarchy Hurt' items=14
+15 pub=False 'Computer Architecture Week 11 - The Useful Lie of Memory' items=14
+16 pub=False 'Computer Architecture Week 12 - More Cores, More Problems' items=14
+17 pub=False 'Computer Architecture Week 13 - Different Machines for Different Work' items=14
+18 pub=False 'Computer Architecture Week 14 - Sit in the Architect's Chair' items=16
+19 pub=False 'Computer Architecture Week 15 - Thanksgiving Wind-Down' items=5
+20 pub=False 'Computer Architecture Week 16 - Farkle + Machine Learning: What Did the Compute Buy?' items=14
+21 pub=False 'Computer Architecture Week 17 - Reflection and Closure' items=4
+
+=== assignment groups weights ===
+'Semester kickoff week'                                 weight=5 drop_lowest=None
+'AI Fluency / Monday Moment'                            weight=5 drop_lowest=1
+'Professional Minds - Wednesday strand'                 weight=5 drop_lowest=1
+'Professional Minds - Friday strand'                    weight=5 drop_lowest=1
+'Weekly Architecture / investigation work'              weight=30 drop_lowest=1
+'Weekly Explain / Defend evidence receipt'              weight=10 drop_lowest=1
+'Machine Dossier checkpoints'                           weight=20 drop_lowest=None
+'Final reflection'                                      weight=8 drop_lowest=None
+'Professional pathway - Week 14 update'                 weight=5 drop_lowest=None
+'Professional pathway - Week 15 submission'             weight=5 drop_lowest=None
+'Course evaluation'                                     weight=2 drop_lowest=None
+TOTAL WEIGHT: 100.0
+groups with drop_lowest set: ['AI Fluency / Monday Moment', 'Professional Minds - Wednesday strand', 'Professional Minds - Friday strand', 'Weekly Architecture / investigation work', 'Weekly Explain / Defend evidence receipt'] count: 5

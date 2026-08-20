@@ -2,7 +2,26 @@
 
 This is the active executable burn list for Initiative 009.
 
-## Current status — recovery pivot
+## Current status — recovery COMPLETE
+
+**2026-08-20:** Flo's recovery shift inventoried the entire live production
+course, classified every object, executed the proven `REMOVE` manifest
+(legacy Kim Zachary / zyBooks content: 9 modules, 14 assignments, 1
+discussion topic, 1 assignment group, 3 files), replaced the wrong
+front-page/syllabus identity, repaired a narrow `imprint` reconcile defect
+it uncovered along the way (promoted to `main`), reconciled the current
+Git-backed Architecture desired state onto the cleaned course, and
+independently verified a fixed point. Course `75249` remains
+**unpublished**. Verdict: `GREEN — CLEAN AND LOADED; READY FOR PUBLISH
+DECISION`.
+
+Full evidence: `sidecar/runs/009_flo_recovery/20260820T015131Z/`
+Full report: `sidecar/reports/009_flo_canvas_recovery_rebuild.md`
+
+The next action is Jeremy's own separate publish decision — not part of
+this job.
+
+## Prior status — recovery pivot (superseded by the above)
 
 **2026-08-19:** Architecture preflight is complete and remains valuable base evidence. Flo proved current source/compiler truth, reconciled Savnac course 8 to fixed point, freshly locked the exact Fall 2026 SWOSU target as course `75249` / `COMSC-3013-1438`, and produced verdict `GREEN TO WRITE`.
 

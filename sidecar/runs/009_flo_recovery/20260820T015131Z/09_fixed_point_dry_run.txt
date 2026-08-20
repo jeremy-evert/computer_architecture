@@ -1,0 +1,4 @@
+Architecture production target identity check: course_id=75249, name='Fall 2026 Computer Architecture (COMSC-3013-1438)', course_code='COMSC-3013-1438.2026FA'
+Dry-run plan: course=75249 label='Computer Architecture'; 229 objects, 21 modules, 11 grading groups
+Reconcile summary: create=0, update=32, skip=208, delete=0
+Detail: Would reconcile Computer Architecture: 0 to create, 32 to update, 208 unchanged, 0 to delete.

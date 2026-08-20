@@ -1,0 +1,5 @@
+Architecture production target identity check: course_id=75249, name='Fall 2026 Computer Architecture (COMSC-3013-1438)', course_code='COMSC-3013-1438.2026FA'
+Live push plan: course=75249 label='Computer Architecture'; 229 objects, 21 modules, 11 grading groups
+Reconcile summary: create=225, update=6, skip=25, delete=0
+Detail: Reconciled Computer Architecture: 225 created, 6 updated, 25 unchanged, 0 deleted.
+Assignment-group self-check: 100% across 11 groups (100%).
