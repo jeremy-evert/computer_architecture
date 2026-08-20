@@ -4,9 +4,9 @@
 **Repository:** `jeremy-evert/computer_architecture`  
 **Source of truth:** Git  
 **Current initiative:** 009 — Architecture launch readiness  
-**Current stage:** Flo preflight complete — `GREEN TO WRITE`; only fresh production authorization remains  
+**Current stage:** recovery launch prepared after direct production-shell inspection exposed legacy/wrong-course content  
 **Active burn:** `sidecar/FLO_BURN.md`  
-**Next command:** `./sidecar/launch_flo.sh production` (after Jeremy's explicit fresh authorization)
+**Next command:** `./sidecar/launch_flo.sh recovery`
 
 ## Mission
 
@@ -16,9 +16,7 @@ Build and launch an online Computer Architecture course where students understan
 
 ## Current desired-course truth
 
-Accepted d03 source/compiler evidence remains the current student-facing Git truth. Piper compared accepted d03 source through the pre-capsule Architecture main and found only Sidecar/control/evidence changes after d03, not course-source changes.
-
-The desired Fall 2026 course remains:
+Accepted Architecture source remains the current student-facing Git truth. The desired Fall 2026 course remains:
 
 - Week 1 from shared semester kickoff;
 - Weeks 2–4 Architecture-local launch/runway;
@@ -35,163 +33,141 @@ The desired Fall 2026 course remains:
 - zero undeclared omissions;
 - zero unresolved `{{link:...}}` tokens.
 
-Accepted d03 historically passed Architecture/source/compiler/deployment validation. Flo preflight must rerun current validation on a clean execution worksite before live mutation claims are accepted.
+## Preflight truth — completed 2026-08-19
 
-## Savnac truth
+Flo independently re-proved current Architecture/Course Foundry readiness and promoted:
 
-Accepted d04 read-only Savnac course-8 evidence had verdict `EXPECTED_MATERIAL_DELTA` and showed:
+`sidecar/reports/009_flo_preflight_to_green_to_write.md`
 
-- intended Architecture course `8`;
-- 21 canonical modules;
-- 229 module items: 81 pages, 32 files, 116 assignments;
-- no submitted student work;
-- no module-local duplicate titles;
-- 11 desired weighted groups at 100% with correct drop rules;
-- only Test Student and Jeremy teacher enrollments;
-- dry-run `0 create / 7 update / 233 unchanged / 0 delete`.
+with verdict:
 
-The seven accepted updates were only:
+```text
+GREEN TO WRITE
+```
 
-1. Week 02 — Week at a Glance;
-2. Week 03 — Week at a Glance;
-3. Week 04 — Week at a Glance;
-4. A6 — Professional Pathway (Week 14 Update);
-5. A6 — Professional Pathway (Week 15 Submission);
-6. Week 16 — Week at a Glance;
-7. Week 16 — Explain / Defend.
+That preflight:
 
-No create, delete, prune, assignment-group change, kind change, topology change, or duplicate cleanup belonged to the accepted envelope.
+- reconciled Savnac course 8 to a proven two-run fixed point;
+- freshly discovered and locked the one Fall 2026 production target as Canvas course `75249`, `Fall 2026 Computer Architecture (COMSC-3013-1438)`;
+- proved Jeremy teacher authority;
+- observed the course as `unpublished`;
+- observed six real student enrollments and zero submissions on the then-live 27 assignments;
+- produced an additive desired-state dry-run of `225 create / 6 update / 25 unchanged / 0 delete`;
+- independently detected seven leftover legacy placeholder modules outside the desired-state plan.
 
-A prior d05 worker attempt on branch `golem/009-d05-savnac-fixed-point` stopped correctly before all external writes because its shared Course Foundry checkout had advanced/dirty state relative to the historical d04 pin. That branch is a **zero-write stop receipt**, not an accepted fixed point.
+The historical additive diff is evidence, not current mutation authority. The recovery job must freshly read the course again.
 
-Piper later proved the Course Foundry drift that triggered that stop did not alter Architecture compilation/Savnac machinery. Preflight therefore reasons from current semantic truth rather than demanding stale SHA equality.
+## Recovery pivot
 
-**2026-08-19 — Flo preflight closed this out.** Savnac course 8 was reconciled to the exact seven d04-accepted body updates under Jeremy's explicit authorization, independently read back, and proven at fixed point across two consecutive `0/0/0` dry-runs. See `sidecar/reports/009_flo_preflight_to_green_to_write.md`.
+A direct visual inspection of production course `75249` after preflight showed that the production shell still exposes legacy/wrong-course identity and instructions, including Kim Zachary content, rather than the intended Jeremy Evert Computer Architecture experience.
 
-## Production machinery truth
+That changes the launch task from a simple additive reconcile to a controlled recovery:
 
-Piper promoted guarded Architecture production support to `jeremy-evert/course_foundry` main through:
+1. inventory the entire production course;
+2. classify every live object;
+3. preserve a durable before-state snapshot;
+4. remove only proven legacy/wrong-course objects that are safe to remove;
+5. load/reconcile the current Git-backed desired Architecture state;
+6. independently verify the result;
+7. leave the course unpublished for a separate publish decision.
 
-- `165f8f2a382e06ad7a44c856f44ba2806165437f` — runtime-locked Architecture production target;
-- `9c4493520e5db08e7784e884eaf59a4c483121c7` — Architecture production target-lock tests.
+Canonical recovery job:
 
-Architecture now has **no default production Canvas id**. The generic production deployer requires explicit `--course-id` from fresh target-lock evidence, preserves the production-host guard and one-course allowlist, performs live Architecture identity checking before reconcile, defaults to no prune, and still requires `--confirm-live` for a push.
+`sidecar/jobs/009_architecture_canvas_recovery_rebuild.md`
 
-The exact Fall 2026 SWOSU Canvas id remains intentionally **unknown until fresh live read-only discovery**. Historical ids are not proof.
+Canonical launcher:
 
-**2026-08-19 — locked.** Flo preflight discovered the exact live target from
-Canvas API evidence (128 teacher courses filtered/converged, 8 historical
-decoys rejected by term): **course id `75249`**, `Fall 2026 Computer
-Architecture (COMSC-3013-1438)`, `workflow_state=unpublished`. The
-production dry-run against that id returned a bounded, fully classified,
-additive-only diff (`225 create / 6 update / 25 unchanged / 0 delete`; zero
-title collisions, zero deletes/prunes). Full evidence:
-`sidecar/reports/009_flo_preflight_to_green_to_write.md` and
-`sidecar/runs/009_flo_preflight/20260819T115719Z/`.
+```bash
+./sidecar/launch_flo.sh recovery
+```
 
 ## Active execution surface
 
-The old d05 → d06 → d07 → d08 → 009e sequence remains design/provenance. Piper collapsed its remaining runtime intent into two Foreman jobs so Jeremy is not the message bus.
-
 | Burn | Status | Launcher | Outcome |
 |---|---|---|---|
-| Architecture preflight | **COMPLETE — `GREEN TO WRITE`** | `./sidecar/launch_flo.sh` | current validation + Savnac fixed point + fresh SWOSU target/diff → `GREEN TO WRITE` |
-| Architecture production closeout | **HUMAN GATE — only remaining burn** | `./sidecar/launch_flo.sh production` | bounded production reconcile + independent closeout + final green |
+| Architecture preflight | **COMPLETE — `GREEN TO WRITE`** | `./sidecar/launch_flo.sh` | source/test truth + Savnac fixed point + fresh production target/diff |
+| Architecture Canvas recovery | **ACTIVE HUMAN GATE** | `./sidecar/launch_flo.sh recovery` | full inventory → safe legacy cleanup → desired reconcile → independent closeout |
+| Prior additive-only production closeout | **HELD / SUPERSEDED FOR CURRENT OWNER INTENT** | `./sidecar/launch_flo.sh production` | retained as provenance; do not use for recovery cleanup |
 
-Canonical jobs:
+## Recovery authority and safety boundary
 
-- `sidecar/jobs/009_architecture_preflight_to_green_to_write.md`
-- `sidecar/jobs/009_architecture_production_closeout.md`
-
-Canonical Piper preparation receipt:
-
-- `sidecar/reports/009_piper_ready_to_ship_preparation.md`
-
-## Preflight boundary
-
-Plain launcher mode is allowed to:
-
-- re-establish current Git/compiler truth in clean/isolated worktrees;
-- repair proven Architecture/shared-tool defects;
-- reconcile only Savnac course `8` inside the accepted d04 body-update envelope;
-- prove two consecutive Savnac no-op dry-runs;
-- read SWOSU production Canvas;
-- freshly lock exact `COMSC-3013-1438` target identity;
-- produce and classify a fresh production semantic diff.
-
-Plain mode is **forbidden from writing SWOSU production Canvas**.
-
-A successful preflight report must be promoted to canonical `main` and contain exactly:
-
-```text
-**Verdict:** `GREEN TO WRITE`
-```
-
-before production mode can consume authorization.
-
-## Production boundary
-
-Only a separate fresh:
+A fresh:
 
 ```bash
-./sidecar/launch_flo.sh production
+./sidecar/launch_flo.sh recovery
 ```
 
-may convey human authorization for the bounded production write.
+is explicit human authorization only for the recovery job on the exact freshly verified Fall 2026 Architecture course.
 
-The launcher checks canonical `origin/main` for the exact accepted preflight verdict before it grants that authority to fresh Flo. Flo must then re-prove source/target/enrollment/submission/diff freshness before mutation.
+Flo must first classify each live object as:
 
-The intended production command shape is:
+- `KEEP`
+- `REPLACE`
+- `REMOVE`
+- `PRESERVE_BLOCKED`
+- `UNKNOWN`
 
-```bash
-python -m course_foundry.production_deploy push \
-  --course architecture \
-  --course-id <FRESHLY_LOCKED_ID> \
-  --prune-scope none \
-  --confirm-live
-```
+No destructive action is authorized for `UNKNOWN` or `PRESERVE_BLOCKED` objects.
 
-No force, guessed target, broader prune, other course, or unexplained destructive cleanup belongs to this authority.
+The recovery launch authorizes destructive cleanup only for the explicit object-level `REMOVE` manifest after Flo proves each object:
 
-After write, Flo performs independent API readback and dispatches a fresh read-only closeout focus for the d08 student path. A closeout defect requiring another mutation stops; it does not silently consume the old authorization twice.
+- is legacy/wrong-course content;
+- is outside current desired Architecture state;
+- has no protected student submission or graded state;
+- is not required by a desired object.
 
-## Stop / partial-write posture
+Then Flo may reconcile the current Git-backed desired Architecture state using the guarded Course Foundry production machinery with the explicit freshly verified course id.
 
-Canvas reconcile is not assumed transactional. If mutation becomes ambiguous:
+The recovery job does **not** authorize:
 
-- stop new writes;
+- course publication;
+- another Canvas course;
+- guessed/replacement course ids;
+- blind reset or broad prune;
+- deletion of ambiguous/submitted/graded objects;
+- section, enrollment, cross-list, SIS, term, teacher, or student mutation;
+- other course/JTT work.
+
+## Student-state posture
+
+Students are already enrolled, so Canvas reconciliation is not treated as transactional.
+
+Before cleanup, Flo must refresh submission/graded-state evidence. If protected student state exists on an object proposed for deletion, preserve it and stop or downgrade to a bounded yellow rather than destroying it.
+
+If a mutation becomes ambiguous:
+
+- stop new destructive writes;
 - independently read the locked course back;
-- classify applied/absent/ambiguous desired changes;
-- retry only the exact same idempotent desired operation when evidence makes that safe;
+- classify applied/absent/ambiguous operations;
+- retry only the same explicit idempotent operation when evidence makes that safe;
 - otherwise stop with the smallest precise gate.
 
-Do not broad-delete/recreate as rollback.
+No broad delete/recreate rollback ritual.
+
+## Recovery completion criterion
+
+The recovery job is successful when evidence proves:
+
+- exact production target identity freshly verified;
+- full before-state inventory captured;
+- every live object classified;
+- only explicit safe legacy objects removed;
+- no protected student state destroyed;
+- current Architecture desired state reconciled;
+- final desired-state dry-run is at fixed point / no material delta;
+- no legacy Kim Zachary identity or obsolete zyBooks setup is reachable through the student path;
+- independent student-path closeout passes;
+- course remains unpublished;
+- final verdict is `GREEN — CLEAN AND LOADED; READY FOR PUBLISH DECISION`.
+
+A truthful bounded yellow or red is preferred to inventing green.
 
 ## Human decision surface
 
-There is no Jeremy decision blocking preflight.
-
-After Flo preflight returns and promotes `GREEN TO WRITE`, the intended remaining human decision is only fresh authorization for production. Operationally:
+The next intended human action is exactly:
 
 ```bash
-./sidecar/launch_flo.sh production
+./sidecar/launch_flo.sh recovery
 ```
 
-## READY TO SHIP criterion
-
-Piper may truthfully say **READY TO SHIP** only after evidence proves:
-
-- current course source/compiler/tests green;
-- Savnac fixed point;
-- fresh exact production target lock;
-- bounded understood production semantic diff;
-- production reconcile completed on only that target;
-- independent readback/fixed point passed;
-- independent student-path closeout passed;
-- final 009 validation says `GREEN — PRODUCTION DEPLOYED AND LAUNCH-CLOSED`;
-- no launch-relevant yellow is disguised as green.
-
-Preflight is now complete (`GREEN TO WRITE`, 2026-08-19); current status is
-**READY FOR PRODUCTION AUTHORIZATION** — the only remaining human action is
-Jeremy's fresh explicit authorization to run
-`./sidecar/launch_flo.sh production`.
+After launch, Jeremy is not the message bus. Flo owns bounded dispatch, evidence inspection, cleanup, desired-state reconcile, and closeout until DONE or a genuine stop condition.
