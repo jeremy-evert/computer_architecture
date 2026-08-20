@@ -1,0 +1,28 @@
+workflow_state: available
+default_view: modules
+enrollment count: 7
+ - TeacherEnrollment active 24406 Jeremy Paul Evert
+ - StudentEnrollment active 38773 Calen R Mayer
+ - StudentEnrollment active 47733 Austin Wade Wilson
+ - StudentEnrollment active 67832 McKenna Anthony
+ - StudentEnrollment active 78397 Jacob Jeffrey Nachimson
+ - StudentEnrollment active 78812 Micah William Stringfield
+ - StudentEnrollment active 81782 Jesus Bonilla
+
+Week 1 modules published: True ['Monday: Survive This Semester', 'Wednesday: Thrive In Your Degree', 'Friday: Entering Your Career', 'A07 — Advisor (Later)', 'Success Foundations (Optional / Bonus)']
+Week 2 module published: True Computer Architecture Week 02 - AI Laboratory Training
+Week 1 items all published: True
+Week 2 items all published: True
+
+=== kickoff slide files ===
+Monday item pub= True title= Slides — Monday (PDF) file locked= False hidden= False size= 87231
+   downloaded 0 bytes, starts with %PDF: False
+Wednesday item pub= True title= Slides — Wednesday (PDF) file locked= False hidden= False size= 70948
+   downloaded 0 bytes, starts with %PDF: False
+Friday item pub= True title= Slides — Friday (PDF) file locked= False hidden= False size= 79459
+   downloaded 0 bytes, starts with %PDF: False
+
+=== corrected full-redirect download check ===
+Monday status= 200 bytes= 87231 starts_with_%PDF= True
+Wednesday status= 200 bytes= 70948 starts_with_%PDF= True
+Friday status= 200 bytes= 79459 starts_with_%PDF= True

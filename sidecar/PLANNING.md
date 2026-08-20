@@ -4,9 +4,9 @@
 **Repository:** `jeremy-evert/computer_architecture`  
 **Source of truth:** Git  
 **Current initiative:** 009 — Architecture launch readiness  
-**Current stage:** recovery COMPLETE — course clean and loaded, `READY FOR PUBLISH DECISION`  
+**Current stage:** PUBLISHED — course `75249` is live (`workflow_state=available`) as of 2026-08-20, post-publish verification passed  
 **Active burn:** `sidecar/FLO_BURN.md`  
-**Next human action:** Jeremy's own publish decision on course `75249` (not part of this job)
+**Next human action:** none required; monitor as students begin using the course
 
 ## Mission
 

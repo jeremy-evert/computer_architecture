@@ -1,0 +1,3 @@
+before workflow_state: unpublished
+before enrollment count: 7
+update_course(event=offer) status: 200 -> workflow_state: available
