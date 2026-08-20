@@ -1,0 +1,13 @@
+
+PASS  workflow_state=available
+PASS  course_id/code match
+PASS  default_view=modules
+PASS  enrollment count/identities unchanged
+PASS  all 21 modules published
+PASS  Week 1 items all published
+PASS  Week 2 items all published
+PASS  no obvious unpublished student-facing items Week1/2
+PASS  kickoff PDFs resolve + download
+PASS  no legacy sentinels
+
+OVERALL: PASS
