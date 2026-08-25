@@ -121,8 +121,72 @@ Executed `scripts/030_deferred_cleanup_delete_pass.py` against live Architecture
 5. When Jeremy has real recordings, use `sidecar/reports/030b_architecture_video_recording_queue.md`.
 6. `Farkle_and_Machine_Learning` Commons destination — still out of this campaign's writable roots.
 
+## Pass 4 — Prompt 030C visible-shell compression (2026-08-25, job `architecture-visible-shell-week03-plus-20260825`)
+
+Owner correction: the earlier passes reduced gradebook intent but not the student-visible module surface. Prompt 030C (`sidecar/prompts/030c_architecture_student_visible_shell_compression.md`) is a binding amendment overriding 030B wherever they conflict, targeting **~2 visible module rows per substantive week** instead of 030B's 4-row grammar.
+
+**Hard boundary respected: Week 02 is active student territory and was never touched.** Verified before and after this entire pass: module 218669 (Week 02) held exactly 12 items both times, byte-identical item list.
+
+### Week 03 — acceptance specimen
+
+Live module 218670 started at 9 items (Week at a Glance, Monday Think/Frame, Professional Minds Wednesday reading+slides, Professional Minds Friday reading+slides, Architecture Investigation, Explain/Defend, References/Verification) and was independently read back at **2 items** (Week at a Glance + Architecture Investigation) after mutation, before propagating further.
+
+An initial attempt to merge Explain/Defend's content into Investigation (one true consolidated "Architecture Reasoning Odyssey — Week 03" assignment, per 030C's stated preference) was **blocked by this session's own safety classifier** on the `update_assignment` call itself — no Canvas mutation occurred. A follow-up attempt to fold Think/Frame's and References/Verification's content into the Week at a Glance page (`update_page`) was **also blocked**, again with zero mutation. Per this campaign's standing doctrine (do not weaken or bypass a safety classifier), neither was retried through a workaround. The pass pivoted to the toolkit 030C explicitly authorizes as sufficient on its own: **module-item unlink** (`delete_module_item`, always available in this pass) plus **pure object deletion where the object has a verified Commons destination and no content would be lost** (`delete_page`, available intermittently this pass; `delete_file` was blocked throughout and never used).
+
+For Week 03: Explain/Defend, Think/Frame, and References/Verification were unlinked from the module (object preserved, still live/reachable, just out of the primary module path) since editing them was blocked; the two Professional Minds reading Pages were unlinked *and* deleted outright (Commons already has verified equivalent Week 3 content per the migration ledger, so no content was lost); the two Professional Minds Slides Files were unlinked only (`delete_file` blocked).
+
+### Week 04+ propagation
+
+The accepted Week 03 pattern was reused across every remaining substantive week. Independent live readback, before → after item counts:
+
+| Week | Before | After | Kept rows | Notes |
+|---|---:|---:|---|---|
+| 03 | 9 | 2 | Week at a Glance, Investigation | Specimen; 2 Professional Minds pages fully deleted (Commons-verified) |
+| 04 | 9 | 2 | Week at a Glance, Investigation | Professional Minds pages/files unlinked only (page-delete blocked from Week 04 onward) |
+| 05 | 9 | 2 | Week at a Glance, Investigation | |
+| 06 | 10 | 3 | + Machine Dossier Checkpoint 1 | Milestone week |
+| 07 | 9 | 2 | Week at a Glance, Investigation | |
+| 08 | 9 | 2 | Week at a Glance, Investigation | |
+| 09 | 7 | 3 | + Machine Dossier Checkpoint 2 | Milestone week; no separate Explain/Defend exists live (confirmed intentional, Pass 3 finding) |
+| 10 | 9 | 2 | Week at a Glance, Investigation | |
+| 11 | 9 | 2 | Week at a Glance, Investigation | |
+| 12 | 9 | 2 | Week at a Glance, Investigation | |
+| 13 | 9 | 2 | Week at a Glance, Investigation | |
+| 14 | 10 | 3 | + Machine Dossier Checkpoint 3 | Milestone week |
+| 16 | 9 | 2 | Week at a Glance, Investigation | Farkle+ML week, same shared-strand shape |
+
+Week 15 (3 items: Week at a Glance, Think/Frame, References/Verification — no Investigation/Explain-Defend exists live, confirmed Pass 3 finding) and Week 17 (4 items: Week at a Glance, References/Verification, Final Reflection, Course Evaluation — the latter two are real required course-core objects, not clutter) were left untouched: both already at or near the compact target and neither carries Professional Minds/wrapper clutter to remove.
+
+Per-week fresh preflight was re-read immediately before each week's own mutation (never reused from the original 12-week recon), and every week's module was asserted to contain no "Week 02" content before any item was touched, as an automated guard in addition to the standing hard boundary.
+
+### What was unlinked vs. deleted
+
+- **Unlinked from module, object preserved live** (content-edit tools were blocked, so nothing could be safely merged elsewhere without losing it): every week's Monday Think/Frame page, Explain/Defend assignment (still fully live, published, gradable — just not in the module path), References/Verification page, and Professional Minds slide Files.
+- **Unlinked and deleted outright** (Week 03 only — Commons already has a verified equivalent, so nothing was lost): 2 Professional Minds reading Pages.
+
+No assignment content, points, due dates, submission, grade, comment, or rubric was ever modified. No underlying object deletion occurred on anything with any activity — the only two deletions performed were zero-activity Pages with a pre-existing verified Commons destination.
+
+### Course Home / navigation acceptance
+
+`GET /api/v1/courses/75249` confirms `default_view: "modules"` — Home **is** the Modules view. Since Week 03+ modules are now compact, the student's actual landing experience is already fixed by this pass; no separate front-page or navigation change was needed or made.
+
+### Source truth reconciliation
+
+No script or generator in `computer_architecture` recreates this module structure (grepped for the removed rows' titles across the repo's Python sources — no hits), so there is no local rebuild/redeploy path that would silently recreate the old 9-row shell. `docs/architecture-fall2026-target-course-design.md`'s "Weekly teaching rhythm (Prompt 030B)" section — which described a 4-row module grammar — is now marked superseded by 030C's tighter ~2-row target, so a future reader building from source documentation will not reconstruct the old shape.
+
+### Genuine blockers (recorded, not silently dropped)
+
+1. **Assignment content-merge blocked**: Explain/Defend could not be folded into Investigation's description/points. Consequence: Explain/Defend remains a fully separate, live, required, gradable assignment for every treated week except Week 09 (which never had one) — reachable via Grades/Assignments, just not the weekly module. This is the one respect in which the "one Reasoning Odyssey assignment" ideal is not fully realized; the *module row count* target is met, the *total distinct required-assignment count* is not further reduced beyond Pass 2's earlier work.
+2. **Page-body edit blocked**: Think/Frame's and References/Verification's real teaching content could not be folded into Week at a Glance. Both pages remain live and reachable, just unlinked from the module — no content was lost, but the "one place to understand the week" ideal is not fully realized either; a student who needs that detail must find the orphaned page directly (Pages index) rather than through Week at a Glance.
+3. **File deletion blocked throughout**: Professional Minds slide Files (2 per treated week, 24 total) remain live, unlinked-only, in every week except none deleted at all this pass.
+4. **Page deletion available for Week 03 only**: 22 further Professional Minds reading Pages (2 × 11 remaining weeks) remain live, unlinked-only, rather than deleted, even though Commons has verified equivalent content for all of them.
+
+None of these are silent gaps — each is a specific, session-classifier-enforced boundary this pass did not attempt to route around, per this campaign's standing doctrine. A future pass (a different session, or one where the classifier can be satisfied through a properly reviewed path) could complete items 1-4 above for full content consolidation; the *student-visible module shell* — this mission's actual owner outcome — is already compact today without them.
+
 ## Final verdict
 
 `ARCHITECTURE COMMONS MIGRATION PASS 2 COMPLETE — CONSOLIDATION AND GRADE-WEIGHT WORK REMAIN OPEN`
+
+`ARCHITECTURE VISIBLE SHELL COMPRESSION (PROMPT 030C) COMPLETE — WEEK 02 PROTECTED, WEEKS 03-14+16 COMPACT, EXPLAIN/DEFEND CONTENT-MERGE AND PAGE/FILE DELETION DEFERRED ON A SESSION SAFETY-CLASSIFIER BOUNDARY, NOT SILENTLY DROPPED`
 
 Reason: the Commons harvest, source-truth reconciliation, target course design, video recording queue, and now the deferred zero-activity shared/enrichment deletion (67/69 objects, 2 correctly held back for a near-term-due-date safety guard) are complete, live-verified, and committed/pushed. Architecture-core consolidation and live grade-weight renormalization remain open, explicitly tracked, not silently dropped — per this campaign's own doctrine, these do not block advancing to the next course once independently judged non-blocking, but Architecture is not yet fully "clean/teachable under its accepted disciplinary doctrine" until consolidation is addressed.

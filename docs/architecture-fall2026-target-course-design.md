@@ -53,9 +53,11 @@ Keep the existing Week 17 final reflection (currently `assignments/A7-final-refl
 
 Semester Kickoff, AI Fluency, Professional Minds Wednesday/Friday, Professional Pathway, Farkle+ML finale, and the standalone Weekly Explain/Defend and Machine Dossier checkpoint *categories* (folded into the Reasoning Odyssey objects above) leave the required Architecture grade per Prompt 030A. Course evaluation (2%, institutional) is retained as an ungraded/pass-through Canvas object outside the three academic categories, consistent with how SWOSU course evaluations are typically handled institution-wide — this is a small, deliberate, academically-justified exception, not a fourth grading category.
 
-## Weekly teaching rhythm (Prompt 030B)
+## Weekly teaching rhythm (Prompt 030B) — SUPERSEDED module-count target, see Prompt 030C below
 
-Module grammar per substantive week (2–16):
+**Status (Prompt 030C, 2026-08-25):** Prompt 030C is a binding amendment that wins wherever it conflicts with 030B. The 4-item module grammar below (Monday/Wednesday/Odyssey/Friday) is **no longer the live target module count** — 030C tightens the normal weekly module-item count to approximately **two** (Week at a Glance + the one graded Reasoning Odyssey assignment; milestone weeks 6/9/14 may carry a third row for the Machine Dossier Checkpoint). Monday/Wednesday/Friday teaching content is folded into the Week at a Glance page rather than earning its own separate module row — see `sidecar/reports/030_architecture_to_optional_commons_end_first_migration.md`'s Pass 4 section for the executed live result. The table below is preserved as 030B's original historical intent, not the current target.
+
+Module grammar per substantive week (2–16), per Prompt 030B (historical):
 
 1. **Monday — Teach It** (page/media placeholder; teaching content, not graded)
 2. **Wednesday — How I Would Do It** (page/media placeholder; teaching content, not graded)

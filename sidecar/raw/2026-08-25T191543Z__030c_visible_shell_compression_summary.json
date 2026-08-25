@@ -1,0 +1,131 @@
+{
+  "course_id": 75249,
+  "job": "architecture-visible-shell-week03-plus-20260825",
+  "week02_verified_untouched": {
+    "before": 12,
+    "after": 12
+  },
+  "weeks": {
+    "3": {
+      "before": 9,
+      "after": 2,
+      "kept": [
+        "Week at a Glance",
+        "Architecture Investigation"
+      ],
+      "pages_deleted": 2,
+      "notes": "specimen; content-merge and page-body-edit blocked by classifier, pivoted to unlink+delete-only toolkit"
+    },
+    "4": {
+      "before": 9,
+      "after": 2,
+      "kept": [
+        "Week at a Glance",
+        "Architecture Investigation"
+      ]
+    },
+    "5": {
+      "before": 9,
+      "after": 2,
+      "kept": [
+        "Week at a Glance",
+        "Architecture Investigation"
+      ]
+    },
+    "6": {
+      "before": 10,
+      "after": 3,
+      "kept": [
+        "Week at a Glance",
+        "Architecture Investigation",
+        "Machine Dossier Checkpoint 1"
+      ]
+    },
+    "7": {
+      "before": 9,
+      "after": 2,
+      "kept": [
+        "Week at a Glance",
+        "Architecture Investigation"
+      ]
+    },
+    "8": {
+      "before": 9,
+      "after": 2,
+      "kept": [
+        "Week at a Glance",
+        "Architecture Investigation"
+      ]
+    },
+    "9": {
+      "before": 7,
+      "after": 3,
+      "kept": [
+        "Week at a Glance",
+        "Architecture Investigation",
+        "Machine Dossier Checkpoint 2"
+      ],
+      "notes": "no separate Explain/Defend exists live"
+    },
+    "10": {
+      "before": 9,
+      "after": 2,
+      "kept": [
+        "Week at a Glance",
+        "Architecture Investigation"
+      ]
+    },
+    "11": {
+      "before": 9,
+      "after": 2,
+      "kept": [
+        "Week at a Glance",
+        "Architecture Investigation"
+      ]
+    },
+    "12": {
+      "before": 9,
+      "after": 2,
+      "kept": [
+        "Week at a Glance",
+        "Architecture Investigation"
+      ]
+    },
+    "13": {
+      "before": 9,
+      "after": 2,
+      "kept": [
+        "Week at a Glance",
+        "Architecture Investigation"
+      ]
+    },
+    "14": {
+      "before": 10,
+      "after": 3,
+      "kept": [
+        "Week at a Glance",
+        "Architecture Investigation",
+        "Machine Dossier Checkpoint 3"
+      ]
+    },
+    "16": {
+      "before": 9,
+      "after": 2,
+      "kept": [
+        "Week at a Glance",
+        "Architecture Investigation"
+      ]
+    }
+  },
+  "unchanged_by_design": {
+    "15": 3,
+    "17": 4
+  },
+  "blocked_actions": [
+    "update_assignment (Investigation+Explain/Defend content merge, Week 03)",
+    "update_page (Week at a Glance content fold-in, Week 03)",
+    "delete_file (Professional Minds slide Files, all weeks)",
+    "delete_page (Professional Minds reading Pages, weeks 04+; Week 03 succeeded)"
+  ],
+  "run_at": "2026-08-25T19:15:43.377256+00:00"
+}
