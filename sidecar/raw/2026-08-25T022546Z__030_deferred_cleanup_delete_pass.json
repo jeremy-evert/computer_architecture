@@ -1,0 +1,561 @@
+{
+  "run_at": "2026-08-25T02:23:47.372319Z",
+  "dry_run": false,
+  "course_id": 75249,
+  "recon_count": 115,
+  "candidates_matched": 69,
+  "actions": [
+    {
+      "id": 913184,
+      "name": "AI Fluency Week 04 - Decompose the Task",
+      "cls": "Week 4 shared-strand",
+      "result": "DELETE_UNVERIFIED",
+      "delete_status": 200,
+      "readback_workflow_state": "READBACK_ERROR:Canvas API error 404 for https://swosu.instructure.com/api/v1/courses/75249/assignments/913184?include%5B%5D=rubric: The specified resource does not exist."
+    },
+    {
+      "id": 913191,
+      "name": "AI Fluency Week 05 - Student Activity \u2014 Select the Right Model",
+      "cls": "Week 5 shared-strand",
+      "result": "DELETE_UNVERIFIED",
+      "delete_status": 200,
+      "readback_workflow_state": "READBACK_ERROR:Canvas API error 404 for https://swosu.instructure.com/api/v1/courses/75249/assignments/913191?include%5B%5D=rubric: The specified resource does not exist."
+    },
+    {
+      "id": 913198,
+      "name": "AI Fluency Week 06 - Engineer the Prompt",
+      "cls": "Week 6 shared-strand",
+      "result": "DELETE_UNVERIFIED",
+      "delete_status": 200,
+      "readback_workflow_state": "READBACK_ERROR:Canvas API error 404 for https://swosu.instructure.com/api/v1/courses/75249/assignments/913198?include%5B%5D=rubric: The specified resource does not exist."
+    },
+    {
+      "id": 913206,
+      "name": "AI Fluency Week 07 - Research and Retrieve",
+      "cls": "Week 7 shared-strand",
+      "result": "DELETE_UNVERIFIED",
+      "delete_status": 200,
+      "readback_workflow_state": "READBACK_ERROR:Canvas API error 404 for https://swosu.instructure.com/api/v1/courses/75249/assignments/913206?include%5B%5D=rubric: The specified resource does not exist."
+    },
+    {
+      "id": 913213,
+      "name": "AI Fluency Week 08 - Reason",
+      "cls": "Week 8 shared-strand",
+      "result": "DELETE_UNVERIFIED",
+      "delete_status": 200,
+      "readback_workflow_state": "READBACK_ERROR:Canvas API error 404 for https://swosu.instructure.com/api/v1/courses/75249/assignments/913213?include%5B%5D=rubric: The specified resource does not exist."
+    },
+    {
+      "id": 913220,
+      "name": "AI Fluency Week 09 - Generate",
+      "cls": "Week 9 shared-strand",
+      "result": "DELETE_UNVERIFIED",
+      "delete_status": 200,
+      "readback_workflow_state": "READBACK_ERROR:Canvas API error 404 for https://swosu.instructure.com/api/v1/courses/75249/assignments/913220?include%5B%5D=rubric: The specified resource does not exist."
+    },
+    {
+      "id": 913225,
+      "name": "AI Fluency Week 10 - Critique",
+      "cls": "Week 10 shared-strand",
+      "result": "DELETE_UNVERIFIED",
+      "delete_status": 200,
+      "readback_workflow_state": "READBACK_ERROR:Canvas API error 404 for https://swosu.instructure.com/api/v1/courses/75249/assignments/913225?include%5B%5D=rubric: The specified resource does not exist."
+    },
+    {
+      "id": 913232,
+      "name": "AI Fluency Week 11 - Verify",
+      "cls": "Week 11 shared-strand",
+      "result": "DELETE_UNVERIFIED",
+      "delete_status": 200,
+      "readback_workflow_state": "READBACK_ERROR:Canvas API error 404 for https://swosu.instructure.com/api/v1/courses/75249/assignments/913232?include%5B%5D=rubric: The specified resource does not exist."
+    },
+    {
+      "id": 913239,
+      "name": "AI Fluency Week 12 - Revise",
+      "cls": "Week 12 shared-strand",
+      "result": "DELETE_UNVERIFIED",
+      "delete_status": 200,
+      "readback_workflow_state": "READBACK_ERROR:Canvas API error 404 for https://swosu.instructure.com/api/v1/courses/75249/assignments/913239?include%5B%5D=rubric: The specified resource does not exist."
+    },
+    {
+      "id": 913246,
+      "name": "AI Fluency Week 13 - Decide",
+      "cls": "Week 13 shared-strand",
+      "result": "DELETE_UNVERIFIED",
+      "delete_status": 200,
+      "readback_workflow_state": "READBACK_ERROR:Canvas API error 404 for https://swosu.instructure.com/api/v1/courses/75249/assignments/913246?include%5B%5D=rubric: The specified resource does not exist."
+    },
+    {
+      "id": 913253,
+      "name": "AI Fluency Week 14 - Automate",
+      "cls": "Week 14 shared-strand",
+      "result": "DELETE_UNVERIFIED",
+      "delete_status": 200,
+      "readback_workflow_state": "READBACK_ERROR:Canvas API error 404 for https://swosu.instructure.com/api/v1/courses/75249/assignments/913253?include%5B%5D=rubric: The specified resource does not exist."
+    },
+    {
+      "id": 913262,
+      "name": "AI Fluency Week 15 - Measure",
+      "cls": "Week 15 shared-strand",
+      "result": "DELETE_UNVERIFIED",
+      "delete_status": 200,
+      "readback_workflow_state": "READBACK_ERROR:Canvas API error 404 for https://swosu.instructure.com/api/v1/courses/75249/assignments/913262?include%5B%5D=rubric: The specified resource does not exist."
+    },
+    {
+      "id": 913264,
+      "name": "AI Fluency Week 16 - Reflect and Improve",
+      "cls": "Week 16 shared-strand",
+      "result": "DELETE_UNVERIFIED",
+      "delete_status": 200,
+      "readback_workflow_state": "READBACK_ERROR:Canvas API error 404 for https://swosu.instructure.com/api/v1/courses/75249/assignments/913264?include%5B%5D=rubric: The specified resource does not exist."
+    },
+    {
+      "id": 913171,
+      "name": "Professional Minds Wednesday - Reading Reflection",
+      "cls": "Professional Minds (recurring)",
+      "due_at": "2026-08-26T13:00:00Z",
+      "result": "SKIP_NEAR_TERM_DUE"
+    },
+    {
+      "id": 913172,
+      "name": "Professional Minds Wednesday - Slides Reflection",
+      "cls": "Professional Minds (recurring)",
+      "result": "DELETE_UNVERIFIED",
+      "delete_status": 200,
+      "readback_workflow_state": "READBACK_ERROR:Canvas API error 404 for https://swosu.instructure.com/api/v1/courses/75249/assignments/913172?include%5B%5D=rubric: The specified resource does not exist."
+    },
+    {
+      "id": 913178,
+      "name": "Professional Minds Wednesday - Reading Reflection",
+      "cls": "Professional Minds (recurring)",
+      "result": "DELETE_UNVERIFIED",
+      "delete_status": 200,
+      "readback_workflow_state": "READBACK_ERROR:Canvas API error 404 for https://swosu.instructure.com/api/v1/courses/75249/assignments/913178?include%5B%5D=rubric: The specified resource does not exist."
+    },
+    {
+      "id": 913179,
+      "name": "Professional Minds Wednesday - Slides Reflection",
+      "cls": "Professional Minds (recurring)",
+      "result": "DELETE_UNVERIFIED",
+      "delete_status": 200,
+      "readback_workflow_state": "READBACK_ERROR:Canvas API error 404 for https://swosu.instructure.com/api/v1/courses/75249/assignments/913179?include%5B%5D=rubric: The specified resource does not exist."
+    },
+    {
+      "id": 913185,
+      "name": "Professional Minds Wednesday - Reading Reflection",
+      "cls": "Professional Minds (recurring)",
+      "result": "DELETE_UNVERIFIED",
+      "delete_status": 200,
+      "readback_workflow_state": "READBACK_ERROR:Canvas API error 404 for https://swosu.instructure.com/api/v1/courses/75249/assignments/913185?include%5B%5D=rubric: The specified resource does not exist."
+    },
+    {
+      "id": 913186,
+      "name": "Professional Minds Wednesday - Slides Reflection",
+      "cls": "Professional Minds (recurring)",
+      "result": "DELETE_UNVERIFIED",
+      "delete_status": 200,
+      "readback_workflow_state": "READBACK_ERROR:Canvas API error 404 for https://swosu.instructure.com/api/v1/courses/75249/assignments/913186?include%5B%5D=rubric: The specified resource does not exist."
+    },
+    {
+      "id": 913192,
+      "name": "Professional Minds Wednesday - Reading Reflection",
+      "cls": "Professional Minds (recurring)",
+      "result": "DELETE_UNVERIFIED",
+      "delete_status": 200,
+      "readback_workflow_state": "READBACK_ERROR:Canvas API error 404 for https://swosu.instructure.com/api/v1/courses/75249/assignments/913192?include%5B%5D=rubric: The specified resource does not exist."
+    },
+    {
+      "id": 913193,
+      "name": "Professional Minds Wednesday - Slides Reflection",
+      "cls": "Professional Minds (recurring)",
+      "result": "DELETE_UNVERIFIED",
+      "delete_status": 200,
+      "readback_workflow_state": "READBACK_ERROR:Canvas API error 404 for https://swosu.instructure.com/api/v1/courses/75249/assignments/913193?include%5B%5D=rubric: The specified resource does not exist."
+    },
+    {
+      "id": 913199,
+      "name": "Professional Minds Wednesday - Reading Reflection",
+      "cls": "Professional Minds (recurring)",
+      "result": "DELETE_UNVERIFIED",
+      "delete_status": 200,
+      "readback_workflow_state": "READBACK_ERROR:Canvas API error 404 for https://swosu.instructure.com/api/v1/courses/75249/assignments/913199?include%5B%5D=rubric: The specified resource does not exist."
+    },
+    {
+      "id": 913200,
+      "name": "Professional Minds Wednesday - Slides Reflection",
+      "cls": "Professional Minds (recurring)",
+      "result": "DELETE_UNVERIFIED",
+      "delete_status": 200,
+      "readback_workflow_state": "READBACK_ERROR:Canvas API error 404 for https://swosu.instructure.com/api/v1/courses/75249/assignments/913200?include%5B%5D=rubric: The specified resource does not exist."
+    },
+    {
+      "id": 913207,
+      "name": "Professional Minds Wednesday - Reading Reflection",
+      "cls": "Professional Minds (recurring)",
+      "result": "DELETE_UNVERIFIED",
+      "delete_status": 200,
+      "readback_workflow_state": "READBACK_ERROR:Canvas API error 404 for https://swosu.instructure.com/api/v1/courses/75249/assignments/913207?include%5B%5D=rubric: The specified resource does not exist."
+    },
+    {
+      "id": 913208,
+      "name": "Professional Minds Wednesday - Slides Reflection",
+      "cls": "Professional Minds (recurring)",
+      "result": "DELETE_UNVERIFIED",
+      "delete_status": 200,
+      "readback_workflow_state": "READBACK_ERROR:Canvas API error 404 for https://swosu.instructure.com/api/v1/courses/75249/assignments/913208?include%5B%5D=rubric: The specified resource does not exist."
+    },
+    {
+      "id": 913214,
+      "name": "Professional Minds Wednesday - Reading Reflection",
+      "cls": "Professional Minds (recurring)",
+      "result": "DELETE_UNVERIFIED",
+      "delete_status": 200,
+      "readback_workflow_state": "READBACK_ERROR:Canvas API error 404 for https://swosu.instructure.com/api/v1/courses/75249/assignments/913214?include%5B%5D=rubric: The specified resource does not exist."
+    },
+    {
+      "id": 913215,
+      "name": "Professional Minds Wednesday - Slides Reflection",
+      "cls": "Professional Minds (recurring)",
+      "result": "DELETE_UNVERIFIED",
+      "delete_status": 200,
+      "readback_workflow_state": "READBACK_ERROR:Canvas API error 404 for https://swosu.instructure.com/api/v1/courses/75249/assignments/913215?include%5B%5D=rubric: The specified resource does not exist."
+    },
+    {
+      "id": 913221,
+      "name": "Professional Minds Wednesday - Reading Reflection",
+      "cls": "Professional Minds (recurring)",
+      "result": "DELETE_UNVERIFIED",
+      "delete_status": 200,
+      "readback_workflow_state": "READBACK_ERROR:Canvas API error 404 for https://swosu.instructure.com/api/v1/courses/75249/assignments/913221?include%5B%5D=rubric: The specified resource does not exist."
+    },
+    {
+      "id": 913222,
+      "name": "Professional Minds Wednesday - Slides Reflection",
+      "cls": "Professional Minds (recurring)",
+      "result": "DELETE_UNVERIFIED",
+      "delete_status": 200,
+      "readback_workflow_state": "READBACK_ERROR:Canvas API error 404 for https://swosu.instructure.com/api/v1/courses/75249/assignments/913222?include%5B%5D=rubric: The specified resource does not exist."
+    },
+    {
+      "id": 913226,
+      "name": "Professional Minds Wednesday - Reading Reflection",
+      "cls": "Professional Minds (recurring)",
+      "result": "DELETE_UNVERIFIED",
+      "delete_status": 200,
+      "readback_workflow_state": "READBACK_ERROR:Canvas API error 404 for https://swosu.instructure.com/api/v1/courses/75249/assignments/913226?include%5B%5D=rubric: The specified resource does not exist."
+    },
+    {
+      "id": 913227,
+      "name": "Professional Minds Wednesday - Slides Reflection",
+      "cls": "Professional Minds (recurring)",
+      "result": "DELETE_UNVERIFIED",
+      "delete_status": 200,
+      "readback_workflow_state": "READBACK_ERROR:Canvas API error 404 for https://swosu.instructure.com/api/v1/courses/75249/assignments/913227?include%5B%5D=rubric: The specified resource does not exist."
+    },
+    {
+      "id": 913233,
+      "name": "Professional Minds Wednesday - Reading Reflection",
+      "cls": "Professional Minds (recurring)",
+      "result": "DELETE_UNVERIFIED",
+      "delete_status": 200,
+      "readback_workflow_state": "READBACK_ERROR:Canvas API error 404 for https://swosu.instructure.com/api/v1/courses/75249/assignments/913233?include%5B%5D=rubric: The specified resource does not exist."
+    },
+    {
+      "id": 913234,
+      "name": "Professional Minds Wednesday - Slides Reflection",
+      "cls": "Professional Minds (recurring)",
+      "result": "DELETE_UNVERIFIED",
+      "delete_status": 200,
+      "readback_workflow_state": "READBACK_ERROR:Canvas API error 404 for https://swosu.instructure.com/api/v1/courses/75249/assignments/913234?include%5B%5D=rubric: The specified resource does not exist."
+    },
+    {
+      "id": 913240,
+      "name": "Professional Minds Wednesday - Reading Reflection",
+      "cls": "Professional Minds (recurring)",
+      "result": "DELETE_UNVERIFIED",
+      "delete_status": 200,
+      "readback_workflow_state": "READBACK_ERROR:Canvas API error 404 for https://swosu.instructure.com/api/v1/courses/75249/assignments/913240?include%5B%5D=rubric: The specified resource does not exist."
+    },
+    {
+      "id": 913241,
+      "name": "Professional Minds Wednesday - Slides Reflection",
+      "cls": "Professional Minds (recurring)",
+      "result": "DELETE_UNVERIFIED",
+      "delete_status": 200,
+      "readback_workflow_state": "READBACK_ERROR:Canvas API error 404 for https://swosu.instructure.com/api/v1/courses/75249/assignments/913241?include%5B%5D=rubric: The specified resource does not exist."
+    },
+    {
+      "id": 913247,
+      "name": "Professional Minds Wednesday - Reading Reflection",
+      "cls": "Professional Minds (recurring)",
+      "result": "DELETE_UNVERIFIED",
+      "delete_status": 200,
+      "readback_workflow_state": "READBACK_ERROR:Canvas API error 404 for https://swosu.instructure.com/api/v1/courses/75249/assignments/913247?include%5B%5D=rubric: The specified resource does not exist."
+    },
+    {
+      "id": 913248,
+      "name": "Professional Minds Wednesday - Slides Reflection",
+      "cls": "Professional Minds (recurring)",
+      "result": "DELETE_UNVERIFIED",
+      "delete_status": 200,
+      "readback_workflow_state": "READBACK_ERROR:Canvas API error 404 for https://swosu.instructure.com/api/v1/courses/75249/assignments/913248?include%5B%5D=rubric: The specified resource does not exist."
+    },
+    {
+      "id": 913254,
+      "name": "Professional Minds Wednesday - Reading Reflection",
+      "cls": "Professional Minds (recurring)",
+      "result": "DELETE_UNVERIFIED",
+      "delete_status": 200,
+      "readback_workflow_state": "READBACK_ERROR:Canvas API error 404 for https://swosu.instructure.com/api/v1/courses/75249/assignments/913254?include%5B%5D=rubric: The specified resource does not exist."
+    },
+    {
+      "id": 913255,
+      "name": "Professional Minds Wednesday - Slides Reflection",
+      "cls": "Professional Minds (recurring)",
+      "result": "DELETE_UNVERIFIED",
+      "delete_status": 200,
+      "readback_workflow_state": "READBACK_ERROR:Canvas API error 404 for https://swosu.instructure.com/api/v1/courses/75249/assignments/913255?include%5B%5D=rubric: The specified resource does not exist."
+    },
+    {
+      "id": 913265,
+      "name": "Professional Minds Wednesday - Reading Reflection",
+      "cls": "Professional Minds (recurring)",
+      "result": "DELETE_UNVERIFIED",
+      "delete_status": 200,
+      "readback_workflow_state": "READBACK_ERROR:Canvas API error 404 for https://swosu.instructure.com/api/v1/courses/75249/assignments/913265?include%5B%5D=rubric: The specified resource does not exist."
+    },
+    {
+      "id": 913266,
+      "name": "Professional Minds Wednesday - Slides Reflection",
+      "cls": "Professional Minds (recurring)",
+      "result": "DELETE_UNVERIFIED",
+      "delete_status": 200,
+      "readback_workflow_state": "READBACK_ERROR:Canvas API error 404 for https://swosu.instructure.com/api/v1/courses/75249/assignments/913266?include%5B%5D=rubric: The specified resource does not exist."
+    },
+    {
+      "id": 913173,
+      "name": "Professional Minds Friday - Reading Reflection",
+      "cls": "Professional Minds (recurring)",
+      "due_at": "2026-08-28T13:00:00Z",
+      "result": "SKIP_NEAR_TERM_DUE"
+    },
+    {
+      "id": 913174,
+      "name": "Professional Minds Friday - Slides Reflection",
+      "cls": "Professional Minds (recurring)",
+      "result": "DELETE_UNVERIFIED",
+      "delete_status": 200,
+      "readback_workflow_state": "READBACK_ERROR:Canvas API error 404 for https://swosu.instructure.com/api/v1/courses/75249/assignments/913174?include%5B%5D=rubric: The specified resource does not exist."
+    },
+    {
+      "id": 913180,
+      "name": "Professional Minds Friday - Reading Reflection",
+      "cls": "Professional Minds (recurring)",
+      "result": "DELETE_UNVERIFIED",
+      "delete_status": 200,
+      "readback_workflow_state": "READBACK_ERROR:Canvas API error 404 for https://swosu.instructure.com/api/v1/courses/75249/assignments/913180?include%5B%5D=rubric: The specified resource does not exist."
+    },
+    {
+      "id": 913181,
+      "name": "Professional Minds Friday - Slides Reflection",
+      "cls": "Professional Minds (recurring)",
+      "result": "DELETE_UNVERIFIED",
+      "delete_status": 200,
+      "readback_workflow_state": "READBACK_ERROR:Canvas API error 404 for https://swosu.instructure.com/api/v1/courses/75249/assignments/913181?include%5B%5D=rubric: The specified resource does not exist."
+    },
+    {
+      "id": 913187,
+      "name": "Professional Minds Friday - Reading Reflection",
+      "cls": "Professional Minds (recurring)",
+      "result": "DELETE_UNVERIFIED",
+      "delete_status": 200,
+      "readback_workflow_state": "READBACK_ERROR:Canvas API error 404 for https://swosu.instructure.com/api/v1/courses/75249/assignments/913187?include%5B%5D=rubric: The specified resource does not exist."
+    },
+    {
+      "id": 913188,
+      "name": "Professional Minds Friday - Slides Reflection",
+      "cls": "Professional Minds (recurring)",
+      "result": "DELETE_UNVERIFIED",
+      "delete_status": 200,
+      "readback_workflow_state": "READBACK_ERROR:Canvas API error 404 for https://swosu.instructure.com/api/v1/courses/75249/assignments/913188?include%5B%5D=rubric: The specified resource does not exist."
+    },
+    {
+      "id": 913194,
+      "name": "Professional Minds Friday - Reading Reflection",
+      "cls": "Professional Minds (recurring)",
+      "result": "DELETE_UNVERIFIED",
+      "delete_status": 200,
+      "readback_workflow_state": "READBACK_ERROR:Canvas API error 404 for https://swosu.instructure.com/api/v1/courses/75249/assignments/913194?include%5B%5D=rubric: The specified resource does not exist."
+    },
+    {
+      "id": 913195,
+      "name": "Professional Minds Friday - Slides Reflection",
+      "cls": "Professional Minds (recurring)",
+      "result": "DELETE_UNVERIFIED",
+      "delete_status": 200,
+      "readback_workflow_state": "READBACK_ERROR:Canvas API error 404 for https://swosu.instructure.com/api/v1/courses/75249/assignments/913195?include%5B%5D=rubric: The specified resource does not exist."
+    },
+    {
+      "id": 913201,
+      "name": "Professional Minds Friday - Reading Reflection",
+      "cls": "Professional Minds (recurring)",
+      "result": "DELETE_UNVERIFIED",
+      "delete_status": 200,
+      "readback_workflow_state": "READBACK_ERROR:Canvas API error 404 for https://swosu.instructure.com/api/v1/courses/75249/assignments/913201?include%5B%5D=rubric: The specified resource does not exist."
+    },
+    {
+      "id": 913202,
+      "name": "Professional Minds Friday - Slides Reflection",
+      "cls": "Professional Minds (recurring)",
+      "result": "DELETE_UNVERIFIED",
+      "delete_status": 200,
+      "readback_workflow_state": "READBACK_ERROR:Canvas API error 404 for https://swosu.instructure.com/api/v1/courses/75249/assignments/913202?include%5B%5D=rubric: The specified resource does not exist."
+    },
+    {
+      "id": 913209,
+      "name": "Professional Minds Friday - Reading Reflection",
+      "cls": "Professional Minds (recurring)",
+      "result": "DELETE_UNVERIFIED",
+      "delete_status": 200,
+      "readback_workflow_state": "READBACK_ERROR:Canvas API error 404 for https://swosu.instructure.com/api/v1/courses/75249/assignments/913209?include%5B%5D=rubric: The specified resource does not exist."
+    },
+    {
+      "id": 913210,
+      "name": "Professional Minds Friday - Slides Reflection",
+      "cls": "Professional Minds (recurring)",
+      "result": "DELETE_UNVERIFIED",
+      "delete_status": 200,
+      "readback_workflow_state": "READBACK_ERROR:Canvas API error 404 for https://swosu.instructure.com/api/v1/courses/75249/assignments/913210?include%5B%5D=rubric: The specified resource does not exist."
+    },
+    {
+      "id": 913216,
+      "name": "Professional Minds Friday - Reading Reflection",
+      "cls": "Professional Minds (recurring)",
+      "result": "DELETE_UNVERIFIED",
+      "delete_status": 200,
+      "readback_workflow_state": "READBACK_ERROR:Canvas API error 404 for https://swosu.instructure.com/api/v1/courses/75249/assignments/913216?include%5B%5D=rubric: The specified resource does not exist."
+    },
+    {
+      "id": 913217,
+      "name": "Professional Minds Friday - Slides Reflection",
+      "cls": "Professional Minds (recurring)",
+      "result": "DELETE_UNVERIFIED",
+      "delete_status": 200,
+      "readback_workflow_state": "READBACK_ERROR:Canvas API error 404 for https://swosu.instructure.com/api/v1/courses/75249/assignments/913217?include%5B%5D=rubric: The specified resource does not exist."
+    },
+    {
+      "id": 913228,
+      "name": "Professional Minds Friday - Reading Reflection",
+      "cls": "Professional Minds (recurring)",
+      "result": "DELETE_UNVERIFIED",
+      "delete_status": 200,
+      "readback_workflow_state": "READBACK_ERROR:Canvas API error 404 for https://swosu.instructure.com/api/v1/courses/75249/assignments/913228?include%5B%5D=rubric: The specified resource does not exist."
+    },
+    {
+      "id": 913229,
+      "name": "Professional Minds Friday - Slides Reflection",
+      "cls": "Professional Minds (recurring)",
+      "result": "DELETE_UNVERIFIED",
+      "delete_status": 200,
+      "readback_workflow_state": "READBACK_ERROR:Canvas API error 404 for https://swosu.instructure.com/api/v1/courses/75249/assignments/913229?include%5B%5D=rubric: The specified resource does not exist."
+    },
+    {
+      "id": 913235,
+      "name": "Professional Minds Friday - Reading Reflection",
+      "cls": "Professional Minds (recurring)",
+      "result": "DELETE_UNVERIFIED",
+      "delete_status": 200,
+      "readback_workflow_state": "READBACK_ERROR:Canvas API error 404 for https://swosu.instructure.com/api/v1/courses/75249/assignments/913235?include%5B%5D=rubric: The specified resource does not exist."
+    },
+    {
+      "id": 913236,
+      "name": "Professional Minds Friday - Slides Reflection",
+      "cls": "Professional Minds (recurring)",
+      "result": "DELETE_UNVERIFIED",
+      "delete_status": 200,
+      "readback_workflow_state": "READBACK_ERROR:Canvas API error 404 for https://swosu.instructure.com/api/v1/courses/75249/assignments/913236?include%5B%5D=rubric: The specified resource does not exist."
+    },
+    {
+      "id": 913242,
+      "name": "Professional Minds Friday - Reading Reflection",
+      "cls": "Professional Minds (recurring)",
+      "result": "DELETE_UNVERIFIED",
+      "delete_status": 200,
+      "readback_workflow_state": "READBACK_ERROR:Canvas API error 404 for https://swosu.instructure.com/api/v1/courses/75249/assignments/913242?include%5B%5D=rubric: The specified resource does not exist."
+    },
+    {
+      "id": 913243,
+      "name": "Professional Minds Friday - Slides Reflection",
+      "cls": "Professional Minds (recurring)",
+      "result": "DELETE_UNVERIFIED",
+      "delete_status": 200,
+      "readback_workflow_state": "READBACK_ERROR:Canvas API error 404 for https://swosu.instructure.com/api/v1/courses/75249/assignments/913243?include%5B%5D=rubric: The specified resource does not exist."
+    },
+    {
+      "id": 913249,
+      "name": "Professional Minds Friday - Reading Reflection",
+      "cls": "Professional Minds (recurring)",
+      "result": "DELETE_UNVERIFIED",
+      "delete_status": 200,
+      "readback_workflow_state": "READBACK_ERROR:Canvas API error 404 for https://swosu.instructure.com/api/v1/courses/75249/assignments/913249?include%5B%5D=rubric: The specified resource does not exist."
+    },
+    {
+      "id": 913250,
+      "name": "Professional Minds Friday - Slides Reflection",
+      "cls": "Professional Minds (recurring)",
+      "result": "DELETE_UNVERIFIED",
+      "delete_status": 200,
+      "readback_workflow_state": "READBACK_ERROR:Canvas API error 404 for https://swosu.instructure.com/api/v1/courses/75249/assignments/913250?include%5B%5D=rubric: The specified resource does not exist."
+    },
+    {
+      "id": 913256,
+      "name": "Professional Minds Friday - Reading Reflection",
+      "cls": "Professional Minds (recurring)",
+      "result": "DELETE_UNVERIFIED",
+      "delete_status": 200,
+      "readback_workflow_state": "READBACK_ERROR:Canvas API error 404 for https://swosu.instructure.com/api/v1/courses/75249/assignments/913256?include%5B%5D=rubric: The specified resource does not exist."
+    },
+    {
+      "id": 913257,
+      "name": "Professional Minds Friday - Slides Reflection",
+      "cls": "Professional Minds (recurring)",
+      "result": "DELETE_UNVERIFIED",
+      "delete_status": 200,
+      "readback_workflow_state": "READBACK_ERROR:Canvas API error 404 for https://swosu.instructure.com/api/v1/courses/75249/assignments/913257?include%5B%5D=rubric: The specified resource does not exist."
+    },
+    {
+      "id": 913267,
+      "name": "Professional Minds Friday - Reading Reflection",
+      "cls": "Professional Minds (recurring)",
+      "result": "DELETE_UNVERIFIED",
+      "delete_status": 200,
+      "readback_workflow_state": "READBACK_ERROR:Canvas API error 404 for https://swosu.instructure.com/api/v1/courses/75249/assignments/913267?include%5B%5D=rubric: The specified resource does not exist."
+    },
+    {
+      "id": 913268,
+      "name": "Professional Minds Friday - Slides Reflection",
+      "cls": "Professional Minds (recurring)",
+      "result": "DELETE_UNVERIFIED",
+      "delete_status": 200,
+      "readback_workflow_state": "READBACK_ERROR:Canvas API error 404 for https://swosu.instructure.com/api/v1/courses/75249/assignments/913268?include%5B%5D=rubric: The specified resource does not exist."
+    },
+    {
+      "id": 913261,
+      "name": "A6 - Professional Pathway (Week 14 Update)",
+      "cls": "A6 Professional Pathway",
+      "result": "DELETE_UNVERIFIED",
+      "delete_status": 200,
+      "readback_workflow_state": "READBACK_ERROR:Canvas API error 404 for https://swosu.instructure.com/api/v1/courses/75249/assignments/913261?include%5B%5D=rubric: The specified resource does not exist."
+    },
+    {
+      "id": 913263,
+      "name": "A6 - Professional Pathway (Week 15 Submission)",
+      "cls": "A6 Professional Pathway",
+      "result": "DELETE_UNVERIFIED",
+      "delete_status": 200,
+      "readback_workflow_state": "READBACK_ERROR:Canvas API error 404 for https://swosu.instructure.com/api/v1/courses/75249/assignments/913263?include%5B%5D=rubric: The specified resource does not exist."
+    }
+  ],
+  "deleted": 0,
+  "skipped": 2
+}

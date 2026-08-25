@@ -1,0 +1,101 @@
+{
+  "run_at": "2026-08-25T02:17:43.172800Z",
+  "dry_run": true,
+  "course_id": 75249,
+  "recon_count": 115,
+  "candidates_matched": 15,
+  "actions": [
+    {
+      "id": 913184,
+      "name": "AI Fluency Week 04 - Decompose the Task",
+      "cls": "Week 4 shared-strand",
+      "result": "WOULD_DELETE"
+    },
+    {
+      "id": 913191,
+      "name": "AI Fluency Week 05 - Student Activity \u2014 Select the Right Model",
+      "cls": "Week 5 shared-strand",
+      "result": "WOULD_DELETE"
+    },
+    {
+      "id": 913198,
+      "name": "AI Fluency Week 06 - Engineer the Prompt",
+      "cls": "Week 6 shared-strand",
+      "result": "WOULD_DELETE"
+    },
+    {
+      "id": 913206,
+      "name": "AI Fluency Week 07 - Research and Retrieve",
+      "cls": "Week 7 shared-strand",
+      "result": "WOULD_DELETE"
+    },
+    {
+      "id": 913213,
+      "name": "AI Fluency Week 08 - Reason",
+      "cls": "Week 8 shared-strand",
+      "result": "WOULD_DELETE"
+    },
+    {
+      "id": 913220,
+      "name": "AI Fluency Week 09 - Generate",
+      "cls": "Week 9 shared-strand",
+      "result": "WOULD_DELETE"
+    },
+    {
+      "id": 913225,
+      "name": "AI Fluency Week 10 - Critique",
+      "cls": "Week 10 shared-strand",
+      "result": "WOULD_DELETE"
+    },
+    {
+      "id": 913232,
+      "name": "AI Fluency Week 11 - Verify",
+      "cls": "Week 11 shared-strand",
+      "result": "WOULD_DELETE"
+    },
+    {
+      "id": 913239,
+      "name": "AI Fluency Week 12 - Revise",
+      "cls": "Week 12 shared-strand",
+      "result": "WOULD_DELETE"
+    },
+    {
+      "id": 913246,
+      "name": "AI Fluency Week 13 - Decide",
+      "cls": "Week 13 shared-strand",
+      "result": "WOULD_DELETE"
+    },
+    {
+      "id": 913253,
+      "name": "AI Fluency Week 14 - Automate",
+      "cls": "Week 14 shared-strand",
+      "result": "WOULD_DELETE"
+    },
+    {
+      "id": 913262,
+      "name": "AI Fluency Week 15 - Measure",
+      "cls": "Week 15 shared-strand",
+      "result": "WOULD_DELETE"
+    },
+    {
+      "id": 913264,
+      "name": "AI Fluency Week 16 - Reflect and Improve",
+      "cls": "Week 16 shared-strand",
+      "result": "WOULD_DELETE"
+    },
+    {
+      "id": 913261,
+      "name": "A6 - Professional Pathway (Week 14 Update)",
+      "cls": "A6 Professional Pathway",
+      "result": "WOULD_DELETE"
+    },
+    {
+      "id": 913263,
+      "name": "A6 - Professional Pathway (Week 15 Submission)",
+      "cls": "A6 Professional Pathway",
+      "result": "WOULD_DELETE"
+    }
+  ],
+  "deleted": 0,
+  "skipped": 0
+}

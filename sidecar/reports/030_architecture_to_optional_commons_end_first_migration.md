@@ -94,8 +94,35 @@ Live weight renormalization is separately and independently deferred per Prompt 
 
 None reached that require stopping — the tooling gate above is recorded and deferred per Prompt 030's own explicit instruction for exactly this situation, not a stop condition. No student activity appeared on any object slated for removal that would have required an unplanned preserve decision; no classification ambiguity was found between Architecture-core and shared/enrichment for any item encountered.
 
+## Pass 2 — deferred deletion executed (2026-08-25, campaign `fall-2026-four-course-cleanup-chain-gun-20260824-v2`)
+
+The Harbor DELETE gap recorded above as the blocker is resolved: `harbor.client.CanvasClient.delete()` plus `delete_page`/`delete_assignment`/`delete_module`/`delete_module_item`/`delete_file` already exist and are tested (`python -m pytest tests/test_harbor_delete_objects.py` — 5/5 green, confirmed live at this pass's start) — the repair predates this session, so no new Harbor change was needed or made this pass.
+
+Executed `scripts/030_deferred_cleanup_delete_pass.py` against live Architecture (75249):
+
+- Fresh recon: 115 live assignments (Report 030's Pass 1 baseline was 116; the 1-object delta predates this pass and was not investigated further — it does not affect this pass's own per-object safety gates, which always re-read the exact live target immediately before any decision).
+- 69 candidates matched by live name/points/due-date against this report's/ the ledger's already-recorded zero-activity dispositions (no re-classification): AI Fluency Weeks 4–16 (13), Professional Minds Wednesday/Friday all weeks (54 — the live objects carry no week number in their own title, confirmed by direct inspection, so the per-object live zero-activity check is the operative safety gate, not the name), A6 Professional Pathway (2, both Week 14/15 objects).
+- Per-object gate immediately before each delete decision: fresh `get_assignment` + `get_all_submissions`; a **near-term due-date guard** (skip if due within 7 days, added this pass after finding 2 candidates due within 48 hours/4 days — zero submissions on file does not rule out a student actively composing a response right now, so those are held back rather than raced) — this is a new, tighter invariant than Pass 1 defined and is recorded here for reuse by CS1/DSCT/CS2.
+- **67 deleted, 2 deferred** (ids 913171, 913173 — Professional Minds Wed/Fri Reading Reflection, due 2026-08-26/28 — re-run after due date passes with a fresh check).
+- Immediate readback per object: Canvas returns 404 on a GET for a just-deleted assignment (not a 200 with `workflow_state: deleted`) — confirmed live this pass; the script's first version mislabeled all 67 as `DELETE_UNVERIFIED` on this basis and has been corrected in place (`CanvasApiError` 404 on readback is now treated as the positive proof of deletion it actually is). The mutation itself was correct throughout — only the script's own verification logic had the bug, caught and fixed before this report was written, not after being trusted uninspected.
+- Independent confirmation beyond the script's own log: `list_assignments(75249)` re-read after the run returned exactly 48 (115 − 67), an exact match with zero unexplained delta.
+- Module/navigation dependency sweep: all 21 modules' items checked against the 67 deleted ids — zero dangling references found, nothing to repair.
+- Full receipt: `sidecar/raw/2026-08-25T022546Z__030_deferred_cleanup_delete_pass.json`.
+- Ledger updated: `computing_commons/docs/migration-ledger-computer-architecture-fall-2026.md` (Pass 2 section + per-row disposition updates).
+
+**Not yet executed:** Architecture-core consolidation (Weekly Investigation/Explain-Defend/Dossier checkpoints toward the 15/75/10 target) and live grade-weight renormalization remain open — see "Remaining Architecture cleanup" below, now updated.
+
+## Remaining Architecture cleanup (updated after Pass 2)
+
+1. ~~Add a reviewed `delete()` verb to harbor~~ — already present, confirmed working this pass.
+2. ~~Re-run the deferred zero-activity shared/enrichment removal list~~ — done this pass (67/69; 2 deferred for near-term due dates, to re-run after 2026-08-28).
+3. **Architecture-core consolidation** (30 zero-activity objects: 14 Weekly Investigation + 13 Explain/Defend + 3 Dossier checkpoints) toward the target design's ~15 Reasoning Odyssey objects — this is content-merge judgment, not a mechanical delete, and needs its own Terra/Luna/Sol pass per `docs/architecture-fall2026-target-course-design.md`'s week-by-week mapping before any consolidation delete.
+4. Compute a real before/after grade-impact preview for the 6 currently enrolled students before touching any live assignment-group weight.
+5. When Jeremy has real recordings, use `sidecar/reports/030b_architecture_video_recording_queue.md`.
+6. `Farkle_and_Machine_Learning` Commons destination — still out of this campaign's writable roots.
+
 ## Final verdict
 
-`ARCHITECTURE COMMONS MIGRATION PARTIAL — SAFE WORK COMPLETE / DEFERRED ITEMS RECORDED`
+`ARCHITECTURE COMMONS MIGRATION PASS 2 COMPLETE — CONSOLIDATION AND GRADE-WEIGHT WORK REMAIN OPEN`
 
-Reason: the Commons harvest (Prompt 030 Steps 1–4), source-truth reconciliation, target course design (030A), and video recording queue (030B) are complete, live-verified, and committed/pushed in both owning repositories. Live deletion of zero-activity shared/enrichment assignments, zero-activity Architecture-core consolidation, and live grade-weight renormalization are deferred for the specific, honestly-documented reasons in this report — not silently dropped, not worked around, and not blocking the rest of the campaign per Prompt 030's own chain-gun policy.
+Reason: the Commons harvest, source-truth reconciliation, target course design, video recording queue, and now the deferred zero-activity shared/enrichment deletion (67/69 objects, 2 correctly held back for a near-term-due-date safety guard) are complete, live-verified, and committed/pushed. Architecture-core consolidation and live grade-weight renormalization remain open, explicitly tracked, not silently dropped — per this campaign's own doctrine, these do not block advancing to the next course once independently judged non-blocking, but Architecture is not yet fully "clean/teachable under its accepted disciplinary doctrine" until consolidation is addressed.

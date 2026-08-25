@@ -1,0 +1,494 @@
+{
+  "run_at": "2026-08-25T02:20:27.774015Z",
+  "dry_run": true,
+  "course_id": 75249,
+  "recon_count": 115,
+  "candidates_matched": 69,
+  "actions": [
+    {
+      "id": 913184,
+      "name": "AI Fluency Week 04 - Decompose the Task",
+      "cls": "Week 4 shared-strand",
+      "due_at": "2026-09-10T04:59:00Z",
+      "result": "WOULD_DELETE"
+    },
+    {
+      "id": 913191,
+      "name": "AI Fluency Week 05 - Student Activity \u2014 Select the Right Model",
+      "cls": "Week 5 shared-strand",
+      "due_at": "2026-09-15T04:59:00Z",
+      "result": "WOULD_DELETE"
+    },
+    {
+      "id": 913198,
+      "name": "AI Fluency Week 06 - Engineer the Prompt",
+      "cls": "Week 6 shared-strand",
+      "due_at": "2026-09-22T04:59:00Z",
+      "result": "WOULD_DELETE"
+    },
+    {
+      "id": 913206,
+      "name": "AI Fluency Week 07 - Research and Retrieve",
+      "cls": "Week 7 shared-strand",
+      "due_at": "2026-09-29T04:59:00Z",
+      "result": "WOULD_DELETE"
+    },
+    {
+      "id": 913213,
+      "name": "AI Fluency Week 08 - Reason",
+      "cls": "Week 8 shared-strand",
+      "due_at": "2026-10-06T04:59:00Z",
+      "result": "WOULD_DELETE"
+    },
+    {
+      "id": 913220,
+      "name": "AI Fluency Week 09 - Generate",
+      "cls": "Week 9 shared-strand",
+      "due_at": "2026-10-13T04:59:00Z",
+      "result": "WOULD_DELETE"
+    },
+    {
+      "id": 913225,
+      "name": "AI Fluency Week 10 - Critique",
+      "cls": "Week 10 shared-strand",
+      "due_at": "2026-10-20T04:59:00Z",
+      "result": "WOULD_DELETE"
+    },
+    {
+      "id": 913232,
+      "name": "AI Fluency Week 11 - Verify",
+      "cls": "Week 11 shared-strand",
+      "due_at": "2026-10-27T04:59:00Z",
+      "result": "WOULD_DELETE"
+    },
+    {
+      "id": 913239,
+      "name": "AI Fluency Week 12 - Revise",
+      "cls": "Week 12 shared-strand",
+      "due_at": "2026-11-03T05:59:00Z",
+      "result": "WOULD_DELETE"
+    },
+    {
+      "id": 913246,
+      "name": "AI Fluency Week 13 - Decide",
+      "cls": "Week 13 shared-strand",
+      "due_at": "2026-11-10T05:59:00Z",
+      "result": "WOULD_DELETE"
+    },
+    {
+      "id": 913253,
+      "name": "AI Fluency Week 14 - Automate",
+      "cls": "Week 14 shared-strand",
+      "due_at": "2026-11-17T05:59:00Z",
+      "result": "WOULD_DELETE"
+    },
+    {
+      "id": 913262,
+      "name": "AI Fluency Week 15 - Measure",
+      "cls": "Week 15 shared-strand",
+      "due_at": "2026-11-24T05:59:00Z",
+      "result": "WOULD_DELETE"
+    },
+    {
+      "id": 913264,
+      "name": "AI Fluency Week 16 - Reflect and Improve",
+      "cls": "Week 16 shared-strand",
+      "due_at": "2026-12-01T05:59:00Z",
+      "result": "WOULD_DELETE"
+    },
+    {
+      "id": 913171,
+      "name": "Professional Minds Wednesday - Reading Reflection",
+      "cls": "Professional Minds (recurring)",
+      "due_at": "2026-08-26T13:00:00Z",
+      "result": "WOULD_DELETE"
+    },
+    {
+      "id": 913172,
+      "name": "Professional Minds Wednesday - Slides Reflection",
+      "cls": "Professional Minds (recurring)",
+      "due_at": "2026-09-01T04:59:00Z",
+      "result": "WOULD_DELETE"
+    },
+    {
+      "id": 913178,
+      "name": "Professional Minds Wednesday - Reading Reflection",
+      "cls": "Professional Minds (recurring)",
+      "due_at": "2026-09-02T13:00:00Z",
+      "result": "WOULD_DELETE"
+    },
+    {
+      "id": 913179,
+      "name": "Professional Minds Wednesday - Slides Reflection",
+      "cls": "Professional Minds (recurring)",
+      "due_at": "2026-09-08T04:59:00Z",
+      "result": "WOULD_DELETE"
+    },
+    {
+      "id": 913185,
+      "name": "Professional Minds Wednesday - Reading Reflection",
+      "cls": "Professional Minds (recurring)",
+      "due_at": "2026-09-09T13:00:00Z",
+      "result": "WOULD_DELETE"
+    },
+    {
+      "id": 913186,
+      "name": "Professional Minds Wednesday - Slides Reflection",
+      "cls": "Professional Minds (recurring)",
+      "due_at": "2026-09-15T04:59:00Z",
+      "result": "WOULD_DELETE"
+    },
+    {
+      "id": 913192,
+      "name": "Professional Minds Wednesday - Reading Reflection",
+      "cls": "Professional Minds (recurring)",
+      "due_at": "2026-09-16T13:00:00Z",
+      "result": "WOULD_DELETE"
+    },
+    {
+      "id": 913193,
+      "name": "Professional Minds Wednesday - Slides Reflection",
+      "cls": "Professional Minds (recurring)",
+      "due_at": "2026-09-22T04:59:00Z",
+      "result": "WOULD_DELETE"
+    },
+    {
+      "id": 913199,
+      "name": "Professional Minds Wednesday - Reading Reflection",
+      "cls": "Professional Minds (recurring)",
+      "due_at": "2026-09-23T13:00:00Z",
+      "result": "WOULD_DELETE"
+    },
+    {
+      "id": 913200,
+      "name": "Professional Minds Wednesday - Slides Reflection",
+      "cls": "Professional Minds (recurring)",
+      "due_at": "2026-09-29T04:59:00Z",
+      "result": "WOULD_DELETE"
+    },
+    {
+      "id": 913207,
+      "name": "Professional Minds Wednesday - Reading Reflection",
+      "cls": "Professional Minds (recurring)",
+      "due_at": "2026-09-30T13:00:00Z",
+      "result": "WOULD_DELETE"
+    },
+    {
+      "id": 913208,
+      "name": "Professional Minds Wednesday - Slides Reflection",
+      "cls": "Professional Minds (recurring)",
+      "due_at": "2026-10-06T04:59:00Z",
+      "result": "WOULD_DELETE"
+    },
+    {
+      "id": 913214,
+      "name": "Professional Minds Wednesday - Reading Reflection",
+      "cls": "Professional Minds (recurring)",
+      "due_at": "2026-10-07T13:00:00Z",
+      "result": "WOULD_DELETE"
+    },
+    {
+      "id": 913215,
+      "name": "Professional Minds Wednesday - Slides Reflection",
+      "cls": "Professional Minds (recurring)",
+      "due_at": "2026-10-13T04:59:00Z",
+      "result": "WOULD_DELETE"
+    },
+    {
+      "id": 913221,
+      "name": "Professional Minds Wednesday - Reading Reflection",
+      "cls": "Professional Minds (recurring)",
+      "due_at": "2026-10-14T13:00:00Z",
+      "result": "WOULD_DELETE"
+    },
+    {
+      "id": 913222,
+      "name": "Professional Minds Wednesday - Slides Reflection",
+      "cls": "Professional Minds (recurring)",
+      "due_at": "2026-10-20T04:59:00Z",
+      "result": "WOULD_DELETE"
+    },
+    {
+      "id": 913226,
+      "name": "Professional Minds Wednesday - Reading Reflection",
+      "cls": "Professional Minds (recurring)",
+      "due_at": "2026-10-21T13:00:00Z",
+      "result": "WOULD_DELETE"
+    },
+    {
+      "id": 913227,
+      "name": "Professional Minds Wednesday - Slides Reflection",
+      "cls": "Professional Minds (recurring)",
+      "due_at": "2026-10-27T04:59:00Z",
+      "result": "WOULD_DELETE"
+    },
+    {
+      "id": 913233,
+      "name": "Professional Minds Wednesday - Reading Reflection",
+      "cls": "Professional Minds (recurring)",
+      "due_at": "2026-10-28T13:00:00Z",
+      "result": "WOULD_DELETE"
+    },
+    {
+      "id": 913234,
+      "name": "Professional Minds Wednesday - Slides Reflection",
+      "cls": "Professional Minds (recurring)",
+      "due_at": "2026-11-03T05:59:00Z",
+      "result": "WOULD_DELETE"
+    },
+    {
+      "id": 913240,
+      "name": "Professional Minds Wednesday - Reading Reflection",
+      "cls": "Professional Minds (recurring)",
+      "due_at": "2026-11-04T14:00:00Z",
+      "result": "WOULD_DELETE"
+    },
+    {
+      "id": 913241,
+      "name": "Professional Minds Wednesday - Slides Reflection",
+      "cls": "Professional Minds (recurring)",
+      "due_at": "2026-11-10T05:59:00Z",
+      "result": "WOULD_DELETE"
+    },
+    {
+      "id": 913247,
+      "name": "Professional Minds Wednesday - Reading Reflection",
+      "cls": "Professional Minds (recurring)",
+      "due_at": "2026-11-11T14:00:00Z",
+      "result": "WOULD_DELETE"
+    },
+    {
+      "id": 913248,
+      "name": "Professional Minds Wednesday - Slides Reflection",
+      "cls": "Professional Minds (recurring)",
+      "due_at": "2026-11-17T05:59:00Z",
+      "result": "WOULD_DELETE"
+    },
+    {
+      "id": 913254,
+      "name": "Professional Minds Wednesday - Reading Reflection",
+      "cls": "Professional Minds (recurring)",
+      "due_at": "2026-11-18T14:00:00Z",
+      "result": "WOULD_DELETE"
+    },
+    {
+      "id": 913255,
+      "name": "Professional Minds Wednesday - Slides Reflection",
+      "cls": "Professional Minds (recurring)",
+      "due_at": "2026-11-24T05:59:00Z",
+      "result": "WOULD_DELETE"
+    },
+    {
+      "id": 913265,
+      "name": "Professional Minds Wednesday - Reading Reflection",
+      "cls": "Professional Minds (recurring)",
+      "due_at": "2026-12-02T14:00:00Z",
+      "result": "WOULD_DELETE"
+    },
+    {
+      "id": 913266,
+      "name": "Professional Minds Wednesday - Slides Reflection",
+      "cls": "Professional Minds (recurring)",
+      "due_at": "2026-12-07T05:59:00Z",
+      "result": "WOULD_DELETE"
+    },
+    {
+      "id": 913173,
+      "name": "Professional Minds Friday - Reading Reflection",
+      "cls": "Professional Minds (recurring)",
+      "due_at": "2026-08-28T13:00:00Z",
+      "result": "WOULD_DELETE"
+    },
+    {
+      "id": 913174,
+      "name": "Professional Minds Friday - Slides Reflection",
+      "cls": "Professional Minds (recurring)",
+      "due_at": "2026-09-03T04:59:00Z",
+      "result": "WOULD_DELETE"
+    },
+    {
+      "id": 913180,
+      "name": "Professional Minds Friday - Reading Reflection",
+      "cls": "Professional Minds (recurring)",
+      "due_at": "2026-09-04T13:00:00Z",
+      "result": "WOULD_DELETE"
+    },
+    {
+      "id": 913181,
+      "name": "Professional Minds Friday - Slides Reflection",
+      "cls": "Professional Minds (recurring)",
+      "due_at": "2026-09-10T04:59:00Z",
+      "result": "WOULD_DELETE"
+    },
+    {
+      "id": 913187,
+      "name": "Professional Minds Friday - Reading Reflection",
+      "cls": "Professional Minds (recurring)",
+      "due_at": "2026-09-11T13:00:00Z",
+      "result": "WOULD_DELETE"
+    },
+    {
+      "id": 913188,
+      "name": "Professional Minds Friday - Slides Reflection",
+      "cls": "Professional Minds (recurring)",
+      "due_at": "2026-09-17T04:59:00Z",
+      "result": "WOULD_DELETE"
+    },
+    {
+      "id": 913194,
+      "name": "Professional Minds Friday - Reading Reflection",
+      "cls": "Professional Minds (recurring)",
+      "due_at": "2026-09-18T13:00:00Z",
+      "result": "WOULD_DELETE"
+    },
+    {
+      "id": 913195,
+      "name": "Professional Minds Friday - Slides Reflection",
+      "cls": "Professional Minds (recurring)",
+      "due_at": "2026-09-24T04:59:00Z",
+      "result": "WOULD_DELETE"
+    },
+    {
+      "id": 913201,
+      "name": "Professional Minds Friday - Reading Reflection",
+      "cls": "Professional Minds (recurring)",
+      "due_at": "2026-09-25T13:00:00Z",
+      "result": "WOULD_DELETE"
+    },
+    {
+      "id": 913202,
+      "name": "Professional Minds Friday - Slides Reflection",
+      "cls": "Professional Minds (recurring)",
+      "due_at": "2026-10-01T04:59:00Z",
+      "result": "WOULD_DELETE"
+    },
+    {
+      "id": 913209,
+      "name": "Professional Minds Friday - Reading Reflection",
+      "cls": "Professional Minds (recurring)",
+      "due_at": "2026-10-02T13:00:00Z",
+      "result": "WOULD_DELETE"
+    },
+    {
+      "id": 913210,
+      "name": "Professional Minds Friday - Slides Reflection",
+      "cls": "Professional Minds (recurring)",
+      "due_at": "2026-10-08T04:59:00Z",
+      "result": "WOULD_DELETE"
+    },
+    {
+      "id": 913216,
+      "name": "Professional Minds Friday - Reading Reflection",
+      "cls": "Professional Minds (recurring)",
+      "due_at": "2026-10-09T13:00:00Z",
+      "result": "WOULD_DELETE"
+    },
+    {
+      "id": 913217,
+      "name": "Professional Minds Friday - Slides Reflection",
+      "cls": "Professional Minds (recurring)",
+      "due_at": "2026-10-15T02:00:00Z",
+      "result": "WOULD_DELETE"
+    },
+    {
+      "id": 913228,
+      "name": "Professional Minds Friday - Reading Reflection",
+      "cls": "Professional Minds (recurring)",
+      "due_at": "2026-10-23T13:00:00Z",
+      "result": "WOULD_DELETE"
+    },
+    {
+      "id": 913229,
+      "name": "Professional Minds Friday - Slides Reflection",
+      "cls": "Professional Minds (recurring)",
+      "due_at": "2026-10-29T04:59:00Z",
+      "result": "WOULD_DELETE"
+    },
+    {
+      "id": 913235,
+      "name": "Professional Minds Friday - Reading Reflection",
+      "cls": "Professional Minds (recurring)",
+      "due_at": "2026-10-30T13:00:00Z",
+      "result": "WOULD_DELETE"
+    },
+    {
+      "id": 913236,
+      "name": "Professional Minds Friday - Slides Reflection",
+      "cls": "Professional Minds (recurring)",
+      "due_at": "2026-11-05T05:59:00Z",
+      "result": "WOULD_DELETE"
+    },
+    {
+      "id": 913242,
+      "name": "Professional Minds Friday - Reading Reflection",
+      "cls": "Professional Minds (recurring)",
+      "due_at": "2026-11-06T14:00:00Z",
+      "result": "WOULD_DELETE"
+    },
+    {
+      "id": 913243,
+      "name": "Professional Minds Friday - Slides Reflection",
+      "cls": "Professional Minds (recurring)",
+      "due_at": "2026-11-12T05:59:00Z",
+      "result": "WOULD_DELETE"
+    },
+    {
+      "id": 913249,
+      "name": "Professional Minds Friday - Reading Reflection",
+      "cls": "Professional Minds (recurring)",
+      "due_at": "2026-11-13T14:00:00Z",
+      "result": "WOULD_DELETE"
+    },
+    {
+      "id": 913250,
+      "name": "Professional Minds Friday - Slides Reflection",
+      "cls": "Professional Minds (recurring)",
+      "due_at": "2026-11-19T05:59:00Z",
+      "result": "WOULD_DELETE"
+    },
+    {
+      "id": 913256,
+      "name": "Professional Minds Friday - Reading Reflection",
+      "cls": "Professional Minds (recurring)",
+      "due_at": "2026-11-20T14:00:00Z",
+      "result": "WOULD_DELETE"
+    },
+    {
+      "id": 913257,
+      "name": "Professional Minds Friday - Slides Reflection",
+      "cls": "Professional Minds (recurring)",
+      "due_at": "2026-11-24T05:59:00Z",
+      "result": "WOULD_DELETE"
+    },
+    {
+      "id": 913267,
+      "name": "Professional Minds Friday - Reading Reflection",
+      "cls": "Professional Minds (recurring)",
+      "due_at": "2026-12-04T14:00:00Z",
+      "result": "WOULD_DELETE"
+    },
+    {
+      "id": 913268,
+      "name": "Professional Minds Friday - Slides Reflection",
+      "cls": "Professional Minds (recurring)",
+      "due_at": "2026-12-07T05:59:00Z",
+      "result": "WOULD_DELETE"
+    },
+    {
+      "id": 913261,
+      "name": "A6 - Professional Pathway (Week 14 Update)",
+      "cls": "A6 Professional Pathway",
+      "due_at": "2026-11-21T05:59:00Z",
+      "result": "WOULD_DELETE"
+    },
+    {
+      "id": 913263,
+      "name": "A6 - Professional Pathway (Week 15 Submission)",
+      "cls": "A6 Professional Pathway",
+      "due_at": "2026-11-24T05:59:00Z",
+      "result": "WOULD_DELETE"
+    }
+  ],
+  "deleted": 0,
+  "skipped": 0
+}
