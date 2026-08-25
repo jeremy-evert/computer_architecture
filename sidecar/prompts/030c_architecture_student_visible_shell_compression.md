@@ -14,6 +14,18 @@ The earlier cleanup did not stick the landing because it reduced gradebook inten
 
 A technically harmless item can still create cognitive load.
 
+## Immediate live-course boundary — Week 02 is protected
+
+As of August 25, 2026, students are actively working in **Week 02 — AI Laboratory Training**.
+
+Week 02 is therefore a hard no-touch boundary for this visible-shell cleanup pass.
+
+Do not unpublish, unlink, consolidate, rename, move, delete, reweight, or otherwise restructure Week 02 module items or assignments as part of Prompt 030C. Existing student work and the current student path outrank cleanup aesthetics.
+
+The active cleanup target begins at **Week 03** and continues through the remaining future/substantive Architecture weeks.
+
+If a future separate owner instruction revisits Week 02 after the live obligation has passed, that must be treated as a new bounded decision with fresh student-activity evidence.
+
 ## Owner outcome
 
 Computer Architecture should feel simple when a student opens the course.
@@ -27,30 +39,39 @@ Everything else should normally be folded into one of those two surfaces, linked
 
 The target is not merely fewer gradebook columns. The target is **fewer student-visible decisions and fewer student-visible rows**.
 
-## Week 04 acceptance specimen
+## Week 03 acceptance specimen
 
-Use live Computer Architecture Week 04, currently titled **Linux as a Machine Telescope**, as the first acceptance specimen.
+Use live Computer Architecture **Week 03 — Containers & Repeatability** as the first acceptance specimen because Week 02 is now protected live territory.
 
-The current visible module shell includes multiple separate rows such as:
-
-- Week 04 — Week at a Glance;
-- Week 04 Monday — Think / Frame;
-- Professional Minds Wednesday reading;
-- Professional Minds Wednesday slides;
-- Professional Minds Friday reading;
-- Professional Minds Friday slides;
-- Week 04 — Architecture Investigation;
-- Week 04 — Explain / Defend;
-- Week 04 — References / Verification.
+The current Week 03 shell includes separate rows for Week at a Glance, Monday Think / Frame, Professional Minds Wednesday reading/slides, Professional Minds Friday reading/slides, Architecture Investigation, Explain / Defend, and References / Verification.
 
 That is not accepted as a clean weekly experience.
 
-For Week 04, drive toward a compact live shell where the student normally sees:
+For Week 03, drive toward a compact live shell where the student normally sees:
 
-- **Week 04 — Week at a Glance**; and
-- **Architecture Reasoning Odyssey — Week 04: Linux as a Machine Telescope** (or the strongest equivalent surviving Architecture assignment).
+- **Week 03 — Week at a Glance**; and
+- **Architecture Reasoning Odyssey — Week 03: Containers & Repeatability** (or the strongest equivalent surviving Architecture assignment).
 
 If a third visible row is genuinely needed for an already-existing real Jeremy teaching artifact, it may remain only when it adds immediate instructional value and is not a placeholder. Two rows are preferred.
+
+After Week 03 is independently read back and accepted, propagate the same pattern through Week 04 and the remaining future/substantive Architecture weeks.
+
+## Immediate tactic — visible cleanup does not wait for grade-weight consolidation
+
+Prompt 030C separates **student-visible module cleanup** from **underlying object deletion/consolidation**.
+
+Do not allow the unresolved grade-impact-preview gate for merged Architecture assignments to block immediate reduction of visible clutter.
+
+When an old Page, File, or Assignment must remain in Canvas because of student-history protection, grade-weight risk, archival needs, or a later consolidation decision, it may still be removed from the active Week 03+ module path after exact live preflight when students no longer need that module reference.
+
+Priority order for this pass:
+
+1. shrink the active student-visible Week 03+ module shell;
+2. preserve all activity-bearing/graded underlying objects;
+3. reconcile source truth so removed module rows are not recreated;
+4. perform deeper underlying-object consolidation only where the existing safety gates are independently satisfied.
+
+A grade-math gate is not permission to leave a nine-row weekly maze visible to students.
 
 ## What gets folded into the weekly page
 
@@ -85,7 +106,7 @@ Professional Minds Wednesday/Friday readings, slide attachments, AI Fluency, car
 
 When useful, preserve them in optional Computing Commons under Prompt 030.
 
-After Commons preservation is verified, remove the home-course module references and safely retire zero-activity home-course duplicates when existing deletion rules allow.
+After Commons preservation is verified, remove the Week 03+ home-course module references and safely retire zero-activity home-course duplicates when existing deletion rules allow.
 
 Do not leave a home-course module item behind merely because the underlying Page or File object still exists.
 
@@ -103,13 +124,14 @@ Do not make the student reconstruct one assignment by opening six module rows.
 
 Student-visible shell cleanup and underlying-object cleanup are related but distinct.
 
-For immediate cognitive-load reduction, it is acceptable to remove an obsolete/duplicate item from the active module after exact live preflight even when the underlying Page/File/Assignment object must temporarily remain for later archival, source reconciliation, student-history protection, or safer deletion.
+For immediate cognitive-load reduction, it is acceptable to remove an obsolete/duplicate item from an active Week 03+ module after exact live preflight even when the underlying Page/File/Assignment object must temporarily remain for later archival, source reconciliation, student-history protection, or safer deletion.
 
 However:
 
+- Week 02 remains untouched under the live-course boundary above;
 - activity-bearing assignments remain protected;
 - earned grades/submissions/comments/rubrics remain protected;
-- no object deletion occurs without the existing fresh per-object safety gates;
+- no underlying object deletion occurs without the existing fresh per-object safety gates;
 - source truth must be reconciled so removed module clutter is not recreated.
 
 A module-item unlink is not permission to erase student history.
@@ -120,7 +142,7 @@ Inspect what students actually land on when opening Computer Architecture.
 
 The accepted Home experience must not dump a long assignment inventory or a dense list of micro-items on the student.
 
-If Home is the Modules view, the modules themselves must satisfy this compression doctrine.
+If Home is the Modules view, the Week 03+ modules themselves must satisfy this compression doctrine while Week 02 remains intact.
 
 If Home is a front page, that page should point students toward the current week and the compact module path rather than enumerate every assignment/page/resource.
 
@@ -128,7 +150,7 @@ Inspect student-visible course navigation as part of the acceptance pass. Do not
 
 ## Whole-course target
 
-Apply the Week 04 specimen pattern across future/substantive Architecture weeks after it is independently verified.
+Apply the Week 03 specimen pattern across Week 04 and the remaining future/substantive Architecture weeks.
 
 The normal weekly student-visible module count is approximately **two required-looking rows**, not three or four and certainly not eight or nine.
 
@@ -140,23 +162,25 @@ Historical/activity-bearing objects may remain elsewhere in Canvas when safety r
 
 Before Architecture cleanup is accepted, verify from the live student-facing course shell that:
 
-- Week 04 no longer presents the old multi-row Professional Minds / slides / wrapper clutter;
-- Week 04 presents a compact path centered on Week at a Glance plus one Architecture Reasoning Odyssey assignment;
+- Week 02 remains unchanged by this pass;
+- Week 03 no longer presents the old multi-row Professional Minds / slides / wrapper clutter;
+- Week 03 presents a compact path centered on Week at a Glance plus one Architecture Reasoning Odyssey assignment;
+- the accepted Week 03 pattern is propagated through Week 04 and the remaining future/substantive Architecture weeks;
 - no empty video placeholder page remains as a visible weekly module row;
 - shared/enrichment material worth keeping has a verified optional Commons home before home-course removal;
 - references/support are linked contextually rather than promoted to unnecessary module rows;
 - zero-activity duplicate Architecture wrappers are consolidated where safe;
 - activity-bearing or graded history remains protected;
+- unresolved grade-weight consolidation does not prevent safe module-shell compression;
 - the course Home experience does not re-expand the same clutter in another form;
-- the pattern has been propagated through the remaining future/substantive Architecture weeks with readback evidence;
 - source truth has been reconciled so the compact shell survives rebuild/redeploy.
 
 ## Completion consequence
 
-Do **not** report `ARCHITECTURE COMMONS MIGRATION COMPLETE` or `FALL 2026 FOUR-COURSE CLEANUP COMPLETE` while the live Architecture course still presents placeholder forests or multi-row shared-enrichment clutter to students.
+Do **not** report `ARCHITECTURE COMMONS MIGRATION COMPLETE`, `ARCHITECTURE VISIBLE SHELL CLEANUP COMPLETE`, or `FALL 2026 FOUR-COURSE CLEANUP COMPLETE` while the live Week 03+ Architecture course still presents placeholder forests or multi-row shared-enrichment clutter to students.
 
 A clean gradebook with a cluttered student-facing shell is not complete.
 
 ## Owner intent in one sentence
 
-**Give students one place to understand the week and one place to do the real Architecture work; everything else earns its visibility.**
+**Leave Week 02 alone while students are using it; from Week 03 forward, give students one place to understand the week and one place to do the real Architecture work.**
