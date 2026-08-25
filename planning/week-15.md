@@ -9,7 +9,7 @@
 The technical course ended in Week 14. This week intentionally lowers the load.
 
 ## Monday - Think / Frame / Lecture
-**AI Fluency Lens 15: Measure.**
+**AI Fluency Lens 15: Measure.** *(Optional under Decision 029 — now hosted in Computing Commons, module "16 — Week 15: Shared Rhythm". Not a required Architecture obligation.)*
 
 Use measurement as a reflective question: which evidence from the semester actually changed a belief or decision?
 

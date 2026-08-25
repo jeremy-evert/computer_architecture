@@ -142,7 +142,7 @@ Training cost matters. A learned strategy may pay up front and play cheaply. A r
 
 ## Monday - Think / Frame
 
-**AI Fluency Lens 16: Reflect and Improve.**
+**AI Fluency Lens 16: Reflect and Improve.** *(Already 0-point/ungraded live; also optional under Decision 029 and now hosted in Computing Commons, module "17 — Week 16: Shared Rhythm".)*
 
 Students separate algorithmic effort from execution substrate, name one objective, choose two fixed strategies, and predict:
 
@@ -155,7 +155,7 @@ No new Architecture mechanism is introduced.
 
 ## Wednesday - Investigate / Break / Measure
 
-**Professional Minds: _Generative AI Design Patterns_ reflection.**
+**Professional Minds: _Generative AI Design Patterns_ reflection.** *(Optional under Decision 029 — now hosted in Computing Commons.)*
 
 Students run the fixed shared workload through the validated CPU path. The Architecture wrapper repeats timings, records host facts, preserves shared effectiveness evidence, and emits machine-readable receipts.
 
@@ -167,7 +167,7 @@ The fixed workload prevents students from winning by rewriting the game or weake
 
 ## Friday - Explain / Defend
 
-**Professional Minds: semester reflection - What kind of professional do I want to become?**
+**Professional Minds: semester reflection - What kind of professional do I want to become?** *(Optional under Decision 029 — now hosted in Computing Commons.)*
 
 Students make one bounded architectural judgment:
 

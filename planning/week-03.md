@@ -9,17 +9,17 @@
 Establish the semester lab capsule before Architecture experiments depend on it.
 
 ## Monday - Think / Frame / Lecture
-**AI Fluency Lens 3: Plan the Work.**
+**AI Fluency Lens 3: Plan the Work.** *(Optional under Decision 029 — now hosted in Computing Commons, module "04 — Week 3: Shared Rhythm". Not a required Architecture obligation.)*
 
 Why does "it worked on my machine" happen? What must a plan capture for a computing experiment to be reproducible?
 
 ## Wednesday - Investigate / Break / Measure
-**Professional Minds: _Limitless Mind_ - How do we keep growing through challenges?**
+**Professional Minds: _Limitless Mind_ - How do we keep growing through challenges?** *(Optional under Decision 029 — now hosted in Computing Commons; not a required Architecture obligation.)*
 
 Use the supported course environment or named fallback evidence path, capture environment/tool facts, and reproduce a small provided experiment.
 
 ## Friday - Explain / Defend / Stack Showcase
-**Professional Minds: Resilience Education - How do we keep growing through challenges?**
+**Professional Minds: Resilience Education - How do we keep growing through challenges?** *(Optional under Decision 029 — now hosted in Computing Commons; not a required Architecture obligation.)*
 
 Explain what the environment controls, what it does not control, and what another person would need to reproduce the result.
 

@@ -1,6 +1,8 @@
 # COMSC-3013 Fall 2026 grading model
 
-**Status:** grading structure and operational due/drop/resubmission policy accepted; Week 16 dead-days posture resolved; late penalties inherit the existing Marker policy.
+**Status:** this file describes the grading structure **as currently live in production Canvas** (course 75249) and as it was originally designed. Operational due/drop/resubmission policy accepted; Week 16 dead-days posture resolved; late penalties inherit the existing Marker policy.
+
+**Superseded target (2026-08-25):** Decision 029 (`swosu_cs_curriculum/decisions/029_fall_2026_optional_computing_commons_pivot.md`) and the binding owner amendment `sidecar/prompts/030a_architecture_three_part_grading_and_consolidation.md` replace the below with a three-part **15% Weekly Canvas Engagement / 75% Architecture Reasoning Odyssey / 10% End-of-semester Architecture Reflection** doctrine and an approximately-17-object course shape. See `sidecar/reports/030_architecture_to_optional_commons_end_first_migration.md` for the full target design, the source-truth reconciliation already applied to `planning/`, and why **live production Canvas has not yet been renormalized to this target** (Prompt 030A's own impact-preview safety gate, plus a sandbox tooling gap on the deletion/consolidation side — both explained in that report). Everything below this line remains an accurate description of the **live course today**, not the target.
 
 Computer Architecture inherits the recognizable **CS1 grading family** while adapting it to an online/asynchronous laboratory course.
 

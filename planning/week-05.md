@@ -37,7 +37,7 @@ The goal is not component identification or a shopping contest. Students connect
 
 ## Monday - Think / Frame / Lecture
 
-**AI Fluency Lens 5: Select the Right Model.**
+**AI Fluency Lens 5: Select the Right Model.** *(Optional under Decision 029 — now hosted in Computing Commons, module "06 — Week 5: Shared Rhythm". Not a required Architecture obligation; the Build the Machine lecture below stands on its own.)*
 
 Lecture: **Build the Machine.**
 
@@ -56,7 +56,7 @@ Monday ends with the prediction:
 
 ## Wednesday - Investigate / Break / Measure
 
-**Professional Minds: _The Art of Thinking Clearly_ - How do attractive numbers and familiar stories trick us into feeling more certain than the evidence allows?**
+**Professional Minds: _The Art of Thinking Clearly_ - How do attractive numbers and familiar stories trick us into feeling more certain than the evidence allows?** *(Optional under Decision 029 — now hosted in Computing Commons; not a required Architecture obligation.)*
 
 Investigation:
 
@@ -73,7 +73,7 @@ Investigation:
 
 ## Friday - Explain / Defend / Stack Showcase
 
-**Professional Minds: _How Not to Be Wrong_ - same shared reasoning question.**
+**Professional Minds: _How Not to Be Wrong_ - same shared reasoning question.** *(Optional under Decision 029 — now hosted in Computing Commons; not a required Architecture obligation.)*
 
 Students defend:
 

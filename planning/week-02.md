@@ -9,21 +9,21 @@
 Establish the investigation behavior reused throughout the semester: AI may propose explanations, commands, hypotheses, and paths; evidence decides.
 
 ## Monday - Think / Frame / Lecture
-**AI Fluency Lens 1+2: Define the Problem + Gather Context.**
+**AI Fluency Lens 1+2: Define the Problem + Gather Context.** *(Optional under Decision 029 — now hosted as self-paced material in Computing Commons, course 24298, module "03 — Week 2: Shared Rhythm". Not a required Architecture obligation; kept here as historical framing.)*
 
 What makes a useful technical question? Gather context, state knowns/unknowns, and distinguish an AI suggestion from a verified fact.
 
 The Monday package models Jeremy using one or more current AI tools while visibly separating model fluency from evidence.
 
 ## Wednesday - Investigate / Break / Measure
-**Professional Minds: _Make It Stick_ - How does the brain improve?**
+**Professional Minds: _Make It Stick_ - How does the brain improve?** *(Optional under Decision 029 — now hosted in Computing Commons; not a required Architecture obligation.)*
 
 Take one bounded claim about a computer and verify it against commands, official documentation, source/specification, or measurement.
 
 Compare what the model said with what the machine/evidence says.
 
 ## Friday - Explain / Defend / Stack Showcase
-**Professional Minds: _Mindset_ - How does the brain improve?**
+**Professional Minds: _Mindset_ - How does the brain improve?** *(Optional under Decision 029 — now hosted in Computing Commons; not a required Architecture obligation.)*
 
 Explain what changed after verification: what AI proposed, what evidence confirmed/rejected it, and what the revised explanation should be.
 

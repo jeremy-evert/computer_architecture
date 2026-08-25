@@ -11,15 +11,15 @@ Commands are observation instruments, not detached memorization.
 ## Monday - Think / Frame / Lecture
 **Labor Day - no Monday requirement.**
 
-**AI Fluency Lens 4: Decompose the Task** folds into Wednesday's opening: turn a vague machine question into smaller observable questions.
+**AI Fluency Lens 4: Decompose the Task** folds into Wednesday's opening: turn a vague machine question into smaller observable questions. *(Optional under Decision 029 — now hosted in Computing Commons, module "05 — Week 4: Shared Rhythm". Not a required Architecture obligation; Wednesday's actual telescope work below stands on its own without it.)*
 
 ## Wednesday - Investigate / Break / Measure
-**Professional Minds: _Critical Thinking_ - How do we make better decisions?**
+**Professional Minds: _Critical Thinking_ - How do we make better decisions?** *(Optional under Decision 029 — now hosted in Computing Commons; not a required Architecture obligation.)*
 
 Use Linux/system tools to inspect files, processes, CPU/memory/system facts, and binaries. The implemented source uses the supported course observation path rather than treating command names as memorization targets.
 
 ## Friday - Explain / Defend / Stack Showcase
-**Professional Minds: _Thinking, Fast and Slow_ - How do we make better decisions?**
+**Professional Minds: _Thinking, Fast and Slow_ - How do we make better decisions?** *(Optional under Decision 029 — now hosted in Computing Commons; not a required Architecture obligation.)*
 
 Choose one machine fact and explain how command output supports the claim. Separate **observation** from **interpretation**.
 
