@@ -1,131 +1,59 @@
 ﻿[CmdletBinding()]
 param(
-    [Parameter(Mandatory=$true)][string]$RunDir,
-    [switch]$KeepTestEnvironment
+ [Parameter(Mandatory=$true)][string]$RawRunDir,
+ [Parameter(Mandatory=$true)][string]$ReportRunDir,
+ [switch]$KeepTestEnvironment
 )
-
 Set-StrictMode -Version Latest
 $ErrorActionPreference = 'Stop'
-$agentName = '01-Test-PythonCapability'
-$agentReport = Join-Path $RunDir "$agentName.json"
-$venvDir = Join-Path $RunDir 'python-test-venv'
-$plotFile = Join-Path $RunDir 'matplotlib-smoke-test.png'
-
-function Invoke-Captured {
-    param([string]$Exe, [string[]]$Arguments)
-    $output = & $Exe @Arguments 2>&1 | Out-String
-    [pscustomobject]@{ ExitCode = $LASTEXITCODE; Output = $output.Trim() }
+$Name='01-Test-PythonCapability'
+$Raw=Join-Path $RawRunDir $Name
+$Report=Join-Path $ReportRunDir "$Name.json"
+New-Item -ItemType Directory -Force -Path $Raw | Out-Null
+function Run-Recorded {
+ param([string]$Exe,[string[]]$Args,[string]$Step)
+ $Out=Join-Path $Raw "$Step.stdout.txt";$Err=Join-Path $Raw "$Step.stderr.txt"
+ (($Exe+' '+($Args -join ' ')).Trim()) | Set-Content (Join-Path $Raw "$Step.command.txt") -Encoding UTF8
+ $P=Start-Process -FilePath $Exe -ArgumentList $Args -Wait -PassThru -NoNewWindow -RedirectStandardOutput $Out -RedirectStandardError $Err
+ [pscustomobject]@{ExitCode=$P.ExitCode;StdOut=if(Test-Path $Out){Get-Content $Out -Raw}else{''};StdErr=if(Test-Path $Err){Get-Content $Err -Raw}else{''}}
 }
-
 function Find-Python {
-    $candidates = @(
-        @{ Exe='py'; Prefix=@('-3') },
-        @{ Exe='python'; Prefix=@() },
-        @{ Exe='python3'; Prefix=@() }
-    )
-    foreach ($candidate in $candidates) {
-        $cmd = Get-Command $candidate.Exe -ErrorAction SilentlyContinue
-        if ($null -eq $cmd) { continue }
-        $probeArgs = @($candidate.Prefix) + @('-c', 'import sys; print(sys.executable); print(sys.version.split()[0])')
-        try {
-            $probe = Invoke-Captured -Exe $candidate.Exe -Arguments $probeArgs
-            if ($probe.ExitCode -eq 0) {
-                return [pscustomobject]@{ Exe=$candidate.Exe; Prefix=@($candidate.Prefix); Probe=$probe.Output }
-            }
-        } catch { }
-    }
-    return $null
+ $i=0
+ foreach($C in @(@{E='py.exe';P=@('-3')},@{E='python.exe';P=@()},@{E='python3.exe';P=@()})){
+  $i++
+  if(Get-Command $C.E -ErrorAction SilentlyContinue){
+   $X=Run-Recorded $C.E (@($C.P)+@('-c','import sys; print(sys.executable); print(sys.version)')) ("01-python-probe-$i")
+   if($X.ExitCode -eq 0){return [pscustomobject]@{Exe=$C.E;Prefix=@($C.P);Probe=$X}}
+  }
+ }
+ return $null
 }
-
-$started = Get-Date
-$detail = [ordered]@{
-    Agent = $agentName
-    Started = $started.ToString('o')
-    Status = 'FAIL'
-    PythonLauncher = $null
-    PythonProbe = $null
-    VenvCreated = $false
-    PipAvailable = $false
-    PackageInstalled = $false
-    ImportWorked = $false
-    PlotCreated = $false
-    InstalledPackage = 'matplotlib'
-    PackageVersion = $null
-    TestEnvironmentKept = [bool]$KeepTestEnvironment
-    TestEnvironmentPath = $venvDir
-    PlotPath = $plotFile
-    Error = $null
-}
-
-try {
-    $python = Find-Python
-    if ($null -eq $python) { throw 'No working Python 3 launcher was found (tried py -3, python, and python3).' }
-    $detail.PythonLauncher = (($python.Exe + ' ' + ($python.Prefix -join ' ')).Trim())
-    $detail.PythonProbe = $python.Probe
-
-    if (Test-Path $venvDir) { Remove-Item $venvDir -Recurse -Force }
-    $venvArgs = @($python.Prefix) + @('-m', 'venv', $venvDir)
-    $venv = Invoke-Captured -Exe $python.Exe -Arguments $venvArgs
-    if ($venv.ExitCode -ne 0) { throw "Python exists, but venv creation failed: $($venv.Output)" }
-    $detail.VenvCreated = $true
-
-    $venvPython = Join-Path $venvDir 'Scripts\python.exe'
-    if (-not (Test-Path $venvPython)) { $venvPython = Join-Path $venvDir 'bin/python' }
-    if (-not (Test-Path $venvPython)) { throw 'The virtual environment was created, but its Python executable was not found.' }
-
-    $pip = Invoke-Captured -Exe $venvPython -Arguments @('-m','pip','--version')
-    if ($pip.ExitCode -ne 0) {
-        $ensure = Invoke-Captured -Exe $venvPython -Arguments @('-m','ensurepip','--upgrade')
-        $pip = Invoke-Captured -Exe $venvPython -Arguments @('-m','pip','--version')
-    }
-    if ($pip.ExitCode -ne 0) { throw "pip is unavailable inside the virtual environment: $($pip.Output)" }
-    $detail.PipAvailable = $true
-
-    $install = Invoke-Captured -Exe $venvPython -Arguments @('-m','pip','install','--disable-pip-version-check','matplotlib')
-    if ($install.ExitCode -ne 0) { throw "pip could not install matplotlib. Network filtering or package access may be the cause: $($install.Output)" }
-    $detail.PackageInstalled = $true
-
-    $smoke = @'
-import matplotlib
-matplotlib.use("Agg")
-import matplotlib.pyplot as plt
-from pathlib import Path
-out = Path(r"PLOT_PATH")
-fig, ax = plt.subplots()
-ax.plot([0, 1, 2, 3], [0, 1, 4, 9], marker="o")
-ax.set(title="Computer Architecture Python Readiness", xlabel="Input", ylabel="Input squared")
-fig.tight_layout()
-fig.savefig(out)
-print(matplotlib.__version__)
-'@.Replace('PLOT_PATH', $plotFile.Replace('\','\\'))
-    $smokeFile = Join-Path $RunDir 'matplotlib_smoke_test.py'
-    Set-Content -Path $smokeFile -Value $smoke -Encoding UTF8
-    $test = Invoke-Captured -Exe $venvPython -Arguments @($smokeFile)
-    if ($test.ExitCode -ne 0) { throw "matplotlib installed, but the import/plot smoke test failed: $($test.Output)" }
-    $detail.ImportWorked = $true
-    $detail.PackageVersion = $test.Output.Split([Environment]::NewLine)[-1].Trim()
-    $detail.PlotCreated = Test-Path $plotFile
-    if (-not $detail.PlotCreated) { throw 'The smoke test ran but did not create its PNG artifact.' }
-
-    $freeze = Invoke-Captured -Exe $venvPython -Arguments @('-m','pip','freeze')
-    Set-Content -Path (Join-Path $RunDir 'python-test-pip-freeze.txt') -Value $freeze.Output -Encoding UTF8
-    $detail.Status = 'PASS'
-}
-catch {
-    $detail.Error = $_.Exception.Message
-}
-finally {
-    $detail.Finished = (Get-Date).ToString('o')
-    $detail | ConvertTo-Json -Depth 8 | Set-Content -Path $agentReport -Encoding UTF8
-    if ((-not $KeepTestEnvironment) -and (Test-Path $venvDir)) {
-        Remove-Item $venvDir -Recurse -Force -ErrorAction SilentlyContinue
-        $detail.TestEnvironmentPath = 'Removed after test; rerun parent with -KeepTestEnvironment to retain it.'
-        $detail | ConvertTo-Json -Depth 8 | Set-Content -Path $agentReport -Encoding UTF8
-    }
-}
-
-if ($detail.Status -eq 'PASS') {
-    [pscustomobject]@{ Agent=$agentName; Status='PASS'; Summary='Python, venv, pip, package installation, import, and plot creation all worked.'; Report=$agentReport }
-} else {
-    [pscustomobject]@{ Agent=$agentName; Status='FAIL'; Summary=$detail.Error; Report=$agentReport }
-}
+$D=[ordered]@{Agent=$Name;Started=(Get-Date).ToString('o');Status='FAIL';PythonLauncher=$null;PythonProbe=$null;VenvCreated=$false;PipAvailable=$false;PackageInstalled=$false;ImportWorked=$false;PlotCreated=$false;PackageVersion=$null;RawEvidenceDirectory=$Raw;TestEnvironmentPath=$null;Error=$null}
+$Temp=Join-Path ([IO.Path]::GetTempPath()) ("computer-architecture-readiness-"+(Get-Date -Format yyyyMMddHHmmss)+"-$PID")
+$D.TestEnvironmentPath=$Temp
+try{
+ Write-Host '  [1/6] Locate Python 3'
+ $Py=Find-Python;if($null -eq $Py){throw 'No working Python 3 launcher found. See raw probes.'}
+ $D.PythonLauncher=(($Py.Exe+' '+($Py.Prefix -join ' ')).Trim());$D.PythonProbe=$Py.Probe.StdOut.Trim()
+ Write-Host '  [2/6] Create isolated virtual environment'
+ $X=Run-Recorded $Py.Exe (@($Py.Prefix)+@('-m','venv',$Temp)) '02-create-venv';if($X.ExitCode -ne 0){throw "venv failed with exit code $($X.ExitCode)."};$D.VenvCreated=$true
+ $VP=Join-Path $Temp 'Scripts\python.exe';if(-not(Test-Path $VP)){$VP=Join-Path $Temp 'bin/python'};if(-not(Test-Path $VP)){throw 'venv Python executable not found.'}
+ Write-Host '  [3/6] Verify pip'
+ $X=Run-Recorded $VP @('-m','pip','--version') '03-pip-version'
+ if($X.ExitCode -ne 0){$null=Run-Recorded $VP @('-m','ensurepip','--upgrade') '03b-ensurepip';$X=Run-Recorded $VP @('-m','pip','--version') '03c-pip-retry'}
+ if($X.ExitCode -ne 0){throw "pip failed with exit code $($X.ExitCode)."};$D.PipAvailable=$true
+ Write-Host '  [4/6] Install matplotlib'
+ $X=Run-Recorded $VP @('-m','pip','install','--disable-pip-version-check','matplotlib') '04-install-matplotlib';if($X.ExitCode -ne 0){throw "install failed with exit code $($X.ExitCode)."};$D.PackageInstalled=$true
+ Write-Host '  [5/6] Import matplotlib and create PNG'
+ $Png=Join-Path $Raw 'matplotlib-smoke-test.png';$Smoke=Join-Path $Raw 'matplotlib-smoke-test.py'
+ $Code=@("import matplotlib","matplotlib.use('Agg')","import matplotlib.pyplot as plt","fig, ax = plt.subplots()","ax.plot([0,1,2,3],[0,1,4,9],marker='o')","ax.set(title='Computer Architecture Python Readiness',xlabel='Input',ylabel='Input squared')","fig.tight_layout()","fig.savefig(r'$Png')","print(matplotlib.__version__)")
+ $Code | Set-Content -LiteralPath $Smoke -Encoding UTF8
+ $X=Run-Recorded $VP @($Smoke) '05-matplotlib-smoke-test';if($X.ExitCode -ne 0){throw "smoke test failed with exit code $($X.ExitCode)."}
+ $D.ImportWorked=$true;$D.PackageVersion=$X.StdOut.Trim();$D.PlotCreated=Test-Path $Png;if(-not $D.PlotCreated){throw 'No PNG was created.'}
+ Write-Host '  [6/6] Record installed packages'
+ $X=Run-Recorded $VP @('-m','pip','freeze') '06-pip-freeze';if($X.ExitCode -ne 0){throw "pip freeze failed with exit code $($X.ExitCode)."}
+ $D.Status='PASS'
+}catch{$D.Error=$_.Exception.Message}
+finally{$D.Finished=(Get-Date).ToString('o');if((-not $KeepTestEnvironment)-and(Test-Path $Temp)){Remove-Item $Temp -Recurse -Force -ErrorAction SilentlyContinue;$D.TestEnvironmentPath='Removed after test; use -KeepTestEnvironment to retain.'};$D|ConvertTo-Json -Depth 10|Set-Content $Report -Encoding UTF8}
+if($D.Status -eq 'PASS'){[pscustomobject]@{Agent=$Name;Status='PASS';Summary='Python, venv, pip, matplotlib install, import, and PNG creation worked.';Report=$Report}}
+else{[pscustomobject]@{Agent=$Name;Status='FAIL';Summary=$D.Error;Report=$Report}}
