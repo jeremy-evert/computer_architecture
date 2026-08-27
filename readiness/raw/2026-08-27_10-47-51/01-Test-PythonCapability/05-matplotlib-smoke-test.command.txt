@@ -1,0 +1,1 @@
+﻿C:\Users\evertj\AppData\Local\Temp\computer-architecture-readiness-20260827104752-2260\Scripts\python.exe D:\git\computer_architecture\readiness\raw\2026-08-27_10-47-51\01-Test-PythonCapability\matplotlib-smoke-test.py

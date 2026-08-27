@@ -1,0 +1,1 @@
+﻿C:\Users\evertj\AppData\Local\Temp\computer-architecture-readiness-20260827104930-23300\Scripts\python.exe -m pip install --disable-pip-version-check matplotlib

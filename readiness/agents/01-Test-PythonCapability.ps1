@@ -10,11 +10,24 @@ $Name='01-Test-PythonCapability'
 $Raw=Join-Path $RawRunDir $Name
 $Report=Join-Path $ReportRunDir "$Name.json"
 New-Item -ItemType Directory -Force -Path $Raw | Out-Null
+function ConvertTo-RecordedArgumentLine {
+ param([string[]]$Arguments)
+ $QuotedArguments = foreach ($Argument in $Arguments) {
+  if ($Argument -notmatch '[\s"]') { $Argument; continue }
+  '"' + ($Argument -replace '(\\*)"', '$1$1\\"' -replace '(\\*)$', '$1$1') + '"'
+ }
+ return ($QuotedArguments -join ' ')
+}
 function Run-Recorded {
- param([string]$Exe,[string[]]$Args,[string]$Step)
+ param([string]$Exe,[string[]]$Arguments,[string]$Step)
  $Out=Join-Path $Raw "$Step.stdout.txt";$Err=Join-Path $Raw "$Step.stderr.txt"
- (($Exe+' '+($Args -join ' ')).Trim()) | Set-Content (Join-Path $Raw "$Step.command.txt") -Encoding UTF8
- $P=Start-Process -FilePath $Exe -ArgumentList $Args -Wait -PassThru -NoNewWindow -RedirectStandardOutput $Out -RedirectStandardError $Err
+ # Do not use the automatic $args variable: PowerShell can otherwise pass an empty/null element to Start-Process.
+ $ArgumentList = @($Arguments | Where-Object { $null -ne $_ })
+ if ($ArgumentList.Count -ne $Arguments.Count) { throw "The $Step argument list contains a null value." }
+ $ArgumentLine = ConvertTo-RecordedArgumentLine -Arguments $ArgumentList
+ (($Exe+' '+$ArgumentLine).Trim()) | Set-Content (Join-Path $Raw "$Step.command.txt") -Encoding UTF8
+ $P=Start-Process -FilePath $Exe -ArgumentList $ArgumentLine -Wait -PassThru -NoNewWindow -RedirectStandardOutput $Out -RedirectStandardError $Err
+ $P.ExitCode | Set-Content (Join-Path $Raw "$Step.exit-code.txt") -Encoding UTF8
  [pscustomobject]@{ExitCode=$P.ExitCode;StdOut=if(Test-Path $Out){Get-Content $Out -Raw}else{''};StdErr=if(Test-Path $Err){Get-Content $Err -Raw}else{''}}
 }
 function Find-Python {

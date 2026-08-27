@@ -1,0 +1,1 @@
+﻿py.exe -3 -m venv C:\Users\evertj\AppData\Local\Temp\computer-architecture-readiness-20260827104752-2260

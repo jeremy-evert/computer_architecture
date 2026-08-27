@@ -1,0 +1,1 @@
+﻿C:\Users\evertj\AppData\Local\Temp\computer-architecture-readiness-20260827104752-2260\Scripts\python.exe -m pip freeze

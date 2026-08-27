@@ -1,0 +1,1 @@
+pip 26.2.1 from C:\Users\evertj\AppData\Local\Temp\computer-architecture-readiness-20260827104930-23300\Lib\site-packages\pip (python 3.13)
