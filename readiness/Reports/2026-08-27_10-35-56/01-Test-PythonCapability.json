@@ -1,0 +1,17 @@
+﻿{
+    "Agent":  "01-Test-PythonCapability",
+    "Started":  "2026-08-27T10:35:56.5659403-05:00",
+    "Status":  "FAIL",
+    "PythonLauncher":  null,
+    "PythonProbe":  null,
+    "VenvCreated":  false,
+    "PipAvailable":  false,
+    "PackageInstalled":  false,
+    "ImportWorked":  false,
+    "PlotCreated":  false,
+    "PackageVersion":  null,
+    "RawEvidenceDirectory":  "D:\\git\\computer_architecture\\readiness\\raw\\2026-08-27_10-35-56\\01-Test-PythonCapability",
+    "TestEnvironmentPath":  "C:\\Users\\evertj\\AppData\\Local\\Temp\\computer-architecture-readiness-20260827103556-17080",
+    "Error":  "Cannot validate argument on parameter \u0027ArgumentList\u0027. The argument is null, empty, or an element of the argument collection contains a null value. Supply a collection that does not contain any null values and then try the command again.",
+    "Finished":  "2026-08-27T10:35:56.6344669-05:00"
+}

@@ -1,0 +1,46 @@
+﻿**********************
+Windows PowerShell transcript start
+Start time: 20260827103556
+Username: ADMIN\evertj
+RunAs User: ADMIN\evertj
+Configuration Name: 
+Machine: SWOSU-62673 (Microsoft Windows NT 10.0.26100.0)
+Host Application: C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe -NoLogo -NoProfile -ExecutionPolicy Bypass -File .\Run-ComputerArchitectureReadiness.ps1
+Process ID: 17080
+PSVersion: 5.1.26100.8875
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.26100.8875
+BuildVersion: 10.0.26100.8875
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+Computer Architecture readiness run: 2026-08-27_10-35-56
+Raw evidence: D:\git\computer_architecture\readiness\raw\2026-08-27_10-35-56
+Reports:      D:\git\computer_architecture\readiness\Reports\2026-08-27_10-35-56
+
+Discovered agents:
+  01-Test-PythonCapability.ps1
+
+==> Running 01-Test-PythonCapability.ps1
+  [1/6] Locate Python 3
+PS>TerminatingError(Start-Process): "Cannot validate argument on parameter 'ArgumentList'. The argument is null, empty, or an element of the argument collection contains a null value. Supply a collection that does not contain any null values and then try the command again."
+>> TerminatingError(Start-Process): "Cannot validate argument on parameter 'ArgumentList'. The argument is null, empty, or an element of the argument collection contains a null value. Supply a collection that does not contain any null values and then try the command again."
+>> TerminatingError(Start-Process): "Cannot validate argument on parameter 'ArgumentList'. The argument is null, empty, or an element of the argument collection contains a null value. Supply a collection that does not contain any null values and then try the command again."
+
+Results:
+
+Agent                    Status Summary
+-----                    ------ -------
+01-Test-PythonCapability FAIL   Cannot validate argument on parameter 'ArgumentList'. The argument is null, empty, or an element of the argument collection contains a null value. Supply a collection that d...
+
+
+
+Readable report: D:\git\computer_architecture\readiness\Reports\2026-08-27_10-35-56\run-summary.txt
+Raw transcript:  D:\git\computer_architecture\readiness\raw\2026-08-27_10-35-56\00-parent-transcript.txt
+One or more agents did not pass.
+**********************
+Windows PowerShell transcript end
+End time: 20260827103556
+**********************
