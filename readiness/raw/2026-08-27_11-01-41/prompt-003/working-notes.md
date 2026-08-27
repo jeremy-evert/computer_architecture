@@ -58,6 +58,11 @@
 13. Preserved validation results under `validation/` and created the Prompt 003 completion report.
 14. Reran `git diff --check` after all documentation/evidence edits; exit code 0 with the same informational line-ending warnings only.
 15. Reviewed the final unstaged scope: only `AGENTS.md`, `readiness/README.md`, the timestamped Prompt 003 report, and the timestamped Prompt 003 raw evidence directory were changed or added.
+16. Staged only the six expected in-scope files. `git diff --cached --check` exited 0; cached name/status and statistics matched the intended scope.
+17. The first commit invocation used a quoted multiword message that `cmd.exe` split into pathspecs; Git made no commit. Retried with the shell-safe message `Prompt-003-establish-autonomous-repository-workflow`.
+18. Created implementation commit `500ab175e6d0ecd9b9d9156fd75b04b98e128da2` (short form `500ab17`).
+19. Pushed `main` to `origin`; output reported `c82a0bf..500ab17  main -> main`.
+20. Verified local `HEAD` and `origin/main` both resolved to `500ab175e6d0ecd9b9d9156fd75b04b98e128da2`; `git status --short --branch` reported `## main...origin/main` with no file entries.
 
 ## Errors and corrections
 
@@ -69,6 +74,8 @@
 - Correction: recorded the missing optional parent file and continued under the repository-level and user-supplied instructions.
 - Error: two `rg` validation invocations exited 2 because `cmd.exe` split quoted multiword or alternation patterns into invalid path/flag fragments.
 - Correction: used separate `-e` patterns without shell metacharacters or spaces; both searches then exited 0 and returned the expected matches.
+- Error: the first `git commit -m` invocation split its quoted message into pathspecs and exited without creating a commit.
+- Correction: used the equivalent hyphenated commit message; the retry succeeded.
 
 ## Change log
 
@@ -79,7 +86,7 @@
 ## Pending completion fields
 
 - Validation: focused contract checks passed; tracked prompt check passed; final pre-commit `git diff --check` passed.
-- Git commit identifier: pending.
-- Push result: pending.
-- Final Git status: pending.
-- Completion timestamp: pending.
+- Git implementation commit: `500ab175e6d0ecd9b9d9156fd75b04b98e128da2`.
+- Push result: success; `main -> main` on `origin`.
+- Verified post-push status: clean and synchronized at `500ab175e6d0ecd9b9d9156fd75b04b98e128da2` before this evidence-closeout update.
+- Evidence closeout prepared: 2026-08-27 11:11:13 America/Chicago. Its commit, push, and final clean-state verification are reported in the concise completion notice because a commit cannot record its own identifier.
