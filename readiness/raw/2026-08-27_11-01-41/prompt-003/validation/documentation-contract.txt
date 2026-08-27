@@ -1,0 +1,20 @@
+Validation timestamp: 2026-08-27 (America/Chicago)
+
+Commands:
+  rg -n -e authorization -e evidence-first -e continuously -e subagent -e helper -e approval -e synchronization AGENTS.md
+  rg -n -e prompts/ -e working-notes.md -e Reports/ -e safety -e approval -e synchronized readiness\README.md
+  git ls-files --error-unmatch readiness\prompts\003-establish-autonomous-repository-workflow.md
+
+Exit codes:
+  AGENTS.md contract search: 0
+  readiness README contract search: 0
+  tracked source-prompt check: 0
+
+Observed matches:
+  AGENTS.md lines 13-19 cover evidence-first operation, standing authorization and boundaries, synchronization, and host approvals.
+  AGENTS.md lines 23-29 require continuous notes and subagent/helper/child-process evidence.
+  AGENTS.md line 41 requires the end-to-end Git safety-belt checks.
+  readiness/README.md lines 7-19 identify prompts, reports, continuous working notes, Git safety behavior, and host approval dialogs.
+  The tracked source-prompt check returned readiness/prompts/003-establish-autonomous-repository-workflow.md.
+
+Result: PASS. Required Prompt 003 documentation concepts and source-prompt traceability were found.

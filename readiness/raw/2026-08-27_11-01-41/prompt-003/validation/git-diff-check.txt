@@ -1,0 +1,6 @@
+Command: git diff --check
+Working directory: D:\git\computer_architecture
+Exit code: 0
+Standard output: empty
+Standard error: two informational line-ending warnings stated that LF in AGENTS.md and readiness/README.md will be replaced by CRLF when Git next touches those files.
+Result: PASS. No whitespace errors were reported.
