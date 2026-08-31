@@ -27,9 +27,9 @@ Containers are a useful reproducibility tool, but **a container runtime is not r
 
 ## Student path
 
-1. Read [`monday.md`](monday.md).
-2. Run the bounded laboratory check in [`wednesday.md`](wednesday.md).
-3. Explain the reproducibility boundary in [`friday.md`](friday.md).
+1. Complete Monday's reproducibility-contract prediction using the prior belief, prediction, and evidence checklist above. Monday's content lives on this page; there is no separate page to open.
+2. Run the bounded laboratory check and submit the **Week 03 - Architecture Investigation** assignment (Wednesday).
+3. Explain the reproducibility boundary and submit the **Week 03 - Explain / Defend** assignment (Friday).
 
 ## Required materials
 
