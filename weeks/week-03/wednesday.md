@@ -108,13 +108,19 @@ cd lab
 podman build -t archlab-chamber -f Containerfile .
 cd ..
 mkdir -p lab/runs/chamber
-podman run --rm --userns=keep-id -v "$PWD/lab/runs/chamber:/work" -w /work archlab-chamber archprobe --out-dir /work
+podman run --rm --userns=keep-id \
+  --mount "type=bind,source=$PWD/lab/runs/chamber,target=/work,relabel=private" \
+  -w /work archlab-chamber archprobe --out-dir /work
 cat lab/runs/chamber/machine.txt
 ```
 
 Note the build context is `lab/` itself, and `--out-dir /work` is required
 so the receipt lands in your bind-mounted, host-visible folder instead of
-being lost with the disposable container. This is optional execution, not
-optional reasoning; do not install or reconfigure a machine merely to run
-it, and do not treat container-visible evidence as physical-host truth
-either way.
+being lost with the disposable container. The `relabel=private` mount
+option matters on SELinux-enforcing distributions (e.g. Rocky/Fedora/RHEL):
+without it, `archprobe` fails with `PermissionError: [Errno 13] Permission
+denied` trying to write its receipt into the mounted folder, even though
+the same command works unmodified on Ubuntu/Debian. This is optional
+execution, not optional reasoning; do not install or reconfigure a machine
+merely to run it, and do not treat container-visible evidence as
+physical-host truth either way.
