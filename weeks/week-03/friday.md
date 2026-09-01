@@ -21,7 +21,7 @@ A strong conclusion does **not** say "the results are identical, therefore the m
 
 A stronger shape is:
 
-> The same course source and command produced the same required evidence shape across repeated runs. The receipt records the executing environment, while host hardware and timing may still differ. Another person can reproduce the reasoning task by preserving ____ and recording ____.
+> The same course source and command produced the same required evidence shape across repeated runs. The receipt records the executing environment, while host hardware and timing may still differ. Another person can reproduce the reasoning task by preserving **(fill in)** and recording **(fill in)**.
 
 ## Respond to at least two classmates
 
