@@ -99,22 +99,36 @@ the host underneath it? You do not need to have Docker/Podman installed to
 answer this. Reason from the shared lesson's evidence plus your own
 receipts.
 
-If you already have a supported Podman/Docker environment, you may build
-and run `lab/Containerfile` yourself and compare that receipt directly
-instead of reasoning from the shared example alone:
+If you already have a supported Podman/Docker environment, you may run
+this course's own Experimental Chamber image and compare that receipt
+directly instead of reasoning from the shared example alone. The pinned,
+published image is the default -- no build required:
+
+```bash
+mkdir -p lab/runs/chamber
+podman run --rm --userns=keep-id \
+  --mount "type=bind,source=$PWD/lab/runs/chamber,target=/work,relabel=private" \
+  -w /work ghcr.io/jeremy-evert/archlab-week3-chamber@sha256:a12ed368e830bb90087b925be726d6967e6024c3d613644c4af21cb91bfc6a5c \
+  archprobe --out-dir /work
+cat lab/runs/chamber/machine.txt
+```
+
+You can also build it yourself from the committed recipe instead of
+pulling the published image (useful offline, or to inspect/modify the
+recipe -- see `lab/IMAGE_CONTRACT.md`):
 
 ```bash
 cd lab
-podman build -t archlab-chamber -f Containerfile .
+podman build -t localhost/archlab-week3-chamber:v1 -f Containerfile .
 cd ..
 mkdir -p lab/runs/chamber
 podman run --rm --userns=keep-id \
   --mount "type=bind,source=$PWD/lab/runs/chamber,target=/work,relabel=private" \
-  -w /work archlab-chamber archprobe --out-dir /work
+  -w /work localhost/archlab-week3-chamber:v1 archprobe --out-dir /work
 cat lab/runs/chamber/machine.txt
 ```
 
-Note the build context is `lab/` itself, and `--out-dir /work` is required
+Note a local build's context is `lab/` itself, and `--out-dir /work` is required
 so the receipt lands in your bind-mounted, host-visible folder instead of
 being lost with the disposable container. The `relabel=private` mount
 option matters on SELinux-enforcing distributions (e.g. Rocky/Fedora/RHEL):

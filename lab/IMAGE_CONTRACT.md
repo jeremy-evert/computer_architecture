@@ -32,7 +32,7 @@ Experimental Chamber" section — this image *is* the Experimental Chamber.
 | Build command | `cd lab && podman build -t localhost/archlab-week3-chamber:v1 -f Containerfile .` |
 | Local immutable image ID | `sha256:459e51d084492b4b4f615fb5081e6e0a0e1d13b61faecb8f113752454608c2d4` |
 | Image size | ~1.40 GB |
-| Registry publication | **PENDING** — see below |
+| Registry publication | **PUBLISHED 2026-09-01** — `ghcr.io/jeremy-evert/archlab-week3-chamber@sha256:a12ed368e830bb90087b925be726d6967e6024c3d613644c4af21cb91bfc6a5c` (tag `v1`), package visibility **public**, anonymous pull independently verified. See "Registry publication (2026-09-01)" below. |
 
 ## Verification performed on `brandy`
 
@@ -74,39 +74,55 @@ Architecture: x86_64
 Receipt: /work/machine.json
 ```
 
-## Registry publication is a returned action item
+## Registry publication (2026-09-01)
 
 Pushing to `ghcr.io/jeremy-evert/archlab-week3-chamber:v1` was attempted
-from this worker session and was blocked by the same worker action-permission
-classifier documented in DSCT's `week-03/container/IMAGE_CONTRACT.md`
-("publishing to an external registry is outside this worker's granted
-permissions") — not a technical or design failure. Per the April host
-policy (`foreman_interface` `docs/FOREMAN_HOST_ACCESS_POLICY.md`, "April is
-Canvas-only"), the build was intentionally performed on `brandy`, not
-`april` — no container build or push should happen on April going forward.
+from this worker session and blocked twice by the same worker
+action-permission classifier documented in DSCT's
+`week-03/container/IMAGE_CONTRACT.md` -- not a technical or design failure.
+Per the April host policy (`foreman_interface`
+`docs/FOREMAN_HOST_ACCESS_POLICY.md`, "April is Canvas-only"), the build was
+intentionally performed on `brandy`, not `april`.
 
-**Action for a maintainer with registry-push rights (Jeremy):**
+Jeremy refreshed the GitHub credential on `brandy` (`gh auth login -h
+github.com`, device flow, scopes `write:packages`/`read:packages`) and
+pushed the image by hand from a session running directly on that host.
 
-```bash
-# from brandy (or wherever the image above was/will be built)
-gh auth login -h github.com   # or: podman login ghcr.io -u jeremy-evert  (PAT with write:packages)
-podman push ghcr.io/jeremy-evert/archlab-week3-chamber:v1
-podman inspect ghcr.io/jeremy-evert/archlab-week3-chamber:v1 --format '{{.Digest}}'
+| Field | Value |
+| --- | --- |
+| Credential | `gh auth login -h github.com` as `jeremy-evert`; `gh auth token \| podman login ghcr.io -u jeremy-evert --password-stdin` -> `Login Succeeded!` |
+| Push | `podman push ghcr.io/jeremy-evert/archlab-week3-chamber:v1` (from `localhost/archlab-week3-chamber:v1`, config `sha256:459e51d084492b4b4f615fb5081e6e0a0e1d13b61faecb8f113752454608c2d4`) |
+| Published tag | `ghcr.io/jeremy-evert/archlab-week3-chamber:v1` |
+| **Manifest digest (operational pin)** | `sha256:a12ed368e830bb90087b925be726d6967e6024c3d613644c4af21cb91bfc6a5c` |
+| Package visibility | **public** (`gh api /users/jeremy-evert/packages/container/archlab-week3-chamber` -> `"visibility":"public"`; first attempt silently failed to save, caught by re-checking the API rather than trusting the UI click, then fixed) |
+| Package page | <https://github.com/users/jeremy-evert/packages/container/package/archlab-week3-chamber> |
+
+**Independently reverified from a second angle** (this worker, after the
+human push, not reusing the pusher's own confirmation):
+
+- resolved `v1` -> digest directly against the GHCR registry API
+  (`docker-content-digest` header), matching the digest above exactly;
+- confirmed `GET` on that manifest digest returns `200`;
+- on `brandy`: removed every local image/tag for this repo, logged out of
+  `ghcr.io`, then a genuine anonymous `podman pull` by the exact digest
+  succeeded, with the pulled config digest (`459e51d0...`) matching the
+  original build;
+- ran `archlab doctor` and `archprobe` (using the corrected
+  `relabel=private` mount command below) against that freshly-pulled image
+  -- both succeeded, receipt written cleanly to the bind-mounted,
+  host-visible folder.
+
+The operational, course-facing reference is therefore:
+
+```
+ghcr.io/jeremy-evert/archlab-week3-chamber@sha256:a12ed368e830bb90087b925be726d6967e6024c3d613644c4af21cb91bfc6a5c
 ```
 
-After pushing, set the GHCR package visibility to **public** (Package
-settings -> Change visibility) so students can pull without instructor-only
-credentials, matching `dsct-week3-latex`'s already-public state.
-
-**When the digest is available:** update `wednesday.md`'s optional-Chamber
-section (and the deployed course-75249 assignment description) to name the
-pinned `ghcr.io/jeremy-evert/archlab-week3-chamber@sha256:...` reference as
-an alternative to the local build, the same way DSCT's `run-latex.sh`
-defaults to its published digest. Until then, the documented path (local
-`podman build` from the committed `Containerfile`) remains the correct,
-fully validated fallback — this image is optional enrichment either way, so
-there is no student-path blocker while publication is pending, unlike
-DSCT's image which is the required path.
+`weeks/week-03/wednesday.md`'s optional-Chamber section now offers this
+pinned digest as an alternative to the local build (see below); the local
+`podman build` path remains documented as the offline fallback. This image
+stays *optional enrichment*, not the required Week 3 execution path, so
+there was no student-path blocker while publication was pending.
 
 ## Reproducing the build
 
