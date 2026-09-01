@@ -1,5 +1,12 @@
 # Wednesday - Produce a reproducibility receipt
 
+Before you begin: this week uses the shared Computing Commons containers and
+repeatability lesson. If you have not already worked through it, start at
+`computing_commons/curriculum/containers-and-repeatable-environments.md`
+(deck: `computing_commons/slides/week3_containers/week3_containers.pdf`).
+This page applies that shared concept to Architecture's own question:
+**where does the machine end?**
+
 Use the validated repository-local laboratory path from the course repository root.
 
 ## 1. Check the laboratory
@@ -25,17 +32,23 @@ Those files are a real privacy-safe course `archprobe` receipt captured in a con
 
 ### Live path
 
+Run the probe twice. Leave `--out-dir` off; the wrapper owns a fresh,
+timestamped run directory for you each time (under `lab/runs/`, already
+excluded from version control), so there is no OS-specific cleanup command
+to remember or get wrong:
+
 ```bash
-rm -rf /tmp/arch-week03-a /tmp/arch-week03-b
-./lab/bin/archprobe --out-dir /tmp/arch-week03-a
-./lab/bin/archprobe --out-dir /tmp/arch-week03-b
+./lab/bin/archprobe
+./lab/bin/archprobe
 ```
 
-Inspect the friendly summaries and structured receipts.
+Each run prints the exact receipt path it wrote, for example
+`lab/runs/20260901T144759Z_probe/machine.json`. Inspect the friendly
+summaries and structured receipts it reports:
 
 ```bash
-cat /tmp/arch-week03-a/machine.txt
-cat /tmp/arch-week03-b/machine.txt
+cat lab/runs/<first-run-timestamp>_probe/machine.txt
+cat lab/runs/<second-run-timestamp>_probe/machine.txt
 ```
 
 ### Fallback path
@@ -69,6 +82,39 @@ Submit:
 7. one observed/expected difference, labeled accurately;
 8. one limitation another person should know before comparing results.
 
-## Optional container enrichment
+## The container boundary question (required reasoning, optional execution)
 
-If you already have a supported Docker/Podman environment, you may explore the course `Containerfile`. This is enrichment only. Do not install or reconfigure a machine merely to satisfy Week 3.
+You are required to reason about the container boundary this week, whether
+or not you can run a container yourself. The shared Commons lesson
+(linked above) already showed you a real, pinned, published container
+(`ghcr.io/jeremy-evert/dsct-week3-latex`) and what it does and does not
+control.
+
+Using that example plus your own two `archprobe` receipts above, answer:
+which of the facts your receipts recorded would most likely stay the same
+if this course's own `lab/Containerfile` environment ("the Experimental
+Chamber," see `lab/CONTRACT.md`) ran the probe instead of your native
+machine ("the Observatory"), and which would most likely still depend on
+the host underneath it? You do not need to have Docker/Podman installed to
+answer this. Reason from the shared lesson's evidence plus your own
+receipts.
+
+If you already have a supported Podman/Docker environment, you may build
+and run `lab/Containerfile` yourself and compare that receipt directly
+instead of reasoning from the shared example alone:
+
+```bash
+cd lab
+podman build -t archlab-chamber -f Containerfile .
+cd ..
+mkdir -p lab/runs/chamber
+podman run --rm --userns=keep-id -v "$PWD/lab/runs/chamber:/work" -w /work archlab-chamber archprobe --out-dir /work
+cat lab/runs/chamber/machine.txt
+```
+
+Note the build context is `lab/` itself, and `--out-dir /work` is required
+so the receipt lands in your bind-mounted, host-visible folder instead of
+being lost with the disposable container. This is optional execution, not
+optional reasoning; do not install or reconfigure a machine merely to run
+it, and do not treat container-visible evidence as physical-host truth
+either way.

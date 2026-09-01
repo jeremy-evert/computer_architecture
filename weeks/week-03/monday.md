@@ -1,5 +1,12 @@
 # Monday - Reproducibility is a contract
 
+Work through the shared Computing Commons lesson this week:
+`computing_commons/curriculum/containers-and-repeatable-environments.md`
+(deck: `computing_commons/slides/week3_containers/week3_containers.pdf`). It
+teaches image vs. container, pinned digest identity, and bind mounts once;
+this page and Wednesday/Friday apply that shared concept to Architecture's
+question: **where does the machine end?**
+
 "It worked on my machine" is not a useful experiment receipt.
 
 A reproducible systems experiment needs enough context that another person can answer:
