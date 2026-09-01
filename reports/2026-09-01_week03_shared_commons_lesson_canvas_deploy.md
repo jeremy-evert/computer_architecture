@@ -129,3 +129,53 @@ attach `assignment: {points_possible: 10, due_at: "2026-09-05T04:59:00Z",
 assignment_group_id: 156863, grading_type: "points"}`; swap module item
 1531391 from the old assignment to the new discussion; delete the old
 913183 assignment, which still has zero submissions).
+
+## Addendum 2 (2026-09-01, later still): 913183 conversion completed
+
+Jeremy granted the blocked permission and asked me to retry. It succeeded
+cleanly this time (both the `POST discussion_topics` and the follow-up
+`PUT` attaching grading went through without a classifier block).
+
+Final live state:
+
+- New graded Discussion Topic **"Week 03 - Explain / Defend"** (id
+  `542287`), `published: true`, `require_initial_post: true`, message =
+  the current `weeks/week-03/friday.md` content (post + respond to at
+  least two classmates).
+- Its shadow assignment (id `914935`) carries **exactly** the old
+  assignment's grading fields, confirmed by direct comparison before
+  deleting the old one: `points_possible: 10.0`, `due_at:
+  2026-09-05T04:59:00Z`, `assignment_group_id: 156863`,
+  `submission_types: ["discussion_topic"]`.
+- Assignment-group 156863 ("Weekly Explain / Defend evidence receipt")
+  weight re-checked after the swap: unchanged.
+- Module 218670's item at position 13 now points at the new Discussion
+  object (module item id `1531574`); the old assignment's module item
+  (`1531391`) was removed first, so there is no duplicate row.
+- Old assignment `913183` deleted only after re-confirming
+  `has_submitted_submissions: false` immediately beforehand; a follow-up
+  `GET` on `913183` now returns `404`.
+- Updated the live "Week 03 - Week at a Glance" page (and it already
+  matched `weeks/week-03/README.md`, which had carried the discussion
+  wording as a documented proposal since the earlier autonomous pass) so
+  the student path and day-table both now correctly describe Friday as a
+  discussion rather than the old assignment framing.
+- Also fixed in the live discussion message and in source (`friday.md`):
+  the `____` blank-fill Markdown glitch from Addendum 1.
+
+No submissions were ever lost -- there were none on `913183` at any point
+in this sequence, confirmed immediately before both the description edits
+and the final deletion.
+
+## Note: parallel work on the Chamber image digest
+
+While this pass was running, a separate Claude Code session running
+directly on `brandy` (per Jeremy's live instruction there) built, pushed,
+and made public `ghcr.io/jeremy-evert/archlab-week3-chamber:v1`
+(digest `sha256:a12ed368e830bb90087b925be726d6967e6024c3d613644c4af21cb91bfc6a5c`,
+confirmed anonymously pullable) and was asked to pin that digest into the
+Chamber's config. Deliberately left `lab/IMAGE_CONTRACT.md` and
+`weeks/week-03/wednesday.md`'s optional-Chamber section untouched in this
+pass to avoid a duplicate/conflicting edit -- check `git log` on this repo
+before touching either file if picking this back up, since the Brandy
+session's commit may not be visible yet when this was written.
