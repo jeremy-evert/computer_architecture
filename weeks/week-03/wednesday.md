@@ -154,3 +154,36 @@ the same command works unmodified on Ubuntu/Debian. This is optional
 execution, not optional reasoning; do not install or reconfigure a machine
 merely to run it, and do not treat container-visible evidence as
 physical-host truth either way.
+
+## Optional enrichment: a second, dedicated container workbench
+
+This is genuinely optional -- it does not replace anything above and does
+not change what you must submit. If you want a second, independent look at
+the container boundary using tools closer to what the rest of Architecture
+uses (`gcc`, `objdump`, `readelf`, `strace`), there is a small dedicated
+Computer Architecture image:
+
+Recorded walkthrough: [Computer Architecture Container Workbench -- building
+it, and the real snags along the way](https://swosuits-my.sharepoint.com/:v:/g/personal/evertj_swosu_edu/IQCkpfHARPeuS6Ade2jpnIdeAWI0U1puoQmHkibMMNxvNDw)
+(video, SWOSU sign-in required) and a matching slide deck are linked from
+the Computer Architecture Canvas Week 3 module.
+
+Pull the published image directly:
+
+```bash
+podman pull ghcr.io/jeremy-evert/computer-architecture-lab:week03
+podman run --rm --volume "$PWD:/workspace:Z" --workdir /workspace \
+  ghcr.io/jeremy-evert/computer-architecture-lab:week03 arch-container-probe
+```
+
+Using Docker instead of Podman? Same commands, `docker` instead of
+`podman`. That tag currently resolves to
+`sha256:8540729dfc3ea9e53ff6ee8df756bf0d5aaace0bbd970b9a6d33bbeacbe7bca0`;
+prefer the digest form for anything you actually need to reproduce.
+
+On Windows, a driver script builds, probes, and can publish this same image
+for you -- see `scripts/computer-architecture-container.ps1` and
+`scripts/containers/computer-architecture/README.md` for the full command
+reference and a troubleshooting section covering the real snags hit while
+building this workbench (a Podman-on-WSL `--format` template error, GHCR
+login/token scope, and private-by-default package visibility).

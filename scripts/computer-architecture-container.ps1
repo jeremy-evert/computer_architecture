@@ -22,7 +22,7 @@
 
 [CmdletBinding()]
 param(
-    [ValidateSet('Help', 'Setup', 'Build', 'Probe', 'Shell', 'Status', 'Clean')]
+    [ValidateSet('Help', 'Setup', 'Build', 'Probe', 'Shell', 'Status', 'Clean', 'Push')]
     [string]$Mode = 'Help'
 )
 
@@ -35,6 +35,7 @@ $ContainerfilePath = Join-Path $ContainerDirectory 'Containerfile'
 $ProbePath = Join-Path $ContainerDirectory 'arch-container-probe.sh'
 $EvidenceDirectory = Join-Path $RepositoryRoot 'evidence\container-architecture'
 $ImageName = 'localhost/computer-architecture-lab:week03'
+$GhcrImageName = 'ghcr.io/jeremy-evert/computer-architecture-lab:week03'
 $Utf8NoBom = New-Object System.Text.UTF8Encoding($false)
 
 function Write-Section([string]$Text) {
@@ -223,6 +224,34 @@ function Invoke-Probe {
     )
 }
 
+function Push-Workbench {
+    Assert-Image
+    Write-Section 'Logging in to ghcr.io'
+    Write-Host 'You need a GitHub classic personal access token scoped to write:packages.' -ForegroundColor Yellow
+    Write-Host 'Create one here: https://github.com/settings/tokens/new?scopes=write:packages' -ForegroundColor Yellow
+    Write-Host 'Paste the token at the hidden Password prompt below. Never your GitHub account password.' -ForegroundColor Yellow
+
+    & podman login ghcr.io --username jeremy-evert
+    if ($LASTEXITCODE -ne 0) {
+        throw 'podman login failed.'
+    }
+
+    Write-Section 'Tagging the image for GHCR'
+    & podman tag $ImageName $GhcrImageName
+    if ($LASTEXITCODE -ne 0) {
+        throw 'podman tag failed.'
+    }
+
+    Invoke-Podman -Description 'Pushing to GitHub Container Registry' -Arguments @(
+        'push', $GhcrImageName
+    )
+
+    Write-Host ''
+    Write-Host "Pushed: $GhcrImageName" -ForegroundColor Green
+    Write-Host 'New GitHub packages are private by default.' -ForegroundColor Yellow
+    Write-Host 'Make it pullable by anyone: GitHub profile -> Packages -> computer-architecture-lab -> Package settings -> Change visibility -> Public.' -ForegroundColor Yellow
+}
+
 function Enter-Shell {
     Assert-Image
     Write-Section 'Entering the Computer Architecture workbench'
@@ -296,6 +325,11 @@ Later uses:
   .\computer-architecture-container.ps1 -Mode Clean
       Remove only the built image. Preserve source files and evidence.
 
+  .\computer-architecture-container.ps1 -Mode Push
+      Publish the image to GHCR (ghcr.io/jeremy-evert/computer-architecture-lab)
+      so it can be pulled on another machine. Requires a GitHub classic
+      personal access token scoped to write:packages.
+
   .\computer-architecture-container.ps1 -Mode Help
       Display this reference.
 
@@ -324,4 +358,5 @@ switch ($Mode) {
     'Shell'  { Enter-Shell }
     'Status' { Show-Status }
     'Clean'  { Remove-WorkbenchImage }
+    'Push'   { Push-Workbench }
 }
