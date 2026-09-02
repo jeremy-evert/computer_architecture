@@ -1,0 +1,221 @@
+\documentclass[aspectratio=169,11pt]{beamer}
+
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{positioning,arrows.meta}
+
+\definecolor{DeepNavy}{HTML}{13263A}
+\definecolor{WarmGold}{HTML}{D9A441}
+\definecolor{SoftBlue}{HTML}{EAF1F7}
+\definecolor{SoftGold}{HTML}{FFF4D6}
+\definecolor{Ink}{HTML}{1E2933}
+\definecolor{Muted}{HTML}{5D6B78}
+\definecolor{AlertRed}{HTML}{9D2C2C}
+\definecolor{Green}{HTML}{2F6F4E}
+\definecolor{CopyBg}{HTML}{0F1B14}
+\definecolor{CopyFg}{HTML}{7CFFB2}
+
+\setbeamercolor{normal text}{fg=Ink,bg=white}
+\setbeamercolor{structure}{fg=DeepNavy}
+\setbeamercolor{frametitle}{fg=white,bg=DeepNavy}
+\setbeamercolor{title}{fg=white}
+\setbeamercolor{subtitle}{fg=SoftBlue}
+\setbeamercolor{block title}{fg=white,bg=DeepNavy}
+\setbeamercolor{block body}{fg=Ink,bg=SoftBlue}
+\setbeamercolor{alertblock title}{fg=white,bg=AlertRed}
+\setbeamercolor{alertblock body}{fg=Ink,bg=SoftGold}
+\setbeamercolor{exampleblock title}{fg=white,bg=Green}
+\setbeamercolor{exampleblock body}{fg=Ink,bg=SoftBlue}
+\setbeamercolor{itemize item}{fg=WarmGold}
+\setbeamercolor{itemize subitem}{fg=DeepNavy}
+\setbeamercolor{enumerate item}{fg=WarmGold}
+
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{footline}{%
+  \leavevmode%
+  \hbox{%
+  \begin{beamercolorbox}[wd=.78\paperwidth,ht=2.7ex,dp=1.2ex,leftskip=1em]{author in head/foot}%
+    \color{Muted}\small Computer Architecture \textbullet\ Container Workbench
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.22\paperwidth,ht=2.7ex,dp=1.2ex,rightskip=1em plus1fil]{date in head/foot}%
+    \color{Muted}\small \insertframenumber/\inserttotalframenumber
+  \end{beamercolorbox}}%
+}
+
+% A prominent, high-contrast, copy-pasteable command box. Always placed at
+% the TOP of the frame, ahead of any screenshot, so it is the first thing a
+% student can select and paste into a terminal or a Copilot/ChatGPT chat.
+\newcommand{\copybox}[2]{%
+  \begin{beamercolorbox}[wd=\textwidth,sep=0.35em]{normal text}
+  {\color{WarmGold}\scriptsize\bfseries COPY/PASTE THIS -- #1}
+  \end{beamercolorbox}
+  \begin{beamercolorbox}[wd=\textwidth,sep=0.6em]{normal text}
+  \colorbox{CopyBg}{%
+    \begin{minipage}{0.97\textwidth}
+    \color{CopyFg}\ttfamily\footnotesize
+    #2
+    \end{minipage}%
+  }
+  \end{beamercolorbox}
+}
+
+\newcommand{\shot}[2][0.42]{%
+  \begin{center}
+  \fbox{\includegraphics[width=#1\textwidth]{#2}}
+  \end{center}
+}
+
+\title{Computer Architecture Container Workbench}
+\subtitle{Building It -- and the Real Snags Along the Way}
+\author{SWOSU Computer Architecture}
+\date{Week 3 \textbullet\ Fall 2026}
+
+\begin{document}
+
+{\setbeamercolor{background canvas}{bg=DeepNavy}
+\begin{frame}[plain]
+  \vspace{0.8cm}
+  {\Huge\bfseries\color{white}Computer Architecture\par}
+  \vspace{0.1cm}
+  {\Huge\bfseries\color{white}Container Workbench\par}
+  \vspace{0.35cm}
+  {\Large\color{SoftBlue}Building It -- and the Real Snags Along the Way\par}
+  \vfill
+  {\large\color{WarmGold}Where does the machine end?}\par
+  \vspace{0.15cm}
+  {\Large\color{white}A dedicated Linux workbench, built the hard way, so you
+  don't have to hit the same snags.\par}
+  \vfill
+  {\small\color{SoftBlue}Companion slides for the recorded walkthrough --
+  every gray box below is meant to be copied straight into your terminal
+  or pasted into a Copilot/ChatGPT chat.}
+\end{frame}}
+
+\begin{frame}{Why a second container, just for Architecture?}
+\begin{itemize}
+  \item The shared Commons container proved the \emph{loop}: build, publish,
+    pull elsewhere.
+  \item Architecture's own question is different: \textbf{where does the
+    machine end?} What does the container hold constant, and what still
+    leaks in from the host?
+  \item This workbench adds the tools Architecture actually uses --
+    \texttt{gcc}, \texttt{objdump}, \texttt{readelf}, \texttt{strace} --
+    inside a container you can compare against your own machine.
+\end{itemize}
+\vspace{0.3cm}
+\begin{alertblock}{This is optional enrichment}
+It does not replace \texttt{archprobe} and does not change what you must
+submit for Week 3.
+\end{alertblock}
+\end{frame}
+
+\begin{frame}[fragile]{Snag \#1: a pasted script that looks right but isn't}
+\footnotesize
+\copybox{what actually broke}{%
+\$ErrorActionPreference = 'Continue'\\
+\$EvidenceDirectory = Join-Path \$Week3Directory 'evidence'%
+}
+\begin{alertblock}{What happened}
+The pasted text looked fine on screen, but the quote characters and dash
+had been silently swapped for "smart" typographic look-alikes. PowerShell
+read \texttt{Continue} and \texttt{Join-Path} as garbage and rejected them.
+\end{alertblock}
+\begin{block}{The fix}
+Paste code as \textbf{plain text} (paste, then undo-formatting -- or paste
+into Notepad first). An error naming something that looks \emph{almost}
+right means: suspect smart quotes/dashes first.
+\end{block}
+\end{frame}
+
+\begin{frame}[fragile]{Recovery: confirm Podman is actually ready}
+\footnotesize
+\copybox{run this before anything else}{%
+podman machine list\\
+podman info%
+}
+\shot[0.32]{recovery.jpg}
+\begin{block}{Why this step, every time}
+Do not troubleshoot a build failure before you know Podman itself is
+healthy. If \texttt{podman info} prints real output instead of a
+connection error, the machine is ready and the problem is somewhere else.
+\end{block}
+\end{frame}
+
+\begin{frame}[fragile]{The real setup, once the paste is clean}
+\copybox{one command, from the repository root}{%
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass -Force\\
+.\textbackslash{}scripts\textbackslash{}computer-architecture-container.ps1 -Mode Setup%
+}
+\shot{setup_run.jpg}
+\begin{exampleblock}{What Setup does}
+Writes the \texttt{Containerfile} and probe script, builds the image, and
+runs the probe once -- all from one clean command, once the earlier paste
+problem was gone.
+\end{exampleblock}
+\end{frame}
+
+\begin{frame}[fragile]{Publish it: push to GHCR}
+\copybox{after Setup succeeds}{%
+.\textbackslash{}scripts\textbackslash{}computer-architecture-container.ps1 -Mode Push%
+}
+\begin{block}{What you'll be asked for}
+A \textbf{classic} GitHub personal access token scoped to
+\texttt{write:packages}, pasted at the hidden password prompt -- never your
+real GitHub password.
+\end{block}
+\begin{alertblock}{One manual step after the push}
+New GitHub packages are private by default. To let anyone pull without
+logging in: GitHub profile \textrightarrow\ Packages \textrightarrow\ the
+package \textrightarrow\ Package settings \textrightarrow\ Change
+visibility \textrightarrow\ Public.
+\end{alertblock}
+\end{frame}
+
+\begin{frame}[fragile]{Or skip the build entirely -- pull the published image}
+\copybox{fastest path, no build required}{%
+podman pull ghcr.io/jeremy-evert/computer-architecture-lab:week03\\
+podman run --rm --volume "\$PWD:/workspace:Z" --workdir /workspace \textbackslash\\
+\ \ ghcr.io/jeremy-evert/computer-architecture-lab:week03 arch-container-probe%
+}
+\begin{block}{Using Docker instead of Podman?}
+Same commands, \texttt{docker} instead of \texttt{podman}.
+\end{block}
+\end{frame}
+
+\begin{frame}[fragile]{Wire it into the course}
+\footnotesize
+\copybox{save your work the same way every time}{%
+git add scripts\\
+git commit -m "Add computer architecture container workbench"\\
+git push%
+}
+\shot[0.32]{commit_push.jpg}
+\begin{block}{What just got saved}
+The \texttt{Containerfile}, the probe script, the PowerShell driver, and
+the evidence receipts -- committed and pushed to the course repository, so
+the next person (including future you) does not have to rebuild this from
+memory.
+\end{block}
+\end{frame}
+
+\begin{frame}{Where to go from here}
+\begin{itemize}
+  \item Full command reference and troubleshooting:
+    \texttt{scripts/containers/computer-architecture/README.md}.
+  \item Full recorded walkthrough: Computer Architecture Week 3 module,
+    Canvas.
+  \item Compare this container's receipt against your own machine's
+    \texttt{archprobe} receipts from earlier in the week -- that comparison
+    \emph{is} the Architecture lens on this exercise.
+\end{itemize}
+\vspace{0.2cm}
+\begin{exampleblock}{The one-sentence takeaway}
+A container can hold the software environment constant. It cannot hide the
+CPU, the kernel, or the host underneath it -- and knowing which is which is
+the whole point.
+\end{exampleblock}
+\end{frame}
+
+\end{document}
