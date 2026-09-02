@@ -1,0 +1,97 @@
+﻿**********************
+Windows PowerShell transcript start
+Start time: 20260902115413
+Username: ADMIN\evertj
+RunAs User: ADMIN\evertj
+Configuration Name: 
+Machine: SWOSU-62673 (Microsoft Windows NT 10.0.26100.0)
+Host Application: C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe
+Process ID: 8224
+PSVersion: 5.1.26100.8875
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.26100.8875
+BuildVersion: 10.0.26100.8875
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+Transcript started, output file is C:\Users\evertj\git\computer_architecture\lab\week_3\evidence\container-week3-checkpoint1-20260902-115413.txt
+morgan PS C:\Users\evertj\git\computer_architecture\lab\week_3> Write-Host ''
+
+morgan PS C:\Users\evertj\git\computer_architecture\lab\week_3> Write-Host '=== CHECKPOINT 1: CURRENT LOCATION ===' -ForegroundColor Cyan
+=== CHECKPOINT 1: CURRENT LOCATION ===
+morgan PS C:\Users\evertj\git\computer_architecture\lab\week_3> Get-Location
+
+Path
+----
+C:\Users\evertj\git\computer_architecture\lab\week_3
+
+
+morgan PS C:\Users\evertj\git\computer_architecture\lab\week_3> Write-Host ''
+
+morgan PS C:\Users\evertj\git\computer_architecture\lab\week_3> Write-Host '=== GIT REPOSITORY ROOT ===' -ForegroundColor Cyan
+=== GIT REPOSITORY ROOT ===
+morgan PS C:\Users\evertj\git\computer_architecture\lab\week_3> $RepoRoot = git rev-parse --show-toplevel 2>&1
+morgan PS C:\Users\evertj\git\computer_architecture\lab\week_3> $RepoRoot
+C:/Users/evertj/git/computer_architecture
+morgan PS C:\Users\evertj\git\computer_architecture\lab\week_3> Write-Host ''
+
+morgan PS C:\Users\evertj\git\computer_architecture\lab\week_3> Write-Host '=== GIT STATUS ===' -ForegroundColor Cyan
+=== GIT STATUS ===
+morgan PS C:\Users\evertj\git\computer_architecture\lab\week_3> git status --short --branch 2>&1
+## main...origin/main
+?? ./
+morgan PS C:\Users\evertj\git\computer_architecture\lab\week_3> Write-Host ''
+
+morgan PS C:\Users\evertj\git\computer_architecture\lab\week_3> Write-Host '=== PODMAN VERSION ===' -ForegroundColor Cyan
+=== PODMAN VERSION ===
+morgan PS C:\Users\evertj\git\computer_architecture\lab\week_3> podman --version 2>&1
+podman version 6.1.0
+morgan PS C:\Users\evertj\git\computer_architecture\lab\week_3> Write-Host ''
+
+morgan PS C:\Users\evertj\git\computer_architecture\lab\week_3> Write-Host '=== PODMAN CONNECTION TEST ===' -ForegroundColor Cyan
+=== PODMAN CONNECTION TEST ===
+morgan PS C:\Users\evertj\git\computer_architecture\lab\week_3> podman info --format 'Host OS={{.Host.Os}} Architecture={{.Host.Arch}} Runtime={{.Host.OCIRuntime.Name}}' 2>&1
+podman : Error: template: info:1:15: executing "info" at <.Host.Os>: can't evaluate field Os in type *define.HostInfo
+At line:1 char:1
++ podman info --format 'Host OS={{.Host.Os}} Architecture={{.Host.Arch} ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Error: template...define.HostInfo:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+
+Host OS=podman : Error: template: info:1:15: executing "info" at <.Host.Os>: can't evaluate field Os in type *define.HostInfo
+At line:1 char:1
++ podman info --format 'Host OS={{.Host.Os}} Architecture={{.Host.Arch} ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Error: template...define.HostInfo:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+morgan PS C:\Users\evertj\git\computer_architecture\lab\week_3> Write-Host ''
+
+morgan PS C:\Users\evertj\git\computer_architecture\lab\week_3> Write-Host '=== SEARCHING FOR THE VALIDATED WRAPPER ===' -ForegroundColor Cyan
+=== SEARCHING FOR THE VALIDATED WRAPPER ===
+morgan PS C:\Users\evertj\git\computer_architecture\lab\week_3> Get-ChildItem -Path . -Recurse -File -Filter 'run-latex.sh' -ErrorAction SilentlyContinue |
+    Select-Object -ExpandProperty FullName
+morgan PS C:\Users\evertj\git\computer_architecture\lab\week_3> Write-Host ''
+
+morgan PS C:\Users\evertj\git\computer_architecture\lab\week_3> Write-Host '=== SEARCHING FOR THE IMAGE CONTRACT ===' -ForegroundColor Cyan
+=== SEARCHING FOR THE IMAGE CONTRACT ===
+morgan PS C:\Users\evertj\git\computer_architecture\lab\week_3> Get-ChildItem -Path . -Recurse -File -Filter 'IMAGE_CONTRACT.md' -ErrorAction SilentlyContinue |
+    Select-Object -ExpandProperty FullName
+morgan PS C:\Users\evertj\git\computer_architecture\lab\week_3> Write-Host ''
+
+morgan PS C:\Users\evertj\git\computer_architecture\lab\week_3> Write-Host '=== SEARCHING FOR STUDENT INSTRUCTIONS ===' -ForegroundColor Cyan
+=== SEARCHING FOR STUDENT INSTRUCTIONS ===
+morgan PS C:\Users\evertj\git\computer_architecture\lab\week_3> Get-ChildItem -Path . -Recurse -File -Filter 'container-latex-skill-ladder.md' -ErrorAction SilentlyContinue |
+    Select-Object -ExpandProperty FullName
+morgan PS C:\Users\evertj\git\computer_architecture\lab\week_3> Write-Host ''
+
+morgan PS C:\Users\evertj\git\computer_architecture\lab\week_3> Write-Host '=== CHECKPOINT 1 COMPLETE ===' -ForegroundColor Green
+=== CHECKPOINT 1 COMPLETE ===
+morgan PS C:\Users\evertj\git\computer_architecture\lab\week_3> Write-Host "Evidence transcript: $TranscriptPath"
+Evidence transcript: C:\Users\evertj\git\computer_architecture\lab\week_3\evidence\container-week3-checkpoint1-20260902-115413.txt
+morgan PS C:\Users\evertj\git\computer_architecture\lab\week_3> Stop-Transcript
+**********************
+Windows PowerShell transcript end
+End time: 20260902115416
+**********************
