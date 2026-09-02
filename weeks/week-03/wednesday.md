@@ -7,6 +7,10 @@ repeatability lesson. If you have not already worked through it, start at
 This page applies that shared concept to Architecture's own question:
 **where does the machine end?**
 
+Recorded walkthrough: [Container Level 0 -- Build It Here. Run It There.](https://swosuits-my.sharepoint.com/:v:/g/personal/evertj_swosu_edu/IQAQwaO1BQW-QZFKtKkVf9hcAWvtxIyAQR_Cq1TKmVXY3R8)
+(video, SWOSU sign-in required) -- builds the tiny Hello World image, publishes
+it to GHCR, and pulls it on a second machine.
+
 Use the validated repository-local laboratory path from the course repository root.
 
 ## 1. Check the laboratory
@@ -112,6 +116,18 @@ podman run --rm --userns=keep-id \
   archprobe --out-dir /work
 cat lab/runs/chamber/machine.txt
 ```
+
+Using Docker instead of Podman? The same public, pinned image is pullable
+directly:
+
+```bash
+docker pull ghcr.io/jeremy-evert/archlab-week3-chamber:v1
+```
+
+That tag currently resolves to the same digest above
+(`sha256:a12ed368e830bb90087b925be726d6967e6024c3d613644c4af21cb91bfc6a5c`);
+prefer the digest form for anything you actually need to reproduce, since a
+tag can move and a digest cannot.
 
 You can also build it yourself from the committed recipe instead of
 pulling the published image (useful offline, or to inspect/modify the
