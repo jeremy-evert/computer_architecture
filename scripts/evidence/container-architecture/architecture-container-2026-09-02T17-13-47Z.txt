@@ -1,0 +1,105 @@
+COMPUTER ARCHITECTURE CONTAINER RECEIPT
+=======================================
+Recorded UTC: 2026-09-02T17:13:47Z
+Working directory: /workspace
+
+[CONTAINER USER SPACE]
+PRETTY_NAME="Debian GNU/Linux 12 (bookworm)"
+NAME="Debian GNU/Linux"
+VERSION_ID="12"
+VERSION="12 (bookworm)"
+VERSION_CODENAME=bookworm
+ID=debian
+HOME_URL="https://www.debian.org/"
+SUPPORT_URL="https://www.debian.org/support"
+BUG_REPORT_URL="https://bugs.debian.org/"
+
+[HOST-SUPPLIED KERNEL VIEW]
+Linux 67e6cfe90c36 6.18.33.2-microsoft-standard-WSL2 #1 SMP PREEMPT_DYNAMIC Thu Jun 18 21:54:43 UTC 2026 x86_64 GNU/Linux
+
+[MACHINE AND CPU VIEW]
+x86_64
+Architecture:                            x86_64
+CPU op-mode(s):                          32-bit, 64-bit
+Address sizes:                           39 bits physical, 48 bits virtual
+Byte Order:                              Little Endian
+CPU(s):                                  12
+On-line CPU(s) list:                     0-11
+Vendor ID:                               GenuineIntel
+Model name:                              Intel(R) Core(TM) i7-8700K CPU @ 3.70GHz
+CPU family:                              6
+Model:                                   158
+Thread(s) per core:                      2
+Core(s) per socket:                      6
+Socket(s):                               1
+Stepping:                                10
+BogoMIPS:                                7391.99
+Flags:                                   fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ss ht syscall nx pdpe1gb rdtscp lm arch_perfmon rep_good nopl xtopology cpuid tsc_known_freq pni pclmulqdq vmx ssse3 fma cx16 pdcm pcid sse4_1 sse4_2 movbe popcnt aes xsave avx f16c rdrand hypervisor lahf_lm abm 3dnowprefetch pti ssbd ibrs ibpb stibp tpr_shadow ept vpid ept_ad fsgsbase bmi1 hle avx2 smep bmi2 erms invpcid rtm rdseed adx smap clflushopt xsaveopt xsavec xgetbv1 xsaves vnmi md_clear flush_l1d arch_capabilities
+Virtualization:                          VT-x
+Hypervisor vendor:                       Microsoft
+Virtualization type:                     full
+L1d cache:                               192 KiB (6 instances)
+L1i cache:                               192 KiB (6 instances)
+L2 cache:                                1.5 MiB (6 instances)
+L3 cache:                                12 MiB (1 instance)
+NUMA node(s):                            1
+NUMA node0 CPU(s):                       0-11
+Vulnerability Gather data sampling:      Unknown: Dependent on hypervisor status
+Vulnerability Ghostwrite:                Not affected
+Vulnerability Indirect target selection: Mitigation; Aligned branch/return thunks
+Vulnerability Itlb multihit:             KVM: Mitigation: Split huge pages
+Vulnerability L1tf:                      Mitigation; PTE Inversion; VMX conditional cache flushes, SMT vulnerable
+Vulnerability Mds:                       Mitigation; Clear CPU buffers; SMT Host state unknown
+Vulnerability Meltdown:                  Mitigation; PTI
+Vulnerability Mmio stale data:           Mitigation; Clear CPU buffers; SMT Host state unknown
+Vulnerability Old microcode:             Not affected
+Vulnerability Reg file data sampling:    Not affected
+Vulnerability Retbleed:                  Mitigation; IBRS
+Vulnerability Spec rstack overflow:      Not affected
+Vulnerability Spec store bypass:         Mitigation; Speculative Store Bypass disabled via prctl
+Vulnerability Spectre v1:                Mitigation; usercopy/swapgs barriers and __user pointer sanitization
+Vulnerability Spectre v2:                Mitigation; IBRS; IBPB conditional; STIBP conditional; RSB filling; PBRSB-eIBRS Not affected; BHI SW loop, KVM SW loop
+Vulnerability Srbds:                     Unknown: Dependent on hypervisor status
+Vulnerability Tsa:                       Not affected
+Vulnerability Tsx async abort:           Mitigation; Clear CPU buffers; SMT Host state unknown
+Vulnerability Vmscape:                   Not affected
+
+[MEMORY VIEW]
+               total        used        free      shared  buff/cache   available
+Mem:            15Gi       865Mi        14Gi       3.7Mi       910Mi        14Gi
+Swap:          4.0Gi          0B       4.0Gi
+
+[FILESYSTEM VIEW]
+Filesystem      Size  Used Avail Use% Mounted on
+C:\             233G  180G   53G  78% /workspace
+tmpfs           1.6G  104K  1.6G   1% /etc/hosts
+shm              63M     0   63M   0% /dev/shm
+overlay        1007G  1.4G  955G   1% /
+tmpfs            64M     0   64M   0% /dev
+none            7.8G     0  7.8G   0% /dev/tty
+
+[TOOLS]
+gcc (Debian 12.2.0-14+deb12u1) 12.2.0
+GNU objdump (GNU Binutils for Debian) 2.40
+GNU readelf (GNU Binutils for Debian) 2.40
+Python 3.11.2
+
+[IDENTITY]
+uid=0(root) gid=0(root) groups=0(root)
+
+[REPOSITORY STATE]
+/workspace is not recognized as a Git working tree.
+
+[BOUNDED REPRODUCIBILITY CLAIM]
+Most likely held constant by this image:
+  - Debian user-space files
+  - installed compiler and binary-analysis tools
+  - working directory and default command
+
+Still dependent on the host or runtime:
+  - CPU architecture and exposed CPU capabilities
+  - kernel exposed to the container
+  - available processors and memory
+  - bind-mounted repository contents
+  - Podman runtime configuration
+  - execution performance
