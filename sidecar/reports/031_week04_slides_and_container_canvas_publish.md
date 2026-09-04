@@ -55,3 +55,30 @@ beyond the digest-pull check already recorded in Anna's report and
 independently reverified by Flo on April (fully logged-out `podman pull`
 by digest, then a real container run producing the correct blank receipt
 and demonstrating the container/host CPU-visibility confound live).
+
+## Addendum (same day) — Explain/Defend receipt template added
+
+Jeremy asked for the new starter template on Canvas too, ahead of his live
+review. Uploaded `weeks/week-04/build/explain_defend_receipt.pdf` (built from
+`weeks/week-04/explain_defend_receipt.tex`, commit `e5f7a20`) to course Files
+under `slides/week_04/` as `week04_explain_defend_receipt_template.pdf`
+(Canvas file id `6585869`), placed as a published File module item, position
+4, id `1532589`: "Explain / Defend Receipt — starter template (fill in
+before Friday)" — positioned right before the graded Architecture
+Investigation assignment (position 12, unchanged).
+
+Readback after this addition:
+
+```
+1  Page       True  1527838  Week 04 - Week at a Glance
+2  File       True  1532587  Wednesday slides — Use the operating system as a telescope
+3  Page       True  1532588  Optional: Architecture Telescope Container
+4  File       True  1532589  Explain / Defend Receipt — starter template (fill in before Friday)
+12 Assignment True  1527849  Week 04 - Architecture Investigation
+```
+
+All prior items unchanged. Note: this template still has `[FILL IN]`
+markers throughout by design — it is a starting scaffold, not a finished
+handout, per Jeremy's own framing when he asked for it. He is reviewing it
+live before deciding whether it goes to students as-is or gets refined
+first.
