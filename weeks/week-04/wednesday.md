@@ -50,6 +50,22 @@ od -An -tx1 -c /tmp/arch-week04-bytes.txt
 
 If a named command is unavailable on your supported environment, use the Observatory/fallback packet and record that limitation. Do not install privileged tools merely to imitate Linux output.
 
+## Optional enrichment: Architecture Telescope
+
+If you want a small Linux environment with the same observation instruments,
+you may run the course's optional Architecture Telescope image. It prints a
+blank Explain / Defend receipt for you to fill in; it does not replace
+`archprobe` or answer the reasoning questions for you.
+
+```bash
+podman pull ghcr.io/jeremy-evert/archlab-week4-telescope@sha256:6844a542024050ad897bc4706229c49b721cff51f8cbfe8bff2bd04c71608580
+podman run --rm -it ghcr.io/jeremy-evert/archlab-week4-telescope@sha256:6844a542024050ad897bc4706229c49b721cff51f8cbfe8bff2bd04c71608580
+```
+
+Using Docker instead of Podman? Substitute `docker` for `podman`. This image
+is optional enrichment, not a requirement; use the Observatory/fallback path
+if the image is unavailable.
+
 ## 4. Observation receipt
 
 Choose **one** machine claim and provide:

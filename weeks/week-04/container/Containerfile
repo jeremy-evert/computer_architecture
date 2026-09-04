@@ -1,0 +1,24 @@
+FROM docker.io/library/debian:bookworm-slim
+
+LABEL org.opencontainers.image.source="https://github.com/jeremy-evert/computer_architecture"
+
+ENV DEBIAN_FRONTEND=noninteractive
+ENV LANG=C.UTF-8
+ENV LC_ALL=C.UTF-8
+
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends \
+        bash \
+        coreutils \
+        file \
+        procps \
+        util-linux \
+    && rm -rf /var/lib/apt/lists/*
+
+COPY architecture-telescope.sh /usr/local/bin/architecture-telescope
+COPY README.md /usr/share/doc/architecture-telescope/README.md
+RUN chmod 0755 /usr/local/bin/architecture-telescope \
+    && architecture-telescope --smoke
+
+WORKDIR /work
+ENTRYPOINT ["/usr/local/bin/architecture-telescope"]

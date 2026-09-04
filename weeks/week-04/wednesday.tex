@@ -1,0 +1,112 @@
+\documentclass{beamer}
+\input{../_shared/beamer-preamble.tex}
+
+\title{Week 4 Wednesday}
+\subtitle{Use the operating system as a telescope}
+\author{COMSC-3013 Computer Architecture}
+\date{}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\ArchQuestionSlide{What is this computer doing?}{A small set of observations can answer bounded subquestions, but no one command reveals the whole physical machine.}
+\note{Open with the vague question. Ask students what they would need to know before trusting an answer.}
+
+\begin{frame}{The useful model: question $\rightarrow$ instrument $\rightarrow$ boundary}
+\begin{itemize}
+  \item Decompose one vague machine question into observable subquestions.
+  \item Choose an instrument whose output bears on exactly one subquestion.
+  \item Interpret the observation inside its execution scope; name what it cannot prove.
+\end{itemize}
+\note{This is Lens 4 in action: decomposition makes evidence and limits visible.}
+\end{frame}
+
+\begin{frame}[fragile]{Start with the course Observatory}
+\begin{lstlisting}
+./lab/bin/archprobe --out-dir /tmp/arch-week04
+cat /tmp/arch-week04/machine.txt
+\end{lstlisting}
+\begin{itemize}
+  \item The Observatory labels the visible execution environment.
+  \item It gives us a common receipt before platform-specific instruments.
+\end{itemize}
+\note{Run archprobe first in the recording. Scope is part of the evidence, not an afterthought.}
+\end{frame}
+
+\begin{frame}{One vague question, six smaller questions}
+\begin{itemize}
+  \item Which OS and kernel are visible? \hfill \texttt{uname}
+  \item Which ISA / machine label is visible? \hfill \texttt{uname -m}, \texttt{lscpu}
+  \item How many logical processors are visible? \hfill \texttt{lscpu}
+  \item How much memory is visible? \hfill \texttt{free}
+  \item What processes are running? \hfill \texttt{ps}
+  \item What kind of file or binary is this? \hfill \texttt{file}
+\end{itemize}
+\note{Do not turn this into a command vocabulary test. Each command earns its place by answering a question.}
+\end{frame}
+
+\begin{frame}[fragile]{Persistent worked example: one file, two views}
+\begin{lstlisting}
+printf 'ABC\n' > /tmp/arch-week04-bytes.txt
+file /tmp/arch-week04-bytes.txt
+od -An -tx1 -c /tmp/arch-week04-bytes.txt
+\end{lstlisting}
+\begin{itemize}
+  \item \textbf{Observation:} a tool reports a text file and bytes.
+  \item \textbf{Interpretation:} the bytes are consistent with the visible text specimen.
+  \item \textbf{Boundary:} this does not explain every file, encoding, or running process.
+\end{itemize}
+\note{Keep the same specimen visible while moving from file identity to raw representation.}
+\end{frame}
+
+\begin{frame}{Tempting claim: one command tells the whole story}
+\Large
+\textbf{Wrong:} ``\texttt{lscpu} says x86\_64, so I know the physical computer.''
+
+\vspace{1em}
+\normalsize
+\textbf{Why it fails:} the output describes the interface exposed to this execution environment. Containers, virtual machines, permissions, and runtime policy can hide or reshape details.
+\note{Make the tempting shortcut explicit, then point back to the scope label from archprobe.}
+\end{frame}
+
+\begin{frame}[fragile]{Add instruments selectively}
+\begin{lstlisting}
+uname -a
+lscpu
+free -h
+ps -eo pid,comm,%cpu,%mem --sort=-%cpu | head
+file /bin/sh
+\end{lstlisting}
+\begin{itemize}
+  \item Run only what helps answer the chosen subquestion.
+  \item If an instrument is unavailable, use the Observatory/fallback packet and record the limitation.
+\end{itemize}
+\note{The goal is an evidence chain, not a shell-command catalog.}
+\end{frame}
+
+\begin{frame}{The Explain / Defend receipt}
+\begin{enumerate}
+  \item Question: what were you trying to know?
+  \item Instrument: which tool produced the observation?
+  \item Observation: quote only the evidence that matters.
+  \item Interpretation: what does it support?
+  \item Boundary: what does it not establish?
+  \item Revision: how would you ask more precisely next time?
+\end{enumerate}
+\note{Friday asks students to defend one strong claim, not submit a screenshot dump.}
+\end{frame}
+
+\begin{frame}{Carry one bounded claim into Friday}
+\Large
+Choose one subquestion. Capture one raw observation. Explain one interpretation. Name one boundary.
+
+\vspace{1em}
+\normalsize
+The machine can answer a precise question; it cannot rescue an imprecise one.
+\note{End with the receipt structure. Leave the strongest claim for students to make and defend.}
+\end{frame}
+
+\end{document}
