@@ -24,14 +24,12 @@ observations, interpret evidence, or solve the Friday Explain / Defend task.
 | Published image | `ghcr.io/jeremy-evert/archlab-week4-telescope:v1` |
 | Manifest digest | `sha256:6844a542024050ad897bc4706229c49b721cff51f8cbfe8bff2bd04c71608580` |
 | OCI source label | `https://github.com/jeremy-evert/computer_architecture` |
-| Visibility | **Pending public package permission** |
+| Visibility | **Public — verified 2026-09-04** |
 
-The manifest was pushed successfully with `podman push --digestfile`; GitHub's
-package API still reports the package as private. The current credential can
-write packages but cannot change package visibility, so anonymous pull
-verification remains outstanding. Do not treat this image as student-ready
-until visibility is confirmed public and the exact digest pull succeeds
-without credentials.
+The manifest was pushed with `podman push --digestfile`. The package is
+public: a pull token was requested with zero credentials, and a manifest GET
+against the exact digest above using that anonymous token returned HTTP 200
+(schema version 2). This image is student-ready.
 
 ## Build and smoke evidence
 
