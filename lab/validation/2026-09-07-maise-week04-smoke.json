@@ -1,0 +1,49 @@
+{
+  "date": "2026-09-07",
+  "executor": "Ivy (Foreman Intern, Claude Code) on host maise",
+  "schema": "swosu.archlab.validation/v1",
+  "scope": "Week 4 release smoke only, per weeks/week-04/_validation.md. This is not a full lab doctor pass and does not claim anything about weeks 5-14 surfaces.",
+  "host": {
+    "hostname": "maise",
+    "kernel": "Linux maise 7.0.0-30-generic #30-Ubuntu SMP PREEMPT_DYNAMIC Fri Jul 31 18:22:54 UTC 2026 x86_64 GNU/Linux",
+    "os": "Ubuntu 26.04.1 LTS",
+    "cpu": "AMD Ryzen 9 3950X 16-Core Processor",
+    "logical_processors": 32,
+    "python": "3.14.4"
+  },
+  "week04_release_smoke": {
+    "command": "./lab/bin/archprobe --out-dir /tmp/arch-week04 && cat /tmp/arch-week04/machine.txt && uname -m",
+    "status": "PASS",
+    "archprobe_scope_reported": "host-visible",
+    "archprobe_summary": "OS: Ubuntu 26.04.1 LTS; Architecture: x86_64; Logical processors: 32; Visible memory: 60.7 GiB; Accelerator visible: True",
+    "uname_m": "x86_64"
+  },
+  "wednesday_required_path_end_to_end": {
+    "status": "PASS",
+    "commands_run": [
+      "lab/bin/archprobe --out-dir /tmp/arch-week04-demo",
+      "uname -a",
+      "uname -m",
+      "lscpu",
+      "free -h",
+      "ps -eo pid,comm,%cpu,%mem --sort=-%cpu | head",
+      "file /bin/sh",
+      "printf 'ABC\\n' > /tmp/arch-week04-bytes.txt && od -An -tx1 -c /tmp/arch-week04-bytes.txt"
+    ],
+    "all_commands_available_no_root": true,
+    "note": "Every instrument in weeks/week-04/wednesday.md's required (non-container) path ran to completion on this host with no root privileges and no paid tool."
+  },
+  "container_enrichment_not_reattempted_here": {
+    "status": "NOT_AVAILABLE_ON_THIS_HOST",
+    "detail": "podman and docker are both absent on maise (apt has podman as a candidate package, not installed; no docker binary). Installing either requires interactive sudo, which this session does not hold, so no package install was attempted. This matches the standing lab/PLATFORM_SUPPORT.md finding ('no Docker/Podman runtime was available on the validation surface') and is consistent with a separate GPU-Showdown-campaign session's independent observation that maise has no container engine.",
+    "already_independently_verified_elsewhere": "sidecar/reports/031_week04_slides_and_container_canvas_publish.md records that Flo independently re-verified the pinned ghcr.io/jeremy-evert/archlab-week4-telescope@sha256:6844a542... image on April: a fully logged-out `podman pull` by digest, then a real container run producing the correct blank receipt and demonstrating the container/host CPU-visibility confound live. That evidence is not duplicated by this pass."
+  },
+  "unrelated_lab_doctor_findings_out_of_scope_for_week04": {
+    "note": "A full `lab/bin/archlab doctor` run on maise fails on matplotlib (not installed) and RISC-V cross-compile (no toolchain) and reports container_runtime: false. None of those are Week 4 required-path dependencies (they matter for weeks 6-13); left unresolved here as out of this mission's scope by instruction.",
+    "status_for_reference_only": "FAIL"
+  },
+  "status": "PASS_WITH_KNOWN_PLATFORM_YELLOW",
+  "yellow": [
+    "Container/VM enrichment path (archlab-week4-telescope image) could not be exercised on maise specifically, because maise has no container engine and installing one needs interactive credentials Ivy does not hold. The required (non-container) student path is unaffected and fully validated above; the container enrichment was already independently verified on a different host (April) per sidecar/reports/031."
+  ]
+}

@@ -1,0 +1,74 @@
+Week 4 Wednesday required-path demonstration receipt
+Host: maise (Linux maise 7.0.0-30-generic #30-Ubuntu SMP PREEMPT_DYNAMIC Fri Jul 31 18:22:54 UTC 2026 x86_64 GNU/Linux)
+Captured by: Ivy (Foreman Intern, Claude Code), run d7448eab1c95a346b857ff72a72672ec
+Date: 2026-09-07
+Purpose: end-to-end proof that weeks/week-04/wednesday.md's required instrument
+set runs to completion on a real, named host with no root and no paid tool.
+This is a raw evidence fixture, not a student handout.
+
+=== $ ./lab/bin/archprobe --out-dir /tmp/arch-week04-demo ===
+SWOSU Architecture Observatory
+Scope: host-visible
+OS: Ubuntu 26.04.1 LTS
+Architecture: x86_64
+CPU: AMD Ryzen 9 3950X 16-Core Processor
+Logical processors: 32
+Visible memory: 60.7 GiB
+Cache records: 4
+Accelerator visible: True
+Receipt: /tmp/arch-week04-demo/machine.json
+
+=== $ uname -a ===
+Linux maise 7.0.0-30-generic #30-Ubuntu SMP PREEMPT_DYNAMIC Fri Jul 31 18:22:54 UTC 2026 x86_64 GNU/Linux
+
+=== $ uname -m ===
+x86_64
+
+=== $ lscpu (trimmed to the fields used in the Wednesday worked table) ===
+Architecture:                            x86_64
+CPU op-mode(s):                          32-bit, 64-bit
+Byte Order:                              Little Endian
+CPU(s):                                  32
+Vendor ID:                               AuthenticAMD
+Model name:                              AMD Ryzen 9 3950X 16-Core Processor
+Thread(s) per core:                      2
+Core(s) per socket:                      16
+Socket(s):                               1
+Flags: ... avx2 ... (full flag line includes dozens of tokens; avx2 present)
+
+=== $ free -h ===
+               total        used        free      shared  buff/cache   available
+Mem:            60Gi       5.1Gi        33Gi       179Mi        22Gi        55Gi
+Swap:          8.0Gi          0B       8.0Gi
+
+=== $ ps -eo pid,comm,%cpu,%mem --sort=-%cpu | head -6 ===
+    PID COMMAND         %CPU %MEM
+ 870588 ps               100  0.0
+   7010 gnome-shell      1.6  0.9
+ 867026 claude           1.6  0.6
+   7395 xdg-desktop-por  0.1  0.3
+   6451 pipewire-pulse   0.1  0.0
+
+=== $ file /bin/sh ===
+/bin/sh: symbolic link to dash
+
+=== $ printf 'ABC\n' > /tmp/arch-week04-bytes.txt && od -An -tx1 -c /tmp/arch-week04-bytes.txt ===
+  41  42  43  0a
+   A   B   C  \n
+
+=== Notes ===
+- All commands ran with no root/admin privileges and no paid tool, on the
+  ordinary logged-in user account.
+- archprobe correctly self-reported "Scope: host-visible" (not
+  container-visible), matching the fact this ran directly on the host, not
+  inside a container or VM.
+- ps output is a live snapshot at capture time; the exact processes/percentages
+  will differ on any other run, which is itself the "observation is not a
+  permanent fact" point Wednesday/Friday make explicitly.
+- Container/VM enrichment (the archlab-week4-telescope GHCR image) was not
+  attempted from this host: maise has neither podman nor docker installed,
+  and installing either needs interactive sudo this session does not hold.
+  See lab/validation/2026-09-07-maise-week04-smoke.json and
+  weeks/week-04/_validation.md for the full disposition, and
+  sidecar/reports/031_week04_slides_and_container_canvas_publish.md for the
+  independent container verification already performed on April.
