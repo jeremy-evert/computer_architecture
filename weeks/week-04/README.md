@@ -11,7 +11,7 @@
 **Prediction before measurement:** choose one machine question and predict which observations would answer it.
 
 **AI Fluency:** Lens 4 - Decompose the Task, folded into Wednesday.
-**Professional Minds:** Wednesday - *Critical Thinking*; Friday - *Thinking, Fast and Slow*.
+**Professional Minds:** Wednesday - *Spelling Out Arguments*; Friday - *The Outside View*.
 
 | Day | Mode | What happens | Evidence |
 |---|---|---|---|

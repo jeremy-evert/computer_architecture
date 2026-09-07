@@ -156,7 +156,7 @@ Architecture inherits the shared Fall 2026 Professional Minds topics:
 
 - W2: *Make It Stick* / *Mindset*
 - W3: *Limitless Mind* / *Resilience Education*
-- W4: *Critical Thinking* / *Thinking, Fast and Slow*
+- W4: *Spelling Out Arguments* / *The Outside View*
 - W5: *The Art of Thinking Clearly* / *How Not to Be Wrong*
 - W6: *Statistics Done Wrong* / *Understanding Statistics and Experimental Design*
 - W7: *Understanding by Design* / *Rethinking Grading*
