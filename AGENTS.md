@@ -45,3 +45,14 @@ Do not commit virtual environments, credentials, caches, model files, or generat
 ## Validation
 
 Run relevant repository-native validation when it exists, plus `git diff --check` before committing.
+
+## Student Work as a Shared Resource (Jeremy, 2026-09-24)
+
+Jeremy's standing course-design preference: student deliverables are **graded
+discussions where students see each other's work**, treated as a learning
+resource for the class, in every course. Only a real privacy reason (or a
+documented safety/format reason) justifies a private assignment. Course
+builders and content agents must emit discussions by default and must not hide
+peer work without a recorded reason. Full rule and conversion mechanics:
+`jeremy_task_tracking/COURSE_DESIGN_RULES.md`, "student work is a shared
+learning resource".
