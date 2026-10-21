@@ -6,6 +6,7 @@
 #include <time.h>
 #include <unistd.h>
 
+#define CALIBRATE_NS 100e6
 static volatile uint64_t sink;
 static double now_ns(void) { struct timespec t; if (clock_gettime(CLOCK_MONOTONIC, &t) != 0) exit(2); return (double)t.tv_sec * 1e9 + (double)t.tv_nsec; }
 static void metadata(void) {
@@ -31,9 +32,17 @@ __attribute__((noinline)) static uint64_t volatile_loop(uint64_t n) {
 }
 static double median(double a, double b, double c) { if (a > b) { double t=a; a=b; b=t; } if (b > c) { double t=b; b=c; c=t; } if (a > b) b=a; return b; }
 int main(void) {
-    const uint64_t n = UINT64_C(300000000); double a[3], b[3];
+    double a[3], b[3];
     metadata(); puts("variant,trial,iterations,ns_per_iteration");
     register_loop(10000); volatile_loop(10000);
+    /* Calibrate: double n until the faster (register) loop runs for CALIBRATE_NS, twice the 50 ms floor so
+       trial-to-trial jitter cannot push a timed region below 50 ms. The slower volatile loop is longer still. */
+    uint64_t n = UINT64_C(1) << 20;
+    for (;;) {
+        double s = now_ns(); register_loop(n); double e = now_ns();
+        if (e - s >= CALIBRATE_NS) break;
+        n *= 2;
+    }
     for (int t=0; t<3; ++t) {
         double s=now_ns(); register_loop(n); double e=now_ns(); a[t]=(e-s)/(double)n;
         printf("register,%d,%llu,%.6f\n", t+1, (unsigned long long)n, a[t]);
