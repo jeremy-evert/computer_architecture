@@ -1,0 +1,22 @@
+# experiment=repository
+# host=morgan
+# cpu=Intel(R) Core(TM) i7-8700K CPU @ 3.70GHz
+# date_utc=2026-10-21T17:51:13Z
+# flags=-std=c11 -O2 -Wall -Wextra
+trial,store,sync,seconds,batches_of_2000_records
+1,one_plain_file,no_sync,0.051118,25
+2,one_plain_file,no_sync,0.050308,25
+3,one_plain_file,no_sync,0.051879,26
+# median,one_plain_file,no_sync,0.051118
+1,loose_object_style,no_sync,0.058540,2
+2,loose_object_style,no_sync,0.057673,2
+3,loose_object_style,no_sync,0.053804,2
+# median,loose_object_style,no_sync,0.057673
+1,one_plain_file,sync_at_end,0.051231,25
+2,one_plain_file,sync_at_end,0.051339,25
+3,one_plain_file,sync_at_end,0.050859,25
+# median,one_plain_file,sync_at_end,0.051231
+1,loose_object_style,sync_each_object,0.057562,2
+2,loose_object_style,sync_each_object,0.057312,2
+3,loose_object_style,sync_each_object,0.057050,2
+# median,loose_object_style,sync_each_object,0.057312
