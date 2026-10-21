@@ -1,5 +1,7 @@
 # 08: repository objects
 
+Linux only (WSL2 works).
+
 ## Question
 
 How does a content-addressed version store identify files, and what work is involved in storing many small versions?
@@ -33,4 +35,4 @@ If the check disagrees with Git, the object framing or SHA-1 implementation is w
 
 ## Caveat
 
-Scratch data lives in a fresh `/tmp` directory. Cleanup removes the known generated files and directories directly and reports failures; the registered cleanup path is cleared only after the scratch root is removed. The uncompressed loose-object-style store omits Git's zlib compression and metadata, so its timing and size do not represent a complete Git repository. SHA-1 is shown for compatibility with Git's object IDs, not as a recommendation for new security designs.
+By default scratch data lives in a fresh directory under `/tmp` (or under the scratch directory you pass, which may be a real disk). Cleanup removes the known generated files and directories directly and reports failures; the registered cleanup path is cleared only after the scratch root is removed. The uncompressed loose-object-style store omits Git's zlib compression and metadata, so its timing and size do not represent a complete Git repository. SHA-1 is shown for compatibility with Git's object IDs, not as a recommendation for new security designs.

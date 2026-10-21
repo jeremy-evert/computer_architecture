@@ -1,3 +1,5 @@
+Linux only (WSL2 works).
+
 # Question
 
 How does walking an array with larger strides change the cost of each access?

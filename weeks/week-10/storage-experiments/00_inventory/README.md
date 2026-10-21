@@ -1,3 +1,5 @@
+Linux only (WSL2 works).
+
 # Question
 
 What storage and CPU details can this machine report directly?

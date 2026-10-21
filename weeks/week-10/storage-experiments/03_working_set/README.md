@@ -1,3 +1,5 @@
+Linux only (WSL2 works).
+
 # Question
 
 How does dependent random-access latency change as the working set grows across cache capacities?

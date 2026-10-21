@@ -1,5 +1,7 @@
 # 05: First touch of memory pages
 
+Linux only (WSL2 works).
+
 ## Question
 
 RAM has a hidden cost: the operating system must hand a process usable pages. What work does it still need to do after a program asks for a large anonymous region?

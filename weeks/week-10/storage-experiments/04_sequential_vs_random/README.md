@@ -1,5 +1,7 @@
 # 04: Sequential and random access
 
+Linux only (WSL2 works).
+
 ## Question
 
 How do access order and dependency change the time a CPU takes to read the same number of 64-bit values?

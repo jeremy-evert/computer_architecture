@@ -1,3 +1,5 @@
+Linux only (WSL2 works).
+
 # Question
 
 What changes when a loop's accumulator stays in an ordinary local variable versus being forced to memory each iteration?

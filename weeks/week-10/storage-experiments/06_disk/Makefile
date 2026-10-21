@@ -5,6 +5,6 @@ all: 06_disk
 06_disk: 06_disk.c
 	$(CC) $(CFLAGS) -o $@ $<
 run: 06_disk
-	./06_disk
+	./06_disk $${SCRATCH_DIR:+"$$SCRATCH_DIR"}
 clean:
 	rm -f 06_disk

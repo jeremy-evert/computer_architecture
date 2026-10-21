@@ -1,5 +1,7 @@
 # 06: disk writes and reads
 
+Linux only (WSL2 works).
+
 ## Question
 
 How do buffering and sync calls change the speed we see when writing a file?

@@ -1,5 +1,7 @@
 # 07: round-trip distance
 
+Linux only (WSL2 works).
+
 ## Question
 
 How much time does a request and reply take inside one process, between processes, and over loopback TCP?
