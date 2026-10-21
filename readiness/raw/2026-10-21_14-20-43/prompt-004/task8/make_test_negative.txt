@@ -1,0 +1,5 @@
+FAIL 08_repository: line has 6 fields, header has 7: median,,loose_object_style,no_sync,,26.4827
+FAIL 08_repository: line has 6 fields, header has 7: median,,one_plain_file,sync_at_end,,2.0203
+FAIL 08_repository: line has 6 fields, header has 7: median,,loose_object_style,sync_each_object,,28.5983
+make: *** [Makefile:19: test] Error 1
+exit=2

@@ -1,0 +1,8 @@
+3,one_fsync,1024.81,8261.17,1505.41,5.488,advice_accepted
+# median,one_fsync,954.63,11839.10,1508.13
+1,fsync_each_4MiB,408.73,11382.85,1632.79,6.971,advice_accepted
+2,fsync_each_4MiB,531.00,10955.46,1480.62,7.399,advice_accepted
+3,fsync_each_4MiB,526.49,12177.24,1315.54,9.256,advice_accepted
+# median,fsync_each_4MiB,526.49,11382.85,1480.62
+# small_writes=2000 x 4096 bytes
+# fdatasync_ms_per_sync=2.6398

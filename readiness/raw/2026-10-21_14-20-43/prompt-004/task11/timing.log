@@ -1,0 +1,7 @@
+=== START home scratch=/home/jevert/disk-scratch 2026-10-21T14:28:48
+=== END home exit=0 elapsed_s=830 2026-10-21T14:42:38
+=== START mnt_c scratch=/mnt/c/Users/evertj/disk-scratch 2026-10-21T14:42:38
+=== END mnt_c exit=0 elapsed_s=1222 2026-10-21T15:03:00
+=== START mnt_d scratch=/mnt/d/disk-scratch 2026-10-21T15:03:00
+=== END mnt_d exit=0 elapsed_s=1671 2026-10-21T15:30:51
+ALL_DONE

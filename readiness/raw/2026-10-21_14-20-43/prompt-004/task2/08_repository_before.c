@@ -1,0 +1,55 @@
+#define _POSIX_C_SOURCE 200809L
+#include <errno.h>
+#include <dirent.h>
+#include <fcntl.h>
+#include <inttypes.h>
+#include <stdint.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <sys/stat.h>
+#include <time.h>
+#include <unistd.h>
+#ifdef __linux__
+#include <sys/vfs.h>
+#endif
+
+typedef struct { uint32_t h[5]; uint64_t bits; unsigned char block[64]; size_t used; } Sha1;
+/* The volatile sink consumes the computed digest so optimization keeps the work. */
+static volatile uint32_t sink;
+static char scratch_root[256];
+static void join2(char*out,size_t cap,const char*a,const char*b);
+static int remove_if_present(const char *path){if(unlink(path)==0||errno==ENOENT)return 0;perror(path);return -1;}
+static int clear_objects(const char *root){char objects[512];join2(objects,sizeof objects,root,"objects");DIR *dirs=opendir(objects);if(!dirs){if(errno==ENOENT)return 0;perror("opendir objects");return -1;}struct dirent *de;int failed=0;while((de=readdir(dirs))!=NULL){if(de->d_name[0]=='.')continue;char subdir[512];join2(subdir,sizeof subdir,objects,de->d_name);DIR *files=opendir(subdir);if(!files){perror("opendir object prefix");failed=1;continue;}struct dirent *fe;while((fe=readdir(files))!=NULL){if(fe->d_name[0]=='.')continue;char path[512];join2(path,sizeof path,subdir,fe->d_name);if(remove_if_present(path)!=0)failed=1;}if(closedir(files)!=0){perror("closedir object prefix");failed=1;}if(rmdir(subdir)!=0){perror("rmdir object prefix");failed=1;}}if(closedir(dirs)!=0){perror("closedir objects");failed=1;}if(!failed&&rmdir(objects)!=0){perror("rmdir objects");failed=1;}return failed?-1:0;}
+static int clear_store(const char *root){char plain[512];join2(plain,sizeof plain,root,"plain");int failed=remove_if_present(plain)!=0;if(clear_objects(root)!=0)failed=1;return failed?-1:0;}
+static int cleanup_scratch(void){if(!scratch_root[0])return 0;if(clear_store(scratch_root)!=0)return -1;if(rmdir(scratch_root)!=0&&errno!=ENOENT){perror("rmdir scratch root");return -1;}scratch_root[0]=0;return 0;}
+static void cleanup_at_exit(void){if(cleanup_scratch()!=0)fprintf(stderr,"scratch cleanup failed; path retained: %s\n",scratch_root);}
+static uint32_t rol(uint32_t x,unsigned n){return (x<<n)|(x>>(32-n));}
+static void transform(Sha1*s,const unsigned char*b){uint32_t w[80];for(int i=0;i<16;i++)w[i]=((uint32_t)b[i*4]<<24)|((uint32_t)b[i*4+1]<<16)|((uint32_t)b[i*4+2]<<8)|b[i*4+3];for(int i=16;i<80;i++)w[i]=rol(w[i-3]^w[i-8]^w[i-14]^w[i-16],1);uint32_t a=s->h[0],c=s->h[2],d=s->h[3],e=s->h[4],bb=s->h[1];for(int i=0;i<80;i++){uint32_t f,k;if(i<20){f=(bb&c)|((~bb)&d);k=0x5a827999U;}else if(i<40){f=bb^c^d;k=0x6ed9eba1U;}else if(i<60){f=(bb&c)|(bb&d)|(c&d);k=0x8f1bbcdcU;}else{f=bb^c^d;k=0xca62c1d6U;}uint32_t t=rol(a,5)+f+e+k+w[i];e=d;d=c;c=rol(bb,30);bb=a;a=t;}s->h[0]+=a;s->h[1]+=bb;s->h[2]+=c;s->h[3]+=d;s->h[4]+=e;}
+static void init(Sha1*s){*s=(Sha1){{0x67452301U,0xefcdab89U,0x98badcfeU,0x10325476U,0xc3d2e1f0U},0,{0},0};}
+static void update(Sha1*s,const void*data,size_t n){const unsigned char*p=data;s->bits+=(uint64_t)n*8U;while(n){size_t z=64-s->used;if(z>n)z=n;memcpy(s->block+s->used,p,z);s->used+=z;p+=z;n-=z;if(s->used==64){transform(s,s->block);s->used=0;}}}
+static void finish(Sha1*s,unsigned char out[20]){uint64_t bits=s->bits;s->block[s->used++]=0x80;if(s->used>56){memset(s->block+s->used,0,64-s->used);transform(s,s->block);s->used=0;}memset(s->block+s->used,0,56-s->used);for(int i=0;i<8;i++)s->block[63-i]=(unsigned char)(bits>>(8*i));transform(s,s->block);for(int i=0;i<5;i++)for(int j=0;j<4;j++)out[i*4+j]=(unsigned char)(s->h[i]>>(24-8*j));}
+static void hex(const unsigned char*d,char*out){static const char h[]="0123456789abcdef";for(int i=0;i<20;i++){out[2*i]=h[d[i]>>4];out[2*i+1]=h[d[i]&15];}out[40]=0;}
+static void object_id(const unsigned char*p,size_t n,char out[41]){Sha1 s;unsigned char d[20];char hdr[64];int z=snprintf(hdr,sizeof hdr,"blob %zu",n);init(&s);update(&s,hdr,(size_t)z);update(&s,"",1);update(&s,p,n);finish(&s,d);hex(d,out);}
+static double now_s(void){struct timespec t;if(clock_gettime(CLOCK_MONOTONIC,&t)){perror("clock_gettime");exit(1);}return(double)t.tv_sec+t.tv_nsec/1e9;}
+static void close_checked(int fd){if(close(fd)!=0){perror("close");exit(1);}}
+static void wr(int fd,const void*p,size_t n){const char*b=p;while(n){ssize_t z=write(fd,b,n);if(z<0&&errno==EINTR)continue;if(z<=0){perror("write");exit(1);}b+=z;n-=(size_t)z;}}
+static void join2(char*out,size_t cap,const char*a,const char*b){size_t x=strlen(a),y=strlen(b);if(x+y+2>cap){fprintf(stderr,"path too long\n");exit(1);}memcpy(out,a,x);out[x]='/';memcpy(out+x+1,b,y+1);}
+static unsigned char*read_file(const char*path,size_t*n){FILE*f=fopen(path,"rb");if(!f){perror("fopen");exit(1);}if(fseek(f,0,SEEK_END)||ftell(f)<0){perror("seek");exit(1);}long z=ftell(f);rewind(f);unsigned char*p=malloc((size_t)z+1);if(!p){perror("malloc");exit(1);}if(fread(p,1,(size_t)z,f)!=(size_t)z){perror("fread");exit(1);}if(fclose(f)!=0){perror("fclose");free(p);exit(1);}*n=(size_t)z;return p;}
+static int hash_path(const char*path){size_t n;unsigned char*p=read_file(path,&n);char id[41];object_id(p,n,id);puts(id);free(p);return 0;}
+static void mkdir_ok(const char*p){if(mkdir(p,0700)&&errno!=EEXIST){perror("mkdir");exit(1);}}
+static double store_trial(const char*root,int loose,int syncit){char path[512],objdir[512],buf[200],objects[512];int append=-1;join2(path,sizeof path,root,"plain");if(!loose){append=open(path,O_CREAT|O_TRUNC|O_WRONLY,0600);if(append<0){perror("open plain");exit(1);}}join2(objects,sizeof objects,root,"objects");double a=now_s();for(int i=0;i<2000;i++){int n=snprintf(buf,sizeof buf,"record %04d: generated architecture storage payload; same length for every record",i);if(n<0||n>=200){fprintf(stderr,"record formatting failed\n");exit(1);}memset(buf+n,' ',200-(size_t)n);n=200;if(loose){char id[41],sub[3];object_id((unsigned char*)buf,(size_t)n,id);sink^=(unsigned char)id[0];memcpy(sub,id,2);sub[2]=0;join2(objdir,sizeof objdir,objects,sub);mkdir_ok(objdir);join2(path,sizeof path,objdir,id+2);int fd=open(path,O_CREAT|O_EXCL|O_WRONLY,0600);if(fd<0){perror("open loose-style");exit(1);}char hdr[40];int h=snprintf(hdr,sizeof hdr,"blob %d",n);wr(fd,hdr,(size_t)h);wr(fd,"",1);wr(fd,buf,(size_t)n);if(syncit&&fsync(fd)){perror("fsync object");exit(1);}close_checked(fd);}else wr(append,buf,(size_t)n);}if(!loose&&syncit&&fsync(append)){perror("fsync append");exit(1);}double d=now_s()-a;if(append>=0)close_checked(append);return d;}
+static void median3(double*v){for(int i=0;i<3;i++)for(int j=i+1;j<3;j++)if(v[i]>v[j]){double x=v[i];v[i]=v[j];v[j]=x;}}
+static void reset_store(const char*root){if(clear_store(root)!=0){fprintf(stderr,"scratch reset failed\n");exit(1);}char objects[512];join2(objects,sizeof objects,root,"objects");if(mkdir(objects,0700)!=0){perror("mkdir objects");exit(1);}}
+static void print_header(const char*dir){char host[256]="unknown",cpu[256]="unknown",date[64]="unknown";gethostname(host,sizeof host);host[sizeof host-1]=0;FILE*f=fopen("/proc/cpuinfo","r");if(f){char line[512];while(fgets(line,sizeof line,f))if(!strncmp(line,"model name",10)){char*p=strchr(line,':');if(p){snprintf(cpu,sizeof cpu,"%s",p+2);cpu[strcspn(cpu,"\n")]=0;}break;}if(fclose(f)!=0){perror("fclose cpuinfo");exit(1);}}time_t t=time(NULL);struct tm tm;if(gmtime_r(&t,&tm))strftime(date,sizeof date,"%Y-%m-%dT%H:%M:%SZ",&tm);printf("# experiment=repository\n# host=%s\n# cpu=%s\n# date_utc=%s\n# flags=-std=c11 -O2 -Wall -Wextra\n",host,cpu,date);
+#ifdef __linux__
+    struct statfs fs;
+    if(statfs(dir,&fs)==0){unsigned long type=(unsigned long)fs.f_type;const char*name=type==0xef53UL?"ext2/3/4":type==0x01021994UL?"tmpfs":type==0x58465342UL?"xfs":type==0x9123683eUL?"btrfs":type==0x01021997UL?"9p (WSL2 Windows drive share or similar)":"unknown";printf("# filesystem_type=0x%lx (%s)\n",type,name);if(type==0x01021994UL)puts("# WARNING: tmpfs is RAM, not disk; sync timings are not meaningful");}else perror("statfs");
+#else
+    (void)dir;puts("# filesystem_type=use df -T on this platform");
+#endif
+    puts("trial,store,sync,seconds,batches_of_2000_records,ms_per_batch");}
+int main(int argc,char**argv){if(argc==3&&!strcmp(argv[1],"--hash"))return hash_path(argv[2]);if(argc==2&&!strcmp(argv[1],"--vectors")){char a[41],b[41];unsigned char da[20],db[20];Sha1 sa,sb;init(&sa);update(&sa,"abc",3);finish(&sa,da);init(&sb);finish(&sb,db);hex(da,a);hex(db,b);printf("abc=%s %s\nempty=%s %s\n",a,!strcmp(a,"a9993e364706816aba3e25717850c26c9cd0d89d")?"PASS":"FAIL",b,!strcmp(b,"da39a3ee5e6b4b0d3255bfef95601890afd80709")?"PASS":"FAIL");return strcmp(a,"a9993e364706816aba3e25717850c26c9cd0d89d")!=0||strcmp(b,"da39a3ee5e6b4b0d3255bfef95601890afd80709")!=0;}
+ if(argc>2||(argc==2&&(argv[1][0]==0||!strncmp(argv[1],"--",2)))){fprintf(stderr,"usage: %s [scratch-dir]\n       %s --hash path\n       %s --vectors\n",argv[0],argv[0],argv[0]);return 2;}
+ const char*base=argc==2?argv[1]:"/tmp";struct stat st;if(stat(base,&st)!=0||!S_ISDIR(st.st_mode)){perror("scratch directory");return 1;}
+ char tmp[256];if(snprintf(tmp,sizeof tmp,"%s/arch-repo-XXXXXX",base)>=(int)sizeof tmp){fprintf(stderr,"scratch path too long\n");return 1;}char*root=mkdtemp(tmp);if(!root){perror("mkdtemp");return 1;}if(strlen(root)>=sizeof scratch_root){fprintf(stderr,"scratch path too long\n");return 1;}snprintf(scratch_root,sizeof scratch_root,"%s",root);if(atexit(cleanup_at_exit)!=0){fprintf(stderr,"could not register cleanup\n");return 1;}char objects[512];join2(objects,sizeof objects,root,"objects");mkdir_ok(objects);print_header(root);(void)store_trial(root,0,0);reset_store(root);for(int s=0;s<2;s++)for(int l=0;l<2;l++){double v[3],ms[3];for(int t=0;t<3;t++){double elapsed=0.0;unsigned batches=0;do{elapsed+=store_trial(root,l,s);batches++;reset_store(root);}while(elapsed<0.050);v[t]=elapsed;ms[t]=elapsed*1000.0/batches;printf("%d,%s,%s,%.6f,%u,%.4f\n",t+1,l?"loose_object_style":"one_plain_file",s?(l?"sync_each_object":"sync_at_end"):"no_sync",elapsed,batches,ms[t]);}median3(v);median3(ms);printf("# median,%s,%s,%.6f,%.4f\n",l?"loose_object_style":"one_plain_file",s?(l?"sync_each_object":"sync_at_end"):"no_sync",v[1],ms[1]);}if(cleanup_scratch()!=0)return 1;return 0;}

@@ -1,0 +1,10 @@
+# compiler_flags=-std=c11 -O2 -Wall -Wextra -Werror
+# compiler_flags=-std=c11 -O2 -Wall -Wextra -Werror
+# compiler_flags=-std=c11 -O2 -Wall -Wextra -Werror
+# compiler_flags=-std=c11 -O2 -Wall -Wextra -Werror
+# flags=-std=c11 -O2 -Wall -Wextra -Werror
+# flags=-std=c11 -O2 -Wall -Wextra -Werror
+# compiler_flags=-std=c11 -O2 -Wall -Wextra -Werror
+04_sequential_vs_random: -std=c11 -O2 -Wall -Wextra -Werror
+05_first_touch_pages: -std=c11 -O2 -Wall -Wextra -Werror
+07_network: -std=c11 -O2 -Wall -Wextra -Werror

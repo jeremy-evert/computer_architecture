@@ -1,0 +1,2 @@
+run_receipts.sh: SCRATCH_DIR='/nonexistent' is not an existing writable directory; create it first (mkdir -p) and rerun.
+exit=1

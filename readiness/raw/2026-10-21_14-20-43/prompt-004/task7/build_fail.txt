@@ -1,0 +1,10 @@
+01_registers.c:61:1: error: unknown type name ‘this’
+   61 | this is not C
+      | ^~~~
+01_registers.c:61:9: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘not’
+   61 | this is not C
+      |         ^~~
+01_registers.c:61:9: error: unknown type name ‘not’
+make: *** [Makefile:7: 01_registers] Error 1
+BUILD FAILED: 01_registers
+exit=1

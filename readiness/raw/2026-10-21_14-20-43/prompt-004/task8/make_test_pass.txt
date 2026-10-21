@@ -1,0 +1,11 @@
+== build with -Werror
+== 08_repository make check
+MATCH b77bf2069e6d12ba9a7d25ab8f18e91a8b030429
+abc=a9993e364706816aba3e25717850c26c9cd0d89d PASS
+empty=da39a3ee5e6b4b0d3255bfef95601890afd80709 PASS
+== 06_disk (4 MiB) in a temp directory
+ok 06_disk: 12 data rows, 8 fields each
+== 08_repository in a temp directory
+ok 08_repository: 16 data rows, 7 fields each
+ALL TESTS PASSED
+exit=0

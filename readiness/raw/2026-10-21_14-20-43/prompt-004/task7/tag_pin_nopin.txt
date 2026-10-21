@@ -1,0 +1,9 @@
+exit=0
+00_inventory_run1_t1.txt
+00_inventory_run2_t1.txt
+00_inventory_run3_t1.txt
+note: taskset not found; running unpinned (cache sizes may describe a different core than the one that ran)
+exit=0
+00_inventory_run1_t2.txt
+00_inventory_run2_t2.txt
+00_inventory_run3_t2.txt
