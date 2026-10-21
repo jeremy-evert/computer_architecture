@@ -23,6 +23,33 @@ Validation performed:
 - `gcc -std=c11 -O0 -Wall -Wextra -fanalyzer -fsyntax-only` reported no
   diagnostics for any C file.
 
+## Status of findings
+
+"Spot-checked" means the fix was confirmed present in the code on 2026-10-21; "per Resolution" means the status comes from the Resolution note below and was not re-checked.
+
+| Exp | Finding | Status |
+|-----|---------|--------|
+| 01 | RISK: ordinary-register timed region shorter than 50 ms | fixed in 6e31c6f; now calibrated in b5720be |
+| 02 | BUG: README says 10 million accesses, code makes 100 million | fixed in 6e31c6f (README corrected; spot-checked) |
+| 02 | BUG: README quotes values that appear in no receipt | fixed in 6e31c6f (per Resolution, not re-checked) |
+| 02 | NIT: array-size rule in prose differs from code | fixed in 6e31c6f (README now states the two-size rule; spot-checked) |
+| 03 | RISK: unchecked size arithmetic from sysfs | fixed in 6e31c6f (checked_mul_size/checked_add_size present; spot-checked) |
+| 03 | NIT: plot.py divides by zero on a one-point range | fixed in 6e31c6f (guard present; spot-checked) |
+| 04 | RISK: failed clock_gettime printed as a real time | fixed in 6e31c6f (clock failures exit; spot-checked) |
+| 05 | RISK: warm touch passes far shorter than 50 ms | fixed in 6e31c6f (repeats passes to 50 ms; spot-checked) |
+| 06 | BUG: caller-supplied directory removed | fixed in 6e31c6f (per Resolution, not re-checked) |
+| 06 | BUG: unlink results ignored | fixed in 6e31c6f (per Resolution, not re-checked) |
+| 06 | RISK: posix_fadvise result ignored, row labeled cold | fixed in 6e31c6f (advice_status column; spot-checked) |
+| 06 | NIT: unchecked strtoull byte argument | fixed in 6e31c6f (parse_bytes; spot-checked) |
+| 07 | RISK: server binds INADDR_ANY | fixed in 6e31c6f (127.0.0.1 default; spot-checked) |
+| 07 | RISK: local-call timing region far below 50 ms | fixed in 6e31c6f (per Resolution, not re-checked) |
+| 07 | BUG: negative port accepted | fixed in 6e31c6f (per Resolution, not re-checked) |
+| 07 | RISK: SIGPIPE ignored too late | fixed in 6e31c6f (signal set at start of main; spot-checked) |
+| 08 | RISK: three timed modes far below 50 ms | fixed in 6e31c6f (batches repeat to 50 ms; spot-checked) |
+| 08 | BUG: cleanup discards rm status | fixed in 6e31c6f (direct removal with checked status; spot-checked) |
+| 08 | RISK: close results ignored | fixed in 6e31c6f (close_checked; spot-checked) |
+| -- | Independent re-review of the fixed code | open (the Resolution notes it has not been done) |
+
 ## 00_inventory
 
 Clean. No undefined behavior, allocation issue, measured-loop issue, timer
