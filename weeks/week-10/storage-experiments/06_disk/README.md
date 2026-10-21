@@ -20,10 +20,24 @@ Compare write MB/s for buffered writes, one final `fsync`, and an `fsync` after 
 
 ## Expected shape
 
-Buffered writes may look fast because they mostly copy into the operating system page cache. Syncing waits for the storage stack to accept durable data, so it often lowers throughput; syncing every chunk adds repeated waits. Warm reads often come from cache. The post-advice read asks the kernel to discard cached pages, then measures another read; if the advice call fails, its status marks that row as not a cold read. There are three measurements per method and a median can be compared from the individual rows.
+Buffered writes may look fast because they mostly copy into the operating system page cache. Syncing waits for the storage stack to accept durable data, so it often lowers throughput; syncing every chunk adds repeated waits. Warm reads often come from cache. The post-advice read asks the kernel to discard cached pages, then measures another read; if the advice call fails, its status marks that row as not a cold read. There are three `trial` rows per method, each followed by a `median` row (the median of each column; the `trial` field is empty there). Every data row has the same eight fields, and the first, `kind`, is `trial` or `median`. On a `median` row the ratio is the median of the three per-trial ratios, and `advice_status` is `advice_accepted` only if all three trials were accepted.
 
 
 On april (`../receipts/april/06_disk_run*.txt`, ext4 on an NVMe SSD, 256 MiB): buffered write about 7.3 to 7.4 GB/s, one fsync at the end about 4.0 to 4.4 GB/s, fsync after every 4 MiB about 2.2 to 2.4 GB/s, and a 4 KiB write plus `fdatasync` about 0.7 ms each. Warm read about 17.7 to 18 GB/s (page cache); read after `posix_fadvise(DONTNEED)` ("cold", column `post_fadvise_read_MB_s`) about 6.9 to 7.0 GB/s, a ratio near 2.6 (advice was accepted in every row). Caveat on that ratio: a cold read at about 7 GB/s is near this SSD's rated speed, so the page cache does look dropped, but without root we cannot prove it. Buffered write speed is mostly the speed of copying into RAM, not of the SSD.
+
+### How to read this output
+Sample (ext4 home directory on a WSL2 machine, 32 MiB; your numbers will differ):
+
+```
+kind,trial,method,write_MB_s,warm_read_MB_s,post_fadvise_read_MB_s,post_fadvise_warm_ratio,advice_status
+trial,1,buffered,4575.18,9326.88,1545.12,6.036,advice_accepted
+trial,2,buffered,4339.73,10530.50,1840.89,5.720,advice_accepted
+trial,3,buffered,3906.99,9408.74,1721.46,5.466,advice_accepted
+median,,buffered,4339.73,9408.74,1721.46,5.720,advice_accepted
+median,,one_fsync,930.64,10945.81,1545.53,7.234,advice_accepted
+```
+
+The one number to look at is `write_MB_s` on the `median` rows: buffered versus `one_fsync` versus `fsync_each_4MiB`. The gap between buffered and synced writes is the price of "safely written".
 
 ## What would surprise us / falsify the idea
 

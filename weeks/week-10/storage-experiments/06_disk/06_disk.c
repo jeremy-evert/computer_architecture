@@ -195,23 +195,25 @@ int main(int argc, char **argv)
 #else
     puts("# filesystem_type=use df -T on this platform");
 #endif
-    printf("# bytes=%zu\ntrial,method,write_MB_s,warm_read_MB_s,post_fadvise_read_MB_s,post_fadvise_warm_ratio,advice_status\n", bytes);
+    printf("# bytes=%zu\nkind,trial,method,write_MB_s,warm_read_MB_s,post_fadvise_read_MB_s,post_fadvise_warm_ratio,advice_status\n", bytes);
     double warm[3]; int advice_ok = 1;
     trial(cleanup_file, bytes, 1, &warm[0], &warm[1], &warm[2], &advice_ok);
     if (remove_file() != 0) return 1;
     prepare_scratch_file(dir);
     double results[3][3][3]; const char *names[] = {"buffered", "one_fsync", "fsync_each_4MiB"};
     for (int mode = 0; mode < 3; mode++) {
+        double ratios[3]; int mode_advice_ok = 1;
         for (int t = 0; t < 3; t++) {
             trial(cleanup_file, bytes, mode, &results[mode][t][0], &results[mode][t][1], &results[mode][t][2], &advice_ok);
-            printf("%d,%s,%.2f,%.2f,%.2f,%.3f,%s\n", t + 1, names[mode], bytes / 1e6 / results[mode][t][0], bytes / 1e6 / results[mode][t][1], bytes / 1e6 / results[mode][t][2], results[mode][t][2] / results[mode][t][1], advice_ok ? "advice_accepted" : "advice_failed_not_cold");
+            printf("trial,%d,%s,%.2f,%.2f,%.2f,%.3f,%s\n", t + 1, names[mode], bytes / 1e6 / results[mode][t][0], bytes / 1e6 / results[mode][t][1], bytes / 1e6 / results[mode][t][2], results[mode][t][2] / results[mode][t][1], advice_ok ? "advice_accepted" : "advice_failed_not_cold");
+            ratios[t] = results[mode][t][2] / results[mode][t][1]; mode_advice_ok &= advice_ok;
             if (remove_file() != 0) return 1;
             prepare_scratch_file(dir);
         }
         double w[3], r[3], c[3];
         for (int t = 0; t < 3; t++) { w[t] = bytes / 1e6 / results[mode][t][0]; r[t] = bytes / 1e6 / results[mode][t][1]; c[t] = bytes / 1e6 / results[mode][t][2]; }
-        median3(w); median3(r); median3(c);
-        printf("# median,%s,%.2f,%.2f,%.2f\n", names[mode], w[1], r[1], c[1]);
+        median3(w); median3(r); median3(c); median3(ratios);
+        printf("median,,%s,%.2f,%.2f,%.2f,%.3f,%s\n", names[mode], w[1], r[1], c[1], ratios[1], mode_advice_ok ? "advice_accepted" : "advice_failed_not_cold");
     }
     double ratio = results[1][2][2] / results[1][2][1];
     if (!advice_ok) puts("# cold read advice failed; post_fadvise_read is not a cold-read measurement");

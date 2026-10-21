@@ -465,7 +465,7 @@ static void print_header(const char *dir)
     (void)dir;
     puts("# filesystem_type=use df -T on this platform");
 #endif
-    puts("trial,store,sync,seconds,batches_of_2000_records,ms_per_batch");
+    puts("kind,trial,store,sync,seconds,batches_of_2000_records,ms_per_batch");
 }
 
 int main(int argc, char **argv)
@@ -527,7 +527,7 @@ int main(int argc, char **argv)
     reset_store(root);
     for (int s = 0; s < 2; s++)
         for (int l = 0; l < 2; l++) {
-            double v[3], ms[3];
+            double ms[3];
             for (int t = 0; t < 3; t++) {
                 double elapsed = 0.0;
                 unsigned batches = 0;
@@ -536,19 +536,18 @@ int main(int argc, char **argv)
                     batches++;
                     reset_store(root);
                 } while (elapsed < 0.050);
-                v[t] = elapsed;
                 ms[t] = elapsed * 1000.0 / batches;
-                printf("%d,%s,%s,%.6f,%u,%.4f\n", t + 1,
+                printf("trial,%d,%s,%s,%.6f,%u,%.4f\n", t + 1,
                        l ? "loose_object_style" : "one_plain_file",
                        s ? (l ? "sync_each_object" : "sync_at_end") : "no_sync",
                        elapsed, batches, ms[t]);
             }
-            median3(v);
             median3(ms);
-            printf("# median,%s,%s,%.6f,%.4f\n",
+            /* seconds and batch count have no meaningful median, so those fields stay empty. */
+            printf("median,,%s,%s,,,%.4f\n",
                    l ? "loose_object_style" : "one_plain_file",
                    s ? (l ? "sync_each_object" : "sync_at_end") : "no_sync",
-                   v[1], ms[1]);
+                   ms[1]);
         }
     if (cleanup_scratch() != 0)
         return 1;

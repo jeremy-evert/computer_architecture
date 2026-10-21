@@ -16,9 +16,24 @@ Run `make`, `make check`, then `./08_repository` for storage timings. With no ar
 
 ## What to look at
 
-The hash check should say MATCH and both known vectors should say PASS. The timing run creates 2,000 generated 200-byte records. It compares separate loose-object-style files with one appended plain file. The loose-style case optionally calls `fsync` on each object; the append case optionally calls `fsync` once at the end. Each timed batch stores 2,000 records. The program repeats whole store batches, with reset/setup between timed batches, until each trial accumulates at least 50 ms of store time. It prints the elapsed total and batch count for three trials and a median for each combination. The last column, `ms_per_batch`, is `seconds * 1000 / batches_of_2000_records`: the time to store one batch of 2,000 records, so rows that ran different numbers of batches can be compared directly. On the `# median` rows it is the median of the three per-trial `ms_per_batch` values, and `# median` lines are not CSV data rows. File close results are checked; close time is outside the reported store interval.
+The hash check should say MATCH and both known vectors should say PASS. The timing run creates 2,000 generated 200-byte records. It compares separate loose-object-style files with one appended plain file. The loose-style case optionally calls `fsync` on each object; the append case optionally calls `fsync` once at the end. Each timed batch stores 2,000 records. The program repeats whole store batches, with reset/setup between timed batches, until each trial accumulates at least 50 ms of store time. It prints the elapsed total and batch count for three trials and a median for each combination. Every data row has the same seven fields, and the first, `kind`, is `trial` or `median`. The last column, `ms_per_batch`, is `seconds * 1000 / batches_of_2000_records`: the time to store one batch of 2,000 records, so rows that ran different numbers of batches can be compared directly. On a `median` row it is the median of the three per-trial `ms_per_batch` values; `trial` and `seconds` and `batches_of_2000_records` are empty there, because a median of seconds without a matching batch count would mean nothing. File close results are checked; close time is outside the reported store interval.
 
 The walkthrough shows the committed file contents with `git cat-file -p`, object paths under `.git/objects`, and the two commits. Its temporary repository is removed when the script exits.
+
+### How to read this output
+Sample (ext4 home directory on a WSL2 machine; your numbers will differ):
+
+```
+kind,trial,store,sync,seconds,batches_of_2000_records,ms_per_batch
+trial,1,one_plain_file,no_sync,0.052048,22,2.3658
+trial,2,one_plain_file,no_sync,0.050215,22,2.2825
+trial,3,one_plain_file,no_sync,0.052157,23,2.2677
+median,,one_plain_file,no_sync,,,2.2825
+...
+median,,loose_object_style,sync_each_object,,,5178.1839
+```
+
+The one number to look at is `ms_per_batch` on the four `median` rows. Compare them: how many times slower is one file per record than one appended file, and how much does syncing every object add?
 
 ## Expected shape
 
