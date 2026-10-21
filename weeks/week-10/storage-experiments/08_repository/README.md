@@ -10,7 +10,7 @@ My prediction: ______
 
 ## Run
 
-Run `make`, `make check`, then `./08_repository` for storage timings. `make check` compares this program's SHA-1 blob identifier with `git hash-object` and checks the standard `abc` and empty-input vectors. To hash another file, run `./08_repository --hash path/to/file`. Run `./walkthrough.sh` for a disposable two-commit repository example.
+Run `make`, `make check`, then `./08_repository` for storage timings. With no argument it works in a fresh directory under `/tmp`. To time a real disk instead, give a scratch directory: `./08_repository /path/to/scratch` (for example `./08_repository ~/disk-scratch`). The program creates its own uniquely named subdirectory inside it and removes only that subdirectory; the directory you give is never removed. On many Linux systems `/tmp` is tmpfs (RAM), and the program prints a `# WARNING:` line when it sees that, because sync timings are not meaningful there. The `# filesystem_type=` header line shows what the scratch directory is on. `make check` compares this program's SHA-1 blob identifier with `git hash-object` and checks the standard `abc` and empty-input vectors. To hash another file, run `./08_repository --hash path/to/file`. Run `./walkthrough.sh` for a disposable two-commit repository example.
 
 ## What to look at
 
