@@ -1,7 +1,7 @@
 # Top-level driver. Each numbered folder has its own Makefile.
 DIRS := $(sort $(wildcard [0-9][0-9]_*))
 
-.PHONY: all run clean receipts
+.PHONY: all run clean receipts test
 all:
 	@for d in $(DIRS); do $(MAKE) -C $$d || exit 1; done
 # SCRATCH_DIR=<dir> is passed to 06_disk and 08_repository only.
@@ -14,3 +14,6 @@ clean:
 # Instructor only: three trials per experiment, saved under receipts/<host>/.
 receipts:
 	bash run_receipts.sh
+# Build all with -Werror, run 08 make check, run small 06 and 08 in a temp directory, check CSV shape.
+test:
+	@bash test.sh
