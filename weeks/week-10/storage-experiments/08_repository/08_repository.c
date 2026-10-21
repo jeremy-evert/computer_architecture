@@ -1,0 +1,36 @@
+#define _POSIX_C_SOURCE 200809L
+#include <errno.h>
+#include <fcntl.h>
+#include <inttypes.h>
+#include <stdint.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <sys/stat.h>
+#include <time.h>
+#include <unistd.h>
+
+typedef struct { uint32_t h[5]; uint64_t bits; unsigned char block[64]; size_t used; } Sha1;
+/* The volatile sink consumes the computed digest so optimization keeps the work. */
+static volatile uint32_t sink;
+static char scratch_root[128];
+static void cleanup_scratch(void){if(scratch_root[0]){char cmd[256];int n=snprintf(cmd,sizeof cmd,"rm -rf '%s'",scratch_root);if(n>0&&(size_t)n<sizeof cmd){int rc=system(cmd);(void)rc;}}}
+static uint32_t rol(uint32_t x,unsigned n){return (x<<n)|(x>>(32-n));}
+static void transform(Sha1*s,const unsigned char*b){uint32_t w[80];for(int i=0;i<16;i++)w[i]=((uint32_t)b[i*4]<<24)|((uint32_t)b[i*4+1]<<16)|((uint32_t)b[i*4+2]<<8)|b[i*4+3];for(int i=16;i<80;i++)w[i]=rol(w[i-3]^w[i-8]^w[i-14]^w[i-16],1);uint32_t a=s->h[0],c=s->h[2],d=s->h[3],e=s->h[4],bb=s->h[1];for(int i=0;i<80;i++){uint32_t f,k;if(i<20){f=(bb&c)|((~bb)&d);k=0x5a827999U;}else if(i<40){f=bb^c^d;k=0x6ed9eba1U;}else if(i<60){f=(bb&c)|(bb&d)|(c&d);k=0x8f1bbcdcU;}else{f=bb^c^d;k=0xca62c1d6U;}uint32_t t=rol(a,5)+f+e+k+w[i];e=d;d=c;c=rol(bb,30);bb=a;a=t;}s->h[0]+=a;s->h[1]+=bb;s->h[2]+=c;s->h[3]+=d;s->h[4]+=e;}
+static void init(Sha1*s){*s=(Sha1){{0x67452301U,0xefcdab89U,0x98badcfeU,0x10325476U,0xc3d2e1f0U},0,{0},0};}
+static void update(Sha1*s,const void*data,size_t n){const unsigned char*p=data;s->bits+=(uint64_t)n*8U;while(n){size_t z=64-s->used;if(z>n)z=n;memcpy(s->block+s->used,p,z);s->used+=z;p+=z;n-=z;if(s->used==64){transform(s,s->block);s->used=0;}}}
+static void finish(Sha1*s,unsigned char out[20]){uint64_t bits=s->bits;s->block[s->used++]=0x80;if(s->used>56){memset(s->block+s->used,0,64-s->used);transform(s,s->block);s->used=0;}memset(s->block+s->used,0,56-s->used);for(int i=0;i<8;i++)s->block[63-i]=(unsigned char)(bits>>(8*i));transform(s,s->block);for(int i=0;i<5;i++)for(int j=0;j<4;j++)out[i*4+j]=(unsigned char)(s->h[i]>>(24-8*j));}
+static void hex(const unsigned char*d,char*out){static const char h[]="0123456789abcdef";for(int i=0;i<20;i++){out[2*i]=h[d[i]>>4];out[2*i+1]=h[d[i]&15];}out[40]=0;}
+static void object_id(const unsigned char*p,size_t n,char out[41]){Sha1 s;unsigned char d[20];char hdr[64];int z=snprintf(hdr,sizeof hdr,"blob %zu",n);init(&s);update(&s,hdr,(size_t)z);update(&s,"",1);update(&s,p,n);finish(&s,d);hex(d,out);}
+static double now_s(void){struct timespec t;if(clock_gettime(CLOCK_MONOTONIC,&t)){perror("clock_gettime");exit(1);}return(double)t.tv_sec+t.tv_nsec/1e9;}
+static void wr(int fd,const void*p,size_t n){const char*b=p;while(n){ssize_t z=write(fd,b,n);if(z<0&&errno==EINTR)continue;if(z<=0){perror("write");exit(1);}b+=z;n-=(size_t)z;}}
+static void join2(char*out,size_t cap,const char*a,const char*b){size_t x=strlen(a),y=strlen(b);if(x+y+2>cap){fprintf(stderr,"path too long\n");exit(1);}memcpy(out,a,x);out[x]='/';memcpy(out+x+1,b,y+1);}
+static unsigned char*read_file(const char*path,size_t*n){FILE*f=fopen(path,"rb");if(!f){perror("fopen");exit(1);}if(fseek(f,0,SEEK_END)||ftell(f)<0){perror("seek");exit(1);}long z=ftell(f);rewind(f);unsigned char*p=malloc((size_t)z+1);if(!p){perror("malloc");exit(1);}if(fread(p,1,(size_t)z,f)!=(size_t)z){perror("fread");exit(1);}fclose(f);*n=(size_t)z;return p;}
+static int hash_path(const char*path){size_t n;unsigned char*p=read_file(path,&n);char id[41];object_id(p,n,id);puts(id);free(p);return 0;}
+static void mkdir_ok(const char*p){if(mkdir(p,0700)&&errno!=EEXIST){perror("mkdir");exit(1);}}
+static double store_trial(const char*root,int loose,int syncit){char path[512],objdir[512],buf[200],objects[512];int append=-1;join2(path,sizeof path,root,"plain");if(!loose){append=open(path,O_CREAT|O_TRUNC|O_WRONLY,0600);if(append<0){perror("open plain");exit(1);}}join2(objects,sizeof objects,root,"objects");double a=now_s();for(int i=0;i<2000;i++){int n=snprintf(buf,sizeof buf,"record %04d: generated architecture storage payload; same length for every record",i);if(n<0||n>=200){fprintf(stderr,"record formatting failed\n");exit(1);}memset(buf+n,' ',200-(size_t)n);n=200;if(loose){char id[41],sub[3];object_id((unsigned char*)buf,(size_t)n,id);sink^=(unsigned char)id[0];memcpy(sub,id,2);sub[2]=0;join2(objdir,sizeof objdir,objects,sub);mkdir_ok(objdir);join2(path,sizeof path,objdir,id+2);int fd=open(path,O_CREAT|O_EXCL|O_WRONLY,0600);if(fd<0){perror("open loose-style");exit(1);}char hdr[40];int h=snprintf(hdr,sizeof hdr,"blob %d",n);wr(fd,hdr,(size_t)h);wr(fd,"",1);wr(fd,buf,(size_t)n);if(syncit&&fsync(fd)){perror("fsync object");exit(1);}close(fd);}else wr(append,buf,(size_t)n);}if(!loose&&syncit&&fsync(append)){perror("fsync append");exit(1);}double d=now_s()-a;if(append>=0)close(append);return d;}
+static void median3(double*v){for(int i=0;i<3;i++)for(int j=i+1;j<3;j++)if(v[i]>v[j]){double x=v[i];v[i]=v[j];v[j]=x;}}
+static void reset_store(const char*root){char cmd[600];int n=snprintf(cmd,sizeof cmd,"rm -rf '%s/objects' '%s/plain' && mkdir '%s/objects'",root,root,root);if(n<0||(size_t)n>=sizeof cmd||system(cmd)!=0){fprintf(stderr,"scratch reset failed\n");exit(1);}}
+static void print_header(void){char host[256]="unknown",cpu[256]="unknown",date[64]="unknown";gethostname(host,sizeof host);host[sizeof host-1]=0;FILE*f=fopen("/proc/cpuinfo","r");if(f){char line[512];while(fgets(line,sizeof line,f))if(!strncmp(line,"model name",10)){char*p=strchr(line,':');if(p){snprintf(cpu,sizeof cpu,"%s",p+2);cpu[strcspn(cpu,"\n")]=0;}break;}fclose(f);}time_t t=time(NULL);struct tm tm;if(gmtime_r(&t,&tm))strftime(date,sizeof date,"%Y-%m-%dT%H:%M:%SZ",&tm);printf("# experiment=repository\n# host=%s\n# cpu=%s\n# date_utc=%s\n# flags=-std=c11 -O2 -Wall -Wextra\ntrial,store,sync,seconds\n",host,cpu,date);}
+int main(int argc,char**argv){if(argc==3&&!strcmp(argv[1],"--hash"))return hash_path(argv[2]);if(argc==2&&strcmp(argv[1],"--vectors"))return hash_path(argv[1]);if(argc==2&&!strcmp(argv[1],"--vectors")){char a[41],b[41];unsigned char da[20],db[20];Sha1 sa,sb;init(&sa);update(&sa,"abc",3);finish(&sa,da);init(&sb);finish(&sb,db);hex(da,a);hex(db,b);printf("abc=%s %s\nempty=%s %s\n",a,!strcmp(a,"a9993e364706816aba3e25717850c26c9cd0d89d")?"PASS":"FAIL",b,!strcmp(b,"da39a3ee5e6b4b0d3255bfef95601890afd80709")?"PASS":"FAIL");return strcmp(a,"a9993e364706816aba3e25717850c26c9cd0d89d")!=0||strcmp(b,"da39a3ee5e6b4b0d3255bfef95601890afd80709")!=0;}
+ char tmp[]="/tmp/arch-repo-XXXXXX";char*root=mkdtemp(tmp);if(!root){perror("mkdtemp");return 1;}snprintf(scratch_root,sizeof scratch_root,"%s",root);atexit(cleanup_scratch);char objects[512];join2(objects,sizeof objects,root,"objects");mkdir_ok(objects);print_header();(void)store_trial(root,0,0);reset_store(root);for(int s=0;s<2;s++)for(int l=0;l<2;l++){double v[3];for(int t=0;t<3;t++){v[t]=store_trial(root,l,s);printf("%d,%s,%s,%.6f\n",t+1,l?"loose_object_style":"one_plain_file",s?(l?"sync_each_object":"sync_at_end"):"no_sync",v[t]);reset_store(root);}median3(v);printf("# median,%s,%s,%.6f\n",l?"loose_object_style":"one_plain_file",s?(l?"sync_each_object":"sync_at_end"):"no_sync",v[1]);}cleanup_scratch();scratch_root[0]=0;return 0;}

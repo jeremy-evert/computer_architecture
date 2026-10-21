@@ -1,0 +1,22 @@
+# experiment=disk
+# host=april
+# cpu=Intel(R) Core(TM) Ultra 7 265
+# date_utc=2026-10-21T14:29:17Z
+# flags=-std=c11 -O2 -Wall -Wextra
+# filesystem_type=0xef53 (ext2/3/4)
+# bytes=268435456
+trial,method,write_MB_s,warm_read_MB_s,cold_read_MB_s,cold_warm_ratio
+1,buffered,7305.08,17832.76,6972.93,2.557
+2,buffered,7093.96,17591.86,6939.40,2.535
+3,buffered,7347.10,17507.48,6557.07,2.670
+# median,buffered,7305.08,17591.86,6939.40
+1,one_fsync,4343.60,17923.45,6787.42,2.641
+2,one_fsync,4027.82,17950.04,6761.74,2.655
+3,one_fsync,4040.39,17940.60,6860.85,2.615
+# median,one_fsync,4040.39,17940.60,6787.42
+1,fsync_each_4MiB,2281.81,17219.07,6928.63,2.485
+2,fsync_each_4MiB,2298.82,17989.79,6948.19,2.589
+3,fsync_each_4MiB,2342.91,17839.08,6826.24,2.613
+# median,fsync_each_4MiB,2298.82,17839.08,6928.63
+# small_writes=2000 x 4096 bytes
+# fdatasync_ms_per_sync=0.7683

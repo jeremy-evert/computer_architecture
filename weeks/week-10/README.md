@@ -2,6 +2,8 @@
 
 > **Central machine question:** Why do we need layers of memory, and what does crossing a layer feel like?
 
+**Run it:** a numbered set of C experiments for each storage tier, with a walk-through, is in [`storage-experiments/`](storage-experiments/README.md).
+
 ## Week at a Glance
 
 **Prior belief:** cache is fast, RAM is slow, and one speed number describes memory well enough.

@@ -1,0 +1,22 @@
+# experiment=repository
+# host=april
+# cpu=Intel(R) Core(TM) Ultra 7 265
+# date_utc=2026-10-21T14:18:05Z
+# flags=-std=c11 -O2 -Wall -Wextra
+trial,store,sync,seconds
+1,one_plain_file,no_sync,0.000481
+2,one_plain_file,no_sync,0.000473
+3,one_plain_file,no_sync,0.000467
+# median,one_plain_file,no_sync,0.000473
+1,loose_object_style,no_sync,0.015040
+2,loose_object_style,no_sync,0.013871
+3,loose_object_style,no_sync,0.013588
+# median,loose_object_style,no_sync,0.013871
+1,one_plain_file,sync_at_end,0.002366
+2,one_plain_file,sync_at_end,0.001671
+3,one_plain_file,sync_at_end,0.001458
+# median,one_plain_file,sync_at_end,0.001671
+1,loose_object_style,sync_each_object,1.510474
+2,loose_object_style,sync_each_object,1.438170
+3,loose_object_style,sync_each_object,1.425665
+# median,loose_object_style,sync_each_object,1.438170

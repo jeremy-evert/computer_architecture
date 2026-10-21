@@ -1,0 +1,20 @@
+# experiment=network
+# host=april
+# cpu=Intel(R) Core(TM) Ultra 7 265
+# date_utc=2026-10-21T14:17:57Z
+# flags=-std=c11 -O2 -Wall -Wextra
+# loopback_is_not_a_real_network=true
+trial,method,ns_per_round_trip
+1,in_process_function_pointer,1.4
+2,in_process_function_pointer,1.4
+3,in_process_function_pointer,1.4
+# median,in_process_function_pointer,1.4
+1,two_process_pipes,2703.7
+2,two_process_pipes,2668.2
+3,two_process_pipes,2653.8
+# median,two_process_pipes,2668.2
+1,loopback_tcp,6732.2
+2,loopback_tcp,6715.8
+3,loopback_tcp,6760.3
+# median,loopback_tcp,6732.2
+# A second machine adds a distance floor: signals cannot travel faster than light, before routing and queueing delays.
