@@ -179,9 +179,10 @@ int main(int argc, char **argv)
     struct statfs fs;
     if (statfs(dir, &fs) == 0) {
         unsigned long type = (unsigned long)fs.f_type;
-        const char *name = type == 0xef53UL ? "ext2/3/4" : type == 0x01021994UL ? "tmpfs" : type == 0x58465342UL ? "xfs" : type == 0x9123683eUL ? "btrfs" : "unknown";
+        const char *name = type == 0xef53UL ? "ext2/3/4" : type == 0x01021994UL ? "tmpfs" : type == 0x58465342UL ? "xfs" : type == 0x9123683eUL ? "btrfs" : type == 0x01021997UL ? "9p (WSL2 Windows drive share or similar)" : "unknown";
         printf("# filesystem_type=0x%lx (%s)\n", type, name);
         if (type == 0x01021994UL) puts("# WARNING: tmpfs is RAM, not disk");
+        if (type == 0x01021997UL) puts("# WARNING: 9p is a file-sharing layer, so throughput may be limited by that layer rather than the device, and post_fadvise reads may not be cold");
     } else perror("statfs");
 #else
     puts("# filesystem_type=use df -T on this platform");

@@ -30,3 +30,5 @@ If durable write rates match buffered rates across repeated runs, buffering may 
 ## Caveat
 
 The program prints the filesystem type from `statfs` and warns when it recognizes tmpfs. tmpfs is RAM, not disk. `POSIX_FADV_DONTNEED` is a request, and Linux may keep cached pages; the program reports when the call fails and notes when an accepted request still does not make the read clearly slower. Rates depend on the filesystem, device cache, and background activity. The scratch file is deleted afterward.
+
+On WSL2, your home directory (`~`) is ext4 on a virtual disk, but `/mnt/c`, `/mnt/d` and other `/mnt/<letter>` paths are Windows drives shared over 9p. The program names 9p and prints a warning there: speed is often limited by the file-sharing layer, and `post_fadvise` reads may not be cold (on one WSL2 machine they matched warm reads at about 250 MB/s).
