@@ -1,4 +1,7 @@
 #define _POSIX_C_SOURCE 200809L
+#ifndef FLAGS
+#define FLAGS "unknown (built without -DFLAGS)"
+#endif
 #include <errno.h>
 #include <dirent.h>
 #include <fcntl.h>
@@ -444,8 +447,8 @@ static void print_header(const char *dir)
     struct tm tm;
     if (gmtime_r(&t, &tm))
         strftime(date, sizeof date, "%Y-%m-%dT%H:%M:%SZ", &tm);
-    printf("# experiment=repository\n# host=%s\n# cpu=%s\n# date_utc=%s\n# flags=-std=c11 -O2 -Wall -Wextra\n",
-           host, cpu, date);
+    printf("# experiment=repository\n# host=%s\n# cpu=%s\n# date_utc=%s\n# flags=%s\n",
+           host, cpu, date, FLAGS);
 #ifdef __linux__
     struct statfs fs;
     if (statfs(dir, &fs) == 0) {

@@ -5,7 +5,7 @@ CFLAGS ?= -std=c11 -O2 -Wall -Wextra
 all: 04_sequential_vs_random
 
 04_sequential_vs_random: 04_sequential_vs_random.c
-	$(CC) $(CFLAGS) -o $@ $<
+	$(CC) $(CFLAGS) -DFLAGS='"$(CFLAGS)"' -o $@ $<
 
 run: 04_sequential_vs_random
 	./04_sequential_vs_random

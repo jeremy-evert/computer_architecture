@@ -3,7 +3,7 @@ CFLAGS ?= -std=c11 -O2 -Wall -Wextra
 .PHONY: all run clean check
 all: 08_repository
 08_repository: 08_repository.c
-	$(CC) $(CFLAGS) -o $@ $<
+	$(CC) $(CFLAGS) -DFLAGS='"$(CFLAGS)"' -o $@ $<
 run: 08_repository
 	./08_repository $${SCRATCH_DIR:+"$$SCRATCH_DIR"}
 check: 08_repository

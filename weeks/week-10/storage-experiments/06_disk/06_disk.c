@@ -1,4 +1,7 @@
 #define _POSIX_C_SOURCE 200809L
+#ifndef FLAGS
+#define FLAGS "unknown (built without -DFLAGS)"
+#endif
 #include <errno.h>
 #include <fcntl.h>
 #include <inttypes.h>
@@ -182,7 +185,7 @@ int main(int argc, char **argv)
     if (cf) { char line[512]; while (fgets(line, sizeof line, cf)) if (!strncmp(line, "model name", 10)) { char *p = strchr(line, ':'); if (p) { snprintf(cpu, sizeof cpu, "%s", p + 2); cpu[strcspn(cpu, "\n")] = '\0'; } break; } fclose(cf); }
     time_t tt = time(NULL); struct tm tm;
     if (gmtime_r(&tt, &tm)) strftime(date, sizeof date, "%Y-%m-%dT%H:%M:%SZ", &tm);
-    printf("# experiment=disk\n# host=%s\n# cpu=%s\n# date_utc=%s\n# flags=-std=c11 -O2 -Wall -Wextra\n", host, cpu, date);
+    printf("# experiment=disk\n# host=%s\n# cpu=%s\n# date_utc=%s\n# flags=%s\n", host, cpu, date, FLAGS);
 #ifdef __linux__
     struct statfs fs;
     if (statfs(dir, &fs) == 0) {

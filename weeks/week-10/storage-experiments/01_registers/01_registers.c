@@ -1,4 +1,7 @@
 #define _POSIX_C_SOURCE 200809L
+#ifndef FLAGS
+#define FLAGS "unknown (built without -DFLAGS)"
+#endif
 #include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -15,7 +18,7 @@ static void metadata(void) {
     FILE *f = fopen("/proc/cpuinfo", "r"); char line[512];
     if (f) { while (fgets(line, sizeof line, f)) if (strncmp(line, "model name", 10) == 0) { char *p = strchr(line, ':'); if (p) { p += 2; p[strcspn(p, "\r\n")] = '\0'; snprintf(cpu, sizeof cpu, "%s", p); } break; } fclose(f); }
     f = popen("date -u +%Y-%m-%dT%H:%M:%SZ", "r"); char date[64] = "unknown"; if (f) { if (fgets(date, sizeof date, f)) date[strcspn(date, "\r\n")] = '\0'; pclose(f); }
-    printf("# experiment=01_registers\n# host=%s\n# cpu_model=%s\n# date_utc=%s\n# compiler_flags=-std=c11 -O2 -Wall -Wextra\n", host, cpu, date);
+    printf("# experiment=01_registers\n# host=%s\n# cpu_model=%s\n# date_utc=%s\n# compiler_flags=%s\n", host, cpu, date, FLAGS);
 }
 
 __attribute__((noinline)) static uint64_t register_loop(uint64_t n) {

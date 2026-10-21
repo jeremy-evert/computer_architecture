@@ -1,4 +1,7 @@
 #define _GNU_SOURCE
+#ifndef FLAGS
+#define FLAGS "unknown (built without -DFLAGS)"
+#endif
 #define _POSIX_C_SOURCE 200809L
 #include <errno.h>
 #include <inttypes.h>
@@ -124,7 +127,7 @@ static void print_metadata(uint64_t bytes, size_t pages, size_t page_size, uint6
     if (gmtime_r(&now, &utc) != NULL) (void)strftime(date, sizeof(date), "%Y-%m-%dT%H:%M:%SZ", &utc);
     printf("# experiment=first_touch_pages\n# host=%s\n# cpu=%s\n# utc=%s\n", host, cpu, date);
     printf("# compiler_flags=%s\n# region_bytes=%" PRIu64 "\n# page_size=%zu\n# pages=%zu\n",
-           "-std=c11 -O2 -Wall -Wextra", bytes, page_size, pages);
+           FLAGS, bytes, page_size, pages);
     printf("# MemAvailable_bytes=%" PRIu64 "\n# transparent_hugepage_enabled=%s\n", available, thp);
 }
 

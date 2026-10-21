@@ -1,10 +1,10 @@
 CC = gcc
-CFLAGS = -std=c11 -O2 -Wall -Wextra
+CFLAGS ?= -std=c11 -O2 -Wall -Wextra
 
 .PHONY: all run clean asm
 all: 01_registers
 01_registers: 01_registers.c
-	$(CC) $(CFLAGS) -o $@ $<
+	$(CC) $(CFLAGS) -DFLAGS='"$(CFLAGS)"' -o $@ $<
 run: 01_registers
 	@./01_registers
 asm:

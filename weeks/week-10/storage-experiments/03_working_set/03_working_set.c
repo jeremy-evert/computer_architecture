@@ -1,4 +1,7 @@
 #define _POSIX_C_SOURCE 200809L
+#ifndef FLAGS
+#define FLAGS "unknown (built without -DFLAGS)"
+#endif
 #include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -24,7 +27,7 @@ static size_t cache_capacity(unsigned wanted_level){
 static void metadata(void){
     char host[256]="unknown",cpu[256]="unknown",line[512];gethostname(host,sizeof host);host[sizeof host-1]='\0';FILE*f=fopen("/proc/cpuinfo","r");if(f){while(fgets(line,sizeof line,f))if(strncmp(line,"model name",10)==0){char*p=strchr(line,':');if(p){p+=2;p[strcspn(p,"\r\n")]='\0';snprintf(cpu,sizeof cpu,"%s",p);}break;}fclose(f);}
     char date[64]="unknown";f=popen("date -u +%Y-%m-%dT%H:%M:%SZ","r");if(f){if(fgets(date,sizeof date,f))date[strcspn(date,"\r\n")]='\0';pclose(f);}
-    printf("# experiment=03_working_set\n# host=%s\n# cpu_model=%s\n# date_utc=%s\n# compiler_flags=-std=c11 -O2 -Wall -Wextra\n",host,cpu,date);
+    printf("# experiment=03_working_set\n# host=%s\n# cpu_model=%s\n# date_utc=%s\n# compiler_flags=%s\n",host,cpu,date, FLAGS);
 }
 static size_t *sizes_for(size_t limit,size_t *count){
     size_t cap=32,n=0,*a=NULL,bytes;

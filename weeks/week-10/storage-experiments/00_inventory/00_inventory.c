@@ -1,4 +1,7 @@
 #define _GNU_SOURCE
+#ifndef FLAGS
+#define FLAGS "unknown (built without -DFLAGS)"
+#endif
 #define _POSIX_C_SOURCE 200809L
 #include <dirent.h>
 #include <ctype.h>
@@ -116,7 +119,7 @@ int main(void) {
     host[sizeof host - 1] = '\0'; cpu_model(model, sizeof model);
     f = popen("date -u +%Y-%m-%dT%H:%M:%SZ", "r");
     if (f) { if (fgets(date, sizeof date, f)) date[strcspn(date, "\r\n")] = '\0'; pclose(f); }
-    printf("# experiment=00_inventory\n# host=%s\n# cpu_model=%s\n# date_utc=%s\n# compiler_flags=-std=c11 -O2 -Wall -Wextra\n", host, *model ? model : "unknown", date);
+    printf("# experiment=00_inventory\n# host=%s\n# cpu_model=%s\n# date_utc=%s\n# compiler_flags=%s\n", host, *model ? model : "unknown", date, FLAGS);
     value("cpu_model", model);
     caches(); core_types();
     long p = sysconf(_SC_PAGESIZE); printf("page_size_bytes=%s", p > 0 ? "" : "unknown"); if (p > 0) printf("%ld", p); putchar('\n');

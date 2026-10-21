@@ -5,7 +5,7 @@ CFLAGS ?= -std=c11 -O2 -Wall -Wextra
 all: 05_first_touch_pages
 
 05_first_touch_pages: 05_first_touch_pages.c
-	$(CC) $(CFLAGS) -o $@ $<
+	$(CC) $(CFLAGS) -DFLAGS='"$(CFLAGS)"' -o $@ $<
 
 run: 05_first_touch_pages
 	./05_first_touch_pages

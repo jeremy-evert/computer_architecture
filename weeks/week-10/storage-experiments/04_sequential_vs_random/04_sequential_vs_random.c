@@ -1,4 +1,7 @@
 #define _POSIX_C_SOURCE 200809L
+#ifndef FLAGS
+#define FLAGS "unknown (built without -DFLAGS)"
+#endif
 #include <dirent.h>
 #include <errno.h>
 #include <inttypes.h>
@@ -110,7 +113,7 @@ static void print_metadata(uint64_t buffer_bytes, uint64_t reads)
     if (gmtime_r(&now, &utc) != NULL) (void)strftime(date, sizeof(date), "%Y-%m-%dT%H:%M:%SZ", &utc);
     printf("# experiment=sequential_vs_random\n# host=%s\n# cpu=%s\n# utc=%s\n", host, cpu, date);
     printf("# compiler_flags=%s\n# buffer_bytes=%" PRIu64 "\n# reads_per_mode=%" PRIu64 "\n",
-           "-std=c11 -O2 -Wall -Wextra", buffer_bytes, reads);
+           FLAGS, buffer_bytes, reads);
     puts("# random-independent also reads a sequential shuffled-index array.");
 }
 
