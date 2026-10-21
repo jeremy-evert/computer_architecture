@@ -1,0 +1,23 @@
+# experiment=repository
+# host=morgan
+# cpu=Intel(R) Core(TM) i7-8700K CPU @ 3.70GHz
+# date_utc=2026-10-21T20:19:58Z
+# flags=-std=c11 -O2 -Wall -Wextra
+# filesystem_type=0x1021997 (9p (WSL2 Windows drive share or similar))
+kind,trial,store,sync,seconds,batches_of_2000_records,ms_per_batch
+trial,1,one_plain_file,no_sync,0.631936,1,631.9361
+trial,2,one_plain_file,no_sync,0.614749,1,614.7488
+trial,3,one_plain_file,no_sync,0.611763,1,611.7631
+median,,one_plain_file,no_sync,,,614.7488
+trial,1,loose_object_style,no_sync,11.227924,1,11227.9244
+trial,2,loose_object_style,no_sync,11.302781,1,11302.7809
+trial,3,loose_object_style,no_sync,11.392556,1,11392.5559
+median,,loose_object_style,no_sync,,,11302.7809
+trial,1,one_plain_file,sync_at_end,0.742006,1,742.0061
+trial,2,one_plain_file,sync_at_end,0.684626,1,684.6265
+trial,3,one_plain_file,sync_at_end,0.683428,1,683.4280
+median,,one_plain_file,sync_at_end,,,684.6265
+trial,1,loose_object_style,sync_each_object,56.513626,1,56513.6262
+trial,2,loose_object_style,sync_each_object,56.397143,1,56397.1426
+trial,3,loose_object_style,sync_each_object,55.824923,1,55824.9226
+median,,loose_object_style,sync_each_object,,,56397.1426

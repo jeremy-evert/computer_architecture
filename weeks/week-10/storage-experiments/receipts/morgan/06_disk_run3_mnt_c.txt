@@ -1,0 +1,24 @@
+# experiment=disk
+# host=morgan
+# cpu=Intel(R) Core(TM) i7-8700K CPU @ 3.70GHz
+# date_utc=2026-10-21T19:53:29Z
+# flags=-std=c11 -O2 -Wall -Wextra
+# filesystem_type=0x1021997 (9p (WSL2 Windows drive share or similar))
+# WARNING: 9p is a file-sharing layer, so throughput may be limited by that layer rather than the device, and post_fadvise reads may not be cold
+# bytes=268435456
+kind,trial,method,write_MB_s,warm_read_MB_s,post_fadvise_read_MB_s,post_fadvise_warm_ratio,advice_status
+trial,1,buffered,238.25,277.81,271.95,1.022,advice_accepted
+trial,2,buffered,240.67,257.42,261.65,0.984,advice_accepted
+trial,3,buffered,251.29,268.78,260.07,1.034,advice_accepted
+median,,buffered,240.67,268.78,261.65,1.022,advice_accepted
+trial,1,one_fsync,203.69,263.44,266.35,0.989,advice_accepted
+trial,2,one_fsync,209.44,264.58,266.14,0.994,advice_accepted
+trial,3,one_fsync,175.68,263.91,266.96,0.989,advice_accepted
+median,,one_fsync,203.69,263.91,266.35,0.989,advice_accepted
+trial,1,fsync_each_4MiB,161.25,264.51,265.46,0.996,advice_accepted
+trial,2,fsync_each_4MiB,161.96,262.61,263.03,0.998,advice_accepted
+trial,3,fsync_each_4MiB,153.60,266.51,267.60,0.996,advice_accepted
+median,,fsync_each_4MiB,161.25,264.51,265.46,0.996,advice_accepted
+# cold read was not clearly slower; page cache may not have been dropped without root privileges
+# small_writes=2000 x 4096 bytes
+# fdatasync_ms_per_sync=1.6144

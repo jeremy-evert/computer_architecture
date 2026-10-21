@@ -1,0 +1,23 @@
+# experiment=first_touch_pages
+# host=morgan
+# cpu=Intel(R) Core(TM) i7-8700K CPU @ 3.70GHz
+# utc=2026-10-21T19:52:07Z
+# compiler_flags=-std=c11 -O2 -Wall -Wextra
+# region_bytes=536870912
+# page_size=4096
+# pages=131072
+# MemAvailable_bytes=15052455936
+# transparent_hugepage_enabled=always [madvise] never
+mode,trial,total_page_touches,map_ns,map_minflt,map_majflt,ns_per_page,minflt,majflt
+first-touch,1,131072,2600,1,0,1600.762,131072,0
+first-touch,2,131072,8400,0,0,1598.924,131072,0
+first-touch,3,131072,8400,0,0,1605.605,131072,0
+first-touch,median,131072,8400,0,0,1600.762,131072,0
+second-touch,1,5767168,7900,0,0,8.790,0,0
+second-touch,2,5767168,8600,0,0,8.789,0,0
+second-touch,3,5767168,8000,0,0,8.798,0,0
+second-touch,median,5767168,8000,0,0,8.790,0,0
+MAP_POPULATE-first-touch,1,5505024,108912521,131072,0,9.086,0,0
+MAP_POPULATE-first-touch,2,5767168,108956121,131072,0,8.788,0,0
+MAP_POPULATE-first-touch,3,5767168,108356620,131072,0,8.777,0,0
+MAP_POPULATE-first-touch,median,5767168,108912521,131072,0,8.788,0,0

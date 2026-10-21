@@ -1,0 +1,22 @@
+# experiment=disk
+# host=morgan
+# cpu=Intel(R) Core(TM) i7-8700K CPU @ 3.70GHz
+# date_utc=2026-10-21T19:38:37Z
+# flags=-std=c11 -O2 -Wall -Wextra
+# filesystem_type=0xef53 (ext2/3/4)
+# bytes=268435456
+kind,trial,method,write_MB_s,warm_read_MB_s,post_fadvise_read_MB_s,post_fadvise_warm_ratio,advice_status
+trial,1,buffered,4935.52,11915.15,1896.81,6.282,advice_accepted
+trial,2,buffered,4862.07,11046.35,1913.13,5.774,advice_accepted
+trial,3,buffered,4962.01,11678.56,1902.31,6.139,advice_accepted
+median,,buffered,4935.52,11678.56,1902.31,6.139,advice_accepted
+trial,1,one_fsync,1055.14,10627.60,1871.54,5.679,advice_accepted
+trial,2,one_fsync,1057.22,11858.82,1893.37,6.263,advice_accepted
+trial,3,one_fsync,1037.87,11828.10,1908.43,6.198,advice_accepted
+median,,one_fsync,1055.14,11828.10,1893.37,6.198,advice_accepted
+trial,1,fsync_each_4MiB,465.43,11847.99,1908.27,6.209,advice_accepted
+trial,2,fsync_each_4MiB,384.76,11796.50,1847.48,6.385,advice_accepted
+trial,3,fsync_each_4MiB,467.41,11673.58,1893.19,6.166,advice_accepted
+median,,fsync_each_4MiB,465.43,11796.50,1893.19,6.209,advice_accepted
+# small_writes=2000 x 4096 bytes
+# fdatasync_ms_per_sync=2.6616

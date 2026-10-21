@@ -1,0 +1,25 @@
+# experiment=sequential_vs_random
+# host=morgan
+# cpu=Intel(R) Core(TM) i7-8700K CPU @ 3.70GHz
+# utc=2026-10-21T20:06:55Z
+# compiler_flags=-std=c11 -O2 -Wall -Wextra
+# buffer_bytes=268435456
+# reads_per_mode=335544320
+# random-independent also reads a sequential shuffled-index array.
+mode,trial,reads,elapsed_ns,ns_per_read,effective_GB_s
+sequential-independent,1,335544320,102792983,0.306,26.114
+sequential-independent,2,335544320,102147182,0.304,26.279
+sequential-independent,3,335544320,100928981,0.301,26.596
+sequential-independent,median,335544320,102147182,0.304,26.279
+random-independent,1,335544320,6826994632,20.346,0.393
+random-independent,2,335544320,6749488544,20.115,0.398
+random-independent,3,335544320,6824099531,20.337,0.393
+random-independent,median,335544320,6824099531,20.337,0.393
+sequential-dependent,1,335544320,528596713,1.575,5.078
+sequential-dependent,2,335544320,529600913,1.578,5.069
+sequential-dependent,3,335544320,527178012,1.571,5.092
+sequential-dependent,median,335544320,528596713,1.575,5.078
+random-dependent,1,335544320,33956659943,101.199,0.079
+random-dependent,2,335544320,34794614917,103.696,0.077
+random-dependent,3,335544320,33852212707,100.887,0.079
+random-dependent,median,335544320,33956659943,101.199,0.079

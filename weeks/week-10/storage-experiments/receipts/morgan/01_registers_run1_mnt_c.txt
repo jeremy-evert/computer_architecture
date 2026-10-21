@@ -1,0 +1,15 @@
+# experiment=01_registers
+# host=morgan
+# cpu_model=Intel(R) Core(TM) i7-8700K CPU @ 3.70GHz
+# date_utc=2026-10-21T19:42:39Z
+# compiler_flags=-std=c11 -O2 -Wall -Wextra
+variant,trial,iterations,ns_per_iteration
+register,1,268435456,0.587466
+volatile,1,268435456,1.647568
+register,2,268435456,0.549459
+volatile,2,268435456,1.643795
+register,3,268435456,0.547062
+volatile,3,268435456,1.651089
+register_median,median,268435456,0.549459
+volatile_median,median,268435456,1.647568
+median_ratio,median,1,2.998526
