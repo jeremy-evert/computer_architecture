@@ -27,4 +27,4 @@ If cache entries or system values are absent, the operating system does not expo
 
 # Caveat
 
-Sysfs describes this running Linux view. Virtual machines and containers can hide or reshape host hardware details.
+Sysfs describes this running Linux view. Virtual machines and containers can hide or reshape host hardware details. `virtualization=wsl2` appears when the kernel release string contains "microsoft"; otherwise the line says `none_detected`, which only means WSL2 was not recognized. `physical_ram_bytes` is the RAM this OS can see, which inside a VM may be less than the host has.

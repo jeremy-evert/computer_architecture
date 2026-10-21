@@ -1,6 +1,7 @@
 #define _GNU_SOURCE
 #define _POSIX_C_SOURCE 200809L
 #include <dirent.h>
+#include <ctype.h>
 #include <errno.h>
 #include <inttypes.h>
 #include <mntent.h>
@@ -131,6 +132,15 @@ int main(void) {
     if (pages > 0 && p > 0 && (uint64_t)pages <= UINT64_MAX / (uint64_t)p)
         printf("physical_ram_bytes=%" PRIu64 "\n", (uint64_t)pages * (uint64_t)p);
     else value("physical_ram_bytes", "unknown");
+    value("physical_ram_note", "physical_ram_bytes is the RAM this OS can see; inside a VM it may be less than the host has");
+    {
+        char osrelease[256], lower[256];
+        size_t i;
+        read_one_line("/proc/sys/kernel/osrelease", osrelease, sizeof osrelease);
+        for (i = 0; osrelease[i]; i++) lower[i] = (char)tolower((unsigned char)osrelease[i]);
+        lower[i] = '\0';
+        value("virtualization", strstr(lower, "microsoft") ? "wsl2" : "none_detected");
+    }
     FILE *mounts = setmntent("/proc/mounts", "r");
     int root_found = 0;
     struct mntent *mount;
