@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "title": "Make the Memory Hierarchy Hurt",
+  "series_type": "instructor-private-podcast",
+  "course": "COMSC-3013",
+  "week": 10,
+  "prepared_date": "2026-10-20",
+  "note": "Estimated duration is not a render proof. Verify duration from the completed Kokoro receipt.",
+  "source_repository": "jeremy-evert/computer_architecture",
+  "source_branch": "audio/arch-week10-memory-20261021",
+  "sources": [
+    "Computer Architecture Week 10 README, Monday, Wednesday, Friday, instructor notes, and references",
+    "Computer Architecture lab/README.md and lab/MEASUREMENT.md",
+    "MIT OpenCourseWare 6.004 cache and memory material, thematic reference",
+    "Berkeley CS61C cache notes, thematic reference",
+    "Cornell CS3410, thematic reference"
+  ],
+  "voice_map": {
+    "DANA": "af_sarah",
+    "MARIA": "af_heart"
+  },
+  "episodes": [
+    {
+      "number": "01",
+      "title": "Make the Memory Hierarchy Hurt",
+      "source": "scripts/01_make_the_memory_hierarchy_hurt.md",
+      "sha256": "71be2135b9502e2c54a28659c362c17975959a13a549bc606a98029198cc59e1",
+      "spoken_words": 1958,
+      "estimated_minutes": 13.1
+    }
+  ],
+  "publication_status": "NOT RENDERED, NOT PUBLISHED, NOT PHONE VERIFIED"
+}
