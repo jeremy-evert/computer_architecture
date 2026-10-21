@@ -2,6 +2,10 @@
 # Builds every experiment and saves 3 full runs of each under receipts/<host>/.
 # Pins to CPU 0 (a performance core on hybrid Intel chips) so cache sizes from
 # 00_inventory describe the core that ran the test. Network is not pinned.
+# Usage: bash run_receipts.sh
+# Optional: SCRATCH_DIR=<dir> gives 06_disk and 08_repository a real-disk scratch
+# directory instead of /tmp (never removed), e.g.:
+#   SCRATCH_DIR=$HOME/disk-scratch bash run_receipts.sh
 set -u
 cd "$(dirname "$0")"
 host=$(hostname -s)
@@ -13,8 +17,12 @@ for d in [0-9][0-9]_*; do
   exe=$(find "$d" -maxdepth 1 -type f -executable -name "${d}" | head -n 1)
   [ -n "$exe" ] || { echo "no exe for $d (script-only?)" >&2; continue; }
   pin="taskset -c 0"; [ "$d" = "07_network" ] && pin=""
+  scratch=""
+  if [ -n "${SCRATCH_DIR:-}" ]; then
+    case "$d" in 06_disk|08_repository) scratch="$SCRATCH_DIR" ;; esac
+  fi
   for run in 1 2 3; do
-    $pin "$exe" > "$out/${d}_run${run}.txt" 2>&1 || echo "RUN FAILED: $d run $run" >&2
+    $pin "$exe" ${scratch:+"$scratch"} > "$out/${d}_run${run}.txt" 2>&1 || echo "RUN FAILED: $d run $run" >&2
   done
   make -s -C "$d" clean
 done
