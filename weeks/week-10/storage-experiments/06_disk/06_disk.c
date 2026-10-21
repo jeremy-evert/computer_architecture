@@ -139,6 +139,14 @@ static void trial(const char *path, size_t bytes, int mode,
     free(buffer);
 }
 
+/* Sorts three values ascending in place, so v[1] is the median. */
+static void median3(double *v)
+{
+    for (int i = 0; i < 3; i++)
+        for (int j = i + 1; j < 3; j++)
+            if (v[i] > v[j]) { double x = v[i]; v[i] = v[j]; v[j] = x; }
+}
+
 static int parse_bytes(const char *text, size_t *bytes)
 {
     if (*text == '-' || *text == '+') return 0;
@@ -202,7 +210,7 @@ int main(int argc, char **argv)
         }
         double w[3], r[3], c[3];
         for (int t = 0; t < 3; t++) { w[t] = bytes / 1e6 / results[mode][t][0]; r[t] = bytes / 1e6 / results[mode][t][1]; c[t] = bytes / 1e6 / results[mode][t][2]; }
-        for (int i = 0; i < 3; i++) for (int j = i + 1; j < 3; j++) { if (w[i] > w[j]) { double x = w[i]; w[i] = w[j]; w[j] = x; } if (r[i] > r[j]) { double x = r[i]; r[i] = r[j]; r[j] = x; } if (c[i] > c[j]) { double x = c[i]; c[i] = c[j]; c[j] = x; } }
+        median3(w); median3(r); median3(c);
         printf("# median,%s,%.2f,%.2f,%.2f\n", names[mode], w[1], r[1], c[1]);
     }
     double ratio = results[1][2][2] / results[1][2][1];
