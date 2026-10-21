@@ -1,22 +1,22 @@
 # experiment=repository
 # host=april
 # cpu=Intel(R) Core(TM) Ultra 7 265
-# date_utc=2026-10-21T14:18:14Z
+# date_utc=2026-10-21T14:50:04Z
 # flags=-std=c11 -O2 -Wall -Wextra
-trial,store,sync,seconds
-1,one_plain_file,no_sync,0.000609
-2,one_plain_file,no_sync,0.000467
-3,one_plain_file,no_sync,0.000468
-# median,one_plain_file,no_sync,0.000468
-1,loose_object_style,no_sync,0.014019
-2,loose_object_style,no_sync,0.013819
-3,loose_object_style,no_sync,0.013613
-# median,loose_object_style,no_sync,0.013819
-1,one_plain_file,sync_at_end,0.002722
-2,one_plain_file,sync_at_end,0.001467
-3,one_plain_file,sync_at_end,0.001625
-# median,one_plain_file,sync_at_end,0.001625
-1,loose_object_style,sync_each_object,1.437365
-2,loose_object_style,sync_each_object,1.414963
-3,loose_object_style,sync_each_object,1.416581
-# median,loose_object_style,sync_each_object,1.416581
+trial,store,sync,seconds,batches_of_2000_records
+1,one_plain_file,no_sync,0.050103,110
+2,one_plain_file,no_sync,0.050191,111
+3,one_plain_file,no_sync,0.050452,111
+# median,one_plain_file,no_sync,0.050191
+1,loose_object_style,no_sync,0.056694,4
+2,loose_object_style,no_sync,0.053226,4
+3,loose_object_style,no_sync,0.053216,4
+# median,loose_object_style,no_sync,0.053226
+1,one_plain_file,sync_at_end,0.050954,22
+2,one_plain_file,sync_at_end,0.050526,36
+3,one_plain_file,sync_at_end,0.050660,36
+# median,one_plain_file,sync_at_end,0.050660
+1,loose_object_style,sync_each_object,1.615566,1
+2,loose_object_style,sync_each_object,1.548766,1
+3,loose_object_style,sync_each_object,1.563553,1
+# median,loose_object_style,sync_each_object,1.563553

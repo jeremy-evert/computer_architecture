@@ -11,12 +11,14 @@ static uint32_t random_state=0x51a7c3d9u;
 static uint32_t random_u32(void){uint32_t x=random_state;x^=x<<13;x^=x>>17;x^=x<<5;random_state=x;return x;}
 static double now_ns(void){struct timespec t;if(clock_gettime(CLOCK_MONOTONIC,&t)!=0)exit(2);return(double)t.tv_sec*1e9+(double)t.tv_nsec;}
 static double median(double a,double b,double c){if(a>b){double t=a;a=b;b=t;}if(b>c){double t=b;b=c;c=t;}if(a>b)b=a;return b;}
+static int checked_mul_size(size_t a,size_t b,size_t *out){if(a!=0&&b>SIZE_MAX/a)return 0;*out=a*b;return 1;}
+static int checked_add_size(size_t a,size_t b,size_t *out){if(b>SIZE_MAX-a)return 0;*out=a+b;return 1;}
 static size_t cache_capacity(unsigned wanted_level){
     size_t max=0;char path[256],line[64];
     for(unsigned i=0;i<32;i++){
         unsigned level=0;snprintf(path,sizeof path,"/sys/devices/system/cpu/cpu0/cache/index%u/level",i);FILE*f=fopen(path,"r");if(!f)break;if(fscanf(f,"%u",&level)!=1){fclose(f);continue;}fclose(f);if(level!=wanted_level)continue;
         snprintf(path,sizeof path,"/sys/devices/system/cpu/cpu0/cache/index%u/type",i);f=fopen(path,"r");if(!f)continue;char type[64]="";if(!fgets(type,sizeof type,f)){fclose(f);continue;}type[strcspn(type,"\r\n")]='\0';fclose(f);if(wanted_level==1&&strcmp(type,"Data")!=0)continue;
-        snprintf(path,sizeof path,"/sys/devices/system/cpu/cpu0/cache/index%u/size",i);f=fopen(path,"r");if(!f)continue;if(fgets(line,sizeof line,f)){unsigned long long n=0;char unit=0;if(sscanf(line,"%llu%c",&n,&unit)>=1){size_t b=(size_t)n;if(unit=='K'||unit=='k')b*=1024;if(unit=='M'||unit=='m')b*=1024*1024;if(b>max)max=b;}}fclose(f);
+        snprintf(path,sizeof path,"/sys/devices/system/cpu/cpu0/cache/index%u/size",i);f=fopen(path,"r");if(!f)continue;if(fgets(line,sizeof line,f)){unsigned long long n=0;char unit=0;if(sscanf(line,"%llu%c",&n,&unit)>=1&&n<=SIZE_MAX){size_t b=(size_t)n,mul=1;if(unit=='K'||unit=='k')mul=1024;else if(unit=='M'||unit=='m')mul=1024*1024;if(checked_mul_size(b,mul,&b)&&b>max)max=b;}}fclose(f);
     }return max;
 }
 static void metadata(void){
@@ -25,17 +27,26 @@ static void metadata(void){
     printf("# experiment=03_working_set\n# host=%s\n# cpu_model=%s\n# date_utc=%s\n# compiler_flags=-std=c11 -O2 -Wall -Wextra\n",host,cpu,date);
 }
 static size_t *sizes_for(size_t limit,size_t *count){
-    size_t cap=32,n=0,*a=malloc(cap*sizeof *a);if(!a)return NULL;
-    size_t x=4096;while(x<limit){if(n==cap){cap*=2;size_t*t=realloc(a,cap*sizeof*a);if(!t){free(a);return NULL;}a=t;}a[n++]=x;
-        size_t y=(size_t)((double)x*1.189207115);y=((y+63)/64)*64;if(y<=x)y=x+64;x=y;
+    size_t cap=32,n=0,*a=NULL,bytes;
+    if(!checked_mul_size(cap,sizeof *a,&bytes)||(a=malloc(bytes))==NULL)return NULL;
+    size_t x=4096;
+    while(x<limit){
+        if(n==cap){size_t next_cap,next_bytes;if(!checked_mul_size(cap,2,&next_cap)||!checked_mul_size(next_cap,sizeof *a,&next_bytes)){free(a);return NULL;}size_t*t=realloc(a,next_bytes);if(!t){free(a);return NULL;}a=t;cap=next_cap;}
+        a[n++]=x;
+        /* Integer growth approximates the old geometric step without floating conversion. */
+        size_t y,rounded;if(!checked_mul_size(x,1189207115U,&y)){free(a);return NULL;}y/=1000000000U;
+        if(!checked_add_size(y,63,&rounded)){free(a);return NULL;}y=(rounded/64)*64;
+        if(y<=x){if(!checked_add_size(x,64,&y)){free(a);return NULL;}}
+        x=y;
     }
-    if(n==cap){cap++;size_t*t=realloc(a,cap*sizeof*a);if(!t){free(a);return NULL;}a=t;}a[n++]=x;*count=n;return a;
+    if(n==cap){size_t next_cap,next_bytes;if(!checked_add_size(cap,1,&next_cap)||!checked_mul_size(next_cap,sizeof *a,&next_bytes)){free(a);return NULL;}size_t*t=realloc(a,next_bytes);if(!t){free(a);return NULL;}a=t;}
+    a[n++]=x;*count=n;return a;
 }
 static int run_size(size_t bytes,size_t l1,size_t l2,size_t l3){
     const size_t hop=64;size_t nodes=bytes/hop;if(nodes<2||nodes>UINT32_MAX)return 0;
-    size_t alloc_bytes=((bytes+63)/64)*64;uint32_t*next=NULL,*perm=NULL;
+    size_t rounded,alloc_bytes,perm_bytes;if(!checked_add_size(bytes,63,&rounded)){fprintf(stderr,"allocation size overflow\n");return 0;}alloc_bytes=(rounded/64)*64;uint32_t*next=NULL,*perm=NULL;
     if(posix_memalign((void**)&next,64,alloc_bytes)!=0||!next){fprintf(stderr,"allocation failed at %zu bytes\n",bytes);return 0;}
-    perm=malloc(nodes*sizeof*perm);if(!perm){free(next);fprintf(stderr,"permutation allocation failed\n");return 0;}
+    if(!checked_mul_size(nodes,sizeof*perm,&perm_bytes)){free(next);fprintf(stderr,"permutation size overflow\n");return 0;}perm=malloc(perm_bytes);if(!perm){free(next);fprintf(stderr,"permutation allocation failed\n");return 0;}
     for(size_t i=0;i<nodes;i++)perm[i]=(uint32_t)i;
     for(size_t i=nodes-1;i>0;i--){size_t j=random_u32()%(i+1);uint32_t t=perm[i];perm[i]=perm[j];perm[j]=t;}
     for(size_t i=0;i<nodes;i++)next[(size_t)perm[i]*(hop/sizeof(uint32_t))]=perm[(i+1)%nodes];
@@ -57,7 +68,7 @@ static int run_size(size_t bytes,size_t l1,size_t l2,size_t l3){
 }
 int main(void){
     size_t l1=cache_capacity(1),l2=cache_capacity(2),l3=cache_capacity(3);size_t last=l3?l3:(l2?l2:l1);if(!last){fprintf(stderr,"cache size is unavailable in sysfs\n");return 2;}
-    size_t count=0;size_t*sizes=sizes_for(last*4,&count);if(!sizes){fprintf(stderr,"size list allocation failed\n");return 2;}
+    size_t limit;if(!checked_mul_size(last,4,&limit)){fprintf(stderr,"cache-derived size limit overflow\n");return 2;}size_t count=0;size_t*sizes=sizes_for(limit,&count);if(!sizes){fprintf(stderr,"size list allocation failed\n");return 2;}
     metadata();printf("# cpu0_l1_bytes=%zu\n# cpu0_l2_bytes=%zu\n# cpu0_l3_bytes=%zu\n",l1,l2,l3);
     puts("size_bytes,fits_l1d,fits_l2,fits_l3,trial,ns_per_access");
     for(size_t i=0;i<count;i++)if(!run_size(sizes[i],l1,l2,l3)){free(sizes);return 2;}

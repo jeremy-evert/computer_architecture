@@ -26,6 +26,7 @@ typedef struct {
     long minflt;
     long majflt;
     double ns_per_page;
+    uint64_t measured_touches;
 } sample;
 
 static volatile unsigned char page_sink;
@@ -158,14 +159,24 @@ static sample measure_one(size_t bytes, size_t page_size, int populate, int pass
         (void)munmap(mapping, bytes);
         exit(1);
     }
-    touch_pages((volatile unsigned char *)mapping, bytes, page_size);
-    if (clock_gettime(CLOCK_MONOTONIC, &touch_end) != 0 || get_usage(&after_touch) != 0) {
+    uint64_t total_touches = 0;
+    do {
+        touch_pages((volatile unsigned char *)mapping, bytes, page_size);
+        total_touches += (uint64_t)((bytes + page_size - 1) / page_size);
+        if (clock_gettime(CLOCK_MONOTONIC, &touch_end) != 0) {
+            perror("touch clock_gettime");
+            (void)munmap(mapping, bytes);
+            exit(1);
+        }
+    } while (pass_number != 1 && elapsed_ns(&touch_start, &touch_end) < 50000000.0);
+    if (get_usage(&after_touch) != 0) {
         perror("touch measurement");
         (void)munmap(mapping, bytes);
         exit(1);
     }
     output.touch_ns = elapsed_ns(&touch_start, &touch_end);
-    output.ns_per_page = output.touch_ns / (double)((bytes + page_size - 1) / page_size);
+    output.measured_touches = total_touches;
+    output.ns_per_page = output.touch_ns / (double)total_touches;
     output.minflt = after_touch.ru_minflt - before_touch.ru_minflt;
     output.majflt = after_touch.ru_majflt - before_touch.ru_majflt;
     if (munmap(mapping, bytes) != 0) {
@@ -199,15 +210,17 @@ static long median_long(long values[TRIALS])
     return sorted[1];
 }
 
-static void report_mode(const char *mode, sample trials[TRIALS], size_t pages)
+static void report_mode(const char *mode, sample trials[TRIALS])
 {
     double ns[TRIALS];
     long minor[TRIALS], major[TRIALS];
+    uint64_t touches[TRIALS];
     for (size_t i = 0; i < TRIALS; i++) {
         ns[i] = trials[i].ns_per_page;
         minor[i] = trials[i].minflt;
         major[i] = trials[i].majflt;
-        printf("%s,%zu,%zu,%.0f,%ld,%ld,%.3f,%ld,%ld\n", mode, i + 1, pages,
+        touches[i] = trials[i].measured_touches;
+        printf("%s,%zu,%zu,%.0f,%ld,%ld,%.3f,%ld,%ld\n", mode, i + 1, trials[i].measured_touches,
                trials[i].map_ns, trials[i].map_minflt, trials[i].map_majflt,
                trials[i].ns_per_page, trials[i].minflt, trials[i].majflt);
     }
@@ -220,7 +233,8 @@ static void report_mode(const char *mode, sample trials[TRIALS], size_t pages)
         map_major[i] = trials[i].map_majflt;
     }
     qsort(map_ns, TRIALS, sizeof(map_ns[0]), compare_double);
-    printf("%s,median,%zu,%.0f,%ld,%ld,%.3f,%ld,%ld\n", mode, pages, map_ns[1],
+    for (size_t i = 0; i < TRIALS; i++) for (size_t j = i + 1; j < TRIALS; j++) if (touches[j] < touches[i]) { uint64_t temporary = touches[i]; touches[i] = touches[j]; touches[j] = temporary; }
+    printf("%s,median,%zu,%.0f,%ld,%ld,%.3f,%ld,%ld\n", mode, touches[1], map_ns[1],
            median_long(map_minor), median_long(map_major), ns[1], median_long(minor),
            median_long(major));
 }
@@ -280,7 +294,7 @@ int main(int argc, char **argv)
         return 1;
     }
     print_metadata(bytes64, pages, page_size, available);
-    puts("mode,trial,pages,map_ns,map_minflt,map_majflt,ns_per_page,minflt,majflt");
+    puts("mode,trial,total_page_touches,map_ns,map_minflt,map_majflt,ns_per_page,minflt,majflt");
     warm_up(page_size);
 
     sample normal[TRIALS];
@@ -289,10 +303,10 @@ int main(int argc, char **argv)
     for (size_t i = 0; i < TRIALS; i++) {
         normal[i] = measure_one(bytes, page_size, 0, 1);
         second[i] = measure_one(bytes, page_size, 0, 2);
-        populated[i] = measure_one(bytes, page_size, 1, 1);
+        populated[i] = measure_one(bytes, page_size, 1, 3);
     }
-    report_mode("first-touch", normal, pages);
-    report_mode("second-touch", second, pages);
-    report_mode("MAP_POPULATE-first-touch", populated, pages);
+    report_mode("first-touch", normal);
+    report_mode("second-touch", second);
+    report_mode("MAP_POPULATE-first-touch", populated);
     return 0;
 }

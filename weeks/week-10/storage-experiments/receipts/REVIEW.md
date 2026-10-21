@@ -211,3 +211,7 @@ effective cleanup trap; both are clean.
 
 Clean. The driver scopes build/run/clean to numbered experiment directories and
 does not itself create or leak scratch files.
+
+## Resolution (Anna, after the fix pass)
+
+Findings above were fixed by a second Codex pass and all receipts under `april/` were regenerated from the fixed code (so earlier quoted values were replaced). Fixed: 07 binds 127.0.0.1 by default (`--bind` required otherwise), port parsing, SIGPIPE, local-call timing region; 06 never removes a caller-supplied directory, unlink/fadvise return values checked, column renamed `post_fadvise_*`; 01, 05, 08 timed regions now at least 50 ms; 04 clock failures exit; 03 size arithmetic checked and plot single-point guard; 02 README corrected to match code and receipts. Not re-reviewed by Sol after the fixes. Known limits remain as stated in the READMEs (cold read unprovable without root, loopback is not a network, no zlib in 08).

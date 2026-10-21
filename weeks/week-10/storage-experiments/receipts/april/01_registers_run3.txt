@@ -1,15 +1,15 @@
 # experiment=01_registers
 # host=april
 # cpu_model=Intel(R) Core(TM) Ultra 7 265
-# date_utc=2026-10-21T14:08:25Z
+# date_utc=2026-10-21T14:40:19Z
 # compiler_flags=-std=c11 -O2 -Wall -Wextra
 variant,trial,iterations,ns_per_iteration
-register,1,150000000,0.203813
-volatile,1,150000000,1.405423
-register,2,150000000,0.203610
-volatile,2,150000000,1.499538
-register,3,150000000,0.203426
-volatile,3,150000000,1.479313
-register_median,median,150000000,0.203610
-volatile_median,median,150000000,1.479313
-median_ratio,median,1,7.265423
+register,1,300000000,0.202765
+volatile,1,300000000,1.427783
+register,2,300000000,0.202765
+volatile,2,300000000,1.434522
+register,3,300000000,0.202830
+volatile,3,300000000,1.425544
+register_median,median,300000000,0.202765
+volatile_median,median,300000000,1.427783
+median_ratio,median,1,7.041559

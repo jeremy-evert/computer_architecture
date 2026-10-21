@@ -1,22 +1,22 @@
 # experiment=disk
 # host=april
 # cpu=Intel(R) Core(TM) Ultra 7 265
-# date_utc=2026-10-21T14:29:14Z
+# date_utc=2026-10-21T14:49:36Z
 # flags=-std=c11 -O2 -Wall -Wextra
 # filesystem_type=0xef53 (ext2/3/4)
 # bytes=268435456
-trial,method,write_MB_s,warm_read_MB_s,cold_read_MB_s,cold_warm_ratio
-1,buffered,6909.39,16835.35,7004.06,2.404
-2,buffered,7209.75,18056.91,6927.19,2.607
-3,buffered,7277.03,17866.67,6966.84,2.565
-# median,buffered,7209.75,17866.67,6966.84
-1,one_fsync,4380.69,18004.60,6836.30,2.634
-2,one_fsync,4381.57,17921.08,6921.19,2.589
-3,one_fsync,4396.48,17994.50,6937.81,2.594
-# median,one_fsync,4381.57,17994.50,6921.19
-1,fsync_each_4MiB,2294.26,17922.34,6918.70,2.590
-2,fsync_each_4MiB,2305.05,17939.60,6921.49,2.592
-3,fsync_each_4MiB,2311.28,17942.81,6934.30,2.588
-# median,fsync_each_4MiB,2305.05,17939.60,6921.49
+trial,method,write_MB_s,warm_read_MB_s,post_fadvise_read_MB_s,post_fadvise_warm_ratio,advice_status
+1,buffered,7333.01,18121.91,7009.66,2.585,advice_accepted
+2,buffered,7257.40,17931.05,6947.97,2.581,advice_accepted
+3,buffered,7353.74,17998.98,6944.52,2.592,advice_accepted
+# median,buffered,7333.01,17998.98,6947.97
+1,one_fsync,4335.57,18021.84,6939.45,2.597,advice_accepted
+2,one_fsync,4390.87,17725.70,6988.47,2.536,advice_accepted
+3,one_fsync,4364.79,18077.89,6876.46,2.629,advice_accepted
+# median,one_fsync,4364.79,18021.84,6939.45
+1,fsync_each_4MiB,2457.34,18010.59,7047.04,2.556,advice_accepted
+2,fsync_each_4MiB,2201.82,18054.85,7005.86,2.577,advice_accepted
+3,fsync_each_4MiB,2219.19,18012.84,7051.26,2.555,advice_accepted
+# median,fsync_each_4MiB,2219.19,18012.84,7047.04
 # small_writes=2000 x 4096 bytes
-# fdatasync_ms_per_sync=0.7025
+# fdatasync_ms_per_sync=0.7086

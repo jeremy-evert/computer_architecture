@@ -31,7 +31,7 @@ __attribute__((noinline)) static uint64_t volatile_loop(uint64_t n) {
 }
 static double median(double a, double b, double c) { if (a > b) { double t=a; a=b; b=t; } if (b > c) { double t=b; b=c; c=t; } if (a > b) b=a; return b; }
 int main(void) {
-    const uint64_t n = UINT64_C(150000000); double a[3], b[3];
+    const uint64_t n = UINT64_C(300000000); double a[3], b[3];
     metadata(); puts("variant,trial,iterations,ns_per_iteration");
     register_loop(10000); volatile_loop(10000);
     for (int t=0; t<3; ++t) {

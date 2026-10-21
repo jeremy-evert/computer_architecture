@@ -39,7 +39,7 @@ def main():
         marks = [" "] * (width + 1)
         for label, size in cache_sizes.items():
             if size and log_min <= math.log2(size) <= log_max:
-                pos = round((math.log2(size)-log_min)/(log_max-log_min)*width)
+                pos = width // 2 if log_max == log_min else round((math.log2(size)-log_min)/(log_max-log_min)*width)
                 marks[pos] = label[-1]
         print("cache markers across log2 size span: " + "".join(marks))
         print("markers: " + ", ".join(f"{k}={v} B" for k, v in cache_sizes.items()))

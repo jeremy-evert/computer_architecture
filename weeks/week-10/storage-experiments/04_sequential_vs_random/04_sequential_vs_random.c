@@ -123,13 +123,13 @@ static double run_sequential_independent(const uint64_t *data, size_t count)
 {
     struct timespec start, end;
     uint64_t sum = 0;
-    if (clock_gettime(CLOCK_MONOTONIC, &start) != 0) return -1.0;
+    if (clock_gettime(CLOCK_MONOTONIC, &start) != 0) { perror("clock_gettime"); exit(1); }
     for (size_t pass = 0; pass < PASSES; pass++) {
         for (size_t i = 0; i < count; i++) sum += data[i];
     }
     __asm__ volatile("" : "+r"(sum));
     result_sink = sum;
-    if (clock_gettime(CLOCK_MONOTONIC, &end) != 0) return -1.0;
+    if (clock_gettime(CLOCK_MONOTONIC, &end) != 0) { perror("clock_gettime"); exit(1); }
     return elapsed_ns(&start, &end);
 }
 
@@ -137,13 +137,13 @@ static double run_random_independent(const uint64_t *data, const uint64_t *indic
 {
     struct timespec start, end;
     uint64_t sum = 0;
-    if (clock_gettime(CLOCK_MONOTONIC, &start) != 0) return -1.0;
+    if (clock_gettime(CLOCK_MONOTONIC, &start) != 0) { perror("clock_gettime"); exit(1); }
     for (size_t pass = 0; pass < PASSES; pass++) {
         for (size_t i = 0; i < count; i++) sum += data[indices[i]];
     }
     __asm__ volatile("" : "+r"(sum));
     result_sink = sum;
-    if (clock_gettime(CLOCK_MONOTONIC, &end) != 0) return -1.0;
+    if (clock_gettime(CLOCK_MONOTONIC, &end) != 0) { perror("clock_gettime"); exit(1); }
     return elapsed_ns(&start, &end);
 }
 
@@ -151,11 +151,11 @@ static double run_dependent(uint64_t *data, uint64_t reads)
 {
     struct timespec start, end;
     uint64_t index = 0;
-    if (clock_gettime(CLOCK_MONOTONIC, &start) != 0) return -1.0;
+    if (clock_gettime(CLOCK_MONOTONIC, &start) != 0) { perror("clock_gettime"); exit(1); }
     for (uint64_t i = 0; i < reads; i++) index = data[index];
     __asm__ volatile("" : "+r"(index));
     result_sink = index;
-    if (clock_gettime(CLOCK_MONOTONIC, &end) != 0) return -1.0;
+    if (clock_gettime(CLOCK_MONOTONIC, &end) != 0) { perror("clock_gettime"); exit(1); }
     return elapsed_ns(&start, &end);
 }
 

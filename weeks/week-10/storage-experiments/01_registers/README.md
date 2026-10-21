@@ -22,7 +22,7 @@ After `make asm`, open `01_registers.s` and compare the loop `.L30` under `regis
 
 # Expected shape
 
-The register loop is a fraction of a nanosecond per iteration; the volatile loop is several times slower because each iteration waits for its own store to come back as a load. On april (`../receipts/april/01_registers_run*.txt`, pinned to one performance core) the register loop measured about 0.20 ns and the volatile loop about 1.48 ns per iteration, a ratio near 7. Your machine will differ; look for "several times", not a particular number.
+Each measured loop runs 300 million iterations so even the faster register region lasts about 50 ms on the review machine. The register loop is a fraction of a nanosecond per iteration; the volatile loop is several times slower because each iteration waits for its own store to come back as a load. On april (`../receipts/april/01_registers_run*.txt`, pinned to one performance core) the register loop measured about 0.20 ns and the volatile loop about 1.43 to 1.45 ns per iteration, a ratio near 7.1. Your machine will differ; look for "several times", not a particular number.
 
 # What would surprise us / falsify the idea
 
