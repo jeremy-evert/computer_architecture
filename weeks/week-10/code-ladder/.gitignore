@@ -1,0 +1,4 @@
+# generated: compiled binaries and valgrind/cachegrind output
+sum_array
+sum_array_o3
+cachegrind.out.*
