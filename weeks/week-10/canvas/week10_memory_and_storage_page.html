@@ -1,0 +1,202 @@
+<!-- Source for the Canvas page "Week 10 - Memory & Storage: A Worked Example on a Real Machine".
+     Built from weeks/week-10/notes/2026-10-21__week10_memory_and_storage_discussion.md, Sections 1-7.
+     [[EQ:...]] tokens are expanded to Canvas equation images by the publisher script. -->
+<h2>Week 10 - Memory &amp; Storage: A Worked Example on a Real Machine</h2>
+<p>This page walks through one real computer, start to finish: what memory and storage it has, what each layer costs in dollars, how fast each layer is, and what our experiments actually measured. Read it before Wednesday's lab. Nothing here is a number to memorize. Look for the <strong>shapes</strong>, then check them against your own machine.</p>
+<p><em>Machine used:</em> the instructor's desktop PC (an Intel Core i7-8700K, running Windows with Ubuntu Linux inside it through WSL2). Your machine will differ. That is the point.</p>
+
+<h3>1. The central question</h3>
+<blockquote><p><strong>Why do we need layers of memory, and what does crossing a layer feel like?</strong></p></blockquote>
+<p>Short answer: faster storage takes more room per bit, sits closer to the processor, and costs far more. Nobody can afford to build a whole computer out of the fastest layer. So we stack small, fast layers on top of big, slow ones.</p>
+<p>What makes the small fast layers pay off is <strong>locality</strong>: programs tend to reuse data they just used, and to touch data close to what they just touched.</p>
+<p>We can put one number on how well a layer is working, the average memory access time (AMAT):</p>
+<p>[[EQ:\text{AMAT} = t_{\text{hit}} + (\text{miss rate}) \times (\text{miss penalty})]]</p>
+<p>In plain text: <strong>AMAT = hit time + (miss rate &times; miss penalty)</strong>.</p>
+<p><em>Small illustrative example (made-up numbers, not a measurement):</em> a hit takes 1 time unit, 1 access in 10 misses (miss rate 0.1), and each miss adds 5 units. Then AMAT = 1 + 0.1 &times; 5 = 1.5 units.</p>
+
+<h3>2. What this machine actually has (and who is reporting each number)</h3>
+<table border="1" cellpadding="6" cellspacing="0" style="border-collapse:collapse;">
+<thead><tr><th>Layer</th><th>What it has</th><th>Reported by</th><th>Notes</th></tr></thead>
+<tbody>
+<tr><td>L1 data cache (L1d)</td><td>32 KiB per core, 8-way, 64 sets, 64-byte lines</td><td><code>lscpu -C</code>, sysfs</td><td>Private to one core (CPUs 0-1 are that core's two hyperthreads)</td></tr>
+<tr><td>L1 instruction cache (L1i)</td><td>32 KiB per core, 8-way, 64 sets</td><td>same</td><td>Private</td></tr>
+<tr><td>L2</td><td>256 KiB per core, 4-way, 1024 sets</td><td>same</td><td>Private</td></tr>
+<tr><td>L3</td><td>12 MiB shared, 16-way, 12288 sets</td><td>same</td><td>Shared by CPUs 0-11</td></tr>
+<tr><td>RAM</td><td>32 GB installed (4 &times; 8 GB DDR4-3000)</td><td>Windows PowerShell</td><td>The Linux side (WSL2) only sees about 16 GB, roughly half the host</td></tr>
+<tr><td>Swap</td><td>4 GiB (a file), none in use</td><td><code>free -h</code></td><td></td></tr>
+<tr><td>Linux <code>/</code></td><td>1 TB ext4 virtual disk, 59 GB used</td><td><code>df -h</code></td><td>A <em>file</em> on a Windows drive, not a physical disk</td></tr>
+<tr><td>C:</td><td>Samsung 960 EVO 250 GB NVMe SSD</td><td>PowerShell</td><td></td></tr>
+<tr><td>F:</td><td>Samsung 960 EVO 250 GB NVMe SSD</td><td>PowerShell</td><td></td></tr>
+<tr><td>D:</td><td>Seagate IronWolf 4 TB hard drive</td><td>PowerShell</td><td>Separate volume, not mirrored</td></tr>
+<tr><td>E:</td><td>Seagate IronWolf 4 TB hard drive</td><td>PowerShell</td><td>Separate volume</td></tr>
+</tbody></table>
+<p>Check the cache sizes yourself: size = sets &times; ways &times; line size.</p>
+<p>[[EQ:64 \times 8 \times 64 = 32\text{ KiB}]]&nbsp;&nbsp;&nbsp;[[EQ:1024 \times 4 \times 64 = 256\text{ KiB}]]&nbsp;&nbsp;&nbsp;[[EQ:12288 \times 16 \times 64 = 12\text{ MiB}]]</p>
+<p>In plain text: 64 &times; 8 &times; 64 = 32 KiB; 1024 &times; 4 &times; 64 = 256 KiB; 12288 &times; 16 &times; 64 = 12 MiB.</p>
+
+<h4>Tools that told confident untruths (good practice for the Critique lens)</h4>
+<ul>
+<li><code>lsblk</code> said <code>ROTA=1</code> (spinning disk) for every disk, even the one that lives on an NVMe SSD. The disk it was looking at is a <em>virtual</em> disk.</li>
+<li>The IronWolf drives report <code>BusType: RAID</code> because they sit behind the motherboard's RAID controller.</li>
+<li>Our disk experiment printed a filesystem type of <code>0x1021997</code>. That is <strong>9p</strong>, the file-sharing layer WSL2 uses to reach Windows drives. It is not the disk's own filesystem.</li>
+<li><code>free</code>, <code>df</code>, and our inventory program report the <strong>virtual machine's</strong> view, not the host's hardware.</li>
+</ul>
+<p>Ask of every number: <strong>who is reporting this, and what are they actually looking at?</strong></p>
+
+<h4>Why the L1 cache is split, and why L1/L2 are private but L3 is shared</h4>
+<ul>
+<li><strong>L1d vs L1i:</strong> in one cycle the core fetches an instruction and also loads or stores data. Two separate caches mean two separate paths, so they do not get in each other's way. Below L1, caches are unified (instructions and data together).</li>
+<li><strong>Private L1/L2:</strong> they must be tiny and close to be fast. Sharing would add wire length and waiting in line.</li>
+<li><strong>Shared L3:</strong> it is already slower, so sharing costs little and buys flexible capacity and fast sharing between cores. Physically it is six 2 MiB slices connected by a ring; logically it is one cache.</li>
+</ul>
+
+<h3>3. What the layers cost (dollars only, no performance)</h3>
+<p><strong>All prices on this page are dated snapshots from 2026-10-21.</strong> They will be different when you read this. Re-check them yourself.</p>
+<table border="1" cellpadding="6" cellspacing="0" style="border-collapse:collapse;">
+<thead><tr><th>Layer</th><th>Capacity here</th><th>Price used (2026-10-21)</th><th>$ per GB (2026-10-21)</th><th>Bytes per $1 (2026-10-21)</th></tr></thead>
+<tbody>
+<tr><td>Registers (architectural, 12 threads)</td><td>7,680 B</td><td>$80 (whole CPU) (2026-10-21)</td><td>about $10,400,000 (2026-10-21)</td><td>96</td></tr>
+<tr><td>L1d</td><td>192 KiB</td><td>$80 (whole CPU) (2026-10-21)</td><td>about $407,000 (2026-10-21)</td><td>about 2,500</td></tr>
+<tr><td>L1i</td><td>192 KiB</td><td>$80 (whole CPU) (2026-10-21)</td><td>about $407,000 (2026-10-21)</td><td>about 2,500</td></tr>
+<tr><td>L2</td><td>1.5 MiB</td><td>$80 (whole CPU) (2026-10-21)</td><td>about $51,000 (2026-10-21)</td><td>about 20,000</td></tr>
+<tr><td>L3</td><td>12 MiB</td><td>$80 (whole CPU) (2026-10-21)</td><td>about $6,400 (2026-10-21)</td><td>about 157,000</td></tr>
+<tr><td><em>All cache together</em></td><td><em>about 13.9 MiB</em></td><td><em>$80 (2026-10-21)</em></td><td><em>about $5,500 (2026-10-21)</em></td><td><em>about 182,000</em></td></tr>
+<tr><td>RAM, 4 &times; 8 GB</td><td>32 GiB</td><td>$250 for a new 2&times;16 GB kit (2026-10-21)</td><td>$7.28 to $7.81 (2026-10-21)</td><td>about 137 million</td></tr>
+<tr><td>SSD, 2 &times; 960 EVO</td><td>500 GB</td><td>about $75 used, an estimate (2026-10-21)</td><td>about $0.15 (2026-10-21)</td><td>about 6.7 billion</td></tr>
+<tr><td>Hard drive, 2 &times; IronWolf 4 TB</td><td>8,000 GB</td><td>about $200 used, an estimate (2026-10-21)</td><td>about $0.025 (2026-10-21)</td><td>about 40 billion</td></tr>
+</tbody></table>
+<p>How these numbers were built:</p>
+<ul>
+<li><strong>CPU:</strong> the median of 38 used i7-8700K eBay <em>asking</em> prices, about $80 on 2026-10-21 (middle half of listings: $74 to $98). Non-K chips, new or open-box chips, a "broken" listing, $20 bait ads, and duplicates were left out. One seller showed 190 sold at $89.99. Asking prices are not sale prices: re-check with eBay's <strong>Sold Items</strong> filter.</li>
+<li><strong>The CPU rows are upper bounds.</strong> You cannot buy cache by itself, so each row charges the whole chip to that layer. Do not add the rows together.</li>
+<li><strong>RAM:</strong> new replacement kits, 2&times;16 GB at $249.99 ($7.81 per GB) and 2&times;32 GB at $629.99 ($9.84 per GB), on 2026-10-21. A market tracker's median for desktop DDR4 that day was $7.81 per GB.</li>
+<li><strong>Drives:</strong> the used-price ranges were <em>estimates</em>, not checked listings (2026-10-21). For reference that day: 2 TB NVMe about $140 per TB; new 8 TB hard drives about $41 to $61 per TB (hard-drive prices rose sharply in 2026 because of AI data-center demand).</li>
+</ul>
+<p><strong>One sentence to remember:</strong> on this machine, as of 2026-10-21, $1 buys about 96 bytes of register space or about 40 billion bytes of spinning disk.</p>
+
+<h3>4. Typical latency ladder (teaching values, NOT measurements)</h3>
+<p>These are round numbers for orientation only. At 3.7 GHz one cycle is about 0.27 ns. The last column rescales time so that one cycle feels like one second.</p>
+<table border="1" cellpadding="6" cellspacing="0" style="border-collapse:collapse;">
+<thead><tr><th>Layer</th><th>Approx. cycles</th><th>Approx. time</th><th>If 1 cycle = 1 second</th></tr></thead>
+<tbody>
+<tr><td>Register</td><td>about 1</td><td>about 0.3 ns</td><td>1 second</td></tr>
+<tr><td>L1</td><td>about 4-5</td><td>about 1.2 ns</td><td>4 seconds</td></tr>
+<tr><td>L2</td><td>about 12</td><td>about 3.3 ns</td><td>12 seconds</td></tr>
+<tr><td>L3</td><td>about 40-70</td><td>about 11-19 ns</td><td>about 1 minute</td></tr>
+<tr><td>RAM (DDR4-3000, CL15)</td><td>about 300</td><td>about 60-90 ns</td><td>about 5 minutes</td></tr>
+<tr><td>NVMe SSD</td><td>about 300,000</td><td>about 50-100 &micro;s</td><td>about 3.5 days</td></tr>
+<tr><td>Hard drive (5,900 rpm)</td><td>about 40,000,000</td><td>about 10-15 ms</td><td>about 1.3 years</td></tr>
+</tbody></table>
+<p>Why each step costs more:</p>
+<ul>
+<li><strong>Inside the chip:</strong> distance across the chip, bigger arrays to search, address translation (the TLB), and hops around the ring to the right L3 slice.</li>
+<li><strong>RAM:</strong> now you leave the chip. DRAM has to open a row (about 10 ns), read a column (about 10 ns), and sometimes close another row first (about 10 ns).</li>
+<li><strong>Storage:</strong> it is no longer one instruction. It is a request through the operating system, the filesystem, a driver, and the device (and under WSL, the virtual machine and 9p as well).</li>
+<li><strong>Hard drive:</strong> the only layer limited by <em>moving metal</em>. Half a rotation at 5,900 rpm is about 5.1 ms.</li>
+</ul>
+<p>RAM bandwidth ceiling for dual-channel DDR4-3000: 3000 MT/s &times; 8 bytes &times; 2 channels = <strong>48 GB/s</strong>.</p>
+
+<h3>5. What we measured on this machine</h3>
+<p>All programs are in the course repository: <a href="https://github.com/jeremy-evert/computer_architecture/tree/main/weeks/week-10/storage-experiments" target="_blank" rel="noopener">weeks/week-10/storage-experiments</a>. Every number below is the median of three runs unless noted. <strong>Compare shapes, not exact values</strong>, and never assume a measured step equals an advertised cache size.</p>
+
+<h4>5.1 Working set: how access time grows as the data gets bigger (experiment 03)</h4>
+<p>A "dependent pointer chase" follows a chain where each step needs the previous answer, so the time per step is the delay for one access.</p>
+<table border="1" cellpadding="6" cellspacing="0" style="border-collapse:collapse;">
+<thead><tr><th>Region</th><th>Working set</th><th>ns per access (about)</th><th>What it suggests</th></tr></thead>
+<tbody>
+<tr><td>Flat</td><td>up to about 28 KB</td><td>1.6</td><td>fits in L1d</td></tr>
+<tr><td>Step up</td><td>just past 32 KiB</td><td>2.2, then 3.6 by 40 KB</td><td>leaving L1d</td></tr>
+<tr><td>Plateau, slow rise</td><td>about 40 KB to 230 KB</td><td>3.6 to 5.8</td><td>an L2 region</td></tr>
+<tr><td>Step up</td><td>just past 256 KiB</td><td>about 6.5</td><td>leaving L2</td></tr>
+<tr><td>Climb, then flat</td><td>about 0.3 MB to 5 MB</td><td>8 to 14, then flat near 13-14</td><td>an L3 region</td></tr>
+<tr><td><strong>Steep rise</strong></td><td>about 6 MB to 15 MB</td><td>15 up to about 60</td><td>the wall comes <em>before</em> the 12 MiB L3 size</td></tr>
+<tr><td>Plateau</td><td>25 MB and larger</td><td>about 70 to 82</td><td>RAM latency</td></tr>
+</tbody></table>
+<p>The first two steps land <em>near</em> the advertised L1 and L2 sizes. The last one does not: the steep rise begins at roughly half of the advertised L3 size. That is the Critique lesson. A measured cliff is evidence about <em>this run on this machine</em>, not a way to read off a spec sheet.</p>
+
+<h4>5.2 The cache line (experiment 02)</h4>
+<p>We read memory with bigger and bigger strides (jumps between reads). The cost per access climbs as the stride grows toward the 64-byte line size, keeps climbing a bit past it, and levels off around 256 to 512 bytes. Hardware that fetches neighboring lines can blur a sharp knee, so we read this as "the cost rises across the cache-line region", not as a single clean edge.</p>
+
+<h4>5.3 Registers (experiment 01)</h4>
+<p>The same arithmetic loop took about 0.55 ns per step with the running total in a register, and about 1.65 ns per step when the total was forced through memory with <code>volatile</code>. That is about 3 times slower. The 1.65 ns is close to the L1 time from 5.1, so two different experiments point at the same number.</p>
+
+<h4>5.4 Sequential versus random (experiment 04, 256 MB buffer)</h4>
+<table border="1" cellpadding="6" cellspacing="0" style="border-collapse:collapse;">
+<thead><tr><th>Mode</th><th>ns per read (about)</th><th>GB/s (about)</th></tr></thead>
+<tbody>
+<tr><td>sequential, independent reads</td><td>0.30</td><td>27</td></tr>
+<tr><td>sequential, dependent reads</td><td>1.55</td><td>5.1</td></tr>
+<tr><td>random, independent reads</td><td>20</td><td>0.40</td></tr>
+<tr><td>random, dependent reads</td><td>about 100</td><td>0.08</td></tr>
+</tbody></table>
+<p>Same memory, same number of reads, and about 330 times slower per read when the processor cannot predict the next address. The best case, about 27 GB/s from one thread, is a bit over half of the 48 GB/s theoretical ceiling in Section 4.</p>
+
+<h4>5.5 First touch (experiment 05, 512 MiB, 4 KiB pages)</h4>
+<p>The first time a program touches a page of fresh memory, the operating system has to find a page, fill it with zeros, and map it (a "page fault"). That cost about 1,600 ns per page here. Touching the same pages a second time cost about 9 to 10 ns per page. Asking for the pages up front with <code>MAP_POPULATE</code> moves the work earlier: about 830 ns per page, paid inside the memory request. Transparent huge pages were set to <code>madvise</code>, so arrays used ordinary 4 KiB pages.</p>
+
+<h4>5.6 Disk (experiment 06, 256 MiB file)</h4>
+<table border="1" cellpadding="6" cellspacing="0" style="border-collapse:collapse;">
+<thead><tr><th>Where the file lives</th><th>Buffered write</th><th>One fsync at the end</th><th>fsync every 4 MiB</th><th>Read after asking the OS to forget it</th><th>One 4 KiB write + sync</th></tr></thead>
+<tbody>
+<tr><td><code>/tmp</code> (this is RAM!) &mdash; from the live session, rounded</td><td>3,500 MB/s</td><td>3,560 MB/s</td><td>3,590 MB/s</td><td>n/a</td><td>0.002 ms</td></tr>
+<tr><td>Home folder (ext4 virtual disk on the NVMe)</td><td>about 4,800-5,100 MB/s</td><td>about 1,040 MB/s</td><td>about 450 MB/s</td><td>about 1,900 MB/s</td><td>about 2.6 ms</td></tr>
+<tr><td><code>/mnt/c</code> (the NVMe, reached through 9p)</td><td>about 240-250 MB/s</td><td>about 170-200 MB/s</td><td>about 150-175 MB/s</td><td>about 260 MB/s</td><td>about 1.6 ms</td></tr>
+<tr><td><code>/mnt/d</code> (the hard drive, through 9p)</td><td>about 220-240 MB/s</td><td>about 100 MB/s</td><td>about 52 MB/s</td><td>about 260 MB/s</td><td>about 18 ms</td></tr>
+</tbody></table>
+<ul>
+<li>The first, default run wrote to <code>/tmp</code>, which is memory. The program printed a warning. Always check which layer you actually measured.</li>
+<li><strong>9p limits the Windows drives to about 250 MB/s.</strong> The same NVMe SSD reads at about 1.9 GB/s from the Linux home folder.</li>
+<li>Buffered writes hide the device. Only <code>fsync</code> (wait until it is really saved) reveals the hard drive: about 18 ms per sync, which is about a seek plus part of a rotation.</li>
+<li>Through 9p, the "forgotten" read is no faster or slower than the warm read (ratio about 1.0), so that column does not mean "cold" there.</li>
+</ul>
+
+<h4>5.7 Network, on one machine (experiment 07, loopback)</h4>
+<p>A plain function call: about 1.4 ns. A round trip between two processes through pipes: about 65 &micro;s. A round trip over loopback TCP: about 80 &micro;s. Talking to another process costs about as much as one NVMe read. (65 &micro;s is slow for pipes; the virtual machine layer is a plausible but unproven reason.) Loopback is not a real network: there is no wire and no switch.</p>
+
+<h4>5.8 Repository (experiment 08)</h4>
+<p>The program computes the same object id that <code>git hash-object</code> would, and it matched. A git repository stores every version as a small file named by its hash. We timed 2,000 small records stored two ways, with the scratch folder on the Linux home folder:</p>
+<table border="1" cellpadding="6" cellspacing="0" style="border-collapse:collapse;">
+<thead><tr><th>Store</th><th>Time for 2,000 records (about)</th></tr></thead>
+<tbody>
+<tr><td>one plain file, no sync</td><td>2.3 ms</td></tr>
+<tr><td>one plain file, one sync at the end</td><td>7 to 8 ms</td></tr>
+<tr><td>one file per record (git-loose-object style), no sync</td><td>110 ms</td></tr>
+<tr><td>one file per record, sync after every file</td><td>5.4 to 5.7 seconds</td></tr>
+</tbody></table>
+<p>Remembering every version, and being sure it is saved, is measurably more expensive than appending to one file. In a throwaway repository with two commits we counted 6 objects: 2 file contents, 2 directory listings, and 2 commits. Note: our "loose object" store skips the compression that real git does.</p>
+
+<h3>6. From Python down to the cache (the code ladder)</h3>
+<table border="1" cellpadding="6" cellspacing="0" style="border-collapse:collapse;">
+<thead><tr><th>Level</th><th>What it is</th><th>Which L1 it uses</th></tr></thead>
+<tbody>
+<tr><td>Python source</td><td>text</td><td>-</td></tr>
+<tr><td>Python bytecode (<code>LOAD_NAME</code>, <code>BINARY_OP</code>, ...)</td><td>instructions for a <em>virtual</em> machine</td><td>read as <strong>data</strong>, so L1d</td></tr>
+<tr><td>The Python interpreter</td><td>a C program's machine code</td><td>L1i</td></tr>
+<tr><td>C source</td><td>text</td><td>-</td></tr>
+<tr><td>Assembly (<code>add rcx, QWORD PTR [rax]</code>)</td><td>readable machine instructions</td><td>-</td></tr>
+<tr><td>Machine code (<code>48 03 08</code>)</td><td>the bytes the CPU decodes</td><td>L1i</td></tr>
+<tr><td>Arrays and variables</td><td>the program's data</td><td>L1d</td></tr>
+</tbody></table>
+<p>We counted with a cache simulator (cachegrind) on the same job, summing 1,000,000 numbers:</p>
+<table border="1" cellpadding="6" cellspacing="0" style="border-collapse:collapse;">
+<thead><tr><th>Version</th><th>Instructions</th><th>Data references</th></tr></thead>
+<tbody>
+<tr><td>Python</td><td>1,198,569,257</td><td>472,395,635</td></tr>
+<tr><td>C, <code>-O1</code></td><td>9,126,403</td><td>2,042,259</td></tr>
+<tr><td>C, <code>-O3 -march=native</code> (one AVX2 instruction adds 4 numbers)</td><td>2,001,525</td><td>542,285</td></tr>
+</tbody></table>
+<ul>
+<li>Python to vectorized C is about 600 times fewer instructions.</li>
+<li>The C <code>-O1</code> inner loop is 14 bytes of machine code, small enough to fit inside one 64-byte L1i line.</li>
+<li>The simulated L1 data misses (251,702) are close to 8,000,000 bytes &divide; 64 bytes &times; 2 passes = 250,000. There is the cache line again.</li>
+<li>Cachegrind <em>simulates</em> a cache. Treat it as shapes and ratios, not as exact facts about the silicon.</li>
+</ul>
+
+<h3>7. Open questions and Critique moments</h3>
+<ol>
+<li><strong>Why does the steep rise in 5.1 begin near 6 MB instead of at 12 MiB?</strong> Some hypotheses, none proven: the translation cache (TLB) covers only about 6 MiB of 4 KiB pages; the L3 is shared with other work on the machine, Windows, and the virtual machine layer; the L3 spreads addresses across slices in a hashed way.</li>
+<li><strong>Why is random-dependent about 100 ns in experiment 04 but the RAM plateau is about 80 ns in experiment 03?</strong> Probably extra address-translation work with a 256 MB buffer (unproven).</li>
+<li><strong>Which layer did you actually measure?</strong> RAM-backed <code>/tmp</code>, an ext4 virtual disk, and a 9p share can all sit on the same SSD and give wildly different numbers.</li>
+<li><strong>Which price is "the price"?</strong> On one listing page, the same CPU appeared at $20, $35, $80, $154, and $300 (2026-10-21).</li>
+<li><strong>Who reported this number?</strong> A virtual machine and its host can disagree about RAM, disks, spinning-or-not, and bus type.</li>
+</ol>
