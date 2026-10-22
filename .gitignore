@@ -6,3 +6,6 @@ weeks/**/build/
 
 # Week 16 Farkle benchmark outputs are machine/run-specific evidence.
 weeks/week-16/artifacts/
+
+# compiled test binary from readiness task 3 (build with equiv.c)
+readiness/raw/**/task3/equiv
