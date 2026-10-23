@@ -1,0 +1,13 @@
+kind,size_bytes,value,unit
+pointer_chase,4096,1.234705,ns_per_access
+stream_read,4096,63.015385,GB_per_s
+pointer_chase,32768,1.206960,ns_per_access
+stream_read,32768,65.948176,GB_per_s
+pointer_chase,262144,3.183693,ns_per_access
+stream_read,262144,65.645751,GB_per_s
+pointer_chase,2097152,9.741060,ns_per_access
+stream_read,2097152,64.277566,GB_per_s
+pointer_chase,8388608,11.719491,ns_per_access
+stream_read,8388608,61.779288,GB_per_s
+pointer_chase,33554432,54.937204,ns_per_access
+stream_read,33554432,36.384244,GB_per_s

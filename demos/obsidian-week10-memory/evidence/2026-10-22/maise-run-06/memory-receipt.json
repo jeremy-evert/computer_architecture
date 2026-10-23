@@ -1,0 +1,9 @@
+{
+  "data": "memory.csv",
+  "experiment": "memory",
+  "interpretation_scope": "Measures this process on this run. Scheduler, prefetch, cache/TLB behavior and virtualization can affect shape; compare trends, not laptop rankings.",
+  "rows": 12,
+  "schema": "swosu.archlab.experiment/v1",
+  "status": "PASS",
+  "timestamp_utc": "2026-10-23T04:31:51.360304+00:00"
+}

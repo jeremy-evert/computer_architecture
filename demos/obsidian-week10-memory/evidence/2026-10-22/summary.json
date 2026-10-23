@@ -1,0 +1,114 @@
+{
+  "schema": "connie-068.memory-summary/v1",
+  "runs": 6,
+  "measurements": [
+    {
+      "kind": "pointer_chase",
+      "size_bytes": 4096,
+      "unit": "ns_per_access",
+      "n": 6,
+      "median": 1.243232,
+      "min": 1.20511,
+      "max": 1.50646
+    },
+    {
+      "kind": "pointer_chase",
+      "size_bytes": 32768,
+      "unit": "ns_per_access",
+      "n": 6,
+      "median": 1.221135,
+      "min": 1.20676,
+      "max": 1.530265
+    },
+    {
+      "kind": "pointer_chase",
+      "size_bytes": 262144,
+      "unit": "ns_per_access",
+      "n": 6,
+      "median": 3.159565,
+      "min": 3.080771,
+      "max": 3.27167
+    },
+    {
+      "kind": "pointer_chase",
+      "size_bytes": 2097152,
+      "unit": "ns_per_access",
+      "n": 6,
+      "median": 9.705651,
+      "min": 9.565574,
+      "max": 9.81544
+    },
+    {
+      "kind": "pointer_chase",
+      "size_bytes": 8388608,
+      "unit": "ns_per_access",
+      "n": 6,
+      "median": 11.621718,
+      "min": 11.232872,
+      "max": 12.353522
+    },
+    {
+      "kind": "pointer_chase",
+      "size_bytes": 33554432,
+      "unit": "ns_per_access",
+      "n": 6,
+      "median": 56.40388,
+      "min": 54.937204,
+      "max": 56.53988
+    },
+    {
+      "kind": "stream_read",
+      "size_bytes": 4096,
+      "unit": "GB_per_s",
+      "n": 6,
+      "median": 63.015385,
+      "min": 50.305891,
+      "max": 63.015385
+    },
+    {
+      "kind": "stream_read",
+      "size_bytes": 32768,
+      "unit": "GB_per_s",
+      "n": 6,
+      "median": 65.948176,
+      "min": 52.745272,
+      "max": 65.968921
+    },
+    {
+      "kind": "stream_read",
+      "size_bytes": 262144,
+      "unit": "GB_per_s",
+      "n": 6,
+      "median": 65.502538,
+      "min": 51.862847,
+      "max": 66.3021
+    },
+    {
+      "kind": "stream_read",
+      "size_bytes": 2097152,
+      "unit": "GB_per_s",
+      "n": 6,
+      "median": 64.6374,
+      "min": 62.212377,
+      "max": 65.585445
+    },
+    {
+      "kind": "stream_read",
+      "size_bytes": 8388608,
+      "unit": "GB_per_s",
+      "n": 6,
+      "median": 60.402643,
+      "min": 52.083341,
+      "max": 61.779288
+    },
+    {
+      "kind": "stream_read",
+      "size_bytes": 33554432,
+      "unit": "GB_per_s",
+      "n": 6,
+      "median": 36.661975,
+      "min": 36.191274,
+      "max": 37.068467
+    }
+  ]
+}

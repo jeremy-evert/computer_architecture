@@ -1,0 +1,9 @@
+SWOSU Architecture Observatory
+Scope: host-visible
+OS: Ubuntu 26.04.1 LTS
+Architecture: x86_64
+CPU: AMD Ryzen 9 3950X 16-Core Processor
+Logical processors: 32
+Visible memory: 60.5 GiB
+Cache records: 4
+Accelerator visible: False

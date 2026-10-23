@@ -1,0 +1,10 @@
+{
+  "data": "memory.csv",
+  "experiment": "memory",
+  "interpretation_scope": "Measures this process on this run. Scheduler, prefetch, cache/TLB behavior and virtualization can affect shape; compare trends, not laptop rankings.",
+  "rows": 12,
+  "schema": "swosu.archlab.experiment/v1",
+  "status": "PASS",
+  "timestamp_utc": "2026-10-23T04:31:43.800009+00:00"
+}
+Run directory: demos/obsidian-week10-memory/evidence/2026-10-22/maise-run-04
