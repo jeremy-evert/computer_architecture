@@ -1,0 +1,3 @@
+Percent of work turned in vs grade: a straight trend line across the class, no individual points. r = 0.96, rho = 0.97, n = 6. A strong link. Turning in work and a better grade go together; that does not prove one causes the other. With only 6 students the numbers move a lot.
+
+Hours in Canvas vs grade: a straight trend line across the class, no individual points. r = 0.74, rho = 0.83, n = 6. A strong link. Hours is time Canvas recorded with pages open, a rough proxy; the link does not prove one causes the other. With only 6 students the numbers move a lot.
