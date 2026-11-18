@@ -105,11 +105,12 @@ def main():
     receipt_dir.mkdir(parents=True, exist_ok=True)
 
     manifest, snapshot_errors = validate_shared_snapshot()
+    host_name = platform.node().split(".")[0].lower() or "unknown-host"
     receipt = run_fixed_suite(
         games=40,
         seed=6262,
         repeats=2,
-        lane_label="brandy-validation-cpu",
+        lane_label=f"{host_name}-validation-cpu",
     )
     runtime_errors = validate_receipt(receipt)
     json_path, csv_path = save_receipt(receipt, artifact_dir)
@@ -175,7 +176,8 @@ def main():
             "",
             "## Interpretation boundary",
             "",
-            "This is a Brandy native-Python CPU receipt. It is not a Tesla T4 result.",
+            f"This is a native-Python CPU receipt from host `{receipt['host']['hostname']}`"
+            f" (lane `{receipt['lane_label']}`). It is not an accelerator result.",
             "A future accelerator lane must prove that the workload actually dispatches",
             "to the accelerator and preserves the benchmark contract before its numbers",
             "may be compared as accelerator evidence.",
